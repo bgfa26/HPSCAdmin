@@ -2,7 +2,7 @@
 		PROCEDIMIENTO PARA AGREGAR EMPLEADOS A LA BASE DE DATOS (NO POSEEN NINGUN ROL) 
 		FECHA: 20/06/2019 11:00 AM
 ******/
-USE [TESTHPSC]
+USE [MTGROUPDATABAS]
 GO
 SET ANSI_NULLS ON
 GO
@@ -17,7 +17,17 @@ CREATE PROCEDURE [dbo].[CREATE_EMPLOYEE]
   @password AS varchar (50)
 AS
 BEGIN
-		BEGIN
-			INSERT INTO EMPLOYEE VALUES(@id, @workerid, @firstname, @lastname, @email, @password);
-		END
+  IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)
+    IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE WORKERID = @workerid) = 0)
+      IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
+        BEGIN
+          INSERT INTO EMPLOYEE VALUES(@id, @workerid, @firstname, @lastname, @email, @password);
+          RETURN 200;
+        END;
+      ELSE
+        RETURN 103;
+    ELSE
+      RETURN 102;  
+  ELSE
+    RETURN 101;  
 END

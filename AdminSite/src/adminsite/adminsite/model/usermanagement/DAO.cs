@@ -14,11 +14,11 @@ namespace adminsite.model.usermanagement
         protected SqlConnection connection { set; get; }
         protected SqlCommand command { set; get; }
 
-        #region Conexion a la base de datos
+        #region Conexion y desconexion a la base de datos
         /// <summary>
         /// Metodo para realizar la conexion a la base de datos
         /// Excepciones posibles: 
-        /// SqlException: Excepciones sql
+        /// SqlException: Atrapa los errores que pueden existir en el sql server internamente
         /// </summary>
         public SqlConnection Connect()
         {
@@ -36,6 +36,48 @@ namespace adminsite.model.usermanagement
             return connection;
 
         }
+
+        /// <summary>
+        /// Metodo para cerrar la sesion con la base de datos
+        /// Excepciones posibles: 
+        /// SqlException: Atrapa los errores que pueden existir en el sql server internamente
+        /// </summary>
+        public void Disconnect()
+        {
+
+            try
+            {
+                this.connection.Close();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        /// <summary>
+        /// Metodo para cerrar la sesion con la base de datos pasando la conexion por parametro
+        /// Excepciones posibles: 
+        /// SqlException: Atrapa los errores que pueden existir en el sql server internamente
+        /// </summary>
+        public void Disconnect(SqlConnection _connection)
+        {
+
+            try
+            {
+                _connection.Close();
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
         #endregion
+
+
     }
 }

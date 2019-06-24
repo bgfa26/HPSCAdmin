@@ -21,7 +21,7 @@ BEGIN
     IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE WORKERID = @workerid) = 0)
       IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
         BEGIN
-          INSERT INTO EMPLOYEE VALUES(@id, @workerid, @firstname, @lastname, @email, @password);
+          INSERT INTO EMPLOYEE VALUES(@id, @workerid, @firstname, @lastname, @email, @password, 1);
           RETURN 200;
         END;
       ELSE

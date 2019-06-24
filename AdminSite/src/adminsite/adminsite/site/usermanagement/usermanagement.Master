@@ -18,6 +18,9 @@
 	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+
+    </asp:ContentPlaceHolder>
 </head>
 <body>
 
@@ -28,7 +31,7 @@
                     <span class="login100-form-logo">
                         <i class="fas fa-user"></i>
                     </span>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    <asp:ContentPlaceHolder ID="content" runat="server">
 
                     </asp:ContentPlaceHolder>
                 </form>

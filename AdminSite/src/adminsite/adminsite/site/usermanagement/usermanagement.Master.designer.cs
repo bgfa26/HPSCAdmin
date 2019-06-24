@@ -13,6 +13,15 @@ namespace adminsite.site.usermanagement {
     public partial class usermanagement {
         
         /// <summary>
+        /// head control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        
+        /// <summary>
         /// userform control.
         /// </summary>
         /// <remarks>
@@ -22,12 +31,12 @@ namespace adminsite.site.usermanagement {
         protected global::System.Web.UI.HtmlControls.HtmlForm userform;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// content control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder content;
     }
 }

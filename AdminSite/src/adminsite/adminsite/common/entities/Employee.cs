@@ -13,5 +13,53 @@ namespace adminsite.common
         public string lastName { get; set; }
         public string email { get; set; }
         public string password { get; set; }
+        public string status { get; set; }
+        public int idPosition { get; set; }
+        public string positionName { get; set; }
+        public int idOrganizationalUnit { get; set; }
+        public string organizationalUnit { get; set; }
+        public int error { get; set; }
+
+        public Employee() { }
+
+        public Employee(int id, string workerId, string firstName, string lastName, string email, string password,
+                        string status, int idPosition, string positionName, int idOrganizationalUnit, string organizationalUnit)
+        {
+            this.id = id;
+            this.workerId = workerId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+            this.status = status;
+            this.idPosition = idPosition;
+            this.positionName = positionName;
+            this.idOrganizationalUnit = idOrganizationalUnit;
+            this.organizationalUnit = organizationalUnit;
+            this.error = 200;
+        }
+
+        public Employee(string email, string password)
+        {
+            this.email = email;
+            this.password = password;
+            this.error = 200;
+        }
+
+        public Employee(int id, string workerId, string firstName, string lastName, string email, string status, int idPosition, 
+                        string positionName, int idOrganizationalUnit, string organizationalUnit)
+        {
+            this.id = id;
+            this.workerId = workerId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.status = status;
+            this.idPosition = idPosition;
+            this.positionName = positionName;
+            this.idOrganizationalUnit = idOrganizationalUnit;
+            this.organizationalUnit = organizationalUnit;
+            this.error = 200;
+        }
     }
 }

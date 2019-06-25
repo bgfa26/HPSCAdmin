@@ -1,4 +1,6 @@
-﻿using System;
+﻿using adminsite.common;
+using adminsite.controller.usermanagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -29,7 +31,27 @@ namespace adminsite.site.usermanagement
             string passwordVerification = pwdverification.Value;
             if (password.Equals(passwordVerification))
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha actualizado su contraseña exitosamente', 'success')", true);
+                MD5Calculator calculator = new MD5Calculator();
+                password = calculator.generateMD5(password);
+                Employee employee = new Employee(employeeEmail, password);
+                try
+                {
+                    UpdatePasswordCommand cmd = new UpdatePasswordCommand(employee);
+                    cmd.Execute();
+                    int result = cmd.GetResult();
+                    if (result == 200)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha actualizado su contraseña exitosamente', 'success')", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
+                }
             }
             else
             {

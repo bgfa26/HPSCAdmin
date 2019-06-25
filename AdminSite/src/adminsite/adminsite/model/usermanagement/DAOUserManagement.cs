@@ -67,5 +67,37 @@ namespace adminsite.model.usermanagement
             }
 
         }
+
+        public int UpdateEmployeePassword(Employee employee)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(UserManagementResources.email, SqlDbType.VarChar, employee.email, false));
+                parameters.Add(new ParameterDB(UserManagementResources.password, SqlDbType.VarChar, employee.password, false));
+                parameters.Add(new ParameterDB(UserManagementResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(UserManagementResources.UpdateEmployeePasswordStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

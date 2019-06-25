@@ -63,9 +63,11 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[CHANGE_PASSWORD]
   @email AS varchar(120),
-  @password AS varchar(50)
+  @password AS varchar(50),
+  @exitValue AS int OUTPUT
 AS
 BEGIN
-	UPDATE [dbo].[EMPLOYEE] SET [PASSWORD] = @password WHERE [EMAIL] = @email
-	RETURN 200;
+  UPDATE [dbo].[EMPLOYEE] SET [PASSWORD] = @password WHERE [EMAIL] = @email
+  set @exitValue = 200;
+  RETURN @exitValue;
 END

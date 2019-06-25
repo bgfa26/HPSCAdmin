@@ -24,15 +24,8 @@ namespace adminsite.site.usermanagement
             string password = Request.Form["password"];
             if ((!email.Equals("")) && (!password.Equals("")))
             {
-                MD5 md5 = System.Security.Cryptography.MD5.Create();
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(password);
-                byte[] hash = md5.ComputeHash(inputBytes);
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hash.Length; i++)
-                {
-                    sb.Append(hash[i].ToString("X2"));
-                }
-                password = sb.ToString();
+                MD5Calculator calculator = new MD5Calculator();
+                password = calculator.generateMD5(password);
                 Employee employee = new Employee(email, password);
                 try
                 {
@@ -55,7 +48,10 @@ namespace adminsite.site.usermanagement
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El correo y/o la contraseña son inválidos')", true);
                     }
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error tratando de iniciar sesión')", true);
+                }
             }
         }
     }

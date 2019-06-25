@@ -79,6 +79,15 @@ namespace adminsite.model.usermanagement {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @exitvalue.
+        /// </summary>
+        internal static string exitvalue {
+            get {
+                return ResourceManager.GetString("exitvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @firstname.
         /// </summary>
         internal static string firstname {
@@ -147,6 +156,15 @@ namespace adminsite.model.usermanagement {
         internal static string status {
             get {
                 return ResourceManager.GetString("status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CHANGE_PASSWORD.
+        /// </summary>
+        internal static string UpdateEmployeePasswordStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateEmployeePasswordStoredProcedure", resourceCulture);
             }
         }
         

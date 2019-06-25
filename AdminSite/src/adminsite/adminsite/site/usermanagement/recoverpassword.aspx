@@ -8,7 +8,7 @@
         function errorSweetAlert(msg) {
             swal({
                 title: msg,
-                timer: 1500,
+                timer: 2000,
                 showConfirmButton: false,
                 type: 'error'
             });

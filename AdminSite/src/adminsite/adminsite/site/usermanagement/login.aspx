@@ -26,12 +26,12 @@
     </span>
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su correo">
-        <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico">
+        <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico"  maxlength="50">
         <span class="focus-input100" data-placeholder="&#xf207;"></span>
     </div>
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su contraseña">
-        <input class="input100" id="password" type="password" name="password" placeholder="Contraseña">
+        <input class="input100" id="password" type="password" name="password" placeholder="Contraseña"  maxlength="15">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
     </div>
     

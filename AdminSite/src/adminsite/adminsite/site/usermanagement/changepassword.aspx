@@ -11,6 +11,18 @@
                 timer: 2000,
                 showConfirmButton: false,
                 type: type
+            })
+            .then(() => {
+                
+                window.location.href = '/site/usermanagement/login.aspx';
+            });
+        }
+        function errorSweetAlert(msg, type) {
+            swal({
+                title: msg,
+                timer: 2000,
+                showConfirmButton: false,
+                type: type
             });
         }
     </script>
@@ -23,11 +35,11 @@
 
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su contraseña">
-        <input class="input100" id="pwd" type="password" name="password" placeholder="Contraseña" runat="server">
+        <input class="input100" id="pwd" type="password" name="password" placeholder="Contraseña" runat="server" maxlength="15">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
     </div>
     <div class="wrap-input100 validate-input" data-validate="Ingrese la verificación de su contraseña">
-        <input class="input100" id="pwdverification" type="password" name="passwordverification" placeholder="Verificación de contraseña" runat="server">
+        <input class="input100" id="pwdverification" type="password" name="passwordverification" placeholder="Verificación de contraseña" runat="server" maxlength="15">
         <span class="focus-input100" data-placeholder="&#xf191;"></span>
     </div>
     

@@ -25,7 +25,7 @@
 
         <asp:Panel id="mail" runat="server">
             <div class="wrap-input100 validate-input" data-validate="Ingrese su correo">
-                <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico" runat="server">
+                <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico" runat="server" maxlength="50">
                 <span class="focus-input100" data-placeholder="&#xf207;"></span>
             </div>
         </asp:Panel>
@@ -33,7 +33,7 @@
     
         <asp:Panel id="hexacode" runat="server" Visible="False">
             <div class="wrap-input100 validate-input">
-                <input class="input100" id="codeHex" type="text" name="codeHex" placeholder="Código de verificación" runat="server">
+                <input class="input100" id="codeHex" type="text" name="codeHex" placeholder="Código de verificación" runat="server"  maxlength="6">
                 <span class="focus-input100" data-placeholder="&#xf191;"></span>
             </div>
         </asp:Panel>

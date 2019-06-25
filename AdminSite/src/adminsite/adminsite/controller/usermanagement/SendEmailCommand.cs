@@ -1,4 +1,6 @@
-﻿using System;
+﻿using adminsite.common;
+using adminsite.model.emailservice;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,13 +9,13 @@ namespace adminsite.controller.usermanagement
 {
     public class SendEmailCommand : Command
     {
-        string email;
+        Employee employee;
         private string hexCode;
         private static Random random = new Random();
 
-        public SendEmailCommand(string email)
+        public SendEmailCommand(Employee employee)
         {
-            this.email = email;
+            this.employee = employee;
         }
 
         private static string GenerateCode(int digits)
@@ -31,6 +33,9 @@ namespace adminsite.controller.usermanagement
             try
             {
                 hexCode = GenerateCode(6);
+                EmailService emailService = new EmailService();
+                emailService.SendVerificationCode(employee, hexCode);
+
             }
             catch (Exception ex)
             {

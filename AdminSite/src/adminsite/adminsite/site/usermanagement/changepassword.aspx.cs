@@ -29,33 +29,39 @@ namespace adminsite.site.usermanagement
         {
             string password = pwd.Value;
             string passwordVerification = pwdverification.Value;
-            if (password.Equals(passwordVerification))
-            {
-                MD5Calculator calculator = new MD5Calculator();
-                password = calculator.generateMD5(password);
-                Employee employee = new Employee(employeeEmail, password);
-                try
+            if (password.Length >= 8) {
+                if (password.Equals(passwordVerification))
                 {
-                    UpdatePasswordCommand cmd = new UpdatePasswordCommand(employee);
-                    cmd.Execute();
-                    int result = cmd.GetResult();
-                    if (result == 200)
+                    MD5Calculator calculator = new MD5Calculator();
+                    password = calculator.generateMD5(password);
+                    Employee employee = new Employee(employeeEmail, password);
+                    try
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha actualizado su contraseña exitosamente', 'success')", true);
+                        UpdatePasswordCommand cmd = new UpdatePasswordCommand(employee);
+                        cmd.Execute();
+                        int result = cmd.GetResult();
+                        if (result == 200)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha actualizado su contraseña exitosamente', 'success')", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Su contraseña no ha podido ser actualizada', 'error')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Las contraseñas ingresadas no coinciden', 'error')", true);
                 }
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Las contraseñas ingresadas no coinciden', 'error')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('La contraseña debe tener al menos 8 caracteres', 'error')", true);
             }
         }
     }

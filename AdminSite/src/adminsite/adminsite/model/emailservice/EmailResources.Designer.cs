@@ -61,7 +61,7 @@ namespace adminsite.model.emailservice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to email@email.com.
+        ///   Looks up a localized string similar to testerforhpscservcorp@outlook.com.
         /// </summary>
         internal static string Email {
             get {
@@ -70,7 +70,7 @@ namespace adminsite.model.emailservice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 123456.
+        ///   Looks up a localized string similar to Tester1234.
         /// </summary>
         internal static string Password {
             get {

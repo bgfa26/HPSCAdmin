@@ -128,6 +128,12 @@
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
     <Compile Include="controller\usermanagement\EmailVerificationCommand.cs" />
     <Compile Include="model\DAO.cs" />
+    <Compile Include="model\emailservice\EmailResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\emailservice\EmailService.cs" />
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -236,11 +242,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="model\emailservice\EmailResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UserManagementResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

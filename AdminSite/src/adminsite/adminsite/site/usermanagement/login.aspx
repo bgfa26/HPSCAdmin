@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/site/usermanagement/usermanagement.Master" AutoEventWireup="true" CodeBehind="login.aspx.cs" Inherits="adminsite.site.usermanagement.login" %>
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
+	<title>Inicio de sesión</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'/>
     <script>
@@ -16,6 +17,9 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server">
+    <span class="login100-form-logo">
+        <i class="fas fa-user"></i>
+    </span>
 
     <span class="login100-form-title p-b-34 p-t-27">
         Inicio de sesión
@@ -49,7 +53,7 @@
         </a>
         <br />
         <br />
-        <a class="txt1" href="#">
+        <a class="txt1" href="/site/usermanagement/recoverpassword.aspx">
             ¿Olvidó su contraseña?
         </a>
     </div>

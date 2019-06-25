@@ -36,7 +36,7 @@ namespace adminsite.site.usermanagement
                 Employee employee = new Employee(email, password);
                 try
                 {
-                    LoginCommand cmd = new LoginCommand(employee);
+                    EmailVerificationCommand cmd = new EmailVerificationCommand(employee);
                     cmd.Execute();
                     Employee checkedEmployee = cmd.GetResult();
                     if (checkedEmployee != null)

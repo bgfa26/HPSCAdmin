@@ -46,6 +46,12 @@ namespace adminsite.common
             this.error = 200;
         }
 
+        public Employee(string email)
+        {
+            this.email = email;
+            this.error = 200;
+        }
+
         public Employee(int id, string workerId, string firstName, string lastName, string email, string status, int idPosition, 
                         string positionName, int idOrganizationalUnit, string organizationalUnit)
         {

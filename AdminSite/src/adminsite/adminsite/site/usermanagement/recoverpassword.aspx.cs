@@ -1,0 +1,65 @@
+﻿using adminsite.common;
+using adminsite.controller.usermanagement;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace adminsite.site.usermanagement
+{
+    public partial class recoverpassword : System.Web.UI.Page
+    {
+        String click;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            click = (String)ViewState["click"];
+        }
+
+        protected void acceptBtn_Click(object sender, EventArgs e)
+        {
+            if (click == null)
+            {
+                try
+                {
+                    Employee employee = new Employee(email.Value);
+                    EmailVerificationCommand evc = new EmailVerificationCommand(employee);
+                    evc.Execute();
+                    Employee checkedEmployee = evc.GetResult();
+                    if (checkedEmployee != null)
+                    {
+                        hexacode.Visible = true;
+                        message.Visible = true;
+                        email.Attributes.Add("disabled", "disabled");
+                        mail.Enabled = false;
+                        SendEmailCommand cmd = new SendEmailCommand(email.Value);
+                        cmd.Execute();
+                        ViewState["hexcode"] = cmd.GetHexCode();
+                        ViewState["click"] = "clicked"; //String al azar
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El correo ingresado no se encuentra registrado en el sistema')", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+            else
+            {
+                if (codeHex.Value.ToUpper().Equals((String)ViewState["hexcode"]))
+                {
+                    Session["changepassword"] = email.Value;
+                    Response.Redirect("~/site/usermanagement/changepassword.aspx");
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El código de verificación ingresado es erróneo')", true);
+                }
+            }
+        }
+    }
+}

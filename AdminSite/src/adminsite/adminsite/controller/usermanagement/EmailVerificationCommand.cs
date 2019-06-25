@@ -7,11 +7,11 @@ using System.Web;
 
 namespace adminsite.controller.usermanagement
 {
-    public class LoginCommand : Command
+    public class EmailVerificationCommand : Command
     {
         Employee employeeToConsult;
         Employee result;
-        public LoginCommand (Employee employeeToConsult)
+        public EmailVerificationCommand (Employee employeeToConsult)
         {
             this.employeeToConsult = employeeToConsult;
         }

@@ -7,13 +7,13 @@ using System.Web;
 
 namespace adminsite.controller.usermanagement
 {
-    public class EmailVerificationCommand : Command
+    public class UpdatePasswordCommand : Command
     {
-        Employee employeeToConsult;
-        Employee result;
-        public EmailVerificationCommand (Employee employeeToConsult)
+        Employee employeeToModify;
+        int result;
+        public UpdatePasswordCommand(Employee employeeToModify)
         {
-            this.employeeToConsult = employeeToConsult;
+            this.employeeToModify = employeeToModify;
         }
 
         public override void Execute()
@@ -21,7 +21,7 @@ namespace adminsite.controller.usermanagement
             try
             {
                 DAOUserManagement dao = new DAOUserManagement();
-                result = dao.GetEmployeeByEmail(employeeToConsult);
+                result = dao.UpdateEmployeePassword(employeeToModify);
             }
             catch (Exception ex)
             {
@@ -29,7 +29,7 @@ namespace adminsite.controller.usermanagement
             }
         }
 
-        public Employee GetResult()
+        public int GetResult()
         {
             return result;
         }

@@ -161,4 +161,12 @@
     <value>@workerid</value>
     <comment>Identificador del trabajador</comment>
   </data>
+  <data name="exitvalue" xml:space="preserve">
+    <value>@exitvalue</value>
+    <comment>Valor de salida de SQL Server</comment>
+  </data>
+  <data name="UpdateEmployeePasswordStoredProcedure" xml:space="preserve">
+    <value>CHANGE_PASSWORD</value>
+    <comment>Procedimiento almacenado para modificar la contraseña de un empleado</comment>
+  </data>
 </root>

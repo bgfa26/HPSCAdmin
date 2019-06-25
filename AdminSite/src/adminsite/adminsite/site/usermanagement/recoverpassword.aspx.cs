@@ -33,10 +33,17 @@ namespace adminsite.site.usermanagement
                         message.Visible = true;
                         email.Attributes.Add("disabled", "disabled");
                         mail.Enabled = false;
-                        SendEmailCommand cmd = new SendEmailCommand(email.Value);
-                        cmd.Execute();
-                        ViewState["hexcode"] = cmd.GetHexCode();
-                        ViewState["click"] = "clicked"; //String al azar
+                        try
+                        {
+                            SendEmailCommand cmd = new SendEmailCommand(email.Value);
+                            cmd.Execute();
+                            ViewState["hexcode"] = cmd.GetHexCode();
+                            ViewState["click"] = "clicked"; //String al azar
+                        }
+                        catch (Exception ex)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al enviar el código de verificación')", true);
+                        }
                     }
                     else
                     {
@@ -45,7 +52,7 @@ namespace adminsite.site.usermanagement
                 }
                 catch (Exception ex)
                 {
-
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar el correo ingresado')", true);
                 }
             }
             else

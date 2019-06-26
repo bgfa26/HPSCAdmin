@@ -50,7 +50,6 @@ namespace adminsite.site
                             employee = new Employee(Int32.Parse(id), workerId, firstName, lastName, employeeEmail, password);
                             EmailIDVerificationCommand evc = new EmailIDVerificationCommand(employee);
                             evc.Execute();
-
                             int result = evc.GetResult();
                             if (result == 200)
                             {
@@ -82,7 +81,7 @@ namespace adminsite.site
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
+                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
                             }
                         }
                         catch (Exception ex)

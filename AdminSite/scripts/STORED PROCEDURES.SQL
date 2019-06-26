@@ -14,7 +14,8 @@ CREATE PROCEDURE [dbo].[CREATE_EMPLOYEE]
   @firstname AS varchar (50),
   @lastname AS varchar (50),
   @email AS varchar (120),
-  @password AS varchar (50)
+  @password AS varchar (50),
+  @exitvalue AS int OUTPUT
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)
@@ -22,15 +23,27 @@ BEGIN
       IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
         BEGIN
           INSERT INTO EMPLOYEE VALUES(@id, @workerid, @firstname, @lastname, @email, @password, 1);
-          RETURN 200;
+          INSERT INTO ASSIGNMENT(FK_POSITION, FK_ORGANIZATIONALUNIT, FK_EMPLOYEE) VALUES (NULL, NULL, @id);
+          set @exitvalue = 200;
+          RETURN @exitvalue;
         END;
       ELSE
-        RETURN 103;
+        BEGIN
+          set @exitvalue = 103;
+          RETURN @exitvalue;
+        END;
     ELSE
-      RETURN 102;  
+      BEGIN
+        set @exitvalue = 102;
+        RETURN @exitvalue;  
+      END;
   ELSE
-    RETURN 101;  
+    BEGIN
+      set @exitvalue = 101;
+      RETURN @exitvalue; 
+    END;
 END
+
 
 /****** 
     PROCEDIMIENTO PARA CONSULTAR EMPLEADOS MEDIANTE UN CORREO
@@ -194,7 +207,8 @@ CREATE PROCEDURE [dbo].[CREATE_ACCOUNT_COURSE_PERMIT]
   @type AS varchar (50),
   @initdate AS date,
   @enddate AS date,
-  @fk_employee AS int
+  @fk_employee AS int,
+  @exitvalue AS int OUTPUT
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @id) = 0)
@@ -223,6 +237,7 @@ GO
 CREATE PROCEDURE [dbo].[CREATE_COST_CENTER]
   @fk_ou AS int,
   @fk_acp AS varchar (30),
+  @exitvalue AS int OUTPUT
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM COST_CENTER WHERE (FK_ORGANIZATIONALUNIT = @fk_ou) AND (FK_ACCOUNTCOURSEPERMIT = @fk_acp)) = 0)

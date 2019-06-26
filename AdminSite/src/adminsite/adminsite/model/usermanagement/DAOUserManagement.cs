@@ -108,7 +108,7 @@ namespace adminsite.model.usermanagement
             {
                 parameters.Add(new ParameterDB(UserManagementResources.id, SqlDbType.Int, employee.id.ToString(), false));
                 parameters.Add(new ParameterDB(UserManagementResources.workerid, SqlDbType.VarChar, employee.workerId, false));
-                parameters.Add(new ParameterDB(UserManagementResources.password, SqlDbType.VarChar, employee.email, false));
+                parameters.Add(new ParameterDB(UserManagementResources.email, SqlDbType.VarChar, employee.email, false));
                 parameters.Add(new ParameterDB(UserManagementResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(UserManagementResources.ValidateDuplicatedIDEmailStoredProcedure, parameters);
                 int result = Int32.Parse(results[0].value);

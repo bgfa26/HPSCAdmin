@@ -1,4 +1,4 @@
-/****** 
+ /****** 
 		PROCEDIMIENTO PARA AGREGAR EMPLEADOS A LA BASE DE DATOS (NO POSEEN NINGUN ROL) 
 		FECHA: 20/06/2019 11:00 AM
 ******/
@@ -194,13 +194,46 @@ CREATE PROCEDURE [dbo].[CREATE_ACCOUNT_COURSE_PERMIT]
   @type AS varchar (50),
   @initdate AS date,
   @enddate AS date,
+  @fk_employee AS int
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @id) = 0)
     BEGIN
-      INSERT INTO ACCOUNT_COURSE_PERMIT VALUES(@id, @name, @type, @initdate, @enddate);
-      RETURN 200;
+      INSERT INTO ACCOUNT_COURSE_PERMIT VALUES(@id, @name, @type, @initdate, @enddate, @fk_employee);
+      set @exitvalue = 200;
+      RETURN @exitvalue;
     END;
   ELSE
-    RETURN 100;  
+    BEGIN
+      set @exitvalue = 100;
+      RETURN @exitvalue;  
+    END;
+END
+
+/****** 
+    PROCEDIMIENTO PARA AGREGAR UN CENTRO DE COSTO A LA BASE DE DATOS
+    FECHA: 26/06/2019 04:19 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CREATE_COST_CENTER]
+  @fk_ou AS int,
+  @fk_acp AS varchar (30),
+AS
+BEGIN
+  IF ((SELECT COUNT(*) FROM COST_CENTER WHERE (FK_ORGANIZATIONALUNIT = @fk_ou) AND (FK_ACCOUNTCOURSEPERMIT = @fk_acp)) = 0)
+    BEGIN
+      INSERT INTO COST_CENTER(FK_ORGANIZATIONALUNIT, FK_ACCOUNTCOURSEPERMIT) VALUES(@fk_ou, @fk_acp);
+      set @exitvalue = 200;
+      RETURN @exitvalue;
+    END;
+  ELSE
+    BEGIN
+      set @exitvalue = 100;
+      RETURN @exitvalue;  
+    END;  
 END

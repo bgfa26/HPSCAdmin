@@ -29,14 +29,14 @@ namespace adminsite.site.usermanagement
                     Employee checkedEmployee = evc.GetResult();
                     if (checkedEmployee != null)
                     {
-                        hexacode.Visible = true;
-                        message.Visible = true;
-                        email.Attributes.Add("disabled", "disabled");
-                        mail.Enabled = false;
                         try
                         {
-                            SendEmailCommand cmd = new SendEmailCommand(email.Value);
+                            SendEmailCommand cmd = new SendEmailCommand(employee);
                             cmd.Execute();
+                            hexacode.Visible = true;
+                            message.Visible = true;
+                            email.Attributes.Add("disabled", "disabled");
+                            mail.Enabled = false;
                             ViewState["hexcode"] = cmd.GetHexCode();
                             ViewState["click"] = "clicked"; //String al azar
                         }

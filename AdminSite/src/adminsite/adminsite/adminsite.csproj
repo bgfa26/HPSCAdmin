@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="site\usermanagement\register.aspx" />
     <Content Include="site\usermanagement\changepassword.aspx" />
     <Content Include="site\usermanagement\css\main.css" />
     <Content Include="site\usermanagement\css\util.css" />
@@ -128,6 +129,12 @@
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
     <Compile Include="controller\usermanagement\EmailVerificationCommand.cs" />
     <Compile Include="model\DAO.cs" />
+    <Compile Include="model\emailservice\EmailResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\emailservice\EmailService.cs" />
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -135,6 +142,13 @@
       <DependentUpon>UserManagementResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="site\usermanagement\register.aspx.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\usermanagement\register.aspx.designer.cs">
+      <DependentUpon>register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="site\usermanagement\changepassword.aspx.cs">
       <DependentUpon>changepassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -236,11 +250,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="model\emailservice\EmailResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UserManagementResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -134,5 +134,65 @@ CREATE PROCEDURE [dbo].[DELETE_EMPLOYEE]
   @id AS varchar(120)
 AS
 BEGIN
-  UPDATE [dbo].[EMPLOYEE] SET [STATUS] = 0 WHERE [ID] = @id
+  UPDATE [dbo].[EMPLOYEE] SET [STATUS] = 0 WHERE [ID] = @id;
+END
+
+/****** 
+    PROCEDIMIENTO PARA AGREGAR CURSOS/CUENTAS/PERMISOS A LA BASE DE DATOS
+    FECHA: 25/06/2019 06:29 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CREATE_ACCOUNT_COURSE_PERMIT]
+  @id AS varchar(30),
+  @name AS varchar (100),
+  @type AS varchar (50),
+  @initdate AS date,
+  @enddate AS date,
+AS
+BEGIN
+  IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @id) = 0)
+    BEGIN
+      INSERT INTO ACCOUNT_COURSE_PERMIT VALUES(@id, @name, @type, @initdate, @enddate);
+      RETURN 200;
+    END;
+  ELSE
+    RETURN 100;  
+END
+
+/****** 
+    PROCEDIMIENTO PARA VALIDAR EMPLEADOS DE LA BASE DE DATOS
+    FECHA: 25/06/2019 10:45 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[VALIDATE]
+  @id AS int,
+  @workerid AS varchar (20),
+  @firstname AS varchar (50),
+  @lastname AS varchar (50),
+  @email AS varchar (120),
+  @password AS varchar (50)
+AS
+BEGIN
+  IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)
+    IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE WORKERID = @workerid) = 0)
+      IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
+        BEGIN
+          RETURN 200;
+        END;
+      ELSE
+        RETURN 103;
+    ELSE
+      RETURN 102;  
+  ELSE
+    RETURN 101;  
 END

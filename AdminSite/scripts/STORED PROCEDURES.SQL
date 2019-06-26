@@ -174,13 +174,10 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[VALIDATE]
+CREATE PROCEDURE [dbo].[VALIDATE_ID_EMAIL]
   @id AS int,
   @workerid AS varchar (20),
-  @firstname AS varchar (50),
-  @lastname AS varchar (50),
-  @email AS varchar (120),
-  @password AS varchar (50)
+  @email AS varchar (120)
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)

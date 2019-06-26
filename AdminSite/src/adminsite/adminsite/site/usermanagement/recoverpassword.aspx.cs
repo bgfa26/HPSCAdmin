@@ -3,6 +3,7 @@ using adminsite.controller.usermanagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -17,9 +18,20 @@ namespace adminsite.site.usermanagement
             click = (String)ViewState["click"];
         }
 
+        private bool validateEmail(string email)
+        {
+            string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
+            Match match = Regex.Match(email.Trim(), pattern, RegexOptions.IgnoreCase);
+
+            if (match.Success)
+                return true;
+            else
+                return false;
+        }
+
         protected void acceptBtn_Click(object sender, EventArgs e)
         {
-            if (click == null)
+            if ((click == null) && (validateEmail(email.Value)))
             {
                 try
                 {

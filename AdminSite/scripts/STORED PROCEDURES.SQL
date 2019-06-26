@@ -138,6 +138,47 @@ BEGIN
 END
 
 /****** 
+    PROCEDIMIENTO PARA VALIDAR EMPLEADOS DE LA BASE DE DATOS
+    FECHA: 25/06/2019 10:45 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[VALIDATE_ID_EMAIL]
+  @id AS int,
+  @workerid AS varchar (20),
+  @email AS varchar (120),
+  @exitvalue AS int OUTPUT
+AS
+BEGIN
+  IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)
+    IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE WORKERID = @workerid) = 0)
+      IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
+        BEGIN
+          set @exitvalue = 200;
+          RETURN @exitvalue;
+        END;
+      ELSE
+        BEGIN
+          set @exitvalue = 103;
+          RETURN @exitvalue;
+        END;
+    ELSE
+      BEGIN
+        set @exitvalue = 102;
+        RETURN @exitvalue;  
+      END;
+  ELSE
+    BEGIN
+      set @exitvalue = 101;
+      RETURN @exitvalue; 
+    END;
+END
+
+/****** 
     PROCEDIMIENTO PARA AGREGAR CURSOS/CUENTAS/PERMISOS A LA BASE DE DATOS
     FECHA: 25/06/2019 06:29 PM
 ******/
@@ -162,34 +203,4 @@ BEGIN
     END;
   ELSE
     RETURN 100;  
-END
-
-/****** 
-    PROCEDIMIENTO PARA VALIDAR EMPLEADOS DE LA BASE DE DATOS
-    FECHA: 25/06/2019 10:45 PM
-******/
-USE [MTGROUPDATABASE]
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[VALIDATE_ID_EMAIL]
-  @id AS int,
-  @workerid AS varchar (20),
-  @email AS varchar (120)
-AS
-BEGIN
-  IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE ID = @id) = 0)
-    IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE WORKERID = @workerid) = 0)
-      IF ((SELECT COUNT(*) FROM EMPLOYEE WHERE EMAIL = @email) = 0)
-        BEGIN
-          RETURN 200;
-        END;
-      ELSE
-        RETURN 103;
-    ELSE
-      RETURN 102;  
-  ELSE
-    RETURN 101;  
 END

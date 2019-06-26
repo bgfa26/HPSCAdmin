@@ -125,6 +125,7 @@
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\Command.cs" />
+    <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\UpdatePasswordCommand.cs" />
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
     <Compile Include="controller\usermanagement\EmailVerificationCommand.cs" />

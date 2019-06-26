@@ -32,50 +32,72 @@ namespace adminsite.site
         protected void acceptBtn_Click(object sender, EventArgs e)
         {
             string employeeEmail = email.Value;
+            string id = idci.Value;
+            string workerId = idworker.Value;
+            string firstName = namefirst.Value;
+            string lastName = namelast.Value;
+            string password = pwd.Value;
+            string passwordVerification = pwdverification.Value;
             if (validateEmail(employeeEmail)) {
-                try
+                if ((password.Length >= 8) && (passwordVerification.Length >= 8))
                 {
-                    employee = new Employee(employeeEmail);
-                    EmailIDVerificationCommand evc = new EmailIDVerificationCommand(employee);
-                    evc.Execute();
-
-                    int result = evc.GetResult();
-                    if (result == 200)
-                    {
+                    if (password.Equals(passwordVerification))
+                    { 
                         try
                         {
-                            SendEmailCommand cmd = new SendEmailCommand(employee);
-                            cmd.Execute();
-                            employeeForm.Visible = false;
-                            verificationForm.Visible = true;
-                            message.Visible = true;
-                            ViewState["hexcode"] = cmd.GetHexCode();
+                            MD5Calculator calculator = new MD5Calculator();
+                            password = calculator.generateMD5(password);
+                            employee = new Employee(Int32.Parse(id), workerId, firstName, lastName, employeeEmail, password);
+                            EmailIDVerificationCommand evc = new EmailIDVerificationCommand(employee);
+                            evc.Execute();
+
+                            int result = evc.GetResult();
+                            if (result == 200)
+                            {
+                                try
+                                {
+                                    SendEmailCommand cmd = new SendEmailCommand(employee);
+                                    cmd.Execute();
+                                    employeeForm.Visible = false;
+                                    verificationForm.Visible = true;
+                                    message.Visible = true;
+                                    ViewState["hexcode"] = cmd.GetHexCode();
+                                }
+                                catch (Exception ex)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al enviar el código de verificación')", true);
+                                }
+                            }
+                            else if (result == 103)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El correo ingresado se encuentra registrado en el sistema')", true);
+                            }
+                            else if (result == 101)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('La cédula ingresada se encuentra registrado en el sistema')", true);
+                            }
+                            else if (result == 102)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El identificador de trabajador se encuentra registrado en el sistema')", true);
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
+                            }
                         }
                         catch (Exception ex)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al enviar el código de verificación')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
                         }
-                    }
-                    else if (result == 100)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El correo ingresado se encuentra registrado en el sistema')", true);
-                    }
-                    else if (result == 101)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('La cédula ingresada se encuentra registrado en el sistema')", true);
-                    }
-                    else if (result == 102)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El identificador de trabajador se encuentra registrado en el sistema')", true);
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Las contraseñas ingresadas no coinciden')", true);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al validar los datos ingresados')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('La contraseña debe tener al menos 8 caracteres')", true);
                 }
             }
         }

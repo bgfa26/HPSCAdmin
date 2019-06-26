@@ -13,7 +13,6 @@
                 type: type
             })
             .then(() => {
-                
                 window.location.href = '/site/usermanagement/login.aspx';
             });
         }

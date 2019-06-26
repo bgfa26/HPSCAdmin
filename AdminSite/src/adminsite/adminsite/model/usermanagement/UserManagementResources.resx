@@ -169,4 +169,8 @@
     <value>CHANGE_PASSWORD</value>
     <comment>Procedimiento almacenado para modificar la contraseña de un empleado</comment>
   </data>
+  <data name="ValidateDuplicatedIDEmailStoredProcedure" xml:space="preserve">
+    <value>VALIDATE_ID_EMAIL</value>
+    <comment>Procedimiento almacenado para validar una ID, Email o WorkerID duplicado</comment>
+  </data>
 </root>

@@ -169,6 +169,15 @@ namespace adminsite.model.usermanagement {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VALIDATE_ID_EMAIL.
+        /// </summary>
+        internal static string ValidateDuplicatedIDEmailStoredProcedure {
+            get {
+                return ResourceManager.GetString("ValidateDuplicatedIDEmailStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @workerid.
         /// </summary>
         internal static string workerid {

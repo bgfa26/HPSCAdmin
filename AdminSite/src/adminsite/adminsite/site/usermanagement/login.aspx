@@ -48,7 +48,7 @@
     </div>
 
     <div class="text-center p-t-90">
-        <a class="txt1" href="#">
+        <a class="txt1" href="/site/usermanagement/register.aspx">
             Pulse aquí para registrarse
         </a>
         <br />

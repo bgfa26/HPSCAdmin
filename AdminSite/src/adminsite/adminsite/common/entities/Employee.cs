@@ -5,6 +5,9 @@ using System.Web;
 
 namespace adminsite.common
 {
+    /// <summary>
+    /// Objeto para almacenar la informacion de los empleados
+    /// </summary>
     public class Employee
     {
         public int id { get; set; }

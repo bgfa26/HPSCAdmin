@@ -7,8 +7,16 @@ using adminsite.common;
 
 namespace adminsite.model.emailservice
 {
+    /// <summary>
+    /// Clase encargada de enviar correos electronicos
+    /// </summary>
     public class EmailService
     {
+        /// <summary>
+        /// Metodo que envia el codigo de verificacion por correo
+        /// </summary>
+        /// <param name="employee">Empleado que va a recibir el correo</param>
+        /// <param name="hexCode">Codigo hexadecimal a ser enviado</param>
         public void SendVerificationCode(Employee employee, string hexCode)
         {
             try
@@ -23,7 +31,7 @@ namespace adminsite.model.emailservice
                 SmtpClient client = new SmtpClient();
                 client.UseDefaultCredentials = false;
                 client.Credentials = new System.Net.NetworkCredential(EmailResources.Email, EmailResources.Password);
-                client.Port = 587; // You can use Port 25 if 587 is blocked
+                client.Port = 587; // Usar puerto 25 o 587
                 //client.Host = "smtp.office365.com";
                 client.Host = "smtp-mail.outlook.com";
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;

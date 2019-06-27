@@ -8,8 +8,16 @@ using System.Web;
 
 namespace adminsite.model.usermanagement
 {
+    /// <summary>
+    /// Clase encargada al acceso de datos para el manejo de usuarios
+    /// </summary>
     public class DAOUserManagement : DAO
     {
+        /// <summary>
+        /// Metodo que valida en base de datos la existencia de un correo electronico en la BD
+        /// </summary>
+        /// <returns>Retorna un Employee</returns>
+        /// <param name="employee">Empleado a ser verificado</param>
         public Employee EmailVerification(Employee employee)
         {
             DataTable dataTable;
@@ -87,6 +95,11 @@ namespace adminsite.model.usermanagement
 
         }
 
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de un empleado dado un correo electronico
+        /// </summary>
+        /// <returns>Retorna un Employee</returns>
+        /// <param name="employee">Empleado del cual se quiere obtener informacion</param>
         public Employee GetEmployeeByEmail(Employee employee)
         {
             DataTable dataTable;
@@ -145,6 +158,11 @@ namespace adminsite.model.usermanagement
 
         }
 
+        /// <summary>
+        /// Metodo para actualizar en la base de datos la contraseña de un empleado
+        /// </summary>
+        /// <returns>Retorna un Employee</returns>
+        /// <param name="employee">Empleado que desea actualizar su contraseña</param>
         public int UpdateEmployeePassword(Employee employee)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -177,6 +195,11 @@ namespace adminsite.model.usermanagement
 
         }
 
+        /// <summary>
+        /// Metodo que valida en la base de datos si existe duplicado una cedula, correo o codigo de trabajador
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="employee">Empleado del cual se va a validar la informacion</param>
         public int ValidateDuplicatedIdEmail(Employee employee)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -210,6 +233,11 @@ namespace adminsite.model.usermanagement
 
         }
 
+        /// <summary>
+        /// Metodo para agregar en la base de datos un nuevo empleado
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="employee">Empleado que se va a registrar</param>
         public int AddEmployee(Employee employee)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

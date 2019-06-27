@@ -82,7 +82,7 @@ namespace adminsite.site {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText pwdverification;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword pwdverification;
         
         /// <summary>
         /// acceptBtn control.

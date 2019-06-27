@@ -106,6 +106,15 @@ namespace adminsite.model.usermanagement {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CONSULT_EMPLOYEE_EMAIL_NO_POSITION.
+        /// </summary>
+        internal static string GetEmployeeInformationNoPositionStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetEmployeeInformationNoPositionStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @id.
         /// </summary>
         internal static string id {

@@ -21,7 +21,7 @@ namespace adminsite.controller.usermanagement
             try
             {
                 DAOUserManagement dao = new DAOUserManagement();
-                result = dao.GetEmployeeByEmail(employeeToConsult);
+                result = dao.EmailVerification(employeeToConsult);
             }
             catch (Exception ex)
             {

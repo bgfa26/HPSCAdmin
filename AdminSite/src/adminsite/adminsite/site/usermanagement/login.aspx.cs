@@ -48,7 +48,14 @@ namespace adminsite.site.usermanagement
                     {
                         if (employee.password.Equals(checkedEmployee.password))
                         {
+                            if ((checkedEmployee.idOrganizationalUnit != -1) && (checkedEmployee.idPosition != -1))
+                            {
 
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Aún no posee un cargo y una unidad organizacional')", true);
+                            }
                         }
                         else
                         {

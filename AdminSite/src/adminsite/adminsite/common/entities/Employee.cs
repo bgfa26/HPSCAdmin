@@ -39,6 +39,33 @@ namespace adminsite.common
             this.error = 200;
         }
 
+        public Employee(int id, string workerId, string firstName, string lastName, string email, string password,
+                        string status, int idPosition, int idOrganizationalUnit)
+        {
+            this.id = id;
+            this.workerId = workerId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+            this.status = status;
+            this.idPosition = idPosition;
+            this.idOrganizationalUnit = idOrganizationalUnit;
+            this.error = 200;
+        }
+
+        public Employee(int id, string workerId, string firstName, string lastName, string email, string password, string status)
+        {
+            this.id = id;
+            this.workerId = workerId;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.email = email;
+            this.password = password;
+            this.status = status;
+            this.error = 200;
+        }
+
         public Employee(int id, string workerId, string firstName, string lastName, string email, string password)
         {
             this.id = id;

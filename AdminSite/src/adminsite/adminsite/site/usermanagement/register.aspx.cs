@@ -34,6 +34,7 @@ namespace adminsite.site
             string employeeEmail = email.Value;
             string id = idci.Value;
             string workerId = idworker.Value;
+            workerId = workerId.ToUpper();
             string firstName = namefirst.Value;
             string lastName = namelast.Value;
             string password = pwd.Value;
@@ -55,6 +56,7 @@ namespace adminsite.site
                             {
                                 try
                                 {
+                                    Session["employeeToInsert"] = employee;
                                     SendEmailCommand cmd = new SendEmailCommand(employee);
                                     cmd.Execute();
                                     employeeForm.Visible = false;
@@ -105,8 +107,25 @@ namespace adminsite.site
         {
             if (codeHex.Value.ToUpper().Equals((String)ViewState["hexcode"]))
             {
-                //AQUI SE REALIZA LA INSERCION EN BD
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha registrado exitosamente en el sistema')", true);
+                try
+                {
+                    Employee employeeToInsert = (Employee) Session["employeeToInsert"];
+                    CreateNewEmployeeCommand cmd = new CreateNewEmployeeCommand(employeeToInsert);
+                    cmd.Execute();
+                    int result = cmd.GetResult();
+                    if (result == 200)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha registrado exitosamente en el sistema')", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al realizar el registro de usuario')", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error al realizar el registro de usuario')", true);
+                }
             }
             else
             {

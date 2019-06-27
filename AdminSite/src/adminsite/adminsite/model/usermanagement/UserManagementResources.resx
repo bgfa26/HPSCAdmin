@@ -173,4 +173,8 @@
     <value>VALIDATE_ID_EMAIL</value>
     <comment>Procedimiento almacenado para validar una ID, Email o WorkerID duplicado</comment>
   </data>
+  <data name="GetEmployeeInformationNoPositionStoredProcedure" xml:space="preserve">
+    <value>CONSULT_EMPLOYEE_EMAIL_NO_POSITION</value>
+    <comment>Procedimiento almacenado para obtener la información de un empleado incluso sin tener un cargo</comment>
+  </data>
 </root>

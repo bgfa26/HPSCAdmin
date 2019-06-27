@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/site/usermanagement/usermanagement.Master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="adminsite.site.register" %>
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
-	<title>Registro de usuarios</title>
+    <title>Registro de usuarios</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'/>
     <script>
@@ -80,7 +80,7 @@
     
 
         <div class="wrap-input100 validate-input" data-validate="Ingrese la verificación de su contraseña">
-            <input class="input100" id="pwdverification" type="text" name="pwdverification" placeholder="Verificación de contraseña" runat="server" maxlength="15">
+            <input class="input100" id="pwdverification" type="password" name="pwdverification" placeholder="Verificación de contraseña" runat="server" maxlength="15">
             <span class="focus-input100" data-placeholder="&#xf191;"></span>
         </div>
     

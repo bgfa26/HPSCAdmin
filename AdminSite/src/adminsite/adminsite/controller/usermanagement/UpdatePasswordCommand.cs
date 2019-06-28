@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.usermanagement
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar el proceso de actualizar la contraseña de un empleado
+    /// </summary>
     public class UpdatePasswordCommand : Command
     {
         Employee employeeToModify;
@@ -29,6 +32,10 @@ namespace adminsite.controller.usermanagement
             }
         }
 
+        /// <summary>
+        /// Metodo que retorna el resultado obtenido en la BD
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
         public int GetResult()
         {
             return result;

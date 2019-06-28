@@ -5,6 +5,9 @@ using System.Web;
 
 namespace adminsite.common
 {
+    /// <summary>
+    /// Objeto para almacenar la respuesta dada por la BD
+    /// </summary>
     public class ResultDB
     {
         public string tag { get; set; }

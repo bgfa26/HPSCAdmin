@@ -81,7 +81,6 @@
     <Content Include="site\usermanagement\images\bg-01.jpg" />
     <Content Include="site\usermanagement\images\icons\favicon.ico" />
     <Content Include="site\usermanagement\images\registro-bg.jpg" />
-    <Content Include="site\usermanagement\index.html" />
     <Content Include="site\usermanagement\js\main.js" />
     <Content Include="site\usermanagement\login.aspx" />
     <Content Include="site\usermanagement\recoverpassword.aspx" />

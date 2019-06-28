@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.usermanagement
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar el proceso de obtener la informacion de un empleado
+    /// </summary>
     public class SendEmailCommand : Command
     {
         Employee employee;
@@ -18,6 +21,12 @@ namespace adminsite.controller.usermanagement
             this.employee = employee;
         }
 
+
+        /// <summary>
+        /// Metodo que genera un codigo aleatorio
+        /// </summary>
+        /// <returns>Retorna un string</returns>
+        /// <param name="digits">Cantidad de digitos que tendrá el codigo generado</param>
         private static string GenerateCode(int digits)
         {
             byte[] buffer = new byte[digits / 2];
@@ -43,6 +52,10 @@ namespace adminsite.controller.usermanagement
             }
         }
 
+        /// <summary>
+        /// Metodo que retorna el codigo hexadecimal generado
+        /// </summary>
+        /// <returns>Retorna un string</returns>
         public string GetHexCode()
         {
             return hexCode;

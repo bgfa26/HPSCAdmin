@@ -6,6 +6,9 @@ using System.Web;
 
 namespace adminsite.common
 {
+    /// <summary>
+    /// Objeto para crear los parametros a enviar a la BD
+    /// </summary>
     public class ParameterDB
     {
         public string tag { get; set; }

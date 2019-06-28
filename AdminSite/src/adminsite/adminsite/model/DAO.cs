@@ -11,7 +11,7 @@ namespace adminsite.model.usermanagement
 {
     abstract public class DAO
     {
-        // El String de connection se encuentra en el archivo Web.config
+        // El String de conexión se encuentra en el archivo Web.config
         protected string connectionString = ConfigurationManager.ConnectionStrings["bdConnection"].ConnectionString;
         protected SqlConnection connection { set; get; }
         protected SqlCommand command { set; get; }

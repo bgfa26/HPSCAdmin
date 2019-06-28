@@ -67,6 +67,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="site\common\hpsc.png" />
+    <Content Include="site\common\interatec.png" />
+    <Content Include="site\common\mt2005.png" />
     <Content Include="site\usermanagement\register.aspx" />
     <Content Include="site\usermanagement\changepassword.aspx" />
     <Content Include="site\usermanagement\css\main.css" />

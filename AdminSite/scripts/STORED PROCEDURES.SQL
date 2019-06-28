@@ -342,9 +342,12 @@ BEGIN
   DELETE [dbo].[COST_CENTER] WHERE [FK_ACCOUNTCOURSEPERMIT] = @fk_accountcoursepermit;
 END
 
-/****** 
-    PROCEDIMIENTO PARA ELIMINAR UNA CUENTA/CURSO/PERMISO DE LA BASE DE DATOS
-    FECHA: 27/06/2019 5:25 PM
+
+
+
+ /****** 
+		PROCEDIMIENTO PARA CONSULTAR TODAS LAS HOJAS DE TIEMPO DE TODOS LOS EMPLEADOS DE LA BASE DE DATOS
+		FECHA: 25/06/2019 10:24 AM
 ******/
 USE [MTGROUPDATABASE]
 GO
@@ -352,9 +355,82 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[DELETE_ACCOUNT_COURSE_PERMIT]
-  @id AS varchar(30)
+CREATE PROCEDURE [dbo].[GET_ALL_TIMESHEET_BY_EMPLOYEE]
+  @id AS int,
 AS
 BEGIN
-  UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET [STATUS] = 0 WHERE [ID] = @id;
+	SELECT T.ID AS ID, T.INITDATE AS INITDATE, T.ENDDATE AS ENDDATE, T.STATUS AS STATUS
+	FROM TIMESHEET T
+	WHERE T.FK_EMPLOYEE = @id;
 END
+
+/****** 
+    PROCEDIMIENTO PARA CREAR UNA HOJA DE TIEMPO A LA BASE DE DATOS
+    FECHA: 27/06/2019 11:29 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CREATE_TIMESHEET]
+  @id AS int,
+  @initdate AS date,
+  @enddate AS date,
+  @status AS varchar (50),
+  @fk_employee AS int,
+  @exitvalue AS int OUTPUT
+AS
+BEGIN
+  INSERT INTO TIMESHEET VALUES(@id, @initdate, @enddate, @status, @fk_employee);
+  set @exitvalue = 200;
+  RETURN @exitvalue;
+END
+
+/****** 
+    PROCEDIMIENTO PARA CREAR LA CARGA DE TRABAJO DE UNA HOJA DE TIEMPO EN LA BASE DE DATOS
+    FECHA: 27/06/2019 11:57 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[CREATE_WORKLOAD]
+  @id AS int,
+  @day1 AS int,
+  @day2 AS int,
+  @day3 AS int,
+  @day4 AS int,
+  @day5 AS int,
+  @day6 AS int,
+  @day7 AS int,
+  @day8 AS int,
+  @day9 AS int,
+  @day10 AS int,
+  @day11 AS int,
+  @day12 AS int,
+  @day13 AS int,
+  @day14 AS int,
+  @day15 AS int,
+  @day16 AS int,
+  @fk_timesheet AS int,
+  @fk_accountcoursepermit AS varchar (30),
+  @exitvalue AS int OUTPUT
+AS
+BEGIN
+	IF ((SELECT COUNT(*) FROM WORKLOAD WHERE FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit AND FK_TIMESHEET = @fk_timesheet) = 1)
+		BEGIN  
+			INSERT INTO TIMESHEET VALUES(@id, @initdate, @enddate, @status, @fk_employee);
+			set @exitvalue = 200;
+			RETURN @exitvalue;
+		END;
+	ELSE
+		BEGIN
+			set @exitvalue = 100;
+		    RETURN @exitvalue;
+	    END;
+END
+

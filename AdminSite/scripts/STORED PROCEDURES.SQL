@@ -339,13 +339,14 @@ CREATE PROCEDURE [dbo].[DELETE_COST_CENTER]
   @fk_accountcoursepermit AS varchar (30)
 AS
 BEGIN
-  DELETE [dbo].[COST_CENTER] WHERE [FK_ACCOUNTCOURSEPERMIT] = @fk_accountcoursepermit;
+  DELETE FROM [dbo].[COST_CENTER] WHERE [FK_ACCOUNTCOURSEPERMIT] = @fk_accountcoursepermit;
 END
 
 
 
 
- /****** 
+
+/****** 
 		PROCEDIMIENTO PARA CONSULTAR TODAS LAS HOJAS DE TIEMPO DE TODOS LOS EMPLEADOS DE LA BASE DE DATOS
 		FECHA: 25/06/2019 10:24 AM
 ******/
@@ -434,3 +435,59 @@ BEGIN
 	    END;
 END
 
+/****** 
+		PROCEDIMIENTO PARA MODIFICAR LA CARGA DE TRABAJO DE UN EMPLEADO DE LA BASE DE DATOS
+		FECHA: 30/06/2019 04:01 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UPDATE_WORKLOAD]
+  @id AS int,
+  @day1 AS int,
+  @day2 AS int,
+  @day3 AS int,
+  @day4 AS int,
+  @day5 AS int,
+  @day6 AS int,
+  @day7 AS int,
+  @day8 AS int,
+  @day9 AS int,
+  @day10 AS int,
+  @day11 AS int,
+  @day12 AS int,
+  @day13 AS int,
+  @day14 AS int,
+  @day15 AS int,
+  @day16 AS int,
+  @fk_timesheet AS int,
+  @fk_accountcoursepermit AS varchar (30),
+  @exitvalue AS int OUTPUT 
+AS
+BEGIN
+	UPDATE [dbo].[WORKLOAD] SET DAY1 = @day1, DAY2 = @day2, DAY3 = @day3, DAY4 = @day4, DAY5 = @day5, DAY6 = @day6, DAY7 = @day7, DAY8 = @day8, DAY9 = @day9, DAY10 = @day10, DAY11 = @day11, DAY12 = @day12, DAY13 = @day13, DAY14 = @day14, DAY15 = @day15, DAY16 = @day16 
+	WHERE FK_TIMESHEET = @fk_timesheet AND FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit;
+	set @exitvalue = 200;
+	RETURN @exitvalue;
+END
+
+/****** 
+    PROCEDIMIENTO PARA ELIMINAR UNA CARGA DE TRABAJO DE LA BASE DE DATOS
+    FECHA: 30/06/2019 4:23 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[DELETE_WORKLOAD]
+  @fk_timesheet AS int,
+  @fk_accountcoursepermit AS varchar (30)
+AS
+BEGIN
+  DELETE FROM [dbo].[COST_CENTER] WHERE ID IN (SELECT ID FROM WORKLOAD WHERE FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit AND FK_TIMESHEET = @fk_timesheet);
+END

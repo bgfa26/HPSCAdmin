@@ -67,9 +67,230 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="site\common\hpsc.png" />
-    <Content Include="site\common\interatec.png" />
-    <Content Include="site\common\mt2005.png" />
+    <Content Include="site\common\img\hpsc.png" />
+    <Content Include="site\common\img\interatec.png" />
+    <Content Include="site\common\img\mt2005.png" />
+    <Content Include="site\employees\blank-page.html" />
+    <Content Include="site\employees\bootstrap-elements.html" />
+    <Content Include="site\employees\bootstrap-grid.html" />
+    <Content Include="site\employees\charts.html" />
+    <Content Include="site\employees\css\bootstrap-rtl.css" />
+    <Content Include="site\employees\css\bootstrap-rtl.min.css" />
+    <Content Include="site\employees\css\bootstrap.css" />
+    <Content Include="site\employees\css\bootstrap.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.css" />
+    <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.js" />
+    <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\css\dataTables.autoFill.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\css\dataTables.autoFill.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\columns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\complete-callback.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\fill-both.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\fill-horizontal.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\scrolling.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\examples\step-callback.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\images\filler.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\js\dataTables.autoFill.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\js\dataTables.autoFill.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\AutoFill\Readme.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\css\dataTables.colReorder.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\css\dataTables.colReorder.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\alt_insert.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\colvis.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\col_filter.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\fixedcolumns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\fixedheader.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\jqueryui.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\new_init.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\predefined.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\realtime.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\reset.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\scrolling.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\server_side.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\examples\state_save.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\images\insert.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\js\dataTables.colReorder.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\js\dataTables.colReorder.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\License.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\css\dataTables.colVis.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\css\dataTables.colvis.jqueryui.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\css\dataTables.colVis.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\button_order.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\exclude_columns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\group_columns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\jqueryui.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\mouseover.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\new_init.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\restore.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\text.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\title_callback.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\two_tables.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\examples\two_tables_identical.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\js\dataTables.colVis.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\js\dataTables.colVis.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\License.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\css\dataTables.fixedColumns.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\css\dataTables.fixedColumns.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\bootstrap.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\colvis.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\col_filter.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\css_size.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\index_column.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\left_right_columns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\right_column.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\rowspan.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\server-side-processing.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\size_fixed.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\size_fluid.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\examples\two_columns.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\js\dataTables.fixedColumns.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\js\dataTables.fixedColumns.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\License.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\css\dataTables.fixedHeader.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\css\dataTables.fixedHeader.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\header_footer.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\top_left_right.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\two_tables.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\examples\zIndexes.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\js\dataTables.fixedHeader.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedHeader\Readme.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\css\dataTables.keyTable.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\css\dataTables.keyTable.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\examples\events.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\examples\html.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\examples\scrolling.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\js\dataTables.keyTable.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\js\dataTables.keyTable.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\KeyTable\Readme.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\css\dataTables.responsive.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\column-control.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\custom-renderer.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\disable-child-rows.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\right-column.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\child-rows\whole-row-control.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\auto.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\classes.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\complexHeader.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\fixedHeader.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\display-control\init-classes.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\ajax.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\className.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\default.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\new.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\initialisation\option.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\styling\bootstrap.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\styling\compact.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\styling\foundation.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\styling\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\examples\styling\scrolling.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\js\dataTables.responsive.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\js\dataTables.responsive.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\License.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\css\dataTables.scroller.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\css\dataTables.scroller.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\api_scrolling.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\data\2500.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\data\ssp.php" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\large_js_source.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\server-side_processing.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\examples\state_saving.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\images\loading-background.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\js\dataTables.scroller.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\js\dataTables.scroller.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Scroller\Readme.txt" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\css\dataTables.tableTools.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\css\dataTables.tableTools.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\ajax.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\alter_buttons.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\bootstrap.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\button_text.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\collection.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\defaults.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\index.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\jqueryui.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\multiple_tables.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\multi_instance.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\new_init.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\pdf_message.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\plug-in.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\select_column.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\select_multi.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\select_os.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\select_single.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\simple.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\examples\swf_path.html" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\collection.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\collection_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\copy.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\copy_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\csv.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\csv_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\pdf.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\pdf_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\print.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\print_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\xls.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\xls_hover.png" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\js\dataTables.tableTools.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\js\dataTables.tableTools.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\swf\copy_csv_xls.swf" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\swf\copy_csv_xls_pdf.swf" />
+    <Content Include="site\employees\css\plugins\datatables\images\sort_asc.png" />
+    <Content Include="site\employees\css\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="site\employees\css\plugins\datatables\images\sort_both.png" />
+    <Content Include="site\employees\css\plugins\datatables\images\sort_desc.png" />
+    <Content Include="site\employees\css\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="site\employees\css\plugins\datatables\jquery.dataTables.css" />
+    <Content Include="site\employees\css\plugins\datatables\jquery.dataTables.js" />
+    <Content Include="site\employees\css\plugins\datatables\jquery.dataTables.min.css" />
+    <Content Include="site\employees\css\plugins\datatables\jquery.dataTables.min.js" />
+    <Content Include="site\employees\css\plugins\datatables\jquery.dataTables_themeroller.css" />
+    <Content Include="site\employees\css\plugins\morris.css" />
+    <Content Include="site\employees\css\sb-admin-rtl.css" />
+    <Content Include="site\employees\css\sb-admin.css" />
+    <Content Include="site\employees\dashboard.aspx" />
+    <Content Include="site\employees\font-awesome\css\font-awesome.css" />
+    <Content Include="site\employees\font-awesome\css\font-awesome.min.css" />
+    <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="site\employees\forms.html" />
+    <Content Include="site\employees\hrm\employeelist.aspx" />
+    <Content Include="site\employees\index-rtl.html" />
+    <Content Include="site\employees\index.html" />
+    <Content Include="site\employees\js\bootstrap.js" />
+    <Content Include="site\employees\js\bootstrap.min.js" />
+    <Content Include="site\employees\js\jquery.js" />
+    <Content Include="site\employees\js\plugins\flot\excanvas.min.js" />
+    <Content Include="site\employees\js\plugins\flot\flot-data.js" />
+    <Content Include="site\employees\js\plugins\flot\jquery.flot.js" />
+    <Content Include="site\employees\js\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="site\employees\js\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="site\employees\js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="site\employees\js\plugins\morris\morris-data.js" />
+    <Content Include="site\employees\js\plugins\morris\morris.js" />
+    <Content Include="site\employees\js\plugins\morris\morris.min.js" />
+    <Content Include="site\employees\js\plugins\morris\raphael.min.js" />
+    <Content Include="site\employees\tables.html" />
+    <Content Include="site\usermanagement\css\fade.css" />
     <Content Include="site\usermanagement\register.aspx" />
     <Content Include="site\usermanagement\changepassword.aspx" />
     <Content Include="site\usermanagement\css\main.css" />
@@ -127,12 +348,12 @@
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\Command.cs" />
+    <Compile Include="controller\hrm\GetEmployeesCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
     <Compile Include="controller\usermanagement\UpdatePasswordCommand.cs" />
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
-    <Compile Include="controller\usermanagement\EmailVerificationCommand.cs" />
     <Compile Include="model\DAO.cs" />
     <Compile Include="model\emailservice\EmailResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -140,6 +361,12 @@
       <DependentUpon>EmailResources.resx</DependentUpon>
     </Compile>
     <Compile Include="model\emailservice\EmailService.cs" />
+    <Compile Include="model\hrm\DAOHumanResourcesManagement.cs" />
+    <Compile Include="model\hrm\HRMResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HRMResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -147,6 +374,27 @@
       <DependentUpon>UserManagementResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="site\employees\dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\employees.Master.cs">
+      <DependentUpon>employees.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\employees.Master.designer.cs">
+      <DependentUpon>employees.Master</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeelist.aspx.cs">
+      <DependentUpon>employeelist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeelist.aspx.designer.cs">
+      <DependentUpon>employeelist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="site\usermanagement\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -247,6 +495,53 @@
     <Content Include="site\usermanagement\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="site\usermanagement\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="site\usermanagement\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="site\employees\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="site\employees\font-awesome\less\bordered-pulled.less" />
+    <Content Include="site\employees\font-awesome\less\core.less" />
+    <Content Include="site\employees\font-awesome\less\fixed-width.less" />
+    <Content Include="site\employees\font-awesome\less\font-awesome.less" />
+    <Content Include="site\employees\font-awesome\less\icons.less" />
+    <Content Include="site\employees\font-awesome\less\larger.less" />
+    <Content Include="site\employees\font-awesome\less\list.less" />
+    <Content Include="site\employees\font-awesome\less\mixins.less" />
+    <Content Include="site\employees\font-awesome\less\path.less" />
+    <Content Include="site\employees\font-awesome\less\rotated-flipped.less" />
+    <Content Include="site\employees\font-awesome\less\spinning.less" />
+    <Content Include="site\employees\font-awesome\less\stacked.less" />
+    <Content Include="site\employees\font-awesome\less\variables.less" />
+    <Content Include="site\employees\font-awesome\scss\font-awesome.scss" />
+    <Content Include="site\employees\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="site\employees\font-awesome\scss\_core.scss" />
+    <Content Include="site\employees\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="site\employees\font-awesome\scss\_icons.scss" />
+    <Content Include="site\employees\font-awesome\scss\_larger.scss" />
+    <Content Include="site\employees\font-awesome\scss\_list.scss" />
+    <Content Include="site\employees\font-awesome\scss\_mixins.scss" />
+    <Content Include="site\employees\font-awesome\scss\_path.scss" />
+    <Content Include="site\employees\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="site\employees\font-awesome\scss\_spinning.scss" />
+    <Content Include="site\employees\font-awesome\scss\_stacked.scss" />
+    <Content Include="site\employees\font-awesome\scss\_variables.scss" />
+    <Content Include="site\employees\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="site\employees\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="site\employees\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="site\employees\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="site\employees\LICENSE" />
+    <Content Include="site\employees\README.md" />
+    <Content Include="site\employees\employees.Master" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColReorder\Readme.md" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\ColVis\Readme.md" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\FixedColumns\Readme.md" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\css\dataTables.responsive.scss" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\Responsive\Readme.md" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\psd\collection.psd" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\psd\copy document.psd" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\psd\file_types.psd" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\images\psd\printer.psd" />
+    <Content Include="site\employees\css\plugins\datatables\extensions\TableTools\Readme.md" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -258,6 +553,10 @@
     <EmbeddedResource Include="model\emailservice\EmailResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="model\hrm\HRMResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HRMResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

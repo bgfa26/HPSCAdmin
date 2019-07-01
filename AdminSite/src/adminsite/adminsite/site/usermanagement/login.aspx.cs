@@ -41,14 +41,14 @@ namespace adminsite.site.usermanagement
                 Employee employee = new Employee(email, password);
                 try
                 {
-                    EmailVerificationCommand cmd = new EmailVerificationCommand(employee);
+                    GetEmployeeInformationCommand cmd = new GetEmployeeInformationCommand(employee);
                     cmd.Execute();
                     Employee checkedEmployee = cmd.GetResult();
                     if (checkedEmployee != null)
                     {
                         if (employee.password.Equals(checkedEmployee.password))
                         {
-                            if ((checkedEmployee.idOrganizationalUnit != -1) && (checkedEmployee.idPosition != -1))
+                            if ((checkedEmployee.idOrganizationalUnit != 1) && (checkedEmployee.idPosition != 1))
                             {
 
                             }

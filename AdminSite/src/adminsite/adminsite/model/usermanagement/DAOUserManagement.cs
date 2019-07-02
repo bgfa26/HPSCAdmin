@@ -14,88 +14,6 @@ namespace adminsite.model.usermanagement
     public class DAOUserManagement : DAO
     {
         /// <summary>
-        /// Metodo que valida en base de datos la existencia de un correo electronico en la BD
-        /// </summary>
-        /// <returns>Retorna un Employee</returns>
-        /// <param name="employee">Empleado a ser verificado</param>
-        public Employee EmailVerification(Employee employee)
-        {
-            DataTable dataTable;
-            List<ParameterDB> parameter = new List<ParameterDB>();
-
-            try
-            {
-
-                parameter.Add(new ParameterDB(UserManagementResources.email, SqlDbType.VarChar, employee.email, false));
-
-                dataTable = ExecuteConsultStoredProcedure(UserManagementResources.GetEmployeeInformationNoPositionStoredProcedure, parameter);
-                Employee checkedEmployee = null;
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    try
-                    {
-                        string organizationalUnit = row["OUID"].ToString();
-                        string position = row["OUID"].ToString();
-                        int organizationalUnitId = -1;
-                        int positionId = -1;
-                        if ((!organizationalUnit.Equals("")) && (!position.Equals("")))
-                        {
-                            checkedEmployee = new Employee(
-                                                    Int32.Parse(row["ID"].ToString()),
-                                                    row["WORKERID"].ToString(),
-                                                    row["FIRSTNAME"].ToString(),
-                                                    row["LASTNAME"].ToString(),
-                                                    row["EMAIL"].ToString(),
-                                                    row["PASSWORD"].ToString(),
-                                                    row["STATUS"].ToString(),
-                                                    Int32.Parse(row["OUID"].ToString()),
-                                                    Int32.Parse(row["PID"].ToString())
-                                              );
-                        }
-                        else
-                        {
-                            checkedEmployee = new Employee(
-                                                    Int32.Parse(row["ID"].ToString()),
-                                                    row["WORKERID"].ToString(),
-                                                    row["FIRSTNAME"].ToString(),
-                                                    row["LASTNAME"].ToString(),
-                                                    row["EMAIL"].ToString(),
-                                                    row["PASSWORD"].ToString(),
-                                                    row["STATUS"].ToString(),
-                                                    organizationalUnitId,
-                                                    positionId
-                                              );
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        return null;
-                    }
-
-
-                }
-                return checkedEmployee;
-            }
-            catch (SqlException ex)
-            {
-                throw ex;
-            }
-            catch (NullReferenceException ex)
-            {
-                throw ex;
-            }
-            catch (ArgumentNullException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-        }
-
-        /// <summary>
         /// Metodo que obtiene de la base de datos la informacion de un empleado dado un correo electronico
         /// </summary>
         /// <returns>Retorna un Employee</returns>
@@ -123,7 +41,7 @@ namespace adminsite.model.usermanagement
                                                 row["LASTNAME"].ToString(),
                                                 row["EMAIL"].ToString(),
                                                 row["PASSWORD"].ToString(),
-                                                row["STATUS"].ToString(),
+                                                Int32.Parse(row["STATUS"].ToString()),
                                                 Int32.Parse(row["POSITIONID"].ToString()),
                                                 row["POSITIONNAME"].ToString(),
                                                 Int32.Parse(row["OUID"].ToString()),

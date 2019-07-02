@@ -36,7 +36,7 @@ namespace adminsite.site.usermanagement
                 try
                 {
                     Employee employee = new Employee(email.Value);
-                    EmailVerificationCommand evc = new EmailVerificationCommand(employee);
+                    GetEmployeeInformationCommand evc = new GetEmployeeInformationCommand(employee);
                     evc.Execute();
                     Employee checkedEmployee = evc.GetResult();
                     if (checkedEmployee != null)

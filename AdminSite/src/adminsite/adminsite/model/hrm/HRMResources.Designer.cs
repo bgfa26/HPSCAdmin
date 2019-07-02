@@ -70,6 +70,24 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_UNITS.
+        /// </summary>
+        internal static string GetAllOrganizationalUnitsStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllOrganizationalUnitsStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_POSITIONS.
+        /// </summary>
+        internal static string GetAllPositionsStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllPositionsStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_EMPLOYEES.
         /// </summary>
         internal static string GetEmployeesStoredProcedure {

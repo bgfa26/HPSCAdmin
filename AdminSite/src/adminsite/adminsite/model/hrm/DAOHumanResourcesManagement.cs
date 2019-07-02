@@ -1,4 +1,5 @@
 ﻿using adminsite.common;
+using adminsite.common.entities;
 using adminsite.model.usermanagement;
 using System;
 using System.Collections.Generic;
@@ -82,6 +83,99 @@ employeesList.Add(employee);
                 ExecuteStoredProcedure(HRMResources.DeleteEmployeeStoredProcedure, parameters);
                 int result = 200;
                 return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public List<OrganizationalUnit> GetAllOrganizationalUnits()
+        {
+            List<OrganizationalUnit> ouList = new List<OrganizationalUnit>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllOrganizationalUnitsStoredProcedure);
+                OrganizationalUnit ou = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        ou = new OrganizationalUnit(Int32.Parse(row["ID"].ToString()),
+                                                    row["NAME"].ToString(),
+                                                    Int32.Parse(row["OVERSEER"].ToString()));
+
+                        ouList.Add(ou);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return ouList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public List<Position> GetAllPositions()
+        {
+            List<Position> positionList = new List<Position>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllOrganizationalUnitsStoredProcedure);
+                Position position = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        position = new Position(Int32.Parse(row["ID"].ToString()),
+                                                    row["NAME"].ToString());
+
+                        positionList.Add(position);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return positionList;
             }
             catch (SqlException ex)
             {

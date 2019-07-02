@@ -39,9 +39,7 @@ namespace adminsite.site.employees.hrm
                 }
                 catch (Exception ex)
                 {
-                    string script = "alert(\"No se pudo cargar la información en la página, por favor refresque la página\");";
-                    ScriptManager.RegisterStartupScript(this, GetType(),
-                                            "ServerControlScript", script, true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
                 }
             }
         }
@@ -75,10 +73,9 @@ namespace adminsite.site.employees.hrm
             }
             else if (action.ID.Equals("modify"))
             {
-               /* Label serial = (Label)repPeople.Items[e.Item.ItemIndex].FindControl("serialeq");
-                Label numequipo = (Label)repPeople.Items[e.Item.ItemIndex].FindControl("numeq");
-                Response.Redirect("/Vista/Empleados/gestion-equipos/modificarequipo.aspx?serial=" + serial.Text + "&numequipo=" + numequipo.Text);
-            */
+                string email = ((Label)repEmployees.Items[e.Item.ItemIndex].FindControl("employeeEmail")).Text;
+                Session["CONSULTED_EMAIL"] = email;
+                Response.Redirect("~/site/employees/hrm/employeedata.aspx");
             }
         }
     }

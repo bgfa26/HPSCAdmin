@@ -121,6 +121,14 @@
     <value>DELETE_EMPLOYEE</value>
     <comment>Procedimiento almacenado para eliminar un empleado de la base de datos</comment>
   </data>
+  <data name="GetAllOrganizationalUnitsStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_UNITS</value>
+    <comment>Procedimiento almacenado para consultar todas las unidades organizacionales</comment>
+  </data>
+  <data name="GetAllPositionsStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_POSITIONS</value>
+    <comment>Procedimiento almacenado para consultar todos los cargos</comment>
+  </data>
   <data name="GetEmployeesStoredProcedure" xml:space="preserve">
     <value>GET_ALL_EMPLOYEES</value>
     <comment>Procedimiento almacenado para consultar todos los empleados del sistema</comment>

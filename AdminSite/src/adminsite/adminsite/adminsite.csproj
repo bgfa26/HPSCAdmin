@@ -273,6 +273,7 @@
     <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="site\employees\forms.html" />
+    <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
     <Content Include="site\employees\img\icons\assign.svg" />
     <Content Include="site\employees\img\icons\license.txt" />
@@ -348,11 +349,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common\entities\Employee.cs" />
+    <Compile Include="common\entities\OrganizationalUnit.cs" />
+    <Compile Include="common\entities\Position.cs" />
     <Compile Include="common\MD5Calculator.cs" />
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\Command.cs" />
     <Compile Include="controller\hrm\DeleteEmployeeCommand.cs" />
+    <Compile Include="controller\hrm\GetAllOrganizationalUnitsCommand.cs" />
+    <Compile Include="controller\hrm\GetAllPositionsCommand.cs" />
     <Compile Include="controller\hrm\GetEmployeesCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
@@ -392,6 +397,13 @@
     </Compile>
     <Compile Include="site\employees\employees.Master.designer.cs">
       <DependentUpon>employees.Master</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeedata.aspx.cs">
+      <DependentUpon>employeedata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeedata.aspx.designer.cs">
+      <DependentUpon>employeedata.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\hrm\employeelist.aspx.cs">
       <DependentUpon>employeelist.aspx</DependentUpon>

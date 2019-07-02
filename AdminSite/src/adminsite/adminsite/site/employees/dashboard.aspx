@@ -2,7 +2,6 @@
 
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
-    <link rel="stylesheet" href="../../plugins/datatables/dataTables.bootstrap.css">
 
     <title>SB Admin - Bootstrap Admin Template</title>
 
@@ -44,9 +43,4 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 </asp:Content>

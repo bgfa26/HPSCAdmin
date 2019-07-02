@@ -61,11 +61,29 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE_EMPLOYEE.
+        /// </summary>
+        internal static string DeleteEmployeeStoredProcedure {
+            get {
+                return ResourceManager.GetString("DeleteEmployeeStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_EMPLOYEES.
         /// </summary>
         internal static string GetEmployeesStoredProcedure {
             get {
                 return ResourceManager.GetString("GetEmployeesStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @id.
+        /// </summary>
+        internal static string id {
+            get {
+                return ResourceManager.GetString("id", resourceCulture);
             }
         }
     }

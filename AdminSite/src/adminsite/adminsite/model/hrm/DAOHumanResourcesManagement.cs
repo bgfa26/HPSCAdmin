@@ -15,7 +15,6 @@ namespace adminsite.model.hrm
         {
             List<Employee> employeesList = new List<Employee>();
             DataTable dataTable = new DataTable();
-            List<ParameterDB> parametro = new List<ParameterDB>();
 
             try
             {
@@ -35,7 +34,8 @@ namespace adminsite.model.hrm
                                                 row["POSITIONNAME"].ToString(),
                                                 Int32.Parse(row["OUID"].ToString()),
                                                 row["OUNAME"].ToString());
-                        employeesList.Add(employee);
+                        
+employeesList.Add(employee);
                     }
                     catch (Exception ex)
                     {
@@ -45,6 +45,43 @@ namespace adminsite.model.hrm
 
                 }
                 return employeesList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+
+        /// <summary>
+        /// Metodo que cambia el estatus de activo a eliminado en la base de datos
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="employee">Empleado que se va a eliminar</param>
+        public int DeleteEmployee(Employee employee)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.id, SqlDbType.Int, employee.id.ToString(), false));
+                ExecuteStoredProcedure(HRMResources.DeleteEmployeeStoredProcedure, parameters);
+                int result = 200;
+                return result;
             }
             catch (SqlException ex)
             {

@@ -1,4 +1,5 @@
 ﻿using adminsite.common;
+using adminsite.model.hrm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,15 @@ namespace adminsite.controller.hrm
         private List<Employee> employees = new List<Employee>();
         public override void Execute()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DAOHumanResourcesManagement dao = new DAOHumanResourcesManagement();
+                employees = dao.GetEmployees();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public List<Employee> GetResult()

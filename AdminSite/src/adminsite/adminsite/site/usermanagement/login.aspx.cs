@@ -46,11 +46,13 @@ namespace adminsite.site.usermanagement
                     Employee checkedEmployee = cmd.GetResult();
                     if (checkedEmployee != null)
                     {
+
                         if (employee.password.Equals(checkedEmployee.password))
                         {
-                            if ((checkedEmployee.idOrganizationalUnit != 1) && (checkedEmployee.idPosition != 1))
+                            if ((checkedEmployee.idOrganizationalUnit == 1) && (checkedEmployee.idPosition == 1) && (checkedEmployee.status != 0))
                             {
-
+                                Session["EMPLOYEE_EMAIL"] = checkedEmployee.email;
+                                Response.Redirect("~/site/employees/dashboard.aspx");
                             }
                             else
                             {

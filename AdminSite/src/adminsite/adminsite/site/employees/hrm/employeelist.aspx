@@ -4,7 +4,7 @@
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../css/plugins/datatables/dataTables.bootstrap.css">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>AdminSite</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -12,18 +12,10 @@
     <!-- Custom CSS -->
     <link href="../css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="../css/plugins/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css'/>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server"> 
@@ -31,7 +23,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Listado de empleados <small>Statistics Overview</small>
+                Listado de empleados
             </h1>
         </div>
     </div>
@@ -54,15 +46,17 @@
                             </thead>
                             
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repEmployees" runat="server">
+                                <asp:Repeater ID="repEmployees" runat="server" OnItemCommand="repEmployees_ItemCommand">
                                     <ItemTemplate>
-                                            <tr id="<%# Eval("correo") %>">
-                                                <td><%# Eval("nombre") %> <%# Eval("apellido") %></td>
-                                                <td><%# Eval("usuario") %></td>
-                                                <td><asp:Label ID="correoemp" runat="server" Text='<%# Eval("correo") %>' ReadOnly="True" BorderStyle="None" /></td>
-                                                <td><%# Eval("rol") %></td>
+                                            <tr id="<%# Eval("id") %>">
+                                                <td><asp:Label ID="employeeId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
+                                                <td><%# Eval("workerid") %></td>
+                                                <td><%# Eval("firstname") %> <%# Eval("lastname") %></td>
+                                                <td><asp:Label ID="employeeEmail" runat="server" Text='<%# Eval("email") %>' ReadOnly="True" BorderStyle="None" /></td>
+                                                <td><%# Eval("positionName") %> / <%# Eval("organizationalUnit") %></td>
                                                 <td style="text-align:center">
-                                                    <asp:ImageButton ID="Eliminar" runat="server" Text="Eliminar" ImageUrl="~/Vista/Common/img/eliminar.ico" Height="25px" Width="25px" ToolTip="Eliminar empleado" />
+                                                    <asp:ImageButton ID="modify" runat="server" Text="Moficar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar empleado" />
+                                                    <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar empleado" />
                                                 </td>
                                             </tr>              
                                     </ItemTemplate>
@@ -93,6 +87,7 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/sweet.js"></script>
 
     <!-- DataTables -->
     <script src="../css/plugins/datatables/jquery.dataTables.min.js"></script>

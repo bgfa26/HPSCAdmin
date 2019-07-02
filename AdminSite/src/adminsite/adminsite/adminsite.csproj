@@ -274,8 +274,12 @@
     <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="site\employees\forms.html" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
+    <Content Include="site\employees\img\icons\assign.svg" />
+    <Content Include="site\employees\img\icons\license.txt" />
+    <Content Include="site\employees\img\icons\trash.svg" />
     <Content Include="site\employees\index-rtl.html" />
     <Content Include="site\employees\index.html" />
+    <Content Include="site\employees\js\sweet.js" />
     <Content Include="site\employees\js\bootstrap.js" />
     <Content Include="site\employees\js\bootstrap.min.js" />
     <Content Include="site\employees\js\jquery.js" />
@@ -348,6 +352,7 @@
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\Command.cs" />
+    <Compile Include="controller\hrm\DeleteEmployeeCommand.cs" />
     <Compile Include="controller\hrm\GetEmployeesCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />

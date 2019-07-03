@@ -638,13 +638,13 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[UPDATE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT]
+  @idou AS int,
   @id AS int,
-  @fk_employee AS int,
   @exitvalue AS int OUTPUT 
 AS
 BEGIN
-	UPDATE [dbo].[ORGANIZATIONAL_UNIT] SET FK_EMPLOYEE = @fk_employee
-	WHERE ID = @id;
+	UPDATE [dbo].[ORGANIZATIONAL_UNIT] SET FK_EMPLOYEE = @id
+	WHERE ID = @idou;
 	set @exitvalue = 200;
 	RETURN @exitvalue;
 END

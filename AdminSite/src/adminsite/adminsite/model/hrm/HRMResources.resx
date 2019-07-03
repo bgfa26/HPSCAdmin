@@ -121,8 +121,12 @@
     <value>DELETE_EMPLOYEE</value>
     <comment>Procedimiento almacenado para eliminar un empleado de la base de datos</comment>
   </data>
+  <data name="exitvalue" xml:space="preserve">
+    <value>@exitvalue</value>
+    <comment>Valor de salida</comment>
+  </data>
   <data name="GetAllOrganizationalUnitsStoredProcedure" xml:space="preserve">
-    <value>GET_ALL_UNITS</value>
+    <value>GET_ALL_ORGANIZATIONAL_UNITS</value>
     <comment>Procedimiento almacenado para consultar todas las unidades organizacionales</comment>
   </data>
   <data name="GetAllPositionsStoredProcedure" xml:space="preserve">
@@ -136,5 +140,21 @@
   <data name="id" xml:space="preserve">
     <value>@id</value>
     <comment>Cédula del empleado</comment>
+  </data>
+  <data name="idou" xml:space="preserve">
+    <value>@idou</value>
+    <comment>Identificador de la unidad organizacional</comment>
+  </data>
+  <data name="idposition" xml:space="preserve">
+    <value>@idposition</value>
+    <comment>Identificador de la posición</comment>
+  </data>
+  <data name="UpdateOrganizationalUnitOverseerStoredProcedure" xml:space="preserve">
+    <value>UPDATE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT</value>
+    <comment>Procedimiento almacenado para actualizar el supervisor de una unidad organizacional</comment>
+  </data>
+  <data name="UpdatePositionOrganizationalUnitStoredProcedure" xml:space="preserve">
+    <value>UPDATE_POSITION_EMPLOYEE</value>
+    <comment>Procedimiento almacenado para actualizar el cargo y la unidad organizacional a la que pertenece un empleado</comment>
   </data>
 </root>

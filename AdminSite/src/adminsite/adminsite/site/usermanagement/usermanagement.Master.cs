@@ -11,7 +11,13 @@ namespace adminsite.site.usermanagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                if (Session["EMPLOYEE_EMAIL"] != null)
+                {
+                    Response.Redirect("~/site/employees/dashboard.aspx", false);
+                }
+            }
         }
     }
 }

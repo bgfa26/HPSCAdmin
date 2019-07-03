@@ -359,6 +359,8 @@
     <Compile Include="controller\hrm\GetAllOrganizationalUnitsCommand.cs" />
     <Compile Include="controller\hrm\GetAllPositionsCommand.cs" />
     <Compile Include="controller\hrm\GetEmployeesCommand.cs" />
+    <Compile Include="controller\hrm\UpdateEmployeeHRMCommand.cs" />
+    <Compile Include="controller\hrm\UpdateOverseerCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />

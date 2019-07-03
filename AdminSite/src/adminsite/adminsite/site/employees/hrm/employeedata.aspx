@@ -32,46 +32,60 @@
             <div class="box">
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-12" style="margin-top:10px">
-                            <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Cédula de identidad: </label>
 				                <input type="text" class="form-control textinput" id="id" runat="server" maxlength="50" readonly="readonly">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Identificador del trabajador: </label>
 				                <input type="text" class="form-control textinput" id="workerid" runat="server" maxlength="50" readonly="readonly">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="margin-top:10px">
-                            <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Nombre del empleado: </label>
 				                <input type="text" class="form-control textinput" id="name" runat="server" maxlength="50" readonly="readonly">
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Correo electrónico: </label>
 				                <input type="text" class="form-control textinput" id="email" runat="server" maxlength="50" readonly="readonly">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="margin-top:10px">
-                            <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Cargo: </label>
                                 <asp:DropDownList ID="positionDropList" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Unidad organizacional: </label>
                                 <asp:DropDownList ID="ouDropList" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12" style="margin-top:10px">
-                            <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Supervisa: </label>
                                 <asp:DropDownList ID="superviseDropList" runat="server" CssClass="form-control textinput"></asp:DropDownList>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-3" style="margin-top:20px">
+                            </div>
+                            <div class="col-md-3" style="margin-top:20px">
+                                <asp:Button ID="acceptBtn" runat="server" Text="Aceptar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="acceptBtn_Click"/>
+                            </div>
+                            <div class="col-md-3" style="margin-top:20px">
+                                <asp:Button ID="backBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-primary" Width="100%" OnClick="backBtn_Click"/>
+                            </div>
+                            <div class="col-md-3" style="margin-top:20px">
                             </div>
                         </div>
                     </div>

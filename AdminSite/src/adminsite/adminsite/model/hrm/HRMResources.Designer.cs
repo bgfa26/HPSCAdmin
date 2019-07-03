@@ -70,7 +70,16 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GET_ALL_UNITS.
+        ///   Looks up a localized string similar to @exitvalue.
+        /// </summary>
+        internal static string exitvalue {
+            get {
+                return ResourceManager.GetString("exitvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_ORGANIZATIONAL_UNITS.
         /// </summary>
         internal static string GetAllOrganizationalUnitsStoredProcedure {
             get {
@@ -102,6 +111,42 @@ namespace adminsite.model.hrm {
         internal static string id {
             get {
                 return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @idou.
+        /// </summary>
+        internal static string idou {
+            get {
+                return ResourceManager.GetString("idou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @idposition.
+        /// </summary>
+        internal static string idposition {
+            get {
+                return ResourceManager.GetString("idposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT.
+        /// </summary>
+        internal static string UpdateOrganizationalUnitOverseerStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateOrganizationalUnitOverseerStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE_POSITION_EMPLOYEE.
+        /// </summary>
+        internal static string UpdatePositionOrganizationalUnitStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdatePositionOrganizationalUnitStoredProcedure", resourceCulture);
             }
         }
     }

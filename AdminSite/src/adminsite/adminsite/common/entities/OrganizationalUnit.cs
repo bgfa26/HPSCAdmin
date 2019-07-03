@@ -17,5 +17,11 @@ namespace adminsite.common.entities
             this.name = name;
             this.overseer = overseer;
         }
+
+        public OrganizationalUnit(int id, int overseer)
+        {
+            this.id = id;
+            this.overseer = overseer;
+        }
     }
 }

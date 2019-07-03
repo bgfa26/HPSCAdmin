@@ -116,9 +116,9 @@ employeesList.Add(employee);
                 {
                     try
                     {
-                        ou = new OrganizationalUnit(Int32.Parse(row["ID"].ToString()),
-                                                    row["NAME"].ToString(),
-                                                    Int32.Parse(row["OVERSEER"].ToString()));
+                        ou = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()),
+                                                    row["OUNAME"].ToString(),
+                                                    Int32.Parse(row["EMPLOYEEID"].ToString()));
 
                         ouList.Add(ou);
                     }
@@ -157,14 +157,14 @@ employeesList.Add(employee);
 
             try
             {
-                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllOrganizationalUnitsStoredProcedure);
+                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllPositionsStoredProcedure);
                 Position position = null;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     try
                     {
-                        position = new Position(Int32.Parse(row["ID"].ToString()),
-                                                    row["NAME"].ToString());
+                        position = new Position(Int32.Parse(row["POSITIONID"].ToString()),
+                                                    row["POSITIONNAME"].ToString());
 
                         positionList.Add(position);
                     }
@@ -176,6 +176,71 @@ employeesList.Add(employee);
 
                 }
                 return positionList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int UpdateEmployeePositionUnit(Employee employee)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.id, SqlDbType.Int, employee.id.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.idposition, SqlDbType.Int, employee.idPosition.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.idou, SqlDbType.Int, employee.idOrganizationalUnit.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(HRMResources.UpdatePositionOrganizationalUnitStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int UpdateUnitOverseer(OrganizationalUnit organizationalUnit)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.idou, SqlDbType.Int, organizationalUnit.id.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.id, SqlDbType.Int, organizationalUnit.overseer.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(HRMResources.UpdateOrganizationalUnitOverseerStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
             }
             catch (SqlException ex)
             {

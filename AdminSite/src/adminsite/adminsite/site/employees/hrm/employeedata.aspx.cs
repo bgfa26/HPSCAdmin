@@ -13,13 +13,20 @@ namespace adminsite.site.employees.hrm
 {
     public partial class employeedata : System.Web.UI.Page
     {
-        public Employee consultedEmployee;
+        private Employee consultedEmployee;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (Session["CONSULTED_EMAIL"] != null)
                 {
+                    ouDropList.ClearSelection();
+                    positionDropList.ClearSelection();
+                    superviseDropList.ClearSelection();
+                    ouDropList.Items.Clear();
+                    positionDropList.Items.Clear();
+                    superviseDropList.Items.Clear();
+
                     string employeeEmail = (string)Session["CONSULTED_EMAIL"];
                     Employee employee = new Employee(employeeEmail);
                     GetEmployeeInformationCommand cmd = new GetEmployeeInformationCommand(employee);
@@ -37,29 +44,37 @@ namespace adminsite.site.employees.hrm
                         workerid.Value = consultedEmployee.workerId;
                         name.Value = consultedEmployee.firstName + " " + consultedEmployee.lastName;
                         email.Value = consultedEmployee.email;
+                        ListItem item;
                         foreach (Position position in positions)
                         {
-                            positionDropList.Items.Add(position.name);
+                            item = new ListItem(position.name, position.id.ToString());
+                            positionDropList.Items.Insert(positionDropList.Items.Count, item);
                         }
-                        positionDropList.Items.FindByValue(consultedEmployee.positionName).Selected = true;
+                        positionDropList.Items.FindByValue(consultedEmployee.idPosition.ToString()).Selected = true;
                         foreach (OrganizationalUnit organizationalUnit in organizationalUnits)
                         {
-                            ouDropList.Items.Add(organizationalUnit.name);
+                            item = new ListItem(organizationalUnit.name, organizationalUnit.id.ToString());
+                            ouDropList.Items.Insert(ouDropList.Items.Count, item);
                         }
-                        ouDropList.Items.FindByValue(consultedEmployee.organizationalUnit).Selected = true;
-                        string supervisedUnit = "";
-                        superviseDropList.Items.Add("No aplica");
+                        ouDropList.Items.FindByValue(consultedEmployee.idOrganizationalUnit.ToString()).Selected = true;
+                        int supervisedUnit = 0;
+                        item = new ListItem("No aplica", "-1");
+                        superviseDropList.Items.Insert(superviseDropList.Items.Count, item);
                         foreach (OrganizationalUnit organizationalUnit in organizationalUnits)
                         {
-                            superviseDropList.Items.Add(organizationalUnit.name);
-                            if (organizationalUnit.overseer == consultedEmployee.id)
+                            if (organizationalUnit.id != 1)
                             {
-                                supervisedUnit = organizationalUnit.name;
+                                item = new ListItem(organizationalUnit.name, organizationalUnit.id.ToString());
+                                superviseDropList.Items.Insert(superviseDropList.Items.Count, item);
+                                if (organizationalUnit.overseer == consultedEmployee.id)
+                                {
+                                    supervisedUnit = organizationalUnit.id;
+                                }
                             }
                         }
-                        if (!supervisedUnit.Equals(""))
+                        if (supervisedUnit != 0)
                         {
-                            superviseDropList.Items.FindByValue(supervisedUnit).Selected = true;
+                            superviseDropList.Items.FindByValue(supervisedUnit.ToString()).Selected = true;
                         }
                     }
                     else
@@ -74,6 +89,37 @@ namespace adminsite.site.employees.hrm
                 Session.Remove("CONSULTED_EMAIL");
                 Response.Redirect("~/site/employees/dashboard.aspx", false);
             }
+        }
+
+        protected void acceptBtn_Click(object sender, EventArgs e)
+        {
+            int employeeId = consultedEmployee.id;
+            int selectedPosition = Int32.Parse(positionDropList.SelectedValue);
+            int selectedUnit = Int32.Parse(ouDropList.SelectedValue);
+            int selectedUnitToSupervise = Int32.Parse(superviseDropList.SelectedValue);
+            Employee employeeToModify = new Employee(employeeId, selectedPosition, selectedUnit);
+            try
+            {
+                UpdateEmployeeHRMCommand cmd = new UpdateEmployeeHRMCommand(employeeToModify);
+                cmd.Execute();
+                if (!selectedUnitToSupervise.Equals("-1"))
+                {
+                    OrganizationalUnit organizationalUnit = new OrganizationalUnit(selectedUnitToSupervise, employeeId);
+                    UpdateOverseerCommand cmdOverseer = new UpdateOverseerCommand(organizationalUnit);
+                    cmdOverseer.Execute();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al procesar su solicitud', 'error')", true);
+            }
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha modificado el empleado exitosamente', 'success', '/site/employees/hrm/employeedata.aspx')", true);
+        }
+
+        protected void backBtn_Click(object sender, EventArgs e)
+        {
+            Session.Remove("CONSULTED_EMAIL");
+            Response.Redirect("~/site/employees/hrm/employeelist.aspx", false);
         }
     }
 }

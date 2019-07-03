@@ -99,6 +99,14 @@ namespace adminsite.common
             this.error = 200;
         }
 
+        public Employee(int id, int idPosition, int idOrganizationalUnit)
+        {
+            this.id = id;
+            this.idPosition = idPosition;
+            this.idOrganizationalUnit = idOrganizationalUnit;
+            this.error = 200;
+        }
+
         public Employee(int id, string workerId, string firstName, string lastName, string email, int status, int idPosition, 
                         string positionName, int idOrganizationalUnit, string organizationalUnit)
         {

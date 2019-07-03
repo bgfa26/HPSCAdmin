@@ -49,7 +49,7 @@ namespace adminsite.site.usermanagement
 
                         if (employee.password.Equals(checkedEmployee.password))
                         {
-                            if ((checkedEmployee.idOrganizationalUnit == 1) && (checkedEmployee.idPosition == 1) && (checkedEmployee.status != 0))
+                            if ((checkedEmployee.idOrganizationalUnit != 1) && (checkedEmployee.idPosition != 1) && (checkedEmployee.status != 0))
                             {
                                 Session["EMPLOYEE_EMAIL"] = checkedEmployee.email;
                                 Response.Redirect("~/site/employees/dashboard.aspx");

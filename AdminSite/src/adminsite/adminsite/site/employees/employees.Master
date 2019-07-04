@@ -134,8 +134,8 @@
                             <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#rrhh"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="rrhh" class="collapse">
+                            <a id="rrhhHref" runat="server" href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="rrhhUl" class="collapse" runat="server">
                                 <li>
                                     <a href="hrm/employeelist.aspx">Listado de empleados</a>
                                 </li>

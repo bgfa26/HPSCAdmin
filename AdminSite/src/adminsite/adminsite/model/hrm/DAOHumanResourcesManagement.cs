@@ -116,10 +116,19 @@ employeesList.Add(employee);
                 {
                     try
                     {
-                        ou = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()),
-                                                    row["OUNAME"].ToString(),
-                                                    Int32.Parse(row["EMPLOYEEID"].ToString()));
-
+                        string employeeId = row["EMPLOYEEID"].ToString();
+                        if (!employeeId.Equals(""))
+                        {
+                            ou = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()),
+                                                        row["OUNAME"].ToString(),
+                                                        Int32.Parse(row["EMPLOYEEID"].ToString()));
+                        }
+                        else
+                        {
+                            ou = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()),
+                                                        row["OUNAME"].ToString(),
+                                                        0);
+                        }
                         ouList.Add(ou);
                     }
                     catch (Exception ex)
@@ -239,6 +248,37 @@ employeesList.Add(employee);
                 parameters.Add(new ParameterDB(HRMResources.id, SqlDbType.Int, organizationalUnit.overseer.ToString(), false));
                 parameters.Add(new ParameterDB(HRMResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(HRMResources.UpdateOrganizationalUnitOverseerStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int RemoveUnitOverseer(OrganizationalUnit organizationalUnit)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.idou, SqlDbType.Int, organizationalUnit.id.ToString(), false));
+                parameters.Add(new ParameterDB(HRMResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(HRMResources.RemoveOrganizationalUnitOverseerStoredProcedure, parameters);
                 int result = Int32.Parse(results[0].value);
                 return result;
             }

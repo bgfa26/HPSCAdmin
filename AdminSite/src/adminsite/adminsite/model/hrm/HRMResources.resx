@@ -157,4 +157,8 @@
     <value>UPDATE_POSITION_EMPLOYEE</value>
     <comment>Procedimiento almacenado para actualizar el cargo y la unidad organizacional a la que pertenece un empleado</comment>
   </data>
+  <data name="RemoveOrganizationalUnitOverseerStoredProcedure" xml:space="preserve">
+    <value>REMOVE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT</value>
+    <comment>Procedimiento almacenado para remover el supervisor de una unidad organizacional</comment>
+  </data>
 </root>

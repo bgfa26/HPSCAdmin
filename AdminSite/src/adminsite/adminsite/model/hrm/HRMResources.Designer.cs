@@ -133,6 +133,15 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to REMOVE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT.
+        /// </summary>
+        internal static string RemoveOrganizationalUnitOverseerStoredProcedure {
+            get {
+                return ResourceManager.GetString("RemoveOrganizationalUnitOverseerStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPDATE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT.
         /// </summary>
         internal static string UpdateOrganizationalUnitOverseerStoredProcedure {

@@ -51,6 +51,8 @@ namespace adminsite.site.employees
                     Session.RemoveAll();
                     Response.Redirect("~/site/usermanagement/login.aspx", false);
                 }
+                rrhhUl.Visible = true; //ESTO ES PARA MANEJAR LOS ACCESOS A SECCIONES DE LA APP
+                rrhhHref.Visible = true; //ESTO ES PARA MANEJAR LOS ACCESOS A SECCIONES DE LA APP
             }
         }
 

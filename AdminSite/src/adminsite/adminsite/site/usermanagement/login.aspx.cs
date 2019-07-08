@@ -21,7 +21,7 @@ namespace adminsite.site.usermanagement
         
         private bool validateEmail(string email)
         {
-            string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             Match match = Regex.Match(email.Trim(), pattern, RegexOptions.IgnoreCase);
 
             if (match.Success)
@@ -56,7 +56,7 @@ namespace adminsite.site.usermanagement
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Aún no posee un cargo y una unidad organizacional')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "infoSweetAlert('Su registro fue exitoso, sin embargo, no puede acceder ya que no tiene un cargo asignado')", true);
                             }
                         }
                         else

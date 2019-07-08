@@ -20,7 +20,7 @@ namespace adminsite.site
 
         private bool validateEmail(string email)
         {
-            string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             Match match = Regex.Match(email.Trim(), pattern, RegexOptions.IgnoreCase);
 
             if (match.Success)
@@ -100,6 +100,10 @@ namespace adminsite.site
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('La contraseña debe tener al menos 8 caracteres')", true);
                 }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El correo ingresado no es válido')", true);
             }
         }
 

@@ -14,6 +14,14 @@
                 type: 'error'
             });
         }
+        function infoSweetAlert(msg) {
+            swal({
+                title: msg,
+                timer: 4000,
+                showConfirmButton: false,
+                type: 'info'
+            });
+        }
     </script>
 </asp:Content>
 
@@ -107,15 +115,15 @@
                     document.getElementById('logoguest').className = "";
                     document.getElementById("interatec").width = "100";
                 } else {
-                    document.getElementById('logoguest').removeAttribute("hidden");
-                    document.getElementById('logoguest').className = "fade-in";
-                    document.getElementById('logohpsc').setAttribute("hidden", "hidden");
-                    document.getElementById('logohpsc').className = "";
+                    document.getElementById('logohpsc').removeAttribute("hidden");
+                    document.getElementById('logohpsc').className = "fade-in";
                     document.getElementById('logomt2005').setAttribute("hidden", "hidden");
                     document.getElementById('logomt2005').className = "";
                     document.getElementById('logointeratec').setAttribute("hidden", "hidden");
                     document.getElementById('logointeratec').className = "";
-                    document.getElementById("interatec").width = "100";
+                    document.getElementById('logoguest').setAttribute("hidden", "hidden");
+                    document.getElementById('logoguest').className = "";
+                    document.getElementById("hpsc").width = "80";
                 }
             }
         }

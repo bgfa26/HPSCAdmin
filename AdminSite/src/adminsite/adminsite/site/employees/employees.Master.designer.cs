@@ -49,13 +49,13 @@ namespace adminsite.site.employees {
         protected global::System.Web.UI.WebControls.LinkButton endSession;
         
         /// <summary>
-        /// rrhhHref control.
+        /// rrhhLi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor rrhhHref;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rrhhLi;
         
         /// <summary>
         /// rrhhUl control.
@@ -65,6 +65,24 @@ namespace adminsite.site.employees {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl rrhhUl;
+        
+        /// <summary>
+        /// acpLi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acpLi;
+        
+        /// <summary>
+        /// acpUl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl acpUl;
         
         /// <summary>
         /// content control.

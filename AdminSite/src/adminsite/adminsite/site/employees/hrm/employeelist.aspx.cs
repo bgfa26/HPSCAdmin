@@ -24,17 +24,57 @@ namespace adminsite.site.employees.hrm
                     cmd.Execute();
                     employeeList = cmd.GetResult();
                     List<Employee> activeEmployees = new List<Employee>();
-                    foreach (Employee employee in employeeList)
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    string emailExtension = loggedEmployee.email.Split('@')[1];
+                    if (loggedEmployee.status == 100)
                     {
-                        if ((employee.status == 1))
+                        foreach (Employee employee in employeeList)
                         {
-                            activeEmployees.Add(employee);
+                            if ((employee.status == 1))
+                            {
+                                activeEmployees.Add(employee);
+                            }
+                        }
+                        if (activeEmployees.Count != 0)
+                        {
+                            repEmployees.DataSource = activeEmployees;
+                            repEmployees.DataBind();
                         }
                     }
-                    if (activeEmployees.Count != 0)
+                    else
                     {
-                        repEmployees.DataSource = activeEmployees;
-                        repEmployees.DataBind();
+                        foreach (Employee employee in employeeList)
+                        {
+                            if ((employee.status == 1) && (!employee.email.Equals(loggedEmployee.email)))
+                            {
+                                if (emailExtension.Equals("mt2005.net"))
+                                {
+                                    if (employee.email.Contains(emailExtension))
+                                    {
+                                        activeEmployees.Add(employee);
+                                    }
+                                }
+                                else if (emailExtension.Equals("interatec.com"))
+                                {
+                                    if (employee.email.Contains(emailExtension))
+                                    {
+                                        activeEmployees.Add(employee);
+                                    }
+                                }
+                                else
+                                {
+                                    if ((!employee.email.Contains("mt2005.net")) && (!employee.email.Contains("interatec.com")))
+                                    {
+                                        activeEmployees.Add(employee);
+                                    }
+                                }
+                            }
+                        }
+                        if (activeEmployees.Count != 0)
+                        {
+                            repEmployees.DataSource = activeEmployees;
+                            repEmployees.DataBind();
+                        }
                     }
                 }
                 catch (Exception ex)

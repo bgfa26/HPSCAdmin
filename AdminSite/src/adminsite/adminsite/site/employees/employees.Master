@@ -133,14 +133,25 @@
                         <li>
                             <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
-                        <li>
-                            <a id="rrhhHref" runat="server" href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
+                        <li id="rrhhLi" runat="server">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="rrhhUl" class="collapse" runat="server">
                                 <li>
                                     <a href="hrm/employeelist.aspx">Listado de empleados</a>
                                 </li>
                                 <li>
                                     <a href="#">Dropdown Item</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li id="acpLi" runat="server">
+                            <a href="javascript:;" data-toggle="collapse" data-target="#acpUl"><i class="fa fa-fw fa-book"></i> Centros de costo <i class="fa fa-fw fa-caret-down"></i></a>
+                            <ul id="acpUl" class="collapse" runat="server">
+                                <li>
+                                    <a href="hrm/employeelist.aspx">Agregar nuevo</a>
+                                </li>
+                                <li>
+                                    <a href="hrm/employeelist.aspx">Listado de cuentas/cursos/permisos</a>
                                 </li>
                             </ul>
                         </li>

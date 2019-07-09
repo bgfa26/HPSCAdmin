@@ -29,7 +29,13 @@ namespace adminsite.site.employees
                         if (consultedEmployee.status != 0)
                         {
                             string employeeName = consultedEmployee.firstName + " " + consultedEmployee.lastName;
+                            Session["MY_INFORMATION"] = consultedEmployee;
                             employeeOptions.InnerHtml = "<i class=\"fa fa-user\"></i> " + employeeName + " <b class=\"caret\"></b>";
+                            if (employee.status == 100)
+                            {
+                                rrhhLi.Visible = true;
+                                acpLi.Visible = true;
+                            }
                         }
                         else
                         {
@@ -51,8 +57,6 @@ namespace adminsite.site.employees
                     Session.RemoveAll();
                     Response.Redirect("~/site/usermanagement/login.aspx", false);
                 }
-                rrhhUl.Visible = true; //ESTO ES PARA MANEJAR LOS ACCESOS A SECCIONES DE LA APP
-                rrhhHref.Visible = true; //ESTO ES PARA MANEJAR LOS ACCESOS A SECCIONES DE LA APP
             }
         }
 

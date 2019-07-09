@@ -31,10 +31,25 @@ namespace adminsite.site.employees
                             string employeeName = consultedEmployee.firstName + " " + consultedEmployee.lastName;
                             Session["MY_INFORMATION"] = consultedEmployee;
                             employeeOptions.InnerHtml = "<i class=\"fa fa-user\"></i> " + employeeName + " <b class=\"caret\"></b>";
-                            if (employee.status == 100)
+                            if (consultedEmployee.status == 100)
                             {
                                 rrhhLi.Visible = true;
                                 acpLi.Visible = true;
+                            }
+                            else if ((consultedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (consultedEmployee.organizationalUnit.Equals("Administración")))
+                            {
+                                rrhhLi.Visible = true;
+                                acpLi.Visible = false;
+                            }
+                            else if ((consultedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (consultedEmployee.organizationalUnit.Equals("Operaciones")))
+                            {
+                                rrhhLi.Visible = false;
+                                acpLi.Visible = true;
+                            }
+                            else
+                            {
+                                rrhhLi.Visible = false;
+                                acpLi.Visible = false;
                             }
                         }
                         else

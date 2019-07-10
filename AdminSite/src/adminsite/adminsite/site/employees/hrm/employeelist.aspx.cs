@@ -26,7 +26,7 @@ namespace adminsite.site.employees.hrm
                     List<Employee> activeEmployees = new List<Employee>();
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     string emailExtension = loggedEmployee.email.Split('@')[1];
-                    if (loggedEmployee.status == 100)
+                    if ((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.organizationalUnit.Equals("Directiva")))
                     {
                         foreach (Employee employee in employeeList)
                         {

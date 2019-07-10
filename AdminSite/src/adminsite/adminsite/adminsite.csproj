@@ -355,6 +355,7 @@
     <Compile Include="common\MD5Calculator.cs" />
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
+    <Compile Include="controller\acp\GetAllAccountCoursePermitCommand.cs" />
     <Compile Include="controller\Command.cs" />
     <Compile Include="controller\hrm\DeleteEmployeeCommand.cs" />
     <Compile Include="controller\hrm\GetAllOrganizationalUnitsCommand.cs" />

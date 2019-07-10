@@ -7,18 +7,18 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace adminsite.site.employees.hrm {
+namespace adminsite.site.employees.acp {
     
     
-    public partial class employeelist {
+    public partial class costcenterlist {
         
         /// <summary>
-        /// Control repEmployees.
+        /// Control repCostCenter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repEmployees;
+        protected global::System.Web.UI.WebControls.Repeater repCostCenter;
     }
 }

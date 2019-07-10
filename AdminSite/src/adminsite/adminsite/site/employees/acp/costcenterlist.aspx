@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="employeelist.aspx.cs" Inherits="adminsite.site.employees.hrm.employeelist" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="costcenterlist.aspx.cs" Inherits="adminsite.site.employees.acp.costcenterlist" %>
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../css/plugins/datatables/dataTables.bootstrap.css">
@@ -23,11 +22,11 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Listado de empleados
+                Listado de cuentas/cursos/permisos
             </h1>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -36,24 +35,28 @@
                         <table id="table" class="table table-bordered table-striped table-hover dt-responsive">
                             <thead>
                                 <tr>
-                                    <th>Cédula de identidad</th>
-                                    <th>ID del trabajador</th>
-                                    <th>Nombre y apelido</th>
-                                    <th>Correo electrónico</th>
-                                    <th>Cargo/Unidad organizacional</th>
+                                    <th>Identificador</th>
+                                    <th>Nombre</th>
+                                    <th>Utilizado por</th>
+                                    <th>Tipo</th>
+                                    <th>Administrador</th>
+                                    <th>Fecha de inicio</th>
+                                    <th>Fecha de fin</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
-                            
+
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repEmployees" runat="server" OnItemCommand="repEmployees_ItemCommand">
+                                <asp:Repeater ID="repCostCenter" runat="server">
                                     <ItemTemplate>
-                                            <tr id="<%# Eval("id") %>">
-                                                <td><asp:Label ID="employeeId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
-                                                <td><%# Eval("workerid") %></td>
-                                                <td><%# Eval("firstname") %> <%# Eval("lastname") %></td>
-                                                <td><asp:Label ID="employeeEmail" runat="server" Text='<%# Eval("email") %>' ReadOnly="True" BorderStyle="None" /></td>
-                                                <td><%# Eval("positionName") %> / <%# Eval("organizationalUnit") %></td>
+                                            <tr id="">
+                                                <td><asp:Label ID="costCenterId" runat="server" Text='' ReadOnly="True" BorderStyle="None" /></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar empleado" />
                                                     <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar empleado" />
@@ -64,11 +67,13 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Cédula de identidad</th>
-                                    <th>ID del trabajador</th>
-                                    <th>Nombre y apelido</th>
-                                    <th>Correo electrónico</th>
-                                    <th>Cargo/Unidad organizacional</th>
+                                    <th>Identificador</th>
+                                    <th>Nombre</th>
+                                    <th>Utilizado por</th>
+                                    <th>Tipo</th>
+                                    <th>Administrador</th>
+                                    <th>Fecha de inicio</th>
+                                    <th>Fecha de fin</th>
                                     <th>Opciones</th>
                                 </tr>
                             </tfoot>

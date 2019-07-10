@@ -31,7 +31,7 @@ namespace adminsite.site.employees
                             string employeeName = consultedEmployee.firstName + " " + consultedEmployee.lastName;
                             Session["MY_INFORMATION"] = consultedEmployee;
                             employeeOptions.InnerHtml = "<i class=\"fa fa-user\"></i> " + employeeName + " <b class=\"caret\"></b>";
-                            if ((consultedEmployee.organizationalUnit.Equals("Directiva")) && (consultedEmployee.organizationalUnit.Equals("Directiva")))
+                            if (consultedEmployee.status == 100)
                             {
                                 rrhhLi.Visible = true;
                                 acpLi.Visible = true;

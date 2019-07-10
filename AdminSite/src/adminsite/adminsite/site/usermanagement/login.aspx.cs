@@ -52,7 +52,7 @@ namespace adminsite.site.usermanagement
                             if ((checkedEmployee.idOrganizationalUnit != 1) && (checkedEmployee.idPosition != 1) && (checkedEmployee.status != 0))
                             {
                                 Session["EMPLOYEE_EMAIL"] = checkedEmployee.email;
-                                Response.Redirect("~/site/employees/dashboard.aspx");
+                                Response.Redirect("~/site/employees/dashboard.aspx", false);
                             }
                             else
                             {

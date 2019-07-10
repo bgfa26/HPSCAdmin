@@ -72,7 +72,7 @@ namespace adminsite.site.usermanagement
                 if (codeHex.Value.ToUpper().Equals((String)ViewState["hexcode"]))
                 {
                     Session["changepassword"] = email.Value;
-                    Response.Redirect("~/site/usermanagement/changepassword.aspx");
+                    Response.Redirect("~/site/usermanagement/changepassword.aspx", false);
                 }
                 else
                 {

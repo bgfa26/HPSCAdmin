@@ -36,7 +36,7 @@ namespace adminsite.model.hrm
                                                 Int32.Parse(row["OUID"].ToString()),
                                                 row["OUNAME"].ToString());
                         
-employeesList.Add(employee);
+                        employeesList.Add(employee);
                     }
                     catch (Exception ex)
                     {

@@ -227,6 +227,12 @@ ul.alert-dropdown {
 }
 
 
+
+.block {
+    border: 1px solid aliceblue;
+    overflow-y: scroll;
+}
+
 .heightswal {
     height: 35vh;
 }

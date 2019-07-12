@@ -369,6 +369,12 @@
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
     <Compile Include="controller\usermanagement\UpdatePasswordCommand.cs" />
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
+    <Compile Include="model\acp\ACPResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACPResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\acp\DAOAccountCoursePermit.cs" />
     <Compile Include="model\DAO.cs" />
     <Compile Include="model\emailservice\EmailResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -586,6 +592,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="model\acp\ACPResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ACPResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="model\emailservice\EmailResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>EmailResources.Designer.cs</LastGenOutput>
@@ -599,7 +609,9 @@
       <LastGenOutput>UserManagementResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="controller\common\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

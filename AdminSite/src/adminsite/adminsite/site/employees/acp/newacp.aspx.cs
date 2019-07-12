@@ -1,4 +1,5 @@
 ﻿using adminsite.common;
+using adminsite.common.entities;
 using adminsite.controller.hrm;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace adminsite.site.employees.acp
     public partial class newacp : System.Web.UI.Page
     {
         private List<Employee> employees = new List<Employee>();
+        private List<OrganizationalUnit> units = new List<OrganizationalUnit>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -21,6 +23,9 @@ namespace adminsite.site.employees.acp
                     GetEmployeesCommand cmd = new GetEmployeesCommand();
                     cmd.Execute();
                     employees = cmd.GetResult();
+                    GetAllOrganizationalUnitsCommand cmdOu = new GetAllOrganizationalUnitsCommand();
+                    cmdOu.Execute();
+                    units = cmdOu.GetResults();
                     List<Employee> activeEmployees = new List<Employee>();
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     string emailExtension = loggedEmployee.email.Split('@')[1];
@@ -74,12 +79,34 @@ namespace adminsite.site.employees.acp
                         }
                         employeeList.InnerHtml = options;
                     }
+
+                    foreach (OrganizationalUnit unit in units)
+                    {
+                        if (!unit.name.Equals("Sin unidad"))
+                        {
+                            organizationalUnitsCkl.Items.Add(new ListItem(unit.name, unit.id.ToString()));
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
                 }
             }
+        }
+
+        protected void acceptBtn_Click(object sender, EventArgs e)
+        {
+            string acpId = id.Value;
+            string acpName = name.Value;
+            string acptype = type.SelectedValue;
+            String init = dateinit.Text;
+            String end = dateend.Text;
+            string administrator = admin.Value;
+            List<string> selectedUnits = organizationalUnitsCkl.Items.Cast<ListItem>()
+               .Where(li => li.Selected)
+               .Select(li => li.Value)
+               .ToList();
         }
     }
 }

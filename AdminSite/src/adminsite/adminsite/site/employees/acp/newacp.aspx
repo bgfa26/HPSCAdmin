@@ -42,7 +42,7 @@
 				                <input type="text" class="form-control textinput" id="name" runat="server" maxlength="50">
                                                                 
                                 <label style="text-align:right;margin-top:10px">Tipo: </label>
-                                <asp:DropDownList ID="acpType" runat="server" CssClass="form-control textinput">
+                                <asp:DropDownList ID="type" runat="server" CssClass="form-control textinput">
                                     <asp:ListItem Text="Facturable" Value="1" />
                                     <asp:ListItem Text="No facturable" Value="2" />
                                 </asp:DropDownList>
@@ -62,21 +62,23 @@
                             
                             <div class="col-md-6" style="margin-top:10px;height:inherit">
                                 <label style="text-align:right">Disponible para: </label>
-				                <input type="text" class="form-control textinput" id="costcenter" runat="server" maxlength="50" readonly="readonly" style="height:379px">
+                                
+                                <div id="divscroll" class="block">
+                                    <asp:CheckBoxList ID="organizationalUnitsCkl" CssClass="form-control textinput" runat="server" Height="379px" Width="100%">
+
+                                    </asp:CheckBoxList>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="col-md-3" style="margin-top:20px">
+                            <div class="col-md-4" style="margin-top:20px">
                             </div>
-                            <div class="col-md-3" style="margin-top:20px">
-                                <asp:Button ID="acceptBtn" runat="server" Text="Aceptar" CssClass="btn btn-lg btn-success" Width="100%"/>
+                            <div class="col-md-4" style="margin-top:20px">
+                                <asp:Button ID="acceptBtn" runat="server" Text="Aceptar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="acceptBtn_Click"/>
                             </div>
-                            <div class="col-md-3" style="margin-top:20px">
-                                <asp:Button ID="backBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-primary" Width="100%"/>
-                            </div>
-                            <div class="col-md-3" style="margin-top:20px">
+                            <div class="col-md-4" style="margin-top:20px">
                             </div>
                         </div>
                     </div>

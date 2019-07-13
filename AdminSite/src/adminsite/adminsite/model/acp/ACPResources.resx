@@ -117,8 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="enddate" xml:space="preserve">
+    <value>@enddate</value>
+    <comment>Fecha de finalización</comment>
+  </data>
+  <data name="fk_employee" xml:space="preserve">
+    <value>@fk_employee</value>
+    <comment>Empleado encargado de la cuenta</comment>
+  </data>
   <data name="GetOrganizationalUnitsCommand" xml:space="preserve">
     <value>GET_ALL_ORGANIZATIONAL_UNITS</value>
     <comment>Procedimiento almacenado que trae todas las UO registradas en la BD</comment>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>@id</value>
+    <comment>Identificador de la cuenta</comment>
+  </data>
+  <data name="initdate" xml:space="preserve">
+    <value>@initdate</value>
+    <comment>Fecha de inicio</comment>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>@name</value>
+    <comment>Nombre de la cuenta</comment>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>@status</value>
+    <comment>Estatus de la cuenta</comment>
+  </data>
+  <data name="type" xml:space="preserve">
+    <value>@type</value>
+    <comment>Tipo de cuenta</comment>
+  </data>
+  <data name="CreateACPStoredProcedure" xml:space="preserve">
+    <value>CREATE_ACCOUNT_COURSE_PERMIT</value>
+    <comment>Procedimiento almacenado para crear una nueva cuenta/curso/permiso en la BD</comment>
+  </data>
+  <data name="CreateCostCenterStoredProcedure" xml:space="preserve">
+    <value>CREATE_COST_CENTER</value>
+    <comment>Procedimiento almacenado para crear un nuevo centro de costo</comment>
+  </data>
+  <data name="exitvalue" xml:space="preserve">
+    <value>@exitvalue</value>
+    <comment>Valor de salida de la BD</comment>
+  </data>
+  <data name="fk_acp" xml:space="preserve">
+    <value>@fk_acp</value>
+    <comment>Identificador de la cuenta/curso/permiso</comment>
+  </data>
+  <data name="fk_ou" xml:space="preserve">
+    <value>@fk_ou</value>
+    <comment>Unidad organizacional</comment>
   </data>
 </root>

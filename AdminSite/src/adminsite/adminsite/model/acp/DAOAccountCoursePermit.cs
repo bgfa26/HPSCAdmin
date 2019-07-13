@@ -1,4 +1,5 @@
-﻿using adminsite.common.entities;
+﻿using adminsite.common;
+using adminsite.common.entities;
 using adminsite.model.usermanagement;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,85 @@ namespace adminsite.model.acp
 
                 }
                 return unitsList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        /// <summary>
+        /// Metodo para agregar en la base de datos un nuevo ACP
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="acpToInsert">ACP que se va a registrar</param>
+        public int AddAccountCoursePermit(AccountCoursePermit acpToInsert)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.Int, acpToInsert.id.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.name, SqlDbType.VarChar, acpToInsert.name, false));
+                parameters.Add(new ParameterDB(ACPResources.type, SqlDbType.Int, acpToInsert.type, false));
+                parameters.Add(new ParameterDB(ACPResources.initdate, SqlDbType.Date, acpToInsert.initDate.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.enddate, SqlDbType.Date, acpToInsert.endDate.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.status, SqlDbType.Int, acpToInsert.status, false));
+                parameters.Add(new ParameterDB(ACPResources.fk_employee, SqlDbType.Int, acpToInsert.administrator.id.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(ACPResources.CreateACPStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        /// <summary>
+        /// Metodo para agregar en la base de datos un nuevo ACP
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="costCenter">Centro de costo que se va a registrar</param>
+        public int AddCostCenter (CostCenter costCenter)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.fk_ou, SqlDbType.Int, costCenter.fk_ou.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.fk_acp, SqlDbType.VarChar, costCenter.fk_acp, false));
+                parameters.Add(new ParameterDB(ACPResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(ACPResources.CreateCostCenterStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
             }
             catch (SqlException ex)
             {

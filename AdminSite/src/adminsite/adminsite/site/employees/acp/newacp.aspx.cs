@@ -107,6 +107,52 @@ namespace adminsite.site.employees.acp
                .Where(li => li.Selected)
                .Select(li => li.Value)
                .ToList();
+            if ((!acpId.Equals("")) && (!acpName.Equals("")) && (!init.Equals("")) && (!end.Equals("")) && (!administrator.Equals("")) && (selectedUnits.Count != 0))
+            {
+                double admin = 0;
+                bool isNumber = double.TryParse(administrator, out admin);
+                if (isNumber)
+                {
+                    int adminInt = Convert.ToInt32(admin);
+                    try
+                    {
+                        GetEmployeesCommand cmd = new GetEmployeesCommand();
+                        cmd.Execute();
+                        employees = cmd.GetResult();
+                        bool adminExist = false;
+                        foreach (Employee employee in employees)
+                        {
+                            if (employee.id == adminInt)
+                            {
+                                adminExist = true;
+                            }
+                        }
+                        if (adminExist)
+                        {
+
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El empleado seleccionado no se encuentra registrado en el sistema')", true);
+                        }
+
+                    }
+                    catch(Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud')", true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El campo de administrador no tiene formato númerico')", true);
+                }
+
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos vacíos en el formulario')", true);
+            }
         }
     }
 }

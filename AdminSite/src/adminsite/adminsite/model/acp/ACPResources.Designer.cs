@@ -61,11 +61,119 @@ namespace adminsite.model.acp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE_ACCOUNT_COURSE_PERMIT.
+        /// </summary>
+        internal static string CreateACPStoredProcedure {
+            get {
+                return ResourceManager.GetString("CreateACPStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE_COST_CENTER.
+        /// </summary>
+        internal static string CreateCostCenterStoredProcedure {
+            get {
+                return ResourceManager.GetString("CreateCostCenterStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @enddate.
+        /// </summary>
+        internal static string enddate {
+            get {
+                return ResourceManager.GetString("enddate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @exitvalue.
+        /// </summary>
+        internal static string exitvalue {
+            get {
+                return ResourceManager.GetString("exitvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @fk_acp.
+        /// </summary>
+        internal static string fk_acp {
+            get {
+                return ResourceManager.GetString("fk_acp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @fk_employee.
+        /// </summary>
+        internal static string fk_employee {
+            get {
+                return ResourceManager.GetString("fk_employee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @fk_ou.
+        /// </summary>
+        internal static string fk_ou {
+            get {
+                return ResourceManager.GetString("fk_ou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_ORGANIZATIONAL_UNITS.
         /// </summary>
         internal static string GetOrganizationalUnitsCommand {
             get {
                 return ResourceManager.GetString("GetOrganizationalUnitsCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @id.
+        /// </summary>
+        internal static string id {
+            get {
+                return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @initdate.
+        /// </summary>
+        internal static string initdate {
+            get {
+                return ResourceManager.GetString("initdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @name.
+        /// </summary>
+        internal static string name {
+            get {
+                return ResourceManager.GetString("name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @status.
+        /// </summary>
+        internal static string status {
+            get {
+                return ResourceManager.GetString("status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @type.
+        /// </summary>
+        internal static string type {
+            get {
+                return ResourceManager.GetString("type", resourceCulture);
             }
         }
     }

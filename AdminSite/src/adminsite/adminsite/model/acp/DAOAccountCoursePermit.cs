@@ -224,10 +224,12 @@ namespace adminsite.model.acp
 
         }
 
+
         /// <summary>
         /// Metodo que elimina los centros de costo asociados a una cuenta de la base de datos
         /// </summary>
         /// <returns>Retorna un entero</returns>
+        /// <param name="accountCoursePermit">Cuenta/Curso/Permiso del cual se eliminaran los centros de costo asociados</param>
         public int DeleteCostCenter(AccountCoursePermit accountCoursePermit)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

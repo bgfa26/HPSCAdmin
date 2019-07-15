@@ -173,4 +173,8 @@
     <value>GET_ALL_ACCOUNTS_COURSES_PERMITS</value>
     <comment>Procedimiento almacewnado para obtener las cuentas/cursos/permisos de la BD</comment>
   </data>
+  <data name="DeleteACPStoredProcedure" xml:space="preserve">
+    <value>DELETE_ACCOUNT_COURSE_PERMIT</value>
+    <comment>Procedimiento almacenado para cambiar el estatus a inactivo de </comment>
+  </data>
 </root>

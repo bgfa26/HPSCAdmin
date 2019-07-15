@@ -297,7 +297,7 @@ namespace adminsite.model.acp
         }
 
 
-        public AccountCoursePermit GetAccountCoursesPermit(AccountCoursePermit acpToConsult)
+        public AccountCoursePermit GetAccountCoursePermit(AccountCoursePermit acpToConsult)
         {
             AccountCoursePermit accountCoursePermit = null;
             DataTable dataTable = new DataTable();

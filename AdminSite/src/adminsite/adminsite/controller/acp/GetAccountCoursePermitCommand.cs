@@ -21,7 +21,7 @@ namespace adminsite.controller.acp
             try
             {
                 DAOAccountCoursePermit dao = new DAOAccountCoursePermit();
-                result = dao.GetAccountCoursesPermit(acpToConsult);
+                result = dao.GetAccountCoursePermit(acpToConsult);
             }
             catch (Exception ex)
             {

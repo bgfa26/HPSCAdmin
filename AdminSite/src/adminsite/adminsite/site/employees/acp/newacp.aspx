@@ -36,10 +36,10 @@
                         <div class="col-md-12">
                             <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Identificador: </label>
-				                <input type="text" class="form-control textinput" id="id" runat="server" maxlength="50">
+				                <input type="text" class="form-control textinput" id="id" runat="server" autocomplete="off" maxlength="50">
 
                                 <label style="text-align:right;margin-top:10px">Nombre: </label>
-				                <input type="text" class="form-control textinput" id="name" runat="server" maxlength="50">
+				                <input type="text" class="form-control textinput" id="name" runat="server" autocomplete="off" maxlength="50">
                                                                 
                                 <label style="text-align:right;margin-top:10px">Tipo: </label>
                                 <asp:DropDownList ID="type" runat="server" CssClass="form-control textinput">

@@ -7,16 +7,21 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
-    public class GetAllAccountCoursePermitCommand : Command
+    public class DeleteACPCommand : Command
     {
-        List<AccountCoursePermit> results;
+        AccountCoursePermit acpToDelete;
+        int result;
+        public DeleteACPCommand(AccountCoursePermit acpToDelete)
+        {
+            this.acpToDelete = acpToDelete;
+        }
 
         public override void Execute()
         {
             try
             {
                 DAOAccountCoursePermit dao = new DAOAccountCoursePermit();
-                results = dao.GetAllAccountsCoursesPermits();
+                result = dao.DeleteAccountCoursePermit(acpToDelete);
             }
             catch (Exception ex)
             {
@@ -28,9 +33,9 @@ namespace adminsite.controller.acp
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
         /// <returns>Retorna un entero</returns>
-        public List<AccountCoursePermit> GetResults()
+        public int GetResult()
         {
-            return results;
+            return result;
         }
     }
 }

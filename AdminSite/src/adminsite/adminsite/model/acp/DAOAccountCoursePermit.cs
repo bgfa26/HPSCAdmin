@@ -135,7 +135,44 @@ namespace adminsite.model.acp
 
         }
 
-        public List<AccountCoursePermit> GetAccountsCoursesPermits()
+
+        /// <summary>
+        /// Metodo que cambia el estatus de activo a eliminado en la base de datos
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="acpToDelete">Cuenta/Curso/Permiso que se va a eliminar</param>
+        public int DeleteAccountCoursePermit(AccountCoursePermit acpToDelete)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.VarChar, acpToDelete.id, false));
+                ExecuteStoredProcedure(ACPResources.DeleteACPStoredProcedure, parameters);
+                int result = 200;
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+        public List<AccountCoursePermit> GetAllAccountsCoursesPermits()
         {
             List<AccountCoursePermit> accountscoursespermitsList = new List<AccountCoursePermit>();
             DataTable dataTable = new DataTable();
@@ -155,7 +192,7 @@ namespace adminsite.model.acp
                                                                       Convert.ToDateTime(row["INITDATE"].ToString()),
                                                                       Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                                       Int32.Parse(row["STATUS"].ToString()),
-                                                                     employee);
+                                                                      employee);
 
                         accountscoursespermitsList.Add(accountcoursepermit);
                     }

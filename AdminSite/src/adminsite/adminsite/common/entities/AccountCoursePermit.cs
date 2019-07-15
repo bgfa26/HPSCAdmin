@@ -15,12 +15,12 @@ namespace adminsite.common.entities
         public int type { get; set; }
         public DateTime initDate { get; set; }
         public DateTime endDate { get; set; }
-        public string status { get; set; }
+        public int status { get; set; }
         public Employee administrator { get; set; }
         public int error { get; set; }
 
         public AccountCoursePermit() { }
-        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, string status, Employee administrator)
+        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, int status, Employee administrator)
         {
             this.id = id;
             this.name = name;
@@ -41,7 +41,7 @@ namespace adminsite.common.entities
             this.administrator = administrator;
             this.error = 200;
         }
-        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, string status)
+        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, int status)
         {
             this.id = id;
             this.name = name;

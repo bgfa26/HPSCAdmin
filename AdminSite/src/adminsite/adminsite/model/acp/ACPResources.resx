@@ -177,4 +177,12 @@
     <value>DELETE_ACCOUNT_COURSE_PERMIT</value>
     <comment>Procedimiento almacenado para cambiar el estatus a inactivo de </comment>
   </data>
+  <data name="DeleteCostCenterStoredProcedure" xml:space="preserve">
+    <value>DELETE_COST_CENTER</value>
+    <comment>Procedimiento almacenado para eliminar centros de costo asociados a una cuenta</comment>
+  </data>
+  <data name="GetAccountCoursePermitStoredProcedure" xml:space="preserve">
+    <value>GET_ACCOUNT_COURSE_PERMIT</value>
+    <comment>Procedimiento almacenado para consultar una cuenta/curso/permiso específica</comment>
+  </data>
 </root>

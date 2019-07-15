@@ -88,6 +88,15 @@ namespace adminsite.model.acp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE_COST_CENTER.
+        /// </summary>
+        internal static string DeleteCostCenterStoredProcedure {
+            get {
+                return ResourceManager.GetString("DeleteCostCenterStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @enddate.
         /// </summary>
         internal static string enddate {
@@ -129,6 +138,15 @@ namespace adminsite.model.acp {
         internal static string fk_ou {
             get {
                 return ResourceManager.GetString("fk_ou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_ACCOUNT_COURSE_PERMIT.
+        /// </summary>
+        internal static string GetAccountCoursePermitStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAccountCoursePermitStoredProcedure", resourceCulture);
             }
         }
         

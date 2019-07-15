@@ -358,6 +358,7 @@
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\acp\CreateNewACPCommand.cs" />
     <Compile Include="controller\acp\CreateNewCostCenterCommand.cs" />
+    <Compile Include="controller\acp\DeleteACPCommand.cs" />
     <Compile Include="controller\acp\GetAllAccountCoursePermitCommand.cs" />
     <Compile Include="controller\Command.cs" />
     <Compile Include="controller\hrm\DeleteEmployeeCommand.cs" />

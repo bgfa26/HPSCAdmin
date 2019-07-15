@@ -223,5 +223,38 @@ namespace adminsite.model.acp
             }
 
         }
+
+        /// <summary>
+        /// Metodo que elimina los centros de costo asociados a una cuenta de la base de datos
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        public int DeleteCostCenter(AccountCoursePermit accountCoursePermit)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.VarChar, accountCoursePermit.id, false));
+                ExecuteStoredProcedure(ACPResources.DeleteCostCenterStoredProcedure, parameters);
+                int result = 200;
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

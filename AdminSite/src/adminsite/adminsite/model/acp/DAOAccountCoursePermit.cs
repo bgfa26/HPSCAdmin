@@ -149,13 +149,13 @@ namespace adminsite.model.acp
                     try
                     {
                         Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
-                        accountcoursepermit = new AccountCoursePermit(Int32.Parse(row["ACPID"].ToString()),
-                                                row["NAME"].ToString(),
-                                                row["TYPE"].ToString(),
-                                                Convert.ToDateTime(row["INITDATE"].ToString()),
-                                                Convert.ToDateTime(row["ENDDATE"].ToString()),
-                                                Int32.Parse(row["STATUS"].ToString()),
-                                                employee);
+                        accountcoursepermit = new AccountCoursePermit(row["ACPID"].ToString(),
+                                                                      row["NAME"].ToString(),
+                                                                      Int32.Parse(row["TYPE"].ToString()),
+                                                                      Convert.ToDateTime(row["INITDATE"].ToString()),
+                                                                      Convert.ToDateTime(row["ENDDATE"].ToString()),
+                                                                      Int32.Parse(row["STATUS"].ToString()),
+                                                                     employee);
 
                         accountscoursespermitsList.Add(accountcoursepermit);
                     }

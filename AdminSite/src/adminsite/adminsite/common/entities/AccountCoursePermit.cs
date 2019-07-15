@@ -10,9 +10,9 @@ namespace adminsite.common.entities
     /// </summary>
     public class AccountCoursePermit
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public string name { get; set; }
-        public string type { get; set; }
+        public int type { get; set; }
         public DateTime initDate { get; set; }
         public DateTime endDate { get; set; }
         public string status { get; set; }
@@ -20,7 +20,7 @@ namespace adminsite.common.entities
         public int error { get; set; }
 
         public AccountCoursePermit() { }
-        public AccountCoursePermit(int id, string name, string type, DateTime initDate, DateTime endDate, string status, Employee administrator)
+        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, string status, Employee administrator)
         {
             this.id = id;
             this.name = name;
@@ -31,7 +31,17 @@ namespace adminsite.common.entities
             this.administrator = administrator;
             this.error = 200;
         }
-        public AccountCoursePermit(int id, string name, string type, DateTime initDate, DateTime endDate, string status)
+        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, Employee administrator)
+        {
+            this.id = id;
+            this.name = name;
+            this.type = type;
+            this.initDate = initDate;
+            this.endDate = endDate;
+            this.administrator = administrator;
+            this.error = 200;
+        }
+        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, string status)
         {
             this.id = id;
             this.name = name;
@@ -41,7 +51,7 @@ namespace adminsite.common.entities
             this.status = status;
             this.error = 200;
         }
-        public AccountCoursePermit(int id)
+        public AccountCoursePermit(string id)
         {
             this.id = id;
             this.error = 200;

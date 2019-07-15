@@ -227,14 +227,13 @@ CREATE PROCEDURE [dbo].[CREATE_ACCOUNT_COURSE_PERMIT]
   @type AS int,
   @initdate AS date,
   @enddate AS date,
-  @status AS int,
   @fk_employee AS int,
   @exitvalue AS int OUTPUT
 AS
 BEGIN
   IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @id) = 0)
     BEGIN
-      INSERT INTO ACCOUNT_COURSE_PERMIT VALUES(@id, @name, @type, @initdate, @enddate, @status, @fk_employee);
+      INSERT INTO ACCOUNT_COURSE_PERMIT VALUES(@id, @name, @type, @initdate, @enddate, 1, @fk_employee);
       set @exitvalue = 200;
       RETURN @exitvalue;
     END;
@@ -313,7 +312,7 @@ CREATE PROCEDURE [dbo].[UPDATE_ACCOUNT_COURSE_PERMIT]
 AS
 BEGIN
 	IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @acpid) = 1)
-      	BEGIN 
+      BEGIN 
 	  		UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET NAME = @name, TYPE = @type, INITDATE = @initdate, ENDDATE = @enddate, FK_EMPLOYEE = @fk_employee WHERE ID = @acpid;
 	      	set @exitvalue = 200;
 	  		RETURN @exitvalue;

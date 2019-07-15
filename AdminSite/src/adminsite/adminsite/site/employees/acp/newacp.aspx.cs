@@ -1,5 +1,6 @@
 ﻿using adminsite.common;
 using adminsite.common.entities;
+using adminsite.controller.acp;
 using adminsite.controller.hrm;
 using System;
 using System.Collections.Generic;
@@ -99,7 +100,7 @@ namespace adminsite.site.employees.acp
         {
             string acpId = id.Value;
             string acpName = name.Value;
-            string acptype = type.SelectedValue;
+            string acpType = type.SelectedValue;
             String init = dateinit.Text;
             String end = dateend.Text;
             string administrator = admin.Value;
@@ -129,29 +130,54 @@ namespace adminsite.site.employees.acp
                         }
                         if (adminExist)
                         {
+                            try
+                            {
+                                Employee employee = new Employee(adminInt);
+                                AccountCoursePermit acpToInsert = new AccountCoursePermit(acpId, acpName, Int32.Parse(acpType), Convert.ToDateTime(init), 
+                                                                                          Convert.ToDateTime(end), employee);
+                                CreateNewACPCommand _cmd = new CreateNewACPCommand(acpToInsert);
+                                _cmd.Execute();
+                                int result = _cmd.GetResult();
+                                if (result == 200)
+                                {
+                                    foreach (string unit in selectedUnits)
+                                    {
+                                        int unitId = Int32.Parse(unit);
+                                        CostCenter costCenter = new CostCenter(unitId, acpToInsert.id);
+                                        CreateNewCostCenterCommand cmdCostCenter = new CreateNewCostCenterCommand(costCenter);
+                                        cmdCostCenter.Execute();
+                                    }
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha registrado exitosamente', 'success', '/site/employees/acp/newacp.aspx')", true);
 
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El código ingresado ya se encuentra registrado en el sistema', 'error')", true);
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
+                            }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El empleado seleccionado no se encuentra registrado en el sistema')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El empleado seleccionado no se encuentra registrado en el sistema', 'error')", true);
                         }
-
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
                     }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El campo de administrador no tiene formato númerico')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El campo de administrador no tiene formato númerico', 'error')", true);
                 }
-
-
             }
             else
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos vacíos en el formulario')", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos vacíos en el formulario', 'error')", true);
             }
         }
     }

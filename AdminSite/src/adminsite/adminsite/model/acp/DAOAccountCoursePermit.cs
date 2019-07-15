@@ -68,12 +68,11 @@ namespace adminsite.model.acp
 
             try
             {
-                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.Int, acpToInsert.id.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.VarChar, acpToInsert.id.ToString(), false));
                 parameters.Add(new ParameterDB(ACPResources.name, SqlDbType.VarChar, acpToInsert.name, false));
-                parameters.Add(new ParameterDB(ACPResources.type, SqlDbType.Int, acpToInsert.type, false));
-                parameters.Add(new ParameterDB(ACPResources.initdate, SqlDbType.Date, acpToInsert.initDate.ToString(), false));
-                parameters.Add(new ParameterDB(ACPResources.enddate, SqlDbType.Date, acpToInsert.endDate.ToString(), false));
-                parameters.Add(new ParameterDB(ACPResources.status, SqlDbType.Int, acpToInsert.status, false));
+                parameters.Add(new ParameterDB(ACPResources.type, SqlDbType.Int, acpToInsert.type.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.initdate, SqlDbType.Date, acpToInsert.initDate.ToString("yyyy-MM-dd"), false));
+                parameters.Add(new ParameterDB(ACPResources.enddate, SqlDbType.Date, acpToInsert.endDate.ToString("yyyy-MM-dd"), false));
                 parameters.Add(new ParameterDB(ACPResources.fk_employee, SqlDbType.Int, acpToInsert.administrator.id.ToString(), false));
                 parameters.Add(new ParameterDB(ACPResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(ACPResources.CreateACPStoredProcedure, parameters);

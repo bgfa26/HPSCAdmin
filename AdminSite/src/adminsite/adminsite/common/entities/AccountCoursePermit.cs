@@ -18,6 +18,7 @@ namespace adminsite.common.entities
         public int status { get; set; }
         public Employee administrator { get; set; }
         public int error { get; set; }
+        public List<CostCenter> associatedUnits { get; set; }
 
         public AccountCoursePermit() { }
         public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, int status, Employee administrator)

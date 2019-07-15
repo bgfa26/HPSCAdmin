@@ -180,13 +180,13 @@ namespace adminsite.model.acp
             try
             {
                 dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAllACPStoredProcedure);
-                AccountCoursePermit accountcoursepermit = null;
+                AccountCoursePermit accountCoursePermit = null;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     try
                     {
                         Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
-                        accountcoursepermit = new AccountCoursePermit(row["ACPID"].ToString(),
+                        accountCoursePermit = new AccountCoursePermit(row["ACPID"].ToString(),
                                                                       row["NAME"].ToString(),
                                                                       Int32.Parse(row["TYPE"].ToString()),
                                                                       Convert.ToDateTime(row["INITDATE"].ToString()),
@@ -194,7 +194,7 @@ namespace adminsite.model.acp
                                                                       Int32.Parse(row["STATUS"].ToString()),
                                                                       employee);
 
-                        accountscoursespermitsList.Add(accountcoursepermit);
+                        accountscoursespermitsList.Add(accountCoursePermit);
                     }
                     catch (Exception ex)
                     {
@@ -257,6 +257,99 @@ namespace adminsite.model.acp
             {
                 throw ex;
             }
+        }
+
+
+        public int UpdateAccountCoursePermit(AccountCoursePermit acpToModify)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.VarChar, acpToModify.id.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.name, SqlDbType.VarChar, acpToModify.name, false));
+                parameters.Add(new ParameterDB(ACPResources.type, SqlDbType.Int, acpToModify.type.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.initdate, SqlDbType.Date, acpToModify.initDate.ToString("yyyy-MM-dd"), false));
+                parameters.Add(new ParameterDB(ACPResources.enddate, SqlDbType.Date, acpToModify.endDate.ToString("yyyy-MM-dd"), false));
+                parameters.Add(new ParameterDB(ACPResources.fk_employee, SqlDbType.Int, acpToModify.administrator.id.ToString(), false));
+                parameters.Add(new ParameterDB(ACPResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(ACPResources.UpdateAccountCoursePermitStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+
+        public AccountCoursePermit GetAccountCoursesPermit(AccountCoursePermit acpToConsult)
+        {
+            AccountCoursePermit accountCoursePermit = null;
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAllACPStoredProcedure);
+                DataRow row = dataTable.Rows[0];
+                Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
+                accountCoursePermit = new AccountCoursePermit(row["ACPID"].ToString(),
+                                                              row["NAME"].ToString(),
+                                                              Int32.Parse(row["TYPE"].ToString()),
+                                                              Convert.ToDateTime(row["INITDATE"].ToString()),
+                                                              Convert.ToDateTime(row["ENDDATE"].ToString()),
+                                                              Int32.Parse(row["STATUS"].ToString()),
+                                                              employee);
+                List<CostCenter> costCenters = new List<CostCenter>();
+                foreach (DataRow unitRow in dataTable.Rows)
+                {
+                    try
+                    {
+                        OrganizationalUnit organizationalUnit = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()), row["OUNAME"].ToString());
+                        CostCenter costCenter = new CostCenter(organizationalUnit, row["ACPID"].ToString());
+                        costCenters.Add(costCenter);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                accountCoursePermit.associatedUnits = costCenters;
+                return accountCoursePermit;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

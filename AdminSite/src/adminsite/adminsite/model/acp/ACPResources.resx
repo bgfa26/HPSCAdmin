@@ -185,4 +185,8 @@
     <value>GET_ACCOUNT_COURSE_PERMIT</value>
     <comment>Procedimiento almacenado para consultar una cuenta/curso/permiso específica</comment>
   </data>
+  <data name="UpdateAccountCoursePermitStoredProcedure" xml:space="preserve">
+    <value>UPDATE_ACCOUNT_COURSE_PERMIT</value>
+    <comment>Procedimiento almacenado para modificar una cuenta/curso/permiso</comment>
+  </data>
 </root>

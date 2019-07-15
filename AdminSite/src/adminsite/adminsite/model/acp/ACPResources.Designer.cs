@@ -212,5 +212,14 @@ namespace adminsite.model.acp {
                 return ResourceManager.GetString("type", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE_ACCOUNT_COURSE_PERMIT.
+        /// </summary>
+        internal static string UpdateAccountCoursePermitStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateAccountCoursePermitStoredProcedure", resourceCulture);
+            }
+        }
     }
 }

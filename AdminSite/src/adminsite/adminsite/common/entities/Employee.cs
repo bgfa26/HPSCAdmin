@@ -122,5 +122,13 @@ namespace adminsite.common
             this.organizationalUnit = organizationalUnit;
             this.error = 200;
         }
+
+        public Employee(int id, string firstName, string lastName)
+        {
+            this.id = id;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.error = 200;
+        }
     }
 }

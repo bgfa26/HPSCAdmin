@@ -135,5 +135,57 @@ namespace adminsite.model.acp
             }
 
         }
+
+        public List<AccountCoursePermit> GetAccountsCoursesPermits()
+        {
+            List<AccountCoursePermit> accountscoursespermitsList = new List<AccountCoursePermit>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAllACPStoredProcedure);
+                AccountCoursePermit accountcoursepermit = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
+                        accountcoursepermit = new AccountCoursePermit(Int32.Parse(row["ACPID"].ToString()),
+                                                row["NAME"].ToString(),
+                                                row["TYPE"].ToString(),
+                                                Convert.ToDateTime(row["INITDATE"].ToString()),
+                                                Convert.ToDateTime(row["ENDDATE"].ToString()),
+                                                Int32.Parse(row["STATUS"].ToString()),
+                                                employee);
+
+                        accountscoursespermitsList.Add(accountcoursepermit);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return accountscoursespermitsList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

@@ -169,4 +169,8 @@
     <value>@fk_ou</value>
     <comment>Unidad organizacional</comment>
   </data>
+  <data name="GetAllACPStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_ACCOUNTS_COURSES_PERMITS</value>
+    <comment>Procedimiento almacewnado para obtener las cuentas/cursos/permisos de la BD</comment>
+  </data>
 </root>

@@ -185,14 +185,21 @@ namespace adminsite.model.acp
                 {
                     try
                     {
+                        string typeStringFormat = "No Facturable";
+                        int typeNumeric = Int32.Parse(row["TYPE"].ToString());
+                        if (typeNumeric == 1)
+                        {
+                            typeStringFormat = "Facturable";
+                        }
                         Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
                         accountCoursePermit = new AccountCoursePermit(row["ACPID"].ToString(),
                                                                       row["NAME"].ToString(),
-                                                                      Int32.Parse(row["TYPE"].ToString()),
+                                                                      typeNumeric,
+                                                                      typeStringFormat,
                                                                       Convert.ToDateTime(row["INITDATE"].ToString()),
                                                                       Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                                       Int32.Parse(row["STATUS"].ToString()),
-                                                                      employee);
+                                                                      employee);;
 
                         accountscoursespermitsList.Add(accountCoursePermit);
                     }
@@ -306,10 +313,17 @@ namespace adminsite.model.acp
             {
                 dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAllACPStoredProcedure);
                 DataRow row = dataTable.Rows[0];
+                string typeStringFormat = "No Facturable";
+                int typeNumeric = Int32.Parse(row["TYPE"].ToString());
+                if (typeNumeric == 1)
+                {
+                    typeStringFormat = "Facturable";
+                }
                 Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
                 accountCoursePermit = new AccountCoursePermit(row["ACPID"].ToString(),
                                                               row["NAME"].ToString(),
-                                                              Int32.Parse(row["TYPE"].ToString()),
+                                                              typeNumeric,
+                                                              typeStringFormat,
                                                               Convert.ToDateTime(row["INITDATE"].ToString()),
                                                               Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                               Int32.Parse(row["STATUS"].ToString()),

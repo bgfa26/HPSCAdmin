@@ -49,14 +49,14 @@
                             <tbody id="tableRows">
                                 <asp:Repeater ID="repCostCenter" runat="server">
                                     <ItemTemplate>
-                                            <tr id="">
-                                                <td><asp:Label ID="costCenterId" runat="server" Text='' ReadOnly="True" BorderStyle="None" /></td>
+                                            <tr id="<%# Eval("id") %>">
+                                                <td><asp:Label ID="costCenterId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
+                                                <td><%# Eval("name") %></td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><%# Eval("typeStringFormat") %></td>
+                                                <td><%# Eval("administrator.firstName") %> <%# Eval("administrator.lastName") %></td>
+                                                <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
+                                                <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar empleado" />
                                                     <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar empleado" />

@@ -13,6 +13,7 @@ namespace adminsite.common.entities
         public string id { get; set; }
         public string name { get; set; }
         public int type { get; set; }
+        public string typeStringFormat { get; set; }
         public DateTime initDate { get; set; }
         public DateTime endDate { get; set; }
         public int status { get; set; }
@@ -21,11 +22,12 @@ namespace adminsite.common.entities
         public List<CostCenter> associatedUnits { get; set; }
 
         public AccountCoursePermit() { }
-        public AccountCoursePermit(string id, string name, int type, DateTime initDate, DateTime endDate, int status, Employee administrator)
+        public AccountCoursePermit(string id, string name, int type, string typeStringFormat, DateTime initDate, DateTime endDate, int status, Employee administrator)
         {
             this.id = id;
             this.name = name;
             this.type = type;
+            this.typeStringFormat = typeStringFormat;
             this.initDate = initDate;
             this.endDate = endDate;
             this.status = status;

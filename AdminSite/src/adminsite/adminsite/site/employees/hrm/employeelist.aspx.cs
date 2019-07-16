@@ -36,7 +36,7 @@ namespace adminsite.site.employees.hrm
                             }
                         }
                     }
-                    else
+                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))))
                     {
                         foreach (Employee employee in employeeList)
                         {
@@ -65,6 +65,10 @@ namespace adminsite.site.employees.hrm
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
                     }
                     if (activeEmployees.Count != 0)
                     {
@@ -110,7 +114,7 @@ namespace adminsite.site.employees.hrm
             {
                 string email = ((Label)repEmployees.Items[e.Item.ItemIndex].FindControl("employeeEmail")).Text;
                 Session["CONSULTED_EMAIL"] = email;
-                Response.Redirect("~/site/employees/hrm/employeedata.aspx");
+                Response.Redirect("~/site/employees/hrm/employeedata.aspx", false);
             }
         }
     }

@@ -40,7 +40,7 @@ namespace adminsite.site.employees.acp
                             }
                         }
                     }
-                    else
+                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))))
                     {
                         foreach (Employee employee in employees)
                         {
@@ -69,6 +69,10 @@ namespace adminsite.site.employees.acp
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
                     }
                     if (activeEmployees.Count != 0)
                     {

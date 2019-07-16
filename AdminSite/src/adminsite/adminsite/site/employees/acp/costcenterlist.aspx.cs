@@ -1,4 +1,5 @@
-﻿using adminsite.common.entities;
+﻿using adminsite.common;
+using adminsite.common.entities;
 using adminsite.controller.acp;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,13 @@ namespace adminsite.site.employees.acp
             {
                 try
                 {
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    if (!((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) &&
+                        !((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))) &&
+                        !((loggedEmployee.organizationalUnit.Equals("Director")) && (loggedEmployee.positionName.Equals("Directiva"))))
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
+                    }
                     GetAllAccountCoursePermitCommand cmd = new GetAllAccountCoursePermitCommand();
                     cmd.Execute();
                     acpList = cmd.GetResults();

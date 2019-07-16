@@ -59,6 +59,7 @@ namespace adminsite.common.entities
             this.id = id;
             this.error = 200;
         }
+        
     }
 }
 

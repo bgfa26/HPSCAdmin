@@ -55,8 +55,8 @@
                                                 <td><asp:Label ID="employeeEmail" runat="server" Text='<%# Eval("email") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td><%# Eval("positionName") %> / <%# Eval("organizationalUnit") %></td>
                                                 <td style="text-align:center">
-                                                    <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar empleado" />
-                                                    <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar empleado" />
+                                                    <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar" />
+                                                    <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar" />
                                                 </td>
                                             </tr>              
                                     </ItemTemplate>

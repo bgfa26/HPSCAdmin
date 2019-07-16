@@ -174,7 +174,7 @@ namespace adminsite.model.acp
 
         public List<AccountCoursePermit> GetAllAccountsCoursesPermits()
         {
-            List<AccountCoursePermit> accountscoursespermitsList = new List<AccountCoursePermit>();
+            List<AccountCoursePermit> accountsCoursesPermitsList = new List<AccountCoursePermit>();
             DataTable dataTable = new DataTable();
 
             try
@@ -199,9 +199,35 @@ namespace adminsite.model.acp
                                                                       Convert.ToDateTime(row["INITDATE"].ToString()),
                                                                       Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                                       Int32.Parse(row["STATUS"].ToString()),
-                                                                      employee);;
-
-                        accountscoursespermitsList.Add(accountCoursePermit);
+                                                                      employee);
+                        List<CostCenter> costCenters = new List<CostCenter>();
+                        OrganizationalUnit organizationalUnit = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()), row["OUNAME"].ToString());
+                        CostCenter costCenter = new CostCenter(organizationalUnit, row["ACPID"].ToString());
+                        accountCoursePermit.associatedUnits = costCenters;
+                        bool existAcp = false;
+                        AccountCoursePermit account = new AccountCoursePermit();
+                        int position = 0;
+                        int positionAcp = 0;
+                        foreach (AccountCoursePermit acp in accountsCoursesPermitsList)
+                        {
+                            if (acp.id.Equals(accountCoursePermit.id))
+                            {
+                                acp.associatedUnits.Add(costCenter);
+                                existAcp = true;
+                                positionAcp = position;
+                                account = acp;
+                            }
+                            position++;
+                        }
+                        if (existAcp)
+                        {
+                            accountsCoursesPermitsList[positionAcp] = account;
+                        }
+                        else
+                        {
+                            accountCoursePermit.associatedUnits.Add(costCenter);
+                            accountsCoursesPermitsList.Add(accountCoursePermit);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -210,7 +236,7 @@ namespace adminsite.model.acp
 
 
                 }
-                return accountscoursespermitsList;
+                return accountsCoursesPermitsList;
             }
             catch (SqlException ex)
             {

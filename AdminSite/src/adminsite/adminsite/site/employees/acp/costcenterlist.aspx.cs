@@ -42,5 +42,53 @@ namespace adminsite.site.employees.acp
                 }
             }
         }
+
+        public string getAssociatedUnitsString(Object list)
+        {
+            List<CostCenter> costCenters = (List<CostCenter>)list;
+            string associatedUnits = "";
+            foreach (CostCenter costCenter in costCenters)
+            {
+                associatedUnits += costCenter.organizationalUnit.name + ", ";
+            }
+            associatedUnits = associatedUnits.Remove(associatedUnits.Length - 1);
+            associatedUnits = associatedUnits.Remove(associatedUnits.Length - 1);
+            return associatedUnits;
+        }
+
+        protected void repCostCenter_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            ImageButton action = (ImageButton)e.CommandSource;
+            string actionString = action.ID;
+            if (action.ID.Equals("delete"))
+            {
+                try
+                {
+                    string id = ((Label)repCostCenter.Items[e.Item.ItemIndex].FindControl("costCenterId")).Text;
+                    AccountCoursePermit acpToDelete = new AccountCoursePermit(id);
+                    DeleteACPCommand cmd = new DeleteACPCommand(acpToDelete);
+                    cmd.Execute();
+                    int result = cmd.GetResult();
+                    if (result == 200)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha eliminado exitosamente', 'success', '/site/employees/acp/costcenterlist.aspx')", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido eliminar el elemento seleccionado', 'error')", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido eliminar el elemento seleccionado', 'error')", true);
+                }
+            }
+            else if (action.ID.Equals("modify"))
+            {
+                string id = ((Label)repCostCenter.Items[e.Item.ItemIndex].FindControl("costCenterId")).Text;
+                Session["CONSULTED_ACP"] = id;
+                Response.Redirect("~/site/employees/hrm/employeedata.aspx");
+            }
+        }
     }
 }

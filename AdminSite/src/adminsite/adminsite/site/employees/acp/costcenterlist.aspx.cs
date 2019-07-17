@@ -23,7 +23,7 @@ namespace adminsite.site.employees.acp
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     if (!((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) &&
                         !((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))) &&
-                        !((loggedEmployee.organizationalUnit.Equals("Director")) && (loggedEmployee.positionName.Equals("Directiva"))))
+                        !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
                     {
                         Response.Redirect("~/site/employees/dashboard.aspx", false);
                     }
@@ -95,7 +95,7 @@ namespace adminsite.site.employees.acp
             {
                 string id = ((Label)repCostCenter.Items[e.Item.ItemIndex].FindControl("costCenterId")).Text;
                 Session["CONSULTED_ACP"] = id;
-                Response.Redirect("~/site/employees/hrm/employeedata.aspx");
+                Response.Redirect("~/site/employees/acp/acpdata.aspx");
             }
         }
     }

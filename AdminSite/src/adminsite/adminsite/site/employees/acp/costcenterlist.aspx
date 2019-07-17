@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Listado de cuentas/cursos/permisos
+                Lista de cuentas, cursos y permisos
             </h1>
         </div>
     </div>

@@ -1,4 +1,5 @@
-﻿using adminsite.common;
+﻿using adminsite.common.entities;
+using adminsite.common;
 using adminsite.controller.usermanagement;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using adminsite.common;
+﻿using adminsite.common.entities;
 using adminsite.model.hrm;
 using System;
 using System.Collections.Generic;

@@ -332,12 +332,14 @@ namespace adminsite.model.acp
 
         public AccountCoursePermit GetAccountCoursePermit(AccountCoursePermit acpToConsult)
         {
+            List<ParameterDB> parameters = new List<ParameterDB>();
             AccountCoursePermit accountCoursePermit = null;
             DataTable dataTable = new DataTable();
 
             try
             {
-                dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAllACPStoredProcedure);
+                parameters.Add(new ParameterDB(ACPResources.id, SqlDbType.VarChar, acpToConsult.id.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(ACPResources.GetAccountCoursePermitStoredProcedure, parameters);
                 DataRow row = dataTable.Rows[0];
                 string typeStringFormat = "No Facturable";
                 int typeNumeric = Int32.Parse(row["TYPE"].ToString());
@@ -359,8 +361,8 @@ namespace adminsite.model.acp
                 {
                     try
                     {
-                        OrganizationalUnit organizationalUnit = new OrganizationalUnit(Int32.Parse(row["OUID"].ToString()), row["OUNAME"].ToString());
-                        CostCenter costCenter = new CostCenter(organizationalUnit, row["ACPID"].ToString());
+                        OrganizationalUnit organizationalUnit = new OrganizationalUnit(Int32.Parse(unitRow["OUID"].ToString()), unitRow["OUNAME"].ToString());
+                        CostCenter costCenter = new CostCenter(organizationalUnit, unitRow["ACPID"].ToString());
                         costCenters.Add(costCenter);
                     }
                     catch (Exception ex)

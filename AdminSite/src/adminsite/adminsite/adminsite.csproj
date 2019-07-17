@@ -68,6 +68,7 @@
     <Content Include="site\common\img\hpsc.png" />
     <Content Include="site\common\img\interatec.png" />
     <Content Include="site\common\img\mt2005.png" />
+    <Content Include="site\employees\acp\acpdata.aspx" />
     <Content Include="site\employees\acp\newacp.aspx" />
     <Content Include="site\employees\acp\costcenterlist.aspx" />
     <Content Include="site\employees\blank-page.html" />
@@ -402,6 +403,13 @@
       <DependentUpon>UserManagementResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="site\employees\acp\acpdata.aspx.cs">
+      <DependentUpon>acpdata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\acp\acpdata.aspx.designer.cs">
+      <DependentUpon>acpdata.aspx</DependentUpon>
+    </Compile>
     <Compile Include="site\employees\acp\newacp.aspx.cs">
       <DependentUpon>newacp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

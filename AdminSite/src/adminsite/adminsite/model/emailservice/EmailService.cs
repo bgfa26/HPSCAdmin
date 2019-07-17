@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net.Mail;
-using adminsite.common;
+using adminsite.common.entities;
 
 namespace adminsite.model.emailservice
 {
@@ -30,7 +30,9 @@ namespace adminsite.model.emailservice
 
                 SmtpClient client = new SmtpClient();
                 client.UseDefaultCredentials = false;
+                client.DeliveryMethod = SmtpDeliveryMethod.Network;
                 client.Credentials = new System.Net.NetworkCredential(EmailResources.Email, EmailResources.Password);
+                client.EnableSsl = true;
                 client.Port = 587; // Usar puerto 25 o 587
                 //client.Host = "smtp.office365.com";
                 client.Host = "smtp-mail.outlook.com";

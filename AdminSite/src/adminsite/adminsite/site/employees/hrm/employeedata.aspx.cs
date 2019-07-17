@@ -102,7 +102,8 @@ namespace adminsite.site.employees.hrm
                 {
                     Session.Remove("CONSULTED_EMAIL");
                     Session.Remove("CONSULTED_ID");
-                    Response.Redirect("~/site/employees/dashboard.aspx", false);
+                    Session.Remove("CONSULTED_SUPERVISEDUNIT");
+                    Response.Redirect("~/site/employees/hrm/employeelist.aspx", false);
                 }
             }
         }

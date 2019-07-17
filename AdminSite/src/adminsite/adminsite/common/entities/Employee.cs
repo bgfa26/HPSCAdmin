@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace adminsite.common
+namespace adminsite.common.entities
 {
     /// <summary>
     /// Objeto para almacenar la informacion de los empleados

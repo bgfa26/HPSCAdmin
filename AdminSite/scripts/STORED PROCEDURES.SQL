@@ -321,7 +321,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[UPDATE_ACCOUNT_COURSE_PERMIT]
-  @id AS int,
+  @id AS varchar(100),
   @name AS varchar(100),
   @type AS int,
   @initdate AS date,
@@ -372,10 +372,10 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[DELETE_COST_CENTER]
-  @fk_accountcoursepermit AS varchar (30)
+  @id AS varchar (30)
 AS
 BEGIN
-  DELETE FROM [dbo].[COST_CENTER] WHERE FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit;
+  DELETE FROM [dbo].[COST_CENTER] WHERE FK_ACCOUNTCOURSEPERMIT = @id;
 END
 
 

@@ -331,7 +331,7 @@ CREATE PROCEDURE [dbo].[UPDATE_ACCOUNT_COURSE_PERMIT]
 AS
 BEGIN
 	IF ((SELECT COUNT(*) FROM ACCOUNT_COURSE_PERMIT WHERE ID = @id) = 1)
-      BEGIN 
+      	BEGIN 
 	  		UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET NAME = @name, TYPE = @type, INITDATE = @initdate, ENDDATE = @enddate, FK_EMPLOYEE = @fk_employee WHERE ID = @id;
 	      	set @exitvalue = 200;
 	  		RETURN @exitvalue;
@@ -355,9 +355,19 @@ SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[DELETE_ACCOUNT_COURSE_PERMIT]
   @id AS varchar(30)
+  @exitvalue AS int OUTPUT
 AS
 BEGIN
-  UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET [STATUS] = 0 WHERE [ID] = @id;
+	IF ((SELECT COUNT(*) FROM WORKLOAD WHERE FK_ACCOUNTCOURSEPERMIT = @id) = 0)
+       	BEGIN
+       	  	DELETE FROM [dbo].[ACCOUNT_COURSE_PERMIT] WHERE ID = @id;
+  	   	END;
+  	ELSE
+  	   	BEGIN
+	  	   	UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET [STATUS] = 0 WHERE [ID] = @id;
+	  		set @exitvalue = 200;
+		  	RETURN @exitvalue;
+  	   	END;
 END
 
 

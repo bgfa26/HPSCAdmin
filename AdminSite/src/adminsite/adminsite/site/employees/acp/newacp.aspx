@@ -36,7 +36,7 @@
                         <div class="col-md-12">
                             <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Identificador: </label>
-				                <input type="text" class="form-control textinput" id="id" runat="server" autocomplete="off" maxlength="50">
+				                <input type="text" class="form-control textinput" id="id" placeholder="XXX-XXXX" runat="server" autocomplete="off" maxlength="8">
 
                                 <label style="text-align:right;margin-top:10px">Nombre: </label>
 				                <input type="text" class="form-control textinput" id="name" runat="server" autocomplete="off" maxlength="50">

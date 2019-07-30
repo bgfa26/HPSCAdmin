@@ -56,7 +56,7 @@
                                                 <td><%# Eval("typeStringFormat") %></td>
                                                 <td><%# Eval("administrator.firstName") %> <%# Eval("administrator.lastName") %></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
-                                                <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
+                                                <td><%# getEndDate(Eval("endDate")) %></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar" />
                                                     <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar" />

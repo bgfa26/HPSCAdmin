@@ -41,7 +41,7 @@ namespace adminsite.site.employees
                                 rrhhLi.Visible = true;
                                 acpLi.Visible = false;
                             }
-                            else if ((consultedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (consultedEmployee.positionName.Equals("Operaciones")))
+                            else if ((consultedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (consultedEmployee.positionName.Equals("Contraloría")))
                             {
                                 rrhhLi.Visible = false;
                                 acpLi.Visible = true;

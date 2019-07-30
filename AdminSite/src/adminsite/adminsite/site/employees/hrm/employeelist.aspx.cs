@@ -36,7 +36,7 @@ namespace adminsite.site.employees.hrm
                             }
                         }
                     }
-                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))))
+                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Contraloría"))))
                     {
                         foreach (Employee employee in employeeList)
                         {

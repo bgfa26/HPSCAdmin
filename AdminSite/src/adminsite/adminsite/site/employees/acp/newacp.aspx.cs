@@ -40,7 +40,7 @@ namespace adminsite.site.employees.acp
                             }
                         }
                     }
-                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))))
+                    else if (((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) || ((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Contraloría"))))
                     {
                         foreach (Employee employee in employees)
                         {
@@ -112,8 +112,12 @@ namespace adminsite.site.employees.acp
                .Where(li => li.Selected)
                .Select(li => li.Value)
                .ToList();
-            if ((!acpId.Equals("")) && (!acpName.Equals("")) && (!init.Equals("")) && (!end.Equals("")) && (!administrator.Equals("")) && (selectedUnits.Count != 0))
+            if ((!acpId.Equals("")) && (!acpName.Equals("")) && (!init.Equals("")) && (!administrator.Equals("")) && (selectedUnits.Count != 0))
             {
+                if (end.Equals(""))
+                {
+                    end = "9999-12-31";
+                }
                 double admin = 0;
                 bool isNumber = double.TryParse(administrator, out admin);
                 if (isNumber)

@@ -80,7 +80,7 @@
                                 <asp:Button ID="acceptBtn" runat="server" Text="Aceptar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="acceptBtn_Click"/>
                             </div>
                             <div class="col-md-3" style="margin-top:20px">
-                                <asp:Button ID="cancelBtn" runat="server" Text="Cancelar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="cancelBtn_Click"/>
+                                <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="cancelBtn_Click"/>
                             </div>
                             <div class="col-md-3" style="margin-top:20px">
                             </div>

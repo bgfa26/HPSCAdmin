@@ -22,7 +22,7 @@ namespace adminsite.site.employees.acp
                 {
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     if (!((loggedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (loggedEmployee.positionName.Equals("Administración"))) &&
-                        !((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Operaciones"))) &&
+                        !((loggedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (loggedEmployee.positionName.Equals("Contraloría"))) &&
                         !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
                     {
                         Response.Redirect("~/site/employees/dashboard.aspx", false);
@@ -62,6 +62,15 @@ namespace adminsite.site.employees.acp
             associatedUnits = associatedUnits.Remove(associatedUnits.Length - 1);
             associatedUnits = associatedUnits.Remove(associatedUnits.Length - 1);
             return associatedUnits;
+        }
+
+        public string getEndDate(Object date)
+        {
+            string endDate = string.Format("{0:dd/MM/yyyy}", date);
+            if (endDate.Contains("31/12/9999")){
+                endDate = "No tiene fecha de culminación";
+            }
+            return endDate;
         }
 
         protected void repCostCenter_ItemCommand(object source, RepeaterCommandEventArgs e)

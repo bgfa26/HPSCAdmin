@@ -57,7 +57,7 @@
         </div>
 
         <div class="wrap-input100 validate-input" data-validate="Ingrese su identificador de trabajador">
-            <input class="input100" id="idworker" type="text" name="workerid" placeholder="Identificador de trabajador" runat="server" maxlength="50">
+            <input class="input100" id="idworker" type="text" name="workerid" placeholder="Identificador de trabajador" runat="server" maxlength="20">
             <span class="focus-input100" data-placeholder="&#xf207;"></span>
         </div>
 

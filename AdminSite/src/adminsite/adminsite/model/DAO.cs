@@ -9,6 +9,9 @@ using System.Data;
 
 namespace adminsite.model.usermanagement
 {
+    /// <summary>
+    /// Clase abstracta DAO, todos los dao deben heredar de ella
+    /// </summary>
     abstract public class DAO
     {
         // El String de conexión se encuentra en el archivo Web.config

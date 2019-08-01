@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para crear un nuevo centro de costo
+    /// </summary>
     public class CreateNewCostCenterCommand : Command
     {
         CostCenter acostCenterToInsert;

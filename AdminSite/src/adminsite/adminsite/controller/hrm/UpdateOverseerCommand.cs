@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.hrm
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para actualizar el supervisor de una unidad organizacional
+    /// </summary>
     public class UpdateOverseerCommand : Command
     {
         OrganizationalUnit unitToModify;

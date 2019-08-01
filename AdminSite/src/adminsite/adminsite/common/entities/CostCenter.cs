@@ -5,6 +5,9 @@ using System.Web;
 
 namespace adminsite.common.entities
 {
+    /// <summary>
+    /// Objeto para almacenar la informacion de los centros de costo
+    /// </summary>
     public class CostCenter
     {
         public int fk_ou { get; set; }

@@ -10,6 +10,9 @@ using System.Web;
 
 namespace adminsite.model.hrm
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta DAO usada para el manejo de datos relacionados con recursos humanos
+    /// </summary>
     public class DAOHumanResourcesManagement : DAO
     {
         public List<Employee> GetEmployees()
@@ -103,6 +106,11 @@ namespace adminsite.model.hrm
 
         }
 
+
+        /// <summary>
+        /// Metodo que lista todas las unidades organizacionales
+        /// </summary>
+        /// <returns>Retorna una lista</returns>
         public List<OrganizationalUnit> GetAllOrganizationalUnits()
         {
             List<OrganizationalUnit> ouList = new List<OrganizationalUnit>();
@@ -159,6 +167,12 @@ namespace adminsite.model.hrm
 
         }
 
+
+
+        /// <summary>
+        /// Metodo que lista todos los cargos de la organizacion
+        /// </summary>
+        /// <returns>Retorna una lista</returns>
         public List<Position> GetAllPositions()
         {
             List<Position> positionList = new List<Position>();
@@ -205,6 +219,13 @@ namespace adminsite.model.hrm
 
         }
 
+
+
+        /// <summary>
+        /// Metodo para modificar el cargo de un empleado
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="employee">Empleado al que se le modificara el cargo</param>
         public int UpdateEmployeePositionUnit(Employee employee)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -238,6 +259,12 @@ namespace adminsite.model.hrm
 
         }
 
+
+        /// <summary>
+        /// Metodo para modificar el supervisor de una unidad organizacional
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="organizationalUnit">Unidad Organizacional a la cual se le modificara el supervisor</param>
         public int UpdateUnitOverseer(OrganizationalUnit organizationalUnit)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -270,6 +297,12 @@ namespace adminsite.model.hrm
 
         }
 
+
+        /// <summary>
+        /// Metodo para eliminar el supervisor de una unidad organizacional
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="organizationalUnit">Unidad Organizacional a la cual se le eliminara el supervisor</param>
         public int RemoveUnitOverseer(OrganizationalUnit organizationalUnit)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

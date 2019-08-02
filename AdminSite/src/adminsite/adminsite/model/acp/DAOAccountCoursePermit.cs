@@ -15,6 +15,10 @@ namespace adminsite.model.acp
     /// </summary>
     public class DAOAccountCoursePermit : DAO
     {
+        /// <summary>
+        /// Metodo que obtiene de la base de datos todas las unidades organizacionales
+        /// </summary>
+        /// <returns>Retorna una Lista de Unidades Organizacionales</returns>
         public List<OrganizationalUnit> GetOrganizationalUnits()
         {
             List<OrganizationalUnit> unitsList = new List<OrganizationalUnit>();

@@ -30,7 +30,7 @@ namespace adminsite.controller.hrm
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna un entero</returns>
+        /// <returns>Retorna una lista de cargos</returns>
         public List<Position> GetResults()
         {
             return results;

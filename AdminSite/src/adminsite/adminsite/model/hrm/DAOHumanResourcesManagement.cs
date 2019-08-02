@@ -15,6 +15,10 @@ namespace adminsite.model.hrm
     /// </summary>
     public class DAOHumanResourcesManagement : DAO
     {
+        /// <summary>
+        /// Metodo que obtiene los empleados de la base de datos 
+        /// </summary>
+        /// <returns>Retorna una Lista de Empleados</returns>
         public List<Employee> GetEmployees()
         {
             List<Employee> employeesList = new List<Employee>();

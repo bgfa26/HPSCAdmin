@@ -17,7 +17,7 @@ namespace adminsite.model.usermanagement
         /// <summary>
         /// Metodo que obtiene de la base de datos la informacion de un empleado dado un correo electronico
         /// </summary>
-        /// <returns>Retorna un Employee</returns>
+        /// <returns>Retorna un Empleado</returns>
         /// <param name="employee">Empleado del cual se quiere obtener informacion</param>
         public Employee GetEmployeeByEmail(Employee employee)
         {

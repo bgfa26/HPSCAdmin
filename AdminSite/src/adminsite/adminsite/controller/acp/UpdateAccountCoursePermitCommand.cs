@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para modificar una cuenta/curso/permiso
+    /// </summary>
     public class UpdateAccountCoursePermitCommand : Command
     {
         AccountCoursePermit acpToModify;

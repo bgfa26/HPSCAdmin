@@ -5,6 +5,9 @@ using System.Web;
 
 namespace adminsite.common.entities
 {
+    /// <summary>
+    /// Objeto para almacenar la informacion de las unidades organizacionales
+    /// </summary>
     public class OrganizationalUnit
     {
         public int id { get; set; }

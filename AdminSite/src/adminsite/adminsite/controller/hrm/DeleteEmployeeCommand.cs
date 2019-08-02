@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.hrm
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar el proceso de eliminar un empleado
+    /// </summary>
     public class DeleteEmployeeCommand : Command
     {
         Employee employeeToDelete;

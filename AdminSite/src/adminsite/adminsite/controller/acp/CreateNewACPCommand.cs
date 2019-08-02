@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para crear una nueva cuenta/curso/permiso
+    /// </summary>
     public class CreateNewACPCommand : Command
     {
         AccountCoursePermit acpToInsert;

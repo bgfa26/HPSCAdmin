@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para eliminar una cuenta/curso/permiso
+    /// </summary>
     public class DeleteACPCommand : Command
     {
         AccountCoursePermit acpToDelete;

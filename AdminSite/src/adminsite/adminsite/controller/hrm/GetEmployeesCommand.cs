@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.hrm
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener todos los empleados
+    /// </summary>
     public class GetEmployeesCommand : Command
     {
         private List<Employee> employees = new List<Employee>();

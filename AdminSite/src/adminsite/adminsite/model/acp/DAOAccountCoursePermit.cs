@@ -10,6 +10,9 @@ using System.Web;
 
 namespace adminsite.model.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta DAO usada para el manejo de datos relacionados con cuentas, cursos y permisos
+    /// </summary>
     public class DAOAccountCoursePermit : DAO
     {
         public List<OrganizationalUnit> GetOrganizationalUnits()
@@ -171,7 +174,10 @@ namespace adminsite.model.acp
 
         }
 
-
+        /// <summary>
+        /// Metodo para obtener todas las ACP de la base de datos
+        /// </summary>
+        /// <returns>Retorna una lista</returns>
         public List<AccountCoursePermit> GetAllAccountsCoursesPermits()
         {
             List<AccountCoursePermit> accountsCoursesPermitsList = new List<AccountCoursePermit>();
@@ -292,7 +298,11 @@ namespace adminsite.model.acp
             }
         }
 
-
+        /// <summary>
+        /// Metodo para modificar las cuentas, cursos o permisos de la base de datos
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="acpToModify">Cuenta/Curso/Permiso el cual se modificara</param>
         public int UpdateAccountCoursePermit(AccountCoursePermit acpToModify)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -329,7 +339,11 @@ namespace adminsite.model.acp
 
         }
 
-
+        /// <summary>
+        /// Metodo para obtener la informacion las cuentas, cursos o permisos de la base de datos
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="acpToConsult">Cuenta/Curso/Permiso del cual se obtiene la informacion</param>
         public AccountCoursePermit GetAccountCoursePermit(AccountCoursePermit acpToConsult)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

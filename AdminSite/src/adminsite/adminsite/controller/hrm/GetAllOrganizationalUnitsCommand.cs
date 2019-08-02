@@ -30,7 +30,7 @@ namespace adminsite.controller.hrm
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna un entero</returns>
+        /// <returns>Retorna una lista de unidades organizacionales</returns>
         public List<OrganizationalUnit> GetResults()
         {
             return results;

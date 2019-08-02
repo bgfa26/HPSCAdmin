@@ -35,7 +35,7 @@ namespace adminsite.controller.usermanagement
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna un Employee</returns>
+        /// <returns>Retorna un Empleado</returns>
         public Employee GetResult()
         {
             return result;

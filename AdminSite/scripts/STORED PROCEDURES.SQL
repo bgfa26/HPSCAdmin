@@ -365,8 +365,8 @@ BEGIN
   	ELSE
   	   	BEGIN
 	  	   	UPDATE [dbo].[ACCOUNT_COURSE_PERMIT] SET [STATUS] = 0 WHERE [ID] = @id;
-	  		set @exitvalue = 200;
-		  	RETURN @exitvalue;
+  	  		set @exitvalue = 200;
+  		  	RETURN @exitvalue;
   	   	END;
 END
 

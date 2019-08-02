@@ -26,6 +26,11 @@ namespace adminsite.controller.hrm
             }
         }
 
+
+        /// <summary>
+        /// Metodo que retorna el resultado obtenido en la BD
+        /// </summary>
+        /// <returns>Retorna una lista de empleados</returns>
         public List<Employee> GetResult()
         {
             return employees;

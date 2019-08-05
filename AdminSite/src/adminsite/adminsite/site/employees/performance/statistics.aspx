@@ -55,17 +55,30 @@
         <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Cursos, cuentas o permisos que utilizan más tiempo mensualmente</h3>
+                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Cursos, cuentas o permisos que utilizan más tiempo</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6" style="text-align: left;">
-                            <label style="text-align:left;margin-top:10px">Desde: </label>
-                            <asp:TextBox ID="TextBox3" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                            <label style="text-align:left;margin-top:10px">Mes: </label>
+                            <asp:DropDownList ID="monthHBarChartDl" runat="server" CssClass="form-control textinput">
+                                <asp:ListItem Text="Enero" Value="1" />
+                                <asp:ListItem Text="Febrero" Value="2" />
+                                <asp:ListItem Text="Marzo" Value="3" />
+                                <asp:ListItem Text="Abril" Value="4" />
+                                <asp:ListItem Text="Mayo" Value="5" />
+                                <asp:ListItem Text="Junio" Value="6" />
+                                <asp:ListItem Text="Julio" Value="7" />
+                                <asp:ListItem Text="Agosto" Value="8" />
+                                <asp:ListItem Text="Septiembre" Value="9" />
+                                <asp:ListItem Text="Octubre" Value="10" />
+                                <asp:ListItem Text="Noviembre" Value="11" />
+                                <asp:ListItem Text="Diciembre" Value="12" />
+                            </asp:DropDownList>
                         </div>
                         <div class="col-lg-6" style="text-align: left;">
-                            <label style="text-align:left;margin-top:10px">Hasta: </label>
-                            <asp:TextBox ID="TextBox4" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                            <label style="text-align:left;margin-top:10px">Año: </label>
+                            <asp:DropDownList ID="yearHBarChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                         </div>
                         <div class="col-lg-12" style="margin-top:15px">
                             <input type="button" onclick="getACPByMonth()" value="Buscar" class="btn btn-lg" style="width:100%"/>
@@ -88,13 +101,26 @@
                 <div class="panel-body">
                     <div class="flot-chart">
                         <div class="row">
-                            <div class="col-lg-6">
-                                <label style="text-align:right;margin-top:10px">Desde: </label>
-                                <asp:TextBox ID="initPie" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                            <div class="col-lg-6" style="text-align: left;">
+                                <label style="text-align:left;margin-top:10px">Mes: </label>
+                                <asp:DropDownList ID="monthPieChartDl" runat="server" CssClass="form-control textinput">
+                                <asp:ListItem Text="Enero" Value="1" />
+                                <asp:ListItem Text="Febrero" Value="2" />
+                                <asp:ListItem Text="Marzo" Value="3" />
+                                <asp:ListItem Text="Abril" Value="4" />
+                                <asp:ListItem Text="Mayo" Value="5" />
+                                <asp:ListItem Text="Junio" Value="6" />
+                                <asp:ListItem Text="Julio" Value="7" />
+                                <asp:ListItem Text="Agosto" Value="8" />
+                                <asp:ListItem Text="Septiembre" Value="9" />
+                                <asp:ListItem Text="Octubre" Value="10" />
+                                <asp:ListItem Text="Noviembre" Value="11" />
+                                <asp:ListItem Text="Diciembre" Value="12" />
+                            </asp:DropDownList>
                             </div>
-                            <div class="col-lg-6">
-                                <label style="text-align:right;margin-top:10px">Hasta: </label>
-                                <asp:TextBox ID="endPie" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                            <div class="col-lg-6" style="text-align: left;">
+                                <label style="text-align:left;margin-top:10px">Año: </label>
+                                <asp:DropDownList ID="yearPieChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                             </div>
                             <div class="col-lg-12" style="margin-top:15px">
                                 <input type="button" onclick="getAverageHoursPerDayOfWeek()" value="Buscar" class="btn btn-lg" style="width:100%"/>
@@ -114,13 +140,9 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-lg-6">
-                            <label style="text-align:right;margin-top:10px">Desde: </label>
-                            <asp:TextBox ID="initLine" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
-                        </div>
-                        <div class="col-lg-6">
-                            <label style="text-align:right;margin-top:10px">Hasta: </label>
-                            <asp:TextBox ID="EndLine" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                        <div class="col-lg-12">
+                            <label style="text-align:right;margin-top:10px">Año: </label>
+                            <asp:DropDownList ID="yearLineChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                         </div>
                         <div class="col-lg-12" style="margin-top:15px">
                             <input type="button" onclick="getHoursPerMonth()" value="Buscar" class="btn btn-lg" style="width:100%"/>
@@ -144,12 +166,25 @@
                     <div class="text-right">
                         <div class="row">
                             <div class="col-lg-6" style="text-align: left;">
-                                <label style="text-align:left;margin-top:10px">Desde: </label>
-                                <asp:TextBox ID="TextBox1" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                                <label style="text-align:left;margin-top:10px">Mes: </label>
+                                <asp:DropDownList ID="monthCarChartDl" runat="server" CssClass="form-control textinput">
+                                <asp:ListItem Text="Enero" Value="1" />
+                                <asp:ListItem Text="Febrero" Value="2" />
+                                <asp:ListItem Text="Marzo" Value="3" />
+                                <asp:ListItem Text="Abril" Value="4" />
+                                <asp:ListItem Text="Mayo" Value="5" />
+                                <asp:ListItem Text="Junio" Value="6" />
+                                <asp:ListItem Text="Julio" Value="7" />
+                                <asp:ListItem Text="Agosto" Value="8" />
+                                <asp:ListItem Text="Septiembre" Value="9" />
+                                <asp:ListItem Text="Octubre" Value="10" />
+                                <asp:ListItem Text="Noviembre" Value="11" />
+                                <asp:ListItem Text="Diciembre" Value="12" />
+                            </asp:DropDownList>
                             </div>
                             <div class="col-lg-6" style="text-align: left;">
-                                <label style="text-align:left;margin-top:10px">Hasta: </label>
-                                <asp:TextBox ID="TextBox2" runat="server" class="form-control textinput" TextMode="Date"></asp:TextBox>
+                                <label style="text-align:left;margin-top:10px">Año: </label>
+                                <asp:DropDownList ID="yearBarChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
                             </div>
                             <div class="col-lg-12" style="margin-top:15px">
                                 <input type="button" onclick="getTotalHoursPerPosition()" value="Buscar" class="btn btn-lg" style="width:100%"/>

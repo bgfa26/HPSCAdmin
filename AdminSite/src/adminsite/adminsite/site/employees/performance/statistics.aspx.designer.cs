@@ -22,75 +22,66 @@ namespace adminsite.site.employees.performance {
         protected global::System.Web.UI.ScriptManager smMain;
         
         /// <summary>
-        /// TextBox3 control.
+        /// monthHBarChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.DropDownList monthHBarChartDl;
         
         /// <summary>
-        /// TextBox4 control.
+        /// yearHBarChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.DropDownList yearHBarChartDl;
         
         /// <summary>
-        /// initPie control.
+        /// monthPieChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox initPie;
+        protected global::System.Web.UI.WebControls.DropDownList monthPieChartDl;
         
         /// <summary>
-        /// endPie control.
+        /// yearPieChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox endPie;
+        protected global::System.Web.UI.WebControls.DropDownList yearPieChartDl;
         
         /// <summary>
-        /// initLine control.
+        /// yearLineChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox initLine;
+        protected global::System.Web.UI.WebControls.DropDownList yearLineChartDl;
         
         /// <summary>
-        /// EndLine control.
+        /// monthCarChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox EndLine;
+        protected global::System.Web.UI.WebControls.DropDownList monthCarChartDl;
         
         /// <summary>
-        /// TextBox1 control.
+        /// yearBarChartDl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
-        
-        /// <summary>
-        /// TextBox2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.DropDownList yearBarChartDl;
     }
 }

@@ -14,7 +14,14 @@ namespace adminsite.site.employees.performance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            for (int year = 2010; year <= 2050; year++)
+            {
+                ListItem item = new ListItem(year.ToString(), year.ToString());
+                yearBarChartDl.Items.Insert(yearBarChartDl.Items.Count, item);
+                yearHBarChartDl.Items.Insert(yearHBarChartDl.Items.Count, item);
+                yearLineChartDl.Items.Insert(yearLineChartDl.Items.Count, item);
+                yearPieChartDl.Items.Insert(yearPieChartDl.Items.Count, item);
+            }
         }
 
         [System.Web.Services.WebMethod]

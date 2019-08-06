@@ -142,7 +142,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <label style="text-align:right;margin-top:10px">Año: </label>
-                            <asp:DropDownList ID="yearLineChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
+                            <select id="yearLineChartDl" class="form-control textinput">
+
+                            </select>
                         </div>
                         <div class="col-lg-12" style="margin-top:15px">
                             <input type="button" onclick="getHoursPerMonth()" value="Buscar" class="btn btn-lg" style="width:100%"/>
@@ -223,6 +225,20 @@
     <link rel="stylesheet" href="amcharts3/lib/plugins/export/export.css" type="text/css" media="all" />
 
     
+    <!-- Horizontal bar chart code -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            populateYears();
+        });
+
+        function populateYears() {
+            var dropdown = document.getElementById("yearLineChartDl");
+            
+            for (var i = 2010; i < 2051; ++i) {
+                dropdown[dropdown.length] = new Option(i, i);
+            }
+        }
+    </script>
     <!-- Horizontal bar chart code -->
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -343,96 +359,102 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getHoursPerMonth() {
-            PageMethods.GetHoursPerMonth(createLineChart);
+            PageMethods.GetHoursPerMonth(document.getElementById("yearLineChartDl").value, createLineChart);
         }
         function createLineChart(response, userContext, methodName) {
-            var chart = AmCharts.makeChart("linediv", {
-                "language": "es",
-                "type": "serial",
-                "theme": "none",
-                "marginRight": 40,
-                "marginLeft": 40,
-                "autoMarginOffset": 20,
-                "mouseWheelZoomEnabled":true,
-                "dataDateFormat": "YYYY-MM-DD",
-                "valueAxes": [{
-                    "id": "v1",
-                    "axisAlpha": 0,
-                    "position": "left",
-                    "ignoreAxisWidth":true
-                }],
-                "balloon": {
-                    "borderThickness": 1,
-                    "shadowAlpha": 0
-                },
-                "graphs": [{
-                    "id": "g1",
-                    "balloon":{
-                        "drop":true,
-                        "adjustBorderColor":false,
-                        "color":"#ffffff"
+            if (response != "error") {
+                var chart = AmCharts.makeChart("linediv", {
+                    "language": "es",
+                    "type": "serial",
+                    "theme": "none",
+                    "marginRight": 40,
+                    "marginLeft": 40,
+                    "autoMarginOffset": 20,
+                    "mouseWheelZoomEnabled": true,
+                    "dataDateFormat": "YYYY-MM",
+                    "valueAxes": [{
+                        "id": "v1",
+                        "axisAlpha": 0,
+                        "position": "left",
+                        "ignoreAxisWidth": true
+                    }],
+                    "balloon": {
+                        "borderThickness": 1,
+                        "shadowAlpha": 0
                     },
-                    "bullet": "round",
-                    "bulletBorderAlpha": 1,
-                    "bulletColor": "#FFFFFF",
-                    "bulletSize": 5,
-                    "hideBulletsCount": 50,
-                    "lineThickness": 2,
-                    "title": "red line",
-                    "useLineColorForBulletBorder": true,
-                    "valueField": "value",
-                    "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-                }],
-                "chartScrollbar": {
-                    "graph": "g1",
-                    "oppositeAxis":false,
-                    "offset":30,
-                    "scrollbarHeight": 80,
-                    "backgroundAlpha": 0,
-                    "selectedBackgroundAlpha": 0.1,
-                    "selectedBackgroundColor": "#888888",
-                    "graphFillAlpha": 0,
-                    "graphLineAlpha": 0.5,
-                    "selectedGraphFillAlpha": 0,
-                    "selectedGraphLineAlpha": 1,
-                    "autoGridCount":true,
-                    "color":"#AAAAAA"
-                },
-                "chartCursor": {
-                    "pan": true,
-                    "valueLineEnabled": true,
-                    "valueLineBalloonEnabled": true,
-                    "cursorAlpha":1,
-                    "cursorColor":"#258cbb",
-                    "limitToGraph":"g1",
-                    "valueLineAlpha":0.2,
-                    "valueZoomable":true
-                },
-                "valueScrollbar":{
-                    "oppositeAxis":false,
-                    "offset":50,
-                    "scrollbarHeight":10
-                },
-                "categoryField": "date",
-                "categoryAxis": {
-                    "parseDates": true,
-                    "dashLength": 1,
-                    "minorGridEnabled": true
-                },
-                "export": {
-                    "enabled": true
-                },
-                "dataProvider": getDataLine(response)
-            });
+                    "graphs": [{
+                        "id": "g1",
+                        "balloon": {
+                            "drop": true,
+                            "adjustBorderColor": false,
+                            "color": "#ffffff"
+                        },
+                        "bullet": "round",
+                        "bulletBorderAlpha": 1,
+                        "bulletColor": "#FFFFFF",
+                        "bulletSize": 5,
+                        "hideBulletsCount": 50,
+                        "lineThickness": 2,
+                        "title": "red line",
+                        "useLineColorForBulletBorder": true,
+                        "valueField": "value",
+                        "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
+                    }],
+                    "chartScrollbar": {
+                        "graph": "g1",
+                        "oppositeAxis": false,
+                        "offset": 30,
+                        "scrollbarHeight": 80,
+                        "backgroundAlpha": 0,
+                        "selectedBackgroundAlpha": 0.1,
+                        "selectedBackgroundColor": "#888888",
+                        "graphFillAlpha": 0,
+                        "graphLineAlpha": 0.5,
+                        "selectedGraphFillAlpha": 0,
+                        "selectedGraphLineAlpha": 1,
+                        "autoGridCount": true,
+                        "color": "#AAAAAA"
+                    },
+                    "chartCursor": {
+                        "pan": true,
+                        "valueLineEnabled": true,
+                        "valueLineBalloonEnabled": true,
+                        "cursorAlpha": 1,
+                        "cursorColor": "#258cbb",
+                        "limitToGraph": "g1",
+                        "valueLineAlpha": 0.2,
+                        "valueZoomable": true
+                    },
+                    "valueScrollbar": {
+                        "oppositeAxis": false,
+                        "offset": 50,
+                        "scrollbarHeight": 10
+                    },
+                    "categoryField": "date",
+                    "categoryAxis": {
+                        "parseDates": true,
+                        "dashLength": 1,
+                        "minorGridEnabled": true
+                    },
+                    "export": {
+                        "enabled": true
+                    },
+                    "dataProvider": getDataLine(response)
+                });
 
-            chart.addListener("rendered", zoomChart);
+                chart.addListener("rendered", zoomChart);
 
-            zoomChart();
+                zoomChart();
 
-            function zoomChart() {
-                chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
+                function zoomChart() {
+                    chart.zoomToIndexes(chart.dataProvider.length - 40, chart.dataProvider.length - 1);
+                }
+            }
+            else {
+                console.log("error");
             }
         }
+
         function getDataLine(data) {
             var chartData = [];
             var dataSplitted = data.split(";");

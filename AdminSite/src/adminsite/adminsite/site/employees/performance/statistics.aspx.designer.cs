@@ -58,15 +58,6 @@ namespace adminsite.site.employees.performance {
         protected global::System.Web.UI.WebControls.DropDownList yearPieChartDl;
         
         /// <summary>
-        /// yearLineChartDl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList yearLineChartDl;
-        
-        /// <summary>
         /// monthCarChartDl control.
         /// </summary>
         /// <remarks>

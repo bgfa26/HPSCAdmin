@@ -760,6 +760,7 @@
     <Compile Include="controller\hrm\RemoveOverseerCommand.cs" />
     <Compile Include="controller\hrm\UpdateEmployeeHRMCommand.cs" />
     <Compile Include="controller\hrm\UpdateOverseerCommand.cs" />
+    <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
@@ -783,6 +784,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HRMResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\statistics\DAOStatistics.cs" />
+    <Compile Include="model\statistics\StatisticsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatisticsResources.resx</DependentUpon>
     </Compile>
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
@@ -1058,6 +1065,10 @@
     <EmbeddedResource Include="model\hrm\HRMResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>HRMResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="model\statistics\StatisticsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StatisticsResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -162,7 +162,7 @@
         <div class="col-lg-12">
             <div class="panel panel-yellow">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Cantidad de horas laborales por cargo</h3>
+                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Cantidad de horas laborales por unidad organizacional</h3>
                 </div>
                 <div class="panel-body">
                     <div class="text-right">

@@ -154,5 +154,66 @@ namespace adminsite.model.statistics
             statistics.Add(december);
             return statistics;
         }
+
+        public List<Statistic> GetTotalHoursPerOrganizationalUnit(int month, int year)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+            List<Statistic> statistics = new List<Statistic>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                parameters.Add(new ParameterDB(StatisticsResources.month, SqlDbType.Int, month.ToString(), false));
+                parameters.Add(new ParameterDB(StatisticsResources.year, SqlDbType.Int, year.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetHoursPerOUStoredProcedure, parameters);
+                OrganizationalUnit unit = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        string ou  = row["OUNAME"].ToString();
+                        int totalHours = TotalHoursPerRow(row);
+                        Statistic organizationalUnit = new Statistic(ou, totalHours);
+                        bool contain = statistics.Contains(organizationalUnit);
+                        if (contain)
+                        {
+                            foreach (Statistic statistic in statistics)
+                            {
+                                if (statistic.title.Equals(organizationalUnit.title))
+                                {
+                                    statistic.value += organizationalUnit.value;
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            statistics.Add(organizationalUnit);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return statistics;
+        }
     }
 }

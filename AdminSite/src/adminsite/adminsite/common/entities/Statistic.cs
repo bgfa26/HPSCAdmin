@@ -5,7 +5,7 @@ using System.Web;
 
 namespace adminsite.common.entities
 {
-    public class Statistic
+    public class Statistic : IEquatable<Statistic>
     {
         public string title { get; set; }
         public double value { get; set; }
@@ -14,6 +14,11 @@ namespace adminsite.common.entities
         {
             this.title = title;
             this.value = value;
+        }
+
+        public bool Equals(Statistic other)
+        {
+            return this.title.Equals(other.title);
         }
     }
 }

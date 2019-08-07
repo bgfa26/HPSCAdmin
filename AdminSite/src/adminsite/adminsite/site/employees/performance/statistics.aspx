@@ -61,27 +61,29 @@
                     <div class="row">
                         <div class="col-lg-6" style="text-align: left;">
                             <label style="text-align:left;margin-top:10px">Mes: </label>
-                            <asp:DropDownList ID="monthHBarChartDl" runat="server" CssClass="form-control textinput">
-                                <asp:ListItem Text="Enero" Value="1" />
-                                <asp:ListItem Text="Febrero" Value="2" />
-                                <asp:ListItem Text="Marzo" Value="3" />
-                                <asp:ListItem Text="Abril" Value="4" />
-                                <asp:ListItem Text="Mayo" Value="5" />
-                                <asp:ListItem Text="Junio" Value="6" />
-                                <asp:ListItem Text="Julio" Value="7" />
-                                <asp:ListItem Text="Agosto" Value="8" />
-                                <asp:ListItem Text="Septiembre" Value="9" />
-                                <asp:ListItem Text="Octubre" Value="10" />
-                                <asp:ListItem Text="Noviembre" Value="11" />
-                                <asp:ListItem Text="Diciembre" Value="12" />
-                            </asp:DropDownList>
+                                <select id="monthHBarChartDl" class="form-control textinput">
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
                         </div>
                         <div class="col-lg-6" style="text-align: left;">
                             <label style="text-align:left;margin-top:10px">Año: </label>
-                            <asp:DropDownList ID="yearHBarChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
+                            <select id="yearHBarChartDl" class="form-control textinput">
+
+                            </select>
                         </div>
                         <div class="col-lg-12" style="margin-top:15px">
-                            <input type="button" onclick="getACPByMonth()" value="Buscar" class="btn btn-lg" style="width:100%"/>
+                            <input type="button" onclick="getACPPerMonth()" value="Buscar" class="btn btn-lg" style="width:100%"/>
                         </div>
                     </div>
                     <div class="row">
@@ -96,34 +98,36 @@
         <div class="col-lg-6">
             <div class="panel panel-green" style="height:700px">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Promedio de horas trabajadas por día de la semana</h3>
+                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Total de horas trabajadas por día de la semana</h3>
                 </div>
                 <div class="panel-body">
                     <div class="flot-chart">
                         <div class="row">
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <asp:DropDownList ID="monthPieChartDl" runat="server" CssClass="form-control textinput">
-                                <asp:ListItem Text="Enero" Value="1" />
-                                <asp:ListItem Text="Febrero" Value="2" />
-                                <asp:ListItem Text="Marzo" Value="3" />
-                                <asp:ListItem Text="Abril" Value="4" />
-                                <asp:ListItem Text="Mayo" Value="5" />
-                                <asp:ListItem Text="Junio" Value="6" />
-                                <asp:ListItem Text="Julio" Value="7" />
-                                <asp:ListItem Text="Agosto" Value="8" />
-                                <asp:ListItem Text="Septiembre" Value="9" />
-                                <asp:ListItem Text="Octubre" Value="10" />
-                                <asp:ListItem Text="Noviembre" Value="11" />
-                                <asp:ListItem Text="Diciembre" Value="12" />
-                            </asp:DropDownList>
+                                <select id="monthPieChartDl" class="form-control textinput">
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
                             </div>
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Año: </label>
-                                <asp:DropDownList ID="yearPieChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
+                                <select id="yearPieChartDl" class="form-control textinput">
+
+                                </select>
                             </div>
                             <div class="col-lg-12" style="margin-top:15px">
-                                <input type="button" onclick="getAverageHoursPerDayOfWeek()" value="Buscar" class="btn btn-lg" style="width:100%"/>
+                                <input type="button" onclick="getTotalHoursPerDayOfWeek()" value="Buscar" class="btn btn-lg" style="width:100%"/>
                             </div>
                         </div>
                         <div class="row">
@@ -169,24 +173,26 @@
                         <div class="row">
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <asp:DropDownList ID="monthCarChartDl" runat="server" CssClass="form-control textinput">
-                                <asp:ListItem Text="Enero" Value="1" />
-                                <asp:ListItem Text="Febrero" Value="2" />
-                                <asp:ListItem Text="Marzo" Value="3" />
-                                <asp:ListItem Text="Abril" Value="4" />
-                                <asp:ListItem Text="Mayo" Value="5" />
-                                <asp:ListItem Text="Junio" Value="6" />
-                                <asp:ListItem Text="Julio" Value="7" />
-                                <asp:ListItem Text="Agosto" Value="8" />
-                                <asp:ListItem Text="Septiembre" Value="9" />
-                                <asp:ListItem Text="Octubre" Value="10" />
-                                <asp:ListItem Text="Noviembre" Value="11" />
-                                <asp:ListItem Text="Diciembre" Value="12" />
-                            </asp:DropDownList>
+                                <select id="monthBarChartDl" class="form-control textinput">
+                                    <option value="1">Enero</option>
+                                    <option value="2">Febrero</option>
+                                    <option value="3">Marzo</option>
+                                    <option value="4">Abril</option>
+                                    <option value="5">Mayo</option>
+                                    <option value="6">Junio</option>
+                                    <option value="7">Julio</option>
+                                    <option value="8">Agosto</option>
+                                    <option value="9">Septiembre</option>
+                                    <option value="10">Octubre</option>
+                                    <option value="11">Noviembre</option>
+                                    <option value="12">Diciembre</option>
+                                </select>
                             </div>
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Año: </label>
-                                <asp:DropDownList ID="yearBarChartDl" runat="server" CssClass="form-control textinput"></asp:DropDownList>
+                                <select id="yearBarChartDl" class="form-control textinput">
+
+                                </select>
                             </div>
                             <div class="col-lg-12" style="margin-top:15px">
                                 <input type="button" onclick="getTotalHoursPerPosition()" value="Buscar" class="btn btn-lg" style="width:100%"/>
@@ -225,66 +231,77 @@
     <link rel="stylesheet" href="amcharts3/lib/plugins/export/export.css" type="text/css" media="all" />
 
     
-    <!-- Horizontal bar chart code -->
+    <!-- Years populate code -->
     <script type="text/javascript">
         $(document).ready(function () {
             populateYears();
         });
 
         function populateYears() {
-            var dropdown = document.getElementById("yearLineChartDl");
+            var dropdownLine = document.getElementById("yearLineChartDl");
+            var dropdownBar = document.getElementById("yearBarChartDl");
+            var dropdownPie = document.getElementById("yearPieChartDl");
+            var dropdownHBar = document.getElementById("yearHBarChartDl");
             
             for (var i = 2010; i < 2051; ++i) {
-                dropdown[dropdown.length] = new Option(i, i);
+                dropdownLine[dropdownLine.length] = new Option(i, i);
+                dropdownBar[dropdownBar.length] = new Option(i, i);
+                dropdownPie[dropdownPie.length] = new Option(i, i);
+                dropdownHBar[dropdownHBar.length] = new Option(i, i);
             }
         }
     </script>
     <!-- Horizontal bar chart code -->
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-        function getACPByMonth() {
-            PageMethods.GetACPByMonth(createHorizontalBarChart);
+        function getACPPerMonth() {
+            PageMethods.GetACPPerMonth(document.getElementById("monthHBarChartDl").value, document.getElementById("yearHBarChartDl").value, createHorizontalBarChart);
         }
         function createHorizontalBarChart(response, userContext, methodName) {
-            var chart = AmCharts.makeChart("barhorizontaldiv", {
-              "type": "serial",
-              "theme": "none",
-              "categoryField": "year",
-              "rotate": true,
-              "startDuration": 1,
-              "categoryAxis": {
-                "gridPosition": "start",
-                "position": "left"
-              },
-              "trendLines": [],
-              "graphs": [
-                {
-                  "balloonText": "Income:[[value]]",
-                  "fillAlphas": 0.8,
-                  "id": "AmGraph-1",
-                  "lineAlpha": 0.2,
-                  "title": "Income",
-                  "type": "column",
-                  "valueField": "income"
-                }
-              ],
-              "guides": [],
-              "valueAxes": [
-                {
-                  "id": "ValueAxis-1",
-                  "position": "top",
-                  "axisAlpha": 0
-                }
-              ],
-              "allLabels": [],
-              "balloon": {},
-              "titles": [],
-              "dataProvider": getDataHorizontal(response),
-              "export": {
-                "enabled": true
-              }
+            if (response != "error") {
+                var chart = AmCharts.makeChart("barhorizontaldiv", {
+                    "type": "serial",
+                    "theme": "none",
+                    "categoryField": "acp",
+                    "rotate": true,
+                    "startDuration": 1,
+                    "categoryAxis": {
+                        "gridPosition": "start",
+                        "position": "left"
+                    },
+                    "trendLines": [],
+                    "graphs": [
+                        {
+                            "balloonText": "Total:[[value]]",
+                            "fillAlphas": 0.8,
+                            "id": "AmGraph-1",
+                            "lineAlpha": 0.2,
+                            "title": "Total",
+                            "type": "column",
+                            "valueField": "total"
+                        }
+                    ],
+                    "guides": [],
+                    "valueAxes": [
+                        {
+                            "id": "ValueAxis-1",
+                            "position": "top",
+                            "axisAlpha": 0
+                        }
+                    ],
+                    "allLabels": [],
+                    "balloon": {},
+                    "titles": [],
+                    "dataProvider": getDataHorizontal(response),
+                    "export": {
+                        "enabled": true
+                    }
 
-            });
+                });
+            }
+            else {
+                errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
+            }
         }
         function getDataHorizontal(data) {
             var chartData = [];
@@ -292,8 +309,8 @@
             for (var i = 0; i < dataSplitted.length; i++) {
                 var statistic = dataSplitted[i].split(",");
                 chartData.push({
-                    year: statistic[0],
-                    income: statistic[1]
+                    acp: statistic[0],
+                    total: statistic[1]
                 });
             }
             return chartData;
@@ -304,33 +321,38 @@
     <!-- Pie chart code -->
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-        function getAverageHoursPerDayOfWeek() {
-            PageMethods.GetAverageHoursPerDayOfWeek(createPieChart);
+        function getTotalHoursPerDayOfWeek() {
+            PageMethods.GetTotalHoursPerDayOfWeek(document.getElementById("monthPieChartDl").value, document.getElementById("yearPieChartDl").value, createPieChart);
         }
         function createPieChart(response, userContext, methodName) {
-            var chart = AmCharts.makeChart( "piediv", {
-              "type": "pie",
-              "radius": 140,
-                "theme": "none",
-                "dataProvider": getDataPie(response),
-              "valueField": "litres",
-              "titleField": "country",
-               "balloon":{
-               "fixedPosition":true
-              },
-              "export": {
-                "enabled": true
-              },
-              "responsive": {
-                "enabled": true,
-                "addDefaultRules": true,
-                "rules": [
-                  {
-                    "minWidth": 500
-                  }
-                ]
-              }
-            } );
+            if (response != "error") {
+                var chart = AmCharts.makeChart("piediv", {
+                    "type": "pie",
+                    "radius": 140,
+                    "theme": "none",
+                    "dataProvider": getDataPie(response),
+                    "valueField": "litres",
+                    "titleField": "country",
+                    "balloon": {
+                        "fixedPosition": true
+                    },
+                    "export": {
+                        "enabled": true
+                    },
+                    "responsive": {
+                        "enabled": true,
+                        "addDefaultRules": true,
+                        "rules": [
+                            {
+                                "minWidth": 500
+                            }
+                        ]
+                    }
+                });
+            }
+            else {
+                errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
+            }
         }
         function getDataPie(data) {
             var chartData = [];
@@ -451,7 +473,7 @@
                 }
             }
             else {
-                console.log("error");
+                errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
             }
         }
 
@@ -474,44 +496,49 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalHoursPerPosition() {
-            PageMethods.GetTotalHoursPerPosition(createBarChart);
+            PageMethods.GetTotalHoursPerOrganizationalUnit(document.getElementById("monthBarChartDl").value, document.getElementById("yearBarChartDl").value, createBarChart);
         }
         function createBarChart(response, userContext, methodName) {
-            var chart = AmCharts.makeChart("bardiv", {
-              "type": "serial",
-              "theme": "none",
-              "dataProvider": getDataBar(response),
-              "valueAxes": [ {
-                "gridColor": "#FFFFFF",
-                "gridAlpha": 0.2,
-                "dashLength": 0
-              } ],
-              "gridAboveGraphs": true,
-              "startDuration": 1,
-              "graphs": [ {
-                "balloonText": "[[category]]: <b>[[value]]</b>",
-                "fillAlphas": 0.8,
-                "lineAlpha": 0.2,
-                "type": "column",
-                "valueField": "visits"
-              } ],
-              "chartCursor": {
-                "categoryBalloonEnabled": false,
-                "cursorAlpha": 0,
-                "zoomable": false
-              },
-              "categoryField": "country",
-              "categoryAxis": {
-                "gridPosition": "start",
-                "gridAlpha": 0,
-                "tickPosition": "start",
-                "tickLength": 20
-              },
-              "export": {
-                "enabled": true
-              }
+            if (response != "error") {
+                var chart = AmCharts.makeChart("bardiv", {
+                    "type": "serial",
+                    "theme": "none",
+                    "dataProvider": getDataBar(response),
+                    "valueAxes": [{
+                        "gridColor": "#FFFFFF",
+                        "gridAlpha": 0.2,
+                        "dashLength": 0
+                    }],
+                    "gridAboveGraphs": true,
+                    "startDuration": 1,
+                    "graphs": [{
+                        "balloonText": "[[category]]: <b>[[value]]</b>",
+                        "fillAlphas": 0.8,
+                        "lineAlpha": 0.2,
+                        "type": "column",
+                        "valueField": "total"
+                    }],
+                    "chartCursor": {
+                        "categoryBalloonEnabled": false,
+                        "cursorAlpha": 0,
+                        "zoomable": false
+                    },
+                    "categoryField": "ou",
+                    "categoryAxis": {
+                        "gridPosition": "start",
+                        "gridAlpha": 0,
+                        "tickPosition": "start",
+                        "tickLength": 20
+                    },
+                    "export": {
+                        "enabled": true
+                    }
 
-            } );
+                });
+            }
+            else {
+                errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
+            }
         }
         function getDataBar(data) {
             var chartData = [];
@@ -519,8 +546,8 @@
             for (var i = 0; i < dataSplitted.length; i++) {
                 var statistic = dataSplitted[i].split(",");
                 chartData.push({
-                    country: statistic[0],
-                    visits: statistic[1]
+                    ou: statistic[0],
+                    total: statistic[1]
                 });
             }
             return chartData;

@@ -117,21 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="GetAverageHoursPerDayStoredProcedure" xml:space="preserve">
-    <value>GET_AVERAGE_HOUR_PER_DAY</value>
-    <comment>Procedimiento almacenado para consultar las horas trabajadas por día de la semana en un mes y año en específico</comment>
-  </data>
   <data name="GetHoursPerOUStoredProcedure" xml:space="preserve">
     <value>GET_TOTAL_HOURS_PER_ORGANIZATIONAL_UNIT</value>
     <comment>Procedimiento almacenado para consultar las horas trabajadas por unidad organizacional en un mes y año en específico</comment>
   </data>
-  <data name="GetMostUsedACPPerMonthStoredProcedure" xml:space="preserve">
-    <value>GET_ALL_ACCOUNTS_COURSES_PERMITS_BY_MONTH</value>
-    <comment>Procedimiento almacenado para consultar los ACP más usados en un mes y año en específico</comment>
+  <data name="GetTotalHoursPerDayStoredProcedure" xml:space="preserve">
+    <value>GET_TOTAL_HOUR_PER_DAY</value>
+    <comment>Procedimiento almacenado para consultar las horas trabajadas por día de la semana en un mes y año en específico</comment>
   </data>
   <data name="GetTotalHoursPerMonthStoredProcedure" xml:space="preserve">
     <value>GET_TOTAL_HOURS_BY_MONTH</value>
     <comment>Procedimiento almacenado para consultar las horas trabajadas por mes en un año en específico</comment>
+  </data>
+  <data name="GetTotalHoursPerOrganizationalUnit" xml:space="preserve">
+    <value>GET_ALL_ACCOUNTS_COURSES_PERMITS_BY_MONTH</value>
+    <comment>Procedimiento almacenado para consultar los ACP más usados en un mes y año en específico</comment>
   </data>
   <data name="month" xml:space="preserve">
     <value>@month</value>

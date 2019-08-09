@@ -1,4 +1,5 @@
 ﻿using adminsite.common.entities;
+using adminsite.controller.hrm;
 using adminsite.controller.statistics;
 using Newtonsoft.Json;
 using System;
@@ -15,7 +16,21 @@ namespace adminsite.site.employees.performance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                try
+                {
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    if (!(((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))) || ((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión")))))
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
+                }
+            }
         }
 
         private static string createResult(List<Statistic> statistics)

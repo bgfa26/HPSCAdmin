@@ -82,6 +82,7 @@
     <Content Include="site\employees\css\bootstrap-rtl.min.css" />
     <Content Include="site\employees\css\bootstrap.css" />
     <Content Include="site\employees\css\bootstrap.min.css" />
+    <Content Include="site\employees\css\helpmark.css" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.css" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.js" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.min.js" />

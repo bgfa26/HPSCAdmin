@@ -5,6 +5,7 @@ using adminsite.controller.hrm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -114,78 +115,123 @@ namespace adminsite.site.employees.acp
                .ToList();
             if ((!acpId.Equals("")) && (!acpName.Equals("")) && (!init.Equals("")) && (!administrator.Equals("")) && (selectedUnits.Count != 0))
             {
-                if (end.Equals(""))
+                acpId = acpId.ToUpper();
+                bool validACP = validIdACP(acpId);
+                if (validACP)
                 {
-                    end = "9999-12-31";
-                }
-                double admin = 0;
-                bool isNumber = double.TryParse(administrator, out admin);
-                if (isNumber)
-                {
-                    int adminInt = Convert.ToInt32(admin);
-                    try
+                    if (end.Equals(""))
                     {
-                        GetEmployeesCommand cmd = new GetEmployeesCommand();
-                        cmd.Execute();
-                        employees = cmd.GetResult();
-                        bool adminExist = false;
-                        foreach (Employee employee in employees)
+                        end = "9999-12-31";
+                    }
+                    double admin = 0;
+                    bool isNumber = double.TryParse(administrator, out admin);
+                    if (isNumber)
+                    {
+                        int adminInt = Convert.ToInt32(admin);
+                        try
                         {
-                            if (employee.id == adminInt)
+                            GetEmployeesCommand cmd = new GetEmployeesCommand();
+                            cmd.Execute();
+                            employees = cmd.GetResult();
+                            bool adminExist = false;
+                            foreach (Employee employee in employees)
                             {
-                                adminExist = true;
-                            }
-                        }
-                        if (adminExist)
-                        {
-                            try
-                            {
-                                Employee employee = new Employee(adminInt);
-                                AccountCoursePermit acpToInsert = new AccountCoursePermit(acpId, acpName, Int32.Parse(acpType), Convert.ToDateTime(init), 
-                                                                                          Convert.ToDateTime(end), employee);
-                                CreateNewACPCommand _cmd = new CreateNewACPCommand(acpToInsert);
-                                _cmd.Execute();
-                                int result = _cmd.GetResult();
-                                if (result == 200)
+                                if (employee.id == adminInt)
                                 {
-                                    foreach (string unit in selectedUnits)
+                                    adminExist = true;
+                                }
+                            }
+                            if (adminExist)
+                            {
+                                try
+                                {
+                                    Employee employee = new Employee(adminInt);
+                                    AccountCoursePermit acpToInsert = new AccountCoursePermit(acpId, acpName, Int32.Parse(acpType), Convert.ToDateTime(init),
+                                                                                              Convert.ToDateTime(end), employee);
+                                    CreateNewACPCommand _cmd = new CreateNewACPCommand(acpToInsert);
+                                    _cmd.Execute();
+                                    int result = _cmd.GetResult();
+                                    if (result == 200)
                                     {
-                                        int unitId = Int32.Parse(unit);
-                                        CostCenter costCenter = new CostCenter(unitId, acpToInsert.id);
-                                        CreateNewCostCenterCommand cmdCostCenter = new CreateNewCostCenterCommand(costCenter);
-                                        cmdCostCenter.Execute();
-                                    }
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha registrado exitosamente', 'success', '/site/employees/acp/newacp.aspx')", true);
+                                        foreach (string unit in selectedUnits)
+                                        {
+                                            int unitId = Int32.Parse(unit);
+                                            CostCenter costCenter = new CostCenter(unitId, acpToInsert.id);
+                                            CreateNewCostCenterCommand cmdCostCenter = new CreateNewCostCenterCommand(costCenter);
+                                            cmdCostCenter.Execute();
+                                        }
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha registrado exitosamente', 'success', '/site/employees/acp/newacp.aspx')", true);
 
+                                    }
+                                    else
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El código ingresado ya se encuentra registrado en el sistema', 'error')", true);
+                                    }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El código ingresado ya se encuentra registrado en el sistema', 'error')", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
                                 }
                             }
-                            catch (Exception ex)
+                            else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El empleado seleccionado no se encuentra registrado en el sistema', 'error')", true);
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El empleado seleccionado no se encuentra registrado en el sistema', 'error')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
                         }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El campo de administrador no tiene formato númerico', 'error')", true);
                     }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El campo de administrador no tiene formato númerico', 'error')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('El identificador no tiene un formato correcto', 'error')", true);
                 }
             }
             else
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos vacíos en el formulario', 'error')", true);
+            }
+        }
+
+        private static bool validIdACP(string acpToValidate)
+        {
+            string[] splittedACP = acpToValidate.Split('-');
+            if (splittedACP.Length == 2)
+            {
+                bool firstStringOnlyLetters = Regex.IsMatch(splittedACP[0], @"^[a-zA-Z]+$");
+                if (firstStringOnlyLetters)
+                {
+                    bool secondStringOnlyLetters = Regex.IsMatch(splittedACP[1], @"^[a-zA-Z0-9]+$");
+                    if (secondStringOnlyLetters)
+                    {
+                        if (splittedACP[1].Length == 6)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
             }
         }
     }

@@ -27,7 +27,7 @@
           height: 500px;
         }
 
-        #piediv {
+        #bardaysdiv {
           width: 100%;
           height: 500px;
         }
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div id="piediv"></div>
+                            <div id="bardaysdiv"></div>
                         </div>
                     </div>
                 </div>
@@ -322,57 +322,62 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalHoursPerDayOfWeek() {
-            PageMethods.GetTotalHoursPerDayOfWeek(document.getElementById("monthPieChartDl").value, document.getElementById("yearPieChartDl").value, createPieChart);
+            PageMethods.GetTotalHoursPerDayOfWeek(document.getElementById("monthPieChartDl").value, document.getElementById("yearPieChartDl").value, createBarDaysChart);
         }
-        function createPieChart(response, userContext, methodName) {
+        function createBarDaysChart(response, userContext, methodName) {
+            console.log(response);
             if (response != "error") {
-                var chart = AmCharts.makeChart("piediv", {
-                    "type": "pie",
-                    "radius": 140,
+                var chart = AmCharts.makeChart("bardaysdiv", {
+                    "type": "serial",
                     "theme": "none",
-                    "dataProvider": getDataPie(response),
-                    "valueField": "litres",
-                    "titleField": "country",
-                    "balloon": {
-                        "fixedPosition": true
+                    "dataProvider": getDataBar(response),
+                    "valueAxes": [{
+                        "gridColor": "#FFFFFF",
+                        "gridAlpha": 0.2,
+                        "dashLength": 0
+                    }],
+                    "gridAboveGraphs": true,
+                    "startDuration": 1,
+                    "graphs": [{
+                        "balloonText": "[[category]]: <b>[[value]]</b>",
+                        "fillAlphas": 0.8,
+                        "lineAlpha": 0.2,
+                        "type": "column",
+                        "valueField": "total"
+                    }],
+                    "chartCursor": {
+                        "categoryBalloonEnabled": false,
+                        "cursorAlpha": 0,
+                        "zoomable": false
+                    },
+                    "categoryField": "ou",
+                    "categoryAxis": {
+                        "gridPosition": "start",
+                        "gridAlpha": 0,
+                        "tickPosition": "start",
+                        "tickLength": 20
                     },
                     "export": {
                         "enabled": true
-                    },
-                    "responsive": {
-                        "enabled": true,
-                        "addDefaultRules": true,
-                        "rules": [
-                            {
-                                "minWidth": 500
-                            }
-                        ]
                     }
+
                 });
             }
             else {
                 errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
             }
         }
-        function getDataPie(data) {
+        function getDataBar(data) {
             var chartData = [];
             var dataSplitted = data.split(";");
             for (var i = 0; i < dataSplitted.length; i++) {
                 var statistic = dataSplitted[i].split(",");
                 chartData.push({
-                    country: statistic[0],
-                    litres: statistic[1]
+                    ou: statistic[0],
+                    total: statistic[1]
                 });
             }
             return chartData;
-        }
-        function getRandomColor() {
-            var letters = '0123456789ABCDEF';
-            var color = '#';
-            for (var i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
-            }
-            return color;
         }
 
     </script>

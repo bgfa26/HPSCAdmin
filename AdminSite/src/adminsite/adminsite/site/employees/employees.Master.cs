@@ -35,21 +35,25 @@ namespace adminsite.site.employees
                             {
                                 rrhhLi.Visible = true;
                                 acpLi.Visible = true;
+                                stLi.Visible = true;
                             }
-                            else if ((consultedEmployee.organizationalUnit.Equals("Gerente de Talento Humano")) && (consultedEmployee.positionName.Equals("Administración")))
+                            else if ((consultedEmployee.organizationalUnit.Equals("Administración")) && (consultedEmployee.positionName.Equals("Gerente de Talento Humano")))
                             {
                                 rrhhLi.Visible = true;
                                 acpLi.Visible = false;
+                                stLi.Visible = false;
                             }
-                            else if ((consultedEmployee.organizationalUnit.Equals("Contralor de Gestión")) && (consultedEmployee.positionName.Equals("Contraloría")))
+                            else if ((consultedEmployee.organizationalUnit.Equals("Contraloría")) && (consultedEmployee.positionName.Equals("Contralor de Gestión")))
                             {
                                 rrhhLi.Visible = false;
                                 acpLi.Visible = true;
+                                stLi.Visible = true;
                             }
                             else
                             {
                                 rrhhLi.Visible = false;
                                 acpLi.Visible = false;
+                                stLi.Visible = false;
                             }
                         }
                         else

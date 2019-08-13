@@ -61,15 +61,6 @@ namespace adminsite.model.statistics {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GET_AVERAGE_HOUR_PER_DAY.
-        /// </summary>
-        internal static string GetAverageHoursPerDayStoredProcedure {
-            get {
-                return ResourceManager.GetString("GetAverageHoursPerDayStoredProcedure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to GET_TOTAL_HOURS_PER_ORGANIZATIONAL_UNIT.
         /// </summary>
         internal static string GetHoursPerOUStoredProcedure {
@@ -79,11 +70,11 @@ namespace adminsite.model.statistics {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GET_ALL_ACCOUNTS_COURSES_PERMITS_BY_MONTH.
+        ///   Looks up a localized string similar to GET_TOTAL_HOUR_PER_DAY.
         /// </summary>
-        internal static string GetMostUsedACPPerMonthStoredProcedure {
+        internal static string GetTotalHoursPerDayStoredProcedure {
             get {
-                return ResourceManager.GetString("GetMostUsedACPPerMonthStoredProcedure", resourceCulture);
+                return ResourceManager.GetString("GetTotalHoursPerDayStoredProcedure", resourceCulture);
             }
         }
         
@@ -93,6 +84,15 @@ namespace adminsite.model.statistics {
         internal static string GetTotalHoursPerMonthStoredProcedure {
             get {
                 return ResourceManager.GetString("GetTotalHoursPerMonthStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_ACCOUNTS_COURSES_PERMITS_BY_MONTH.
+        /// </summary>
+        internal static string GetTotalHoursPerOrganizationalUnit {
+            get {
+                return ResourceManager.GetString("GetTotalHoursPerOrganizationalUnit", resourceCulture);
             }
         }
         

@@ -82,6 +82,7 @@
     <Content Include="site\employees\css\bootstrap-rtl.min.css" />
     <Content Include="site\employees\css\bootstrap.css" />
     <Content Include="site\employees\css\bootstrap.min.css" />
+    <Content Include="site\employees\css\helpmark.css" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.css" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.js" />
     <Content Include="site\employees\css\plugins\datatables\dataTables.bootstrap.min.js" />
@@ -680,8 +681,6 @@
     <Content Include="site\employees\performance\amcharts3\samples\_usingThemes.html" />
     <Content Include="site\employees\performance\amcharts3\thirdPartySoftwareList.txt" />
     <Content Include="site\employees\performance\statistics.aspx" />
-    <Content Include="site\employees\performance\testingmethods.aspx" />
-    <Content Include="site\employees\performance\WebForm1.aspx" />
     <Content Include="site\employees\tables.html" />
     <Content Include="site\usermanagement\css\fade.css" />
     <Content Include="site\usermanagement\register.aspx" />
@@ -760,7 +759,10 @@
     <Compile Include="controller\hrm\RemoveOverseerCommand.cs" />
     <Compile Include="controller\hrm\UpdateEmployeeHRMCommand.cs" />
     <Compile Include="controller\hrm\UpdateOverseerCommand.cs" />
+    <Compile Include="controller\statistics\GetTotalHoursPerACPCommand.cs" />
+    <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
+    <Compile Include="controller\statistics\GetTotalHoursPerOrganizationalUnitCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
@@ -853,20 +855,6 @@
     </Compile>
     <Compile Include="site\employees\performance\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="site\employees\performance\testingmethods.aspx.cs">
-      <DependentUpon>testingmethods.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="site\employees\performance\testingmethods.aspx.designer.cs">
-      <DependentUpon>testingmethods.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="site\employees\performance\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="site\employees\performance\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\usermanagement\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>

@@ -1,4 +1,5 @@
 ﻿using adminsite.common.entities;
+using adminsite.controller.hrm;
 using adminsite.controller.statistics;
 using Newtonsoft.Json;
 using System;
@@ -15,80 +16,49 @@ namespace adminsite.site.employees.performance
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            for (int year = 2010; year <= 2050; year++)
+            if (!Page.IsPostBack)
             {
-                ListItem item = new ListItem(year.ToString(), year.ToString());
-                yearBarChartDl.Items.Insert(yearBarChartDl.Items.Count, item);
-                yearHBarChartDl.Items.Insert(yearHBarChartDl.Items.Count, item);
-                yearPieChartDl.Items.Insert(yearPieChartDl.Items.Count, item);
+                try
+                {
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    if (!(((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))) || ((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión")))))
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
+                }
             }
         }
 
-        [System.Web.Services.WebMethod]
-        public static string GetACPByMonth()
+        private static string createResult(List<Statistic> statistics)
         {
-            List<Statistic> statistics = new List<Statistic>();
-            Statistic year2005 = new Statistic("2005", 501.9);
-            Statistic year2006 = new Statistic("2006", 50);
-            Statistic year2007 = new Statistic("2007", 60);
-            Statistic year2008 = new Statistic("2008", 99);
-            Statistic year2009 = new Statistic("2009", 128.3);
-            Statistic year2010 = new Statistic("2010", 139.9);
-            Statistic year2011 = new Statistic("2011", 165.8);
-            Statistic year2012 = new Statistic("2012", 201.1);
-            Statistic year2013 = new Statistic("2013", 301.9);
-            statistics.Add(year2005);
-            statistics.Add(year2006);
-            statistics.Add(year2007);
-            statistics.Add(year2008);
-            statistics.Add(year2009);
-            statistics.Add(year2010);
-            statistics.Add(year2011);
-            statistics.Add(year2012);
-            statistics.Add(year2013);
             string results = "";
             foreach (Statistic statistic in statistics)
             {
                 results += statistic.title + "," + statistic.value + ";";
             }
-            results = results.Remove(results.Length - 1);
+            if (!results.Equals(""))
+            {
+                results = results.Remove(results.Length - 1);
+            }
             return results;
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetHoursPerMonth(string yearString)
+        public static string GetACPPerMonth(string monthString, string yearString)
         {
-            /*List<Statistic> statistics = new List<Statistic>();
-            Statistic year2005 = new Statistic("2019-01", 501.9);
-            Statistic year2006 = new Statistic("2019-02", 50);
-            Statistic year2007 = new Statistic("2019-03", 60);
-            Statistic year2008 = new Statistic("2019-04", 99);
-            Statistic year2009 = new Statistic("2019-05", 128.3);
-            Statistic year2010 = new Statistic("2019-06", 139.9);
-            Statistic year2011 = new Statistic("2019-07", 165.8);
-            Statistic year2012 = new Statistic("2019-08", 201.1);
-            Statistic year2013 = new Statistic("2019-09", 301.9);
-            statistics.Add(year2005);
-            statistics.Add(year2006);
-            statistics.Add(year2007);
-            statistics.Add(year2008);
-            statistics.Add(year2009);
-            statistics.Add(year2010);
-            statistics.Add(year2011);
-            statistics.Add(year2012);
-            statistics.Add(year2013);*/
+
             try
             {
+                int month = Int32.Parse(monthString);
                 int year = Int32.Parse(yearString);
-                GetTotalHoursPerMonthCommand cmd = new GetTotalHoursPerMonthCommand(year);
+                GetTotalHoursPerACPCommand cmd = new GetTotalHoursPerACPCommand(month, year);
                 cmd.Execute();
                 List<Statistic> statistics = cmd.GetResults();
-                string results = "";
-                foreach (Statistic statistic in statistics)
-                {
-                    results += statistic.title + "," + statistic.value + ";";
-                }
-                results = results.Remove(results.Length - 1);
+                string results = createResult(statistics);
                 return results;
             }
             catch (Exception ex)
@@ -98,65 +68,59 @@ namespace adminsite.site.employees.performance
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetAverageHoursPerDayOfWeek()
+        public static string GetHoursPerMonth(string yearString)
         {
-            List<Statistic> statistics = new List<Statistic>();
-            Statistic lithuania = new Statistic("Lithuania", 501.9);
-            Statistic netherlands = new Statistic("Netherlands", 50);
-            Statistic belgium = new Statistic("Belgium", 60);
-            Statistic uk = new Statistic("UK", 99);
-            Statistic austria = new Statistic("Austria", 128.3);
-            Statistic australia = new Statistic("Australia", 139.9);
-            Statistic germany = new Statistic("Germany", 165.8);
-            Statistic ireland = new Statistic("Ireland", 201.1);
-            Statistic czechia = new Statistic("Czechia", 301.9);
-            statistics.Add(lithuania);
-            statistics.Add(netherlands);
-            statistics.Add(belgium);
-            statistics.Add(uk);
-            statistics.Add(austria);
-            statistics.Add(australia);
-            statistics.Add(germany);
-            statistics.Add(ireland);
-            statistics.Add(czechia);
-            string results = "";
-            foreach (Statistic statistic in statistics)
+            try
             {
-                results += statistic.title + "," + statistic.value + ";";
+                int year = Int32.Parse(yearString);
+                GetTotalHoursPerMonthCommand cmd = new GetTotalHoursPerMonthCommand(year);
+                cmd.Execute();
+                List<Statistic> statistics = cmd.GetResults();
+                string results = createResult(statistics);
+                return results;
             }
-            results = results.Remove(results.Length - 1);
-            return results;
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
 
         [System.Web.Services.WebMethod]
-        public static string GetTotalHoursPerPosition()
+        public static string GetTotalHoursPerDayOfWeek(string monthString, string yearString)
         {
-            List<Statistic> statistics = new List<Statistic>();
-            Statistic lithuania = new Statistic("Lithuania", 501.9);
-            Statistic netherlands = new Statistic("Netherlands", 50);
-            Statistic belgium = new Statistic("Belgium", 60);
-            Statistic uk = new Statistic("UK", 99);
-            Statistic austria = new Statistic("Austria", 128.3);
-            Statistic australia = new Statistic("Australia", 139.9);
-            Statistic germany = new Statistic("Germany", 165.8);
-            Statistic ireland = new Statistic("Ireland", 201.1);
-            Statistic czechia = new Statistic("Czechia", 301.9);
-            statistics.Add(lithuania);
-            statistics.Add(netherlands);
-            statistics.Add(belgium);
-            statistics.Add(uk);
-            statistics.Add(austria);
-            statistics.Add(australia);
-            statistics.Add(germany);
-            statistics.Add(ireland);
-            statistics.Add(czechia);
-            string results = "";
-            foreach (Statistic statistic in statistics)
+            try
             {
-                results += statistic.title + "," + statistic.value + ";";
+                int month = Int32.Parse(monthString);
+                int year = Int32.Parse(yearString);
+                GetTotalHoursPerDayPerMonthCommand cmd = new GetTotalHoursPerDayPerMonthCommand(month, year);
+                cmd.Execute();
+                List<Statistic> statistics = cmd.GetResults();
+                string results = createResult(statistics);
+                return results;
             }
-            results = results.Remove(results.Length - 1);
-            return results;
+            catch (Exception ex)
+            {
+                return "error";
+            }
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetTotalHoursPerOrganizationalUnit(string monthString, string yearString)
+        {
+            try
+            {
+                int month = Int32.Parse(monthString);
+                int year = Int32.Parse(yearString);
+                GetTotalHoursPerOrganizationalUnitCommand cmd = new GetTotalHoursPerOrganizationalUnitCommand(month, year);
+                cmd.Execute();
+                List<Statistic> statistics = cmd.GetResults();
+                string results = createResult(statistics);
+                return results;
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
         }
     }
 }

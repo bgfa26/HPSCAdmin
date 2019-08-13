@@ -58,7 +58,6 @@ namespace adminsite.model.statistics
             {
                 parameters.Add(new ParameterDB(StatisticsResources.year, SqlDbType.Int, year.ToString(), false));
                 dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetTotalHoursPerMonthStoredProcedure, parameters);
-                OrganizationalUnit unit = null;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     try
@@ -166,12 +165,11 @@ namespace adminsite.model.statistics
                 parameters.Add(new ParameterDB(StatisticsResources.month, SqlDbType.Int, month.ToString(), false));
                 parameters.Add(new ParameterDB(StatisticsResources.year, SqlDbType.Int, year.ToString(), false));
                 dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetHoursPerOUStoredProcedure, parameters);
-                OrganizationalUnit unit = null;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     try
                     {
-                        string ou  = row["OUNAME"].ToString();
+                        string ou = row["OUNAME"].ToString();
                         int totalHours = TotalHoursPerRow(row);
                         Statistic organizationalUnit = new Statistic(ou, totalHours);
                         bool contain = statistics.Contains(organizationalUnit);
@@ -213,6 +211,166 @@ namespace adminsite.model.statistics
             {
                 throw ex;
             }
+            return statistics;
+        }
+
+        public List<Statistic> GetTotalHoursPerACP(int month, int year)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+            List<Statistic> statistics = new List<Statistic>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                parameters.Add(new ParameterDB(StatisticsResources.month, SqlDbType.Int, month.ToString(), false));
+                parameters.Add(new ParameterDB(StatisticsResources.year, SqlDbType.Int, year.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetTotalHoursPerOrganizationalUnit, parameters);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        string acpName = row["NAME"].ToString();
+                        int totalHours = TotalHoursPerRow(row);
+                        Statistic acp = new Statistic(acpName, totalHours);
+                        bool contain = statistics.Contains(acp);
+                        if (contain)
+                        {
+                            foreach (Statistic statistic in statistics)
+                            {
+                                if (statistic.title.Equals(acp.title))
+                                {
+                                    statistic.value += acp.value;
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            statistics.Add(acp);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return statistics;
+        }
+
+        public List<Statistic> GetTotalHoursPerDayPerMonth(int month, int year)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+            List<Statistic> statistics = new List<Statistic>();
+            Statistic monday = new Statistic("Lunes", 0);
+            Statistic tuesday = new Statistic("Martes", 0);
+            Statistic wednesday = new Statistic("Miércoles", 0);
+            Statistic thursday = new Statistic("Jueves", 0);
+            Statistic friday = new Statistic("Viernes", 0);
+            Statistic saturday = new Statistic("Sábado", 0);
+            Statistic sunday = new Statistic("Domingo", 0);
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                parameters.Add(new ParameterDB(StatisticsResources.month, SqlDbType.Int, month.ToString(), false));
+                parameters.Add(new ParameterDB(StatisticsResources.year, SqlDbType.Int, year.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetTotalHoursPerDayStoredProcedure, parameters);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        string init = row["INITDATE"].ToString();
+                        string end = row["ENDDATE"].ToString();
+                        DateTime initDate = Convert.ToDateTime(init);
+                        DateTime endDate = Convert.ToDateTime(end);
+                        DateTime movableDate = initDate;
+                        int dayCounter = 1;
+                        while (DateTime.Compare(movableDate, endDate) != 1)
+                        {
+                            int dayOfWeek = (int)movableDate.DayOfWeek;
+                            string dayOfTimeSheet = "DAY" + dayCounter;
+                            int hoursWorked = Int32.Parse(row[dayOfTimeSheet].ToString());
+                            if (dayOfWeek == 0)
+                            {
+                                sunday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 1)
+                            {
+                                monday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 2)
+                            {
+                                tuesday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 3)
+                            {
+                                wednesday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 4)
+                            {
+                                thursday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 5)
+                            {
+                                friday.value += hoursWorked;
+                            }
+                            else if (dayOfWeek == 6)
+                            {
+                                saturday.value += hoursWorked;
+                            }
+                            movableDate = movableDate.AddDays(1);
+                            dayCounter++;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            statistics.Add(monday);
+            statistics.Add(tuesday);
+            statistics.Add(wednesday);
+            statistics.Add(thursday);
+            statistics.Add(friday);
+            statistics.Add(saturday);
+            statistics.Add(sunday);
             return statistics;
         }
     }

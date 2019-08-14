@@ -133,6 +133,10 @@
     <value>GET_ALL_ACCOUNTS_COURSES_PERMITS_BY_MONTH</value>
     <comment>Procedimiento almacenado para consultar los ACP más usados en un mes y año en específico</comment>
   </data>
+  <data name="GetYearsByMonthStoredProcedure" xml:space="preserve">
+    <value>GET_YEARS_BY_MONTH</value>
+    <comment>Procedimiento almacenado para obtener los años que alvergan informacion  </comment>
+  </data>
   <data name="month" xml:space="preserve">
     <value>@month</value>
     <comment>Mes para realizar la estadística</comment>

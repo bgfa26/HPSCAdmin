@@ -373,5 +373,44 @@ namespace adminsite.model.statistics
             statistics.Add(sunday);
             return statistics;
         }
+
+        public List<string> GetAllYearsByMonth(int month)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+            List<string> years = new List<string>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                parameters.Add(new ParameterDB(StatisticsResources.month, SqlDbType.Int, month.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetYearsByMonthStoredProcedure, parameters);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string year = row["YEAR"].ToString();
+                    bool contain = years.Contains(year);
+                    if (!contain)
+                    {
+                        years.Add(year);
+                    }
+                }
+                return years;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

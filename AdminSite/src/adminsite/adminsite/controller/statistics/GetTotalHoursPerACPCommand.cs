@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.statistics
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar la grafica de las horas utilizadas por cada cuenta,curso o permiso
+    /// </summary>
     public class GetTotalHoursPerACPCommand : Command
     {
         List<Statistic> results;

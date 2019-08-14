@@ -51,7 +51,7 @@ namespace adminsite.site.employees.acp
             }
         }
 
-        public string getAssociatedUnitsString(Object list)
+        public string GetAssociatedUnitsString(Object list)
         {
             List<CostCenter> costCenters = (List<CostCenter>)list;
             string associatedUnits = "";
@@ -64,7 +64,7 @@ namespace adminsite.site.employees.acp
             return associatedUnits;
         }
 
-        public string getEndDate(Object date)
+        public string GetEndDate(Object date)
         {
             string endDate = string.Format("{0:dd/MM/yyyy}", date);
             if (endDate.Contains("31/12/9999")){

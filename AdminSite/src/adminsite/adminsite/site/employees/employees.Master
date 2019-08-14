@@ -30,7 +30,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Centro administrativo</a>
+                    <a class="navbar-brand" href="/site/employees/dashboard.aspx">Centro administrativo</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
@@ -131,7 +131,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li>
-                            <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                            <a href="/site/employees/dashboard.aspx"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
                         <li id="rrhhLi" runat="server">
                             <a href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
@@ -156,15 +156,8 @@
                             </ul>
                         </li>
                         <li id="tsLi" runat="server">
-                            <a href="javascript:;" data-toggle="collapse" data-target="#tsUl"><i class="fa fa-fw fa-clipboard"></i> Hoja de tiempo <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="tsUl" class="collapse" runat="server">
-                                <li>
-                                    <a href="hrm/employeelist.aspx">Agregar nuevo</a>
-                                </li>
-                                <li>
-                                    <a href="hrm/employeelist.aspx">Listado de cuentas/cursos/permisos</a>
-                                </li>
-                            </ul>
+                            <a href="/site/employees/timesheet/timesheetlist.aspx"><i class="fa fa-fw fa-clipboard"></i> Hojas de tiempo</a>
+
                         </li>
                         <li id="stLi" runat="server">
                             <a href="/site/employees/performance/statistics.aspx"><i class="fa fa-fw fa-bar-chart-o"></i> Estadísticas</a>

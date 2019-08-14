@@ -281,7 +281,9 @@
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
     <Content Include="site\employees\img\icons\assign.svg" />
+    <Content Include="site\employees\img\icons\find.svg" />
     <Content Include="site\employees\img\icons\license.txt" />
+    <Content Include="site\employees\img\icons\list.svg" />
     <Content Include="site\employees\img\icons\trash.svg" />
     <Content Include="site\employees\index-rtl.html" />
     <Content Include="site\employees\index.html" />
@@ -682,6 +684,7 @@
     <Content Include="site\employees\performance\amcharts3\thirdPartySoftwareList.txt" />
     <Content Include="site\employees\performance\statistics.aspx" />
     <Content Include="site\employees\tables.html" />
+    <Content Include="site\employees\timesheet\timesheetlist.aspx" />
     <Content Include="site\usermanagement\css\fade.css" />
     <Content Include="site\usermanagement\register.aspx" />
     <Content Include="site\usermanagement\changepassword.aspx" />
@@ -741,6 +744,7 @@
     <Compile Include="common\entities\OrganizationalUnit.cs" />
     <Compile Include="common\entities\Position.cs" />
     <Compile Include="common\entities\Statistic.cs" />
+    <Compile Include="common\entities\Timesheet.cs" />
     <Compile Include="common\MD5Calculator.cs" />
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
@@ -763,6 +767,7 @@
     <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerOrganizationalUnitCommand.cs" />
+    <Compile Include="controller\timesheet\GetTimesheetsByEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
@@ -792,6 +797,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>StatisticsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\timesheet\DAOTimesheet.cs" />
+    <Compile Include="model\timesheet\TimesheetResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TimesheetResources.resx</DependentUpon>
     </Compile>
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
@@ -855,6 +866,13 @@
     </Compile>
     <Compile Include="site\employees\performance\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\timesheet\timesheetlist.aspx.cs">
+      <DependentUpon>timesheetlist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\timesheet\timesheetlist.aspx.designer.cs">
+      <DependentUpon>timesheetlist.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\usermanagement\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
@@ -1057,6 +1075,10 @@
     <EmbeddedResource Include="model\statistics\StatisticsResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>StatisticsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="model\timesheet\TimesheetResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TimesheetResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

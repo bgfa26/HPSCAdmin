@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="costcenterlist.aspx.cs" Inherits="adminsite.site.employees.acp.costcenterlist" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="timesheetlist.aspx.cs" Inherits="adminsite.site.employees.timesheet.timesheetlist" %>
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../css/plugins/datatables/dataTables.bootstrap.css">
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                Lista de cuentas, cursos y permisos
+                Lista de hojas de tiempo
             </h1>
         </div>
     </div>
@@ -36,30 +36,23 @@
                             <thead>
                                 <tr>
                                     <th>Identificador</th>
-                                    <th>Nombre</th>
-                                    <th>Utilizado por</th>
-                                    <th>Tipo</th>
-                                    <th>Administrador</th>
                                     <th>Fecha de inicio</th>
-                                    <th>Fecha de fin</th>
+                                    <th>Fecha de cierre</th>
+                                    <th>Estatus</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
 
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repCostCenter" runat="server" OnItemCommand="repCostCenter_ItemCommand">
+                                <asp:Repeater ID="repTimesheet" runat="server">
                                     <ItemTemplate>
                                             <tr id="<%# Eval("id") %>">
-                                                <td><asp:Label ID="costCenterId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
-                                                <td><%# Eval("name") %></td>
-                                                <td><%# GetAssociatedUnitsString(Eval("associatedUnits")) %></td>
-                                                <td><%# Eval("typeStringFormat") %></td>
-                                                <td><%# Eval("administrator.firstName") %> <%# Eval("administrator.lastName") %></td>
+                                                <td><asp:Label ID="timesheetId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
-                                                <td><%# GetEndDate(Eval("endDate")) %></td>
+                                                <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
+                                                <td><%# Eval("status") %></td>
                                                 <td style="text-align:center">
-                                                    <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar" />
-                                                    <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar" />
+                                                    <asp:ImageButton ID="viewEdit" runat="server" Text="Visualizar/Modificar" ImageUrl="~/site/employees/img/icons/list.svg" Height="26px" Width="26px" ToolTip="Visualizar/Modificar" />
                                                 </td>
                                             </tr>              
                                     </ItemTemplate>
@@ -68,12 +61,9 @@
                             <tfoot>
                                 <tr>
                                     <th>Identificador</th>
-                                    <th>Nombre</th>
-                                    <th>Utilizado por</th>
-                                    <th>Tipo</th>
-                                    <th>Administrador</th>
                                     <th>Fecha de inicio</th>
-                                    <th>Fecha de fin</th>
+                                    <th>Fecha de cierre</th>
+                                    <th>Estatus</th>
                                     <th>Opciones</th>
                                 </tr>
                             </tfoot>

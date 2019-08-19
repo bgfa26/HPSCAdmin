@@ -47,6 +47,20 @@ namespace adminsite.site.employees.performance
             return results;
         }
 
+        private static string createResultString(List<string> results)
+        {
+            string _results = "";
+            foreach (string result in results)
+            {
+                _results += result + ";";
+            }
+            if (!_results.Equals(""))
+            {
+                _results = _results.Remove(_results.Length - 1);
+            }
+            return _results;
+        }
+
         [System.Web.Services.WebMethod]
         public static string GetACPPerMonth(string monthString, string yearString)
         {
@@ -115,6 +129,24 @@ namespace adminsite.site.employees.performance
                 cmd.Execute();
                 List<Statistic> statistics = cmd.GetResults();
                 string results = createResult(statistics);
+                return results;
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
+        }
+
+        [System.Web.Services.WebMethod]
+        public static string GetYearsByMonth(string monthString, string graph)
+        {
+            try
+            {
+                int month = Int32.Parse(monthString);
+                GetAllYearsByMonthCommand cmd = new GetAllYearsByMonthCommand(month);
+                cmd.Execute();
+                List<string> years = cmd.GetResults();
+                string results = graph + "/" + createResultString(years);
                 return results;
             }
             catch (Exception ex)

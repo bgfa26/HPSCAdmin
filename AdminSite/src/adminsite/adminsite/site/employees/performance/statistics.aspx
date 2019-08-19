@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="col-lg-6" style="text-align: left;">
                             <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <select id="monthHBarChartDl" class="form-control textinput">
+                                <select id="monthHBarChartDl" class="form-control textinput" onchange="getTotalYearsByMonth(this, 4)">
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
                                     <option value="3">Marzo</option>
@@ -105,7 +105,7 @@
                         <div class="row">
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <select id="monthPieChartDl" class="form-control textinput">
+                                <select id="monthPieChartDl" class="form-control textinput" onchange="getTotalYearsByMonth(this, 2)">
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
                                     <option value="3">Marzo</option>
@@ -173,7 +173,7 @@
                         <div class="row">
                             <div class="col-lg-6" style="text-align: left;">
                                 <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <select id="monthBarChartDl" class="form-control textinput">
+                                <select id="monthBarChartDl" class="form-control textinput" onchange="getTotalYearsByMonth(this, 4)">
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
                                     <option value="3">Marzo</option>
@@ -244,13 +244,14 @@
             var dropdownHBar = document.getElementById("yearHBarChartDl");
             
             for (var i = 2010; i < 2051; ++i) {
-                dropdownLine[dropdownLine.length] = new Option(i, i);
-                dropdownBar[dropdownBar.length] = new Option(i, i);
-                dropdownPie[dropdownPie.length] = new Option(i, i);
-                dropdownHBar[dropdownHBar.length] = new Option(i, i);
+                //dropdownLine[dropdownLine.length] = new Option(i, i);
+                //dropdownBar[dropdownBar.length] = new Option(i, i);
+                //dropdownPie[dropdownPie.length] = new Option(i, i);
+                //dropdownHBar[dropdownHBar.length] = new Option(i, i);
             }
         }
     </script>
+
     <!-- Horizontal bar chart code -->
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
@@ -559,5 +560,40 @@
         }
 
     </script>
+    
+    <!-- Years code -->
+    <script type="text/javascript">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+        function getTotalYearsByMonth(month, graph) {
+            PageMethods.GetYearsByMonth(month.value, graph, fillYears);
+        }
+        function fillYears(response, userContext, methodName) {
+            console.log(response);
+            if (response != "error") {
+                var dataSplitted = response.split("/");
+                var dropdown = "";
+                if (dataSplitted === "1") {
+                    dropdown = document.getElementById("yearHBarChartDl");
+                }
+                else if (dataSplitted === "2") {
+                    dropdown = document.getElementById("yearPieChartDl");
+                }
+                else if (dataSplitted === "3") {
+                    dropdown = document.getElementById("yearLineChartDl");
+                }
+                else {
+                    dropdown = document.getElementById("yearBarChartDl");
+                }
+                var years = dataSplitted[1].split(";");
+                for (var i = 0; i < years.length; i++) {
+                    var year = years[i];
+                    dropdown[dropdown.length] = new Option(year, year);
+                }
+            }
+            else {
+                errorSweetAlert("Se ha producido un error al buscar la información solicitada", "error");
+            }
+        }
 
+    </script>
 </asp:Content>

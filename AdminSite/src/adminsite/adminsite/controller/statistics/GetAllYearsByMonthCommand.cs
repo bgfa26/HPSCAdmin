@@ -1,5 +1,4 @@
-﻿using adminsite.common.entities;
-using adminsite.model.statistics;
+﻿using adminsite.model.statistics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +7,16 @@ using System.Web;
 namespace adminsite.controller.statistics
 {
     /// <summary>
-    /// Clase que hereda de la clase abstracta Command usada para realizar la grafica de las horas utilizadas por cada cuenta,curso o permiso
+    /// Clase que hereda de la clase abstracta Command usada para realizar la obtencion de los años en los cuales hay informacion
     /// </summary>
-    public class GetTotalHoursPerACPCommand : Command
+    public class GetAllYearsByMonthCommand : Command
     {
-        List<Statistic> results;
+        List<string> results;
         int month;
-        int year;
 
-        public GetTotalHoursPerACPCommand(int month, int year)
+        public GetAllYearsByMonthCommand(int month)
         {
             this.month = month;
-            this.year = year;
         }
 
         public override void Execute()
@@ -27,7 +24,7 @@ namespace adminsite.controller.statistics
             try
             {
                 DAOStatistics dao = new DAOStatistics();
-                results = dao.GetTotalHoursPerACP(month, year);
+                results = dao.GetAllYearsByMonth(month);
             }
             catch (Exception ex)
             {
@@ -38,8 +35,8 @@ namespace adminsite.controller.statistics
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna una lista de estadisticas</returns>
-        public List<Statistic> GetResults()
+        /// <returns>Retorna una lista de strings</returns>
+        public List<string> GetResults()
         {
             return results;
         }

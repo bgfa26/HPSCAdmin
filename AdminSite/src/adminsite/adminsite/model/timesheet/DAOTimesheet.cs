@@ -61,5 +61,70 @@ namespace adminsite.model.timesheet
             }
 
         }
+        public Timesheet GetAllWorkloadsByTimesheet(Timesheet timesheet)
+        {
+            List<Workload> workloads = new List<Workload>();
+            DataTable dataTable = new DataTable();
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.VarChar, timesheet.id.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(TimesheetResources.GetAllWorkloadsByTimesheet, parameters);
+                Workload workload = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        AccountCoursePermit accountCoursePermit = new AccountCoursePermit(row["IDACP"].ToString(), row["NAME"].ToString());
+                        workload = new Workload(Int32.Parse(row["ID"].ToString()),
+                                                Int32.Parse(row["DAY1"].ToString()),
+                                                Int32.Parse(row["DAY2"].ToString()),
+                                                Int32.Parse(row["DAY3"].ToString()),
+                                                Int32.Parse(row["DAY4"].ToString()),
+                                                Int32.Parse(row["DAY5"].ToString()),
+                                                Int32.Parse(row["DAY6"].ToString()),
+                                                Int32.Parse(row["DAY7"].ToString()),
+                                                Int32.Parse(row["DAY8"].ToString()),
+                                                Int32.Parse(row["DAY9"].ToString()),
+                                                Int32.Parse(row["DAY10"].ToString()),
+                                                Int32.Parse(row["DAY11"].ToString()),
+                                                Int32.Parse(row["DAY12"].ToString()),
+                                                Int32.Parse(row["DAY13"].ToString()),
+                                                Int32.Parse(row["DAY14"].ToString()),
+                                                Int32.Parse(row["DAY15"].ToString()),
+                                                Int32.Parse(row["DAY16"].ToString()),
+                                                timesheet, 
+                                                accountCoursePermit);
+                        workloads.Add(workload);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                timesheet.workloads = workloads;
+                return timesheet;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

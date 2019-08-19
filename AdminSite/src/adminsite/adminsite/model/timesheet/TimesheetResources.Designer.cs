@@ -77,5 +77,23 @@ namespace adminsite.model.timesheet {
                 return ResourceManager.GetString("GetAllTimesheetsByEmployeeStoredProcedure", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_WORKLOADS.
+        /// </summary>
+        internal static string GetAllWorkloadsByTimesheet {
+            get {
+                return ResourceManager.GetString("GetAllWorkloadsByTimesheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @id.
+        /// </summary>
+        internal static string id {
+            get {
+                return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
     }
 }

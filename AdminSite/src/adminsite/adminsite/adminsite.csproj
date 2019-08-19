@@ -272,6 +272,7 @@
     <Content Include="site\employees\css\plugins\morris.css" />
     <Content Include="site\employees\css\sb-admin-rtl.css" />
     <Content Include="site\employees\css\sb-admin.css" />
+    <Content Include="site\employees\css\timesheet-table.css" />
     <Content Include="site\employees\dashboard.aspx" />
     <Content Include="site\employees\font-awesome\css\font-awesome.css" />
     <Content Include="site\employees\font-awesome\css\font-awesome.min.css" />
@@ -684,6 +685,7 @@
     <Content Include="site\employees\performance\amcharts3\thirdPartySoftwareList.txt" />
     <Content Include="site\employees\performance\statistics.aspx" />
     <Content Include="site\employees\tables.html" />
+    <Content Include="site\employees\timesheet\timesheetdata.aspx" />
     <Content Include="site\employees\timesheet\timesheetlist.aspx" />
     <Content Include="site\usermanagement\css\fade.css" />
     <Content Include="site\usermanagement\register.aspx" />
@@ -745,6 +747,7 @@
     <Compile Include="common\entities\Position.cs" />
     <Compile Include="common\entities\Statistic.cs" />
     <Compile Include="common\entities\Timesheet.cs" />
+    <Compile Include="common\entities\Workload.cs" />
     <Compile Include="common\MD5Calculator.cs" />
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
@@ -767,6 +770,7 @@
     <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerOrganizationalUnitCommand.cs" />
+    <Compile Include="controller\timesheet\GetAllWorkloadsByTimesheetCommand.cs" />
     <Compile Include="controller\timesheet\GetTimesheetsByEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
@@ -866,6 +870,13 @@
     </Compile>
     <Compile Include="site\employees\performance\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\timesheet\timesheetdata.aspx.cs">
+      <DependentUpon>timesheetdata.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\timesheet\timesheetdata.aspx.designer.cs">
+      <DependentUpon>timesheetdata.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\timesheet\timesheetlist.aspx.cs">
       <DependentUpon>timesheetlist.aspx</DependentUpon>

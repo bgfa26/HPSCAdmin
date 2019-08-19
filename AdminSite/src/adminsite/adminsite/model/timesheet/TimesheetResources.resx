@@ -125,4 +125,12 @@
     <value>GET_ALL_TIMESHEET_BY_EMPLOYEE</value>
     <comment>Procedimiento almacenado para consultar todas las hojas de tiempo de un empleado</comment>
   </data>
+  <data name="GetAllWorkloadsByTimesheet" xml:space="preserve">
+    <value>GET_ALL_WORKLOADS</value>
+    <comment>Procedimiento almacenado para obtener las cargas de trabajo de una hoja de tiempo</comment>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>@id</value>
+    <comment>Identificador de la hoja de tiempo</comment>
+  </data>
 </root>

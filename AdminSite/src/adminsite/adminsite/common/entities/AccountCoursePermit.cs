@@ -59,7 +59,13 @@ namespace adminsite.common.entities
             this.id = id;
             this.error = 200;
         }
-        
+        public AccountCoursePermit(string id, string name)
+        {
+            this.id = id;
+            this.name = name;
+            this.error = 200;
+        }
+
     }
 }
 

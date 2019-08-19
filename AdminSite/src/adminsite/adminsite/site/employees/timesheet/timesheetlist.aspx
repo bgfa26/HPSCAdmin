@@ -44,13 +44,13 @@
                             </thead>
 
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repTimesheet" runat="server">
+                                <asp:Repeater ID="repTimesheet" runat="server"  OnItemCommand="repTimesheet_ItemCommand">
                                     <ItemTemplate>
                                             <tr id="<%# Eval("id") %>">
                                                 <td><asp:Label ID="timesheetId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
-                                                <td><%# Eval("status") %></td>
+                                                <td><asp:Label ID="status" runat="server" Text='<%# Eval("status") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="viewEdit" runat="server" Text="Visualizar/Modificar" ImageUrl="~/site/employees/img/icons/list.svg" Height="26px" Width="26px" ToolTip="Visualizar/Modificar" />
                                                 </td>

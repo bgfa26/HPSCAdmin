@@ -43,30 +43,19 @@ namespace adminsite.site.employees.timesheet
                 return "Modificar";
             }
         }
-
-        public string GetStringFile(Object statusObj)
+        
+        protected void repTimesheet_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string status = (string)statusObj;
-            if (status.Equals("ENTREGADA"))
+            string timesheetStatus = ((Label)repTimesheet.Items[e.Item.ItemIndex].FindControl("status")).Text;
+            if ((timesheetStatus.Equals("ENTREGADA")) || (timesheetStatus.Contains("APROBADA")))
             {
-                return "find";
+                string id = ((Label)repTimesheet.Items[e.Item.ItemIndex].FindControl("timesheetId")).Text;
+                Session["CONSULTED_TIMESHEET"] = id;
+                Response.Redirect("~/site/employees/timesheet/timesheetdata.aspx");
             }
             else
             {
-                return "assign";
-            }
-        }
 
-        public string GetImageButton(Object statusObj)
-        {
-            string status = (string)statusObj;
-            if (status.Equals("ENTREGADA"))
-            {
-                return "<asp:ImageButton ID=\"visualize\" runat=\"server\" Text=\"Visualizar\" ImageUrl=\"~/site/employees/img/icons/assign.svg\" Height=\"25px\" Width=\"25px\" ToolTip=\"Visualizar\" />";
-            }
-            else
-            {
-                return "<asp:ImageButton ID=\"modify\" runat=\"server\" Text=\"Modificar\" ImageUrl=\"~/site/employees/img/icons/assign.svg\" Height=\"25px\" Width=\"25px\" ToolTip=\"Modificar\" />";
             }
         }
     }

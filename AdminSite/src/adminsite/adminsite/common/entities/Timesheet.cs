@@ -12,7 +12,7 @@ namespace adminsite.common.entities
         public DateTime endDate { get; set; }
         public string status { get; set; }
         public Employee employee { get; set; }
-        //public List<Workload> workloads { get; set; }
+        public List<Workload> workloads { get; set; }
 
         public Timesheet() { }
 
@@ -23,7 +23,12 @@ namespace adminsite.common.entities
             this.endDate = endDate;
             this.status = status;
             this.employee = employee;
-            //this.workload = new List<Workload>();
+            this.workloads = new List<Workload>();
+        }
+
+        public Timesheet(int id)
+        {
+            this.id = id;
         }
     }
 }

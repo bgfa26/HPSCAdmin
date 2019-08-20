@@ -596,4 +596,27 @@
         }
 
     </script>
+
+     <script type="text/javascript">
+         $(document).ready(function () {
+             getTotalYearsByMonth();
+         });
+         function getTotalYearsByMonth() {
+             PageMethods.GetAllYears(fillLineChartYears);
+         }
+         function fillLineChartYears(response, userContext, methodName) {
+             if (response != "error") {
+                 var dropdown = document.getElementById("yearLineChartDl");
+                 var years = response.split(";");
+                 for (var i = 0; i < years.length; i++) {
+                     var year = years[i];
+                     dropdown[dropdown.length] = new Option(year, year);
+                 }
+             }
+             else {
+                 errorSweetAlert("Se ha producido un error al buscar la información solicitada", "error");
+             }
+         }
+
+    </script>
 </asp:Content>

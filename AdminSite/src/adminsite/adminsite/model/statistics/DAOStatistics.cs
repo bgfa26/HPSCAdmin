@@ -412,5 +412,42 @@ namespace adminsite.model.statistics
                 throw ex;
             }
         }
+
+        public List<string> GetAllYears()
+        {
+            List<string> years = new List<string>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetYearsByMonthStoredProcedure);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string year = row["YEAR"].ToString();
+                    bool contain = years.Contains(year);
+                    if (!contain)
+                    {
+                        years.Add(year);
+                    }
+                }
+                return years;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

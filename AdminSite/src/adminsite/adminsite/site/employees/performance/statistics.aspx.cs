@@ -154,5 +154,22 @@ namespace adminsite.site.employees.performance
                 return "error";
             }
         }
+
+        [System.Web.Services.WebMethod]
+        public static string GetAllYears()
+        {
+            try
+            {
+                GetAllYearsCommand cmd = new GetAllYearsCommand();
+                cmd.Execute();
+                List<string> years = cmd.GetResults();
+                string results = createResultString(years);
+                return results;
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
+        }
     }
 }

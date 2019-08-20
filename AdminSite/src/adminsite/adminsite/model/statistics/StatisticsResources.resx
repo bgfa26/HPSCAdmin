@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GetAllYearsStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_YEARS</value>
+    <comment>Procedimiento almacenado para obtener los años de una hoja de tiempo</comment>
+  </data>
   <data name="GetHoursPerOUStoredProcedure" xml:space="preserve">
     <value>GET_TOTAL_HOURS_PER_ORGANIZATIONAL_UNIT</value>
     <comment>Procedimiento almacenado para consultar las horas trabajadas por unidad organizacional en un mes y año en específico</comment>

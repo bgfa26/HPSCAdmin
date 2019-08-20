@@ -766,6 +766,7 @@
     <Compile Include="controller\hrm\RemoveOverseerCommand.cs" />
     <Compile Include="controller\hrm\UpdateEmployeeHRMCommand.cs" />
     <Compile Include="controller\hrm\UpdateOverseerCommand.cs" />
+    <Compile Include="controller\statistics\GetAllYearsCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerACPCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />

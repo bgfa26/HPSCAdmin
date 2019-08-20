@@ -61,6 +61,15 @@ namespace adminsite.model.statistics {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GET_ALL_YEARS.
+        /// </summary>
+        internal static string GetAllYearsStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllYearsStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a GET_TOTAL_HOURS_PER_ORGANIZATIONAL_UNIT.
         /// </summary>
         internal static string GetHoursPerOUStoredProcedure {

@@ -420,7 +420,7 @@ namespace adminsite.model.statistics
 
             try
             {
-                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetYearsByMonthStoredProcedure);
+                dataTable = ExecuteConsultStoredProcedure(StatisticsResources.GetAllYearsStoredProcedure);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     string year = row["YEAR"].ToString();

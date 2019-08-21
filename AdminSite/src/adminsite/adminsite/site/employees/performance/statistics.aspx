@@ -29,7 +29,7 @@
 
         #bardaysdiv {
           width: 100%;
-          height: 500px;
+          height: 420px;
         }
 
         #linediv {
@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="col-lg-6" style="text-align: left;">
                             <label style="text-align:left;margin-top:10px">Mes: </label>
-                                <select id="monthHBarChartDl" class="form-control textinput" onchange="getTotalYearsByMonth(this, 4)">
+                                <select id="monthHBarChartDl" class="form-control textinput" onchange="getTotalYearsByMonth(this, 1)">
                                     <option value="1">Enero</option>
                                     <option value="2">Febrero</option>
                                     <option value="3">Marzo</option>
@@ -130,7 +130,7 @@
                                 <input type="button" onclick="getTotalHoursPerDayOfWeek()" value="Buscar" class="btn btn-lg" style="width:100%"/>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="margin-top:10px">
                             <div id="bardaysdiv"></div>
                         </div>
                     </div>
@@ -337,7 +337,6 @@
             }
         }
         function createBarDaysChart(response, userContext, methodName) {
-            console.log(response);
             if (response != "error") {
                 var chart = AmCharts.makeChart("bardaysdiv", {
                     "type": "serial",
@@ -589,17 +588,16 @@
             PageMethods.GetYearsByMonth(month.value, graph, fillYears);
         }
         function fillYears(response, userContext, methodName) {
-            console.log(response);
             if (response != "error") {
                 var dataSplitted = response.split("/");
                 var dropdown = "";
-                if (dataSplitted === "1") {
+                if (dataSplitted[0] === "1") {
                     dropdown = document.getElementById("yearHBarChartDl");
                 }
-                else if (dataSplitted === "2") {
+                else if (dataSplitted[0] === "2") {
                     dropdown = document.getElementById("yearPieChartDl");
                 }
-                else if (dataSplitted === "3") {
+                else if (dataSplitted[0] === "3") {
                     dropdown = document.getElementById("yearLineChartDl");
                 }
                 else {
@@ -620,9 +618,9 @@
 
      <script type="text/javascript">
          $(document).ready(function () {
-             getTotalYearsByMonth();
+             getAllYears();
          });
-         function getTotalYearsByMonth() {
+         function getAllYears() {
              PageMethods.GetAllYears(fillLineChartYears);
          }
          function fillLineChartYears(response, userContext, methodName) {

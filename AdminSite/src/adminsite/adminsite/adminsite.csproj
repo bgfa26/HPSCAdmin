@@ -685,6 +685,7 @@
     <Content Include="site\employees\performance\amcharts3\thirdPartySoftwareList.txt" />
     <Content Include="site\employees\performance\statistics.aspx" />
     <Content Include="site\employees\tables.html" />
+    <Content Include="site\employees\timesheet\activetimesheet.aspx" />
     <Content Include="site\employees\timesheet\timesheetdata.aspx" />
     <Content Include="site\employees\timesheet\timesheetlist.aspx" />
     <Content Include="site\usermanagement\css\fade.css" />
@@ -872,6 +873,13 @@
     </Compile>
     <Compile Include="site\employees\performance\statistics.aspx.designer.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\timesheet\activetimesheet.aspx.cs">
+      <DependentUpon>activetimesheet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\timesheet\activetimesheet.aspx.designer.cs">
+      <DependentUpon>activetimesheet.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\timesheet\timesheetdata.aspx.cs">
       <DependentUpon>timesheetdata.aspx</DependentUpon>

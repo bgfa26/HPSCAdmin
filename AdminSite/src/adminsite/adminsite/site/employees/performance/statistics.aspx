@@ -256,7 +256,12 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getACPPerMonth() {
-            PageMethods.GetACPPerMonth(document.getElementById("monthHBarChartDl").value, document.getElementById("yearHBarChartDl").value, createHorizontalBarChart);
+            if ((document.getElementById("monthHBarChartDl").value != "") && (document.getElementById("yearHBarChartDl").value != "")) {
+                PageMethods.GetACPPerMonth(document.getElementById("monthHBarChartDl").value, document.getElementById("yearHBarChartDl").value, createHorizontalBarChart);
+            }
+            else {
+                errorSweetAlert("Existen campos vacíos", "error");
+            }
         }
         function createHorizontalBarChart(response, userContext, methodName) {
             if (response != "error") {
@@ -323,7 +328,13 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalHoursPerDayOfWeek() {
-            PageMethods.GetTotalHoursPerDayOfWeek(document.getElementById("monthPieChartDl").value, document.getElementById("yearPieChartDl").value, createBarDaysChart);
+
+            if ((document.getElementById("monthPieChartDl").value != "") && (document.getElementById("yearPieChartDl").value != "")) {
+                PageMethods.GetTotalHoursPerDayOfWeek(document.getElementById("monthPieChartDl").value, document.getElementById("yearPieChartDl").value, createBarDaysChart);
+            }
+            else {
+                errorSweetAlert("Existen campos vacíos", "error");
+            }
         }
         function createBarDaysChart(response, userContext, methodName) {
             console.log(response);
@@ -387,7 +398,12 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getHoursPerMonth() {
-            PageMethods.GetHoursPerMonth(document.getElementById("yearLineChartDl").value, createLineChart);
+            if (document.getElementById("yearLineChartDl").value != "") {
+                PageMethods.GetHoursPerMonth(document.getElementById("yearLineChartDl").value, createLineChart);
+            }
+            else {
+                errorSweetAlert("Existen campos vacíos", "error");
+            }
         }
         function createLineChart(response, userContext, methodName) {
             if (response != "error") {
@@ -502,7 +518,12 @@
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalHoursPerPosition() {
-            PageMethods.GetTotalHoursPerOrganizationalUnit(document.getElementById("monthBarChartDl").value, document.getElementById("yearBarChartDl").value, createBarChart);
+            if ((document.getElementById("monthBarChartDl").value != "") && (document.getElementById("yearBarChartDl").value != "")) {
+                PageMethods.GetTotalHoursPerOrganizationalUnit(document.getElementById("monthBarChartDl").value, document.getElementById("yearBarChartDl").value, createBarChart);
+            }
+            else {
+                errorSweetAlert("Existen campos vacíos", "error");
+            }
         }
         function createBarChart(response, userContext, methodName) {
             if (response != "error") {

@@ -108,6 +108,19 @@ namespace adminsite.model.timesheet
 
                 }
                 timesheet.workloads = workloads;
+                dataTable = ExecuteConsultStoredProcedure(TimesheetResources.GetTimesheetDatesStoredProcedure, parameters);
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        timesheet.initDate = Convert.ToDateTime(row["INITDATE"].ToString());
+                        timesheet.endDate = Convert.ToDateTime(row["ENDDATE"].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
                 return timesheet;
             }
             catch (SqlException ex)
@@ -154,6 +167,54 @@ namespace adminsite.model.timesheet
 
                 }
                 return accountCoursePermits;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int AddWorkloadToTimesheet(Workload workloadToInsert)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.day1, SqlDbType.Int, workloadToInsert.day1.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day2, SqlDbType.Int, workloadToInsert.day2.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day3, SqlDbType.Int, workloadToInsert.day3.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day4, SqlDbType.Int, workloadToInsert.day4.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day5, SqlDbType.Int, workloadToInsert.day5.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day6, SqlDbType.Int, workloadToInsert.day6.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day7, SqlDbType.Int, workloadToInsert.day7.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day8, SqlDbType.Int, workloadToInsert.day8.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day9, SqlDbType.Int, workloadToInsert.day9.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day10, SqlDbType.Int, workloadToInsert.day10.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day11, SqlDbType.Int, workloadToInsert.day11.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day12, SqlDbType.Int, workloadToInsert.day12.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day13, SqlDbType.Int, workloadToInsert.day13.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day14, SqlDbType.Int, workloadToInsert.day14.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day15, SqlDbType.Int, workloadToInsert.day15.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day16, SqlDbType.Int, workloadToInsert.day16.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.Int, workloadToInsert.timesheet.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToInsert.accountCoursePermit.id, false));
+                parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.CreateWorkloadStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
             }
             catch (SqlException ex)
             {

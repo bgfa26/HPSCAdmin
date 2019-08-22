@@ -775,6 +775,7 @@
     <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerOrganizationalUnitCommand.cs" />
+    <Compile Include="controller\timesheet\AddWorkloadToTimesheetCommand.cs" />
     <Compile Include="controller\timesheet\GetAllACPPerOUCommand.cs" />
     <Compile Include="controller\timesheet\GetAllWorkloadsByTimesheetCommand.cs" />
     <Compile Include="controller\statistics\GetAllYearsByMonthCommand.cs" />

@@ -11,7 +11,6 @@ namespace adminsite.site.employees.timesheet
 {
     public partial class timesheetdata : System.Web.UI.Page
     {
-        private Timesheet timesheet = new Timesheet();
         public Workload total = new Workload(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, new Timesheet(), new AccountCoursePermit("final", "Total"));
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,11 +20,12 @@ namespace adminsite.site.employees.timesheet
                 try
                 {
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
-                    timesheet = new Timesheet(1, Convert.ToDateTime("2019-03-16"), Convert.ToDateTime("2019-03-30"), "ENTREGADA", null);
-                    timesheetLbl.Text = timesheet.id.ToString();
+                    string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
                     GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                     cmd.Execute();
                     timesheet = cmd.GetResults();
+                    timesheetLbl.Text = timesheet.id.ToString();
                     foreach (Workload workload in timesheet.workloads)
                     {
                         total.day1 += workload.day1;

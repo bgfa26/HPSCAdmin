@@ -77,6 +77,8 @@ namespace adminsite.model.timesheet
                     try
                     {
                         AccountCoursePermit accountCoursePermit = new AccountCoursePermit(row["IDACP"].ToString(), row["NAME"].ToString());
+                        timesheet.initDate = Convert.ToDateTime(row["INITDATE"].ToString());
+                        timesheet.endDate = Convert.ToDateTime(row["ENDDATE"].ToString());
                         workload = new Workload(Int32.Parse(row["ID"].ToString()),
                                                 Int32.Parse(row["DAY1"].ToString()),
                                                 Int32.Parse(row["DAY2"].ToString()),

@@ -1,4 +1,4 @@
-﻿using adminsite.common.entities;
+﻿ using adminsite.common.entities;
 using adminsite.controller.timesheet;
 using System;
 using System.Collections.Generic;
@@ -55,7 +55,9 @@ namespace adminsite.site.employees.timesheet
             }
             else
             {
-
+                string id = ((Label)repTimesheet.Items[e.Item.ItemIndex].FindControl("timesheetId")).Text;
+                Session["CONSULTED_TIMESHEET"] = id;
+                Response.Redirect("~/site/employees/timesheet/activetimesheet.aspx");
             }
         }
     }

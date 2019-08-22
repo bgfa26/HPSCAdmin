@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         <div style="width: 100%; height: 500px; overflow: scroll">
-            <asp:GridView ID="gridView" DataKeyNames="stor_id" runat="server" CssClass="table table-bordered" 
+            <asp:GridView ID="gridView" DataKeyNames="id" runat="server" CssClass="table table-bordered" 
                     AutoGenerateColumns="false" ShowFooter="true" HeaderStyle-Font-Bold="true"
                     onrowcancelingedit="gridView_RowCancelingEdit"
                     onrowdeleting="gridView_RowDeleting"
@@ -52,8 +52,8 @@
                     OnRowDataBound="gridView_RowDataBound">
                 <Columns>
                     <asp:TemplateField HeaderText="Cuenta/Curso/Permiso">
-                         <ItemTemplate>
-                            <asp:Label ID="acpLbl" runat="server" Text='12'/>
+                        <ItemTemplate>
+                            <asp:Label ID="acpLbl" runat="server" Text='<%#Eval("accountCoursePermit.name") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:DropDownList ID="acpEditDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput">
@@ -66,10 +66,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 1">
                         <ItemTemplate>
-                            <asp:Label ID="day1Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day1Lbl" runat="server" Text='<%#Eval("day1") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day1Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day1Txt" width="45px" runat="server" Text='<%#Eval("day1") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay1"  width="45px" runat="server"/>
@@ -77,10 +77,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 2">
                          <ItemTemplate>
-                            <asp:Label ID="day2Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day2Lbl" runat="server" Text='<%#Eval("day2") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day2Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day2Txt" width="45px" runat="server" Text='<%#Eval("day2") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay2" width="45px" runat="server"/>
@@ -88,10 +88,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 3">
                          <ItemTemplate>
-                            <asp:Label ID="day3Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day3Lbl" runat="server" Text='<%#Eval("day3") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day3Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day3Txt" width="45px" runat="server" Text='<%#Eval("day3") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay3" width="45px" runat="server"/>
@@ -99,10 +99,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 4">
                          <ItemTemplate>
-                            <asp:Label ID="day4Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day4Lbl" runat="server" Text='<%#Eval("day4") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day4Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day4Txt" width="45px" runat="server" Text='<%#Eval("day4") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay4" width="45px" runat="server"/>
@@ -110,10 +110,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 5">
                          <ItemTemplate>
-                            <asp:Label ID="day5Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day5Lbl" runat="server" Text='<%#Eval("day5") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day5Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day5Txt" width="45px" runat="server" Text='<%#Eval("day5") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay5" width="45px" runat="server"/>
@@ -121,10 +121,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 6">
                          <ItemTemplate>
-                            <asp:Label ID="day6Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day6Lbl" runat="server" Text='<%#Eval("day6") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day6Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day6Txt" width="45px" runat="server" Text='<%#Eval("day6") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay6" width="45px" runat="server"/>
@@ -132,10 +132,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 7">
                          <ItemTemplate>
-                            <asp:Label ID="day7Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day7Lbl" runat="server" Text='<%#Eval("day7") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day7Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day7Txt" width="45px" runat="server" Text='<%#Eval("day7") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay7" width="45px" runat="server"/>
@@ -143,10 +143,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 8">
                          <ItemTemplate>
-                            <asp:Label ID="day8Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day8Lbl" runat="server" Text='<%#Eval("day8") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day8Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day8Txt" width="45px" runat="server" Text='<%#Eval("day8") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay8" width="45px" runat="server"/>
@@ -154,10 +154,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 9">
                          <ItemTemplate>
-                            <asp:Label ID="day9Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day9Lbl" runat="server" Text='<%#Eval("day9") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day9Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day9Txt" width="45px" runat="server" Text='<%#Eval("day9") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay9" width="45px" runat="server"/>
@@ -165,10 +165,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 10">
                          <ItemTemplate>
-                            <asp:Label ID="day10Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day10Lbl" runat="server" Text='<%#Eval("day10") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day10Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day10Txt" width="45px" runat="server" Text='<%#Eval("day10") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay10" width="45px" runat="server"/>
@@ -176,10 +176,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 11">
                          <ItemTemplate>
-                            <asp:Label ID="day11Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day11Lbl" runat="server" Text='<%#Eval("day11") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day11Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day11Txt" width="45px" runat="server" Text='<%#Eval("day11") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay11" width="45px" runat="server"/>
@@ -187,10 +187,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 12">
                          <ItemTemplate>
-                            <asp:Label ID="day12Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day12Lbl" runat="server" Text='<%#Eval("day12") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day12Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day12Txt" width="45px" runat="server" Text='<%#Eval("day12") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay12" width="45px" runat="server"/>
@@ -198,10 +198,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 13">
                          <ItemTemplate>
-                            <asp:Label ID="day13Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day13Lbl" runat="server" Text='<%#Eval("day13") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day13Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day13Txt" width="45px" runat="server" Text='<%#Eval("day13") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay13" width="45px" runat="server"/>
@@ -209,10 +209,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 14">
                          <ItemTemplate>
-                            <asp:Label ID="day14Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day14Lbl" runat="server" Text='<%#Eval("day14") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day14Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day14Txt" width="45px" runat="server" Text='<%#Eval("day14") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay14" width="45px" runat="server"/>
@@ -220,10 +220,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 15">
                          <ItemTemplate>
-                            <asp:Label ID="day15Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day15Lbl" runat="server" Text='<%#Eval("day15") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day15Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day15Txt" width="45px" runat="server" Text='<%#Eval("day15") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay15" width="45px" runat="server"/>
@@ -231,10 +231,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 16">
                          <ItemTemplate>
-                            <asp:Label ID="day16Lbl" runat="server" Text='12'/>
+                            <asp:Label ID="day16Lbl" runat="server" Text='<%#Eval("day16") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox CssClass="form-control textinput" ID="day16Txt" width="45px" runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day16Txt" width="45px" runat="server" Text='<%#Eval("day16") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox CssClass="form-control textinput" ID="inDay16" width="45px" runat="server"/>

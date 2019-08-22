@@ -25,28 +25,31 @@ namespace adminsite.site.employees.timesheet
                     OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
                     loadWorkloads();
                 }
-                catch (Exception ex) { }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
+                }
             }
         }
 
         protected void loadWorkloads()
         {
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Select * from stores", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            da.Fill(ds);
-            int count = ds.Tables[0].Rows.Count;
-            con.Close();
-            if (ds.Tables[0].Rows.Count > 0)
+            string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+            Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+            GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
+            cmd.Execute();
+            timesheet = cmd.GetResults();
+            timesheetLbl.Text = timesheet.id.ToString();
+            int count = timesheet.workloads.Count;
+            if (timesheet.workloads.Count > 0)
             {
-                gridView.DataSource = ds;
+                gridView.DataSource = timesheet.workloads;
                 gridView.DataBind();
             }
             else
             {
-                ds.Tables[0].Rows.Add(ds.Tables[0].NewRow());
-                gridView.DataSource = ds;
+                timesheet.workloads.Add(new Workload());
+                gridView.DataSource = timesheet.workloads;
                 gridView.DataBind();
                 int columncount = gridView.Rows[0].Cells.Count;
             }
@@ -102,12 +105,35 @@ namespace adminsite.site.employees.timesheet
                 OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
                 GetAllACPPerOUCommand cmd = new GetAllACPPerOUCommand(organizationalUnit);
                 cmd.Execute();
+
+                string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                cmdTimesheet.Execute();
+                timesheet = cmdTimesheet.GetResults();
+                int count = timesheet.workloads.Count;
+
                 List<AccountCoursePermit> acpList = cmd.GetResults();
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
+
+                    if (count == 0)
+                    {
+                        Label acpLbl = (e.Row.FindControl("acpLbl")) as Label;
+                        ImageButton modify = (e.Row.FindControl("modify")) as ImageButton;
+                        ImageButton delete = (e.Row.FindControl("delete")) as ImageButton;
+                        modify.Visible = false;
+                        delete.Visible = false;
+                        for (int i = 1; i <= 16; i++)
+                        {
+                            Label dayLbl = (e.Row.FindControl("day" + i + "Lbl")) as Label;
+                            dayLbl.Text = "";
+                        }
+                    }
+                    DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
                     if (e.Row.RowState == DataControlRowState.Edit)
                     {
-                        DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
+                        DropDownList acpNewDl = (e.Row.FindControl("acpNewDl")) as DropDownList;
                         if (acpEditDl != null)
                         {
                             ListItem item;
@@ -135,7 +161,7 @@ namespace adminsite.site.employees.timesheet
             }
             catch (Exception ex)
             {
-
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
             }
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)

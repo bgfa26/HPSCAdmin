@@ -1,4 +1,6 @@
-﻿using System;
+﻿using adminsite.common.entities;
+using adminsite.controller.timesheet;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -17,10 +19,17 @@ namespace adminsite.site.employees.timesheet
         {
             if (!IsPostBack)
             {
-                loadStores();
+                try
+                {
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
+                    loadWorkloads();
+                }
+                catch (Exception ex) { }
             }
         }
-        protected void loadStores()
+
+        protected void loadWorkloads()
         {
             con.Open();
             SqlCommand cmd = new SqlCommand("Select * from stores", con);
@@ -40,13 +49,12 @@ namespace adminsite.site.employees.timesheet
                 gridView.DataSource = ds;
                 gridView.DataBind();
                 int columncount = gridView.Rows[0].Cells.Count;
-                lblmsg.Text = " No data found !!!";
             }
         }
         protected void gridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gridView.EditIndex = e.NewEditIndex;
-            loadStores();
+            loadWorkloads();
         }
         protected void gridView_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -69,7 +77,7 @@ namespace adminsite.site.employees.timesheet
         protected void gridView_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gridView.EditIndex = -1;
-            loadStores();
+            loadWorkloads();
         }
         protected void gridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -88,15 +96,47 @@ namespace adminsite.site.employees.timesheet
         }
         protected void gridView_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    string stor_id = Convert.ToString(DataBinder.Eval(e.Row.DataItem, "stor_id"));
-            //    Button lnkbtnresult = (Button)e.Row.FindControl("ButtonDelete");
-            //    if (lnkbtnresult != null)
-            //    {
-            //        lnkbtnresult.Attributes.Add("onclick", "javascript:return deleteConfirm('" + stor_id + "')");
-            //    }
-            //}
+            try
+            {
+                Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
+                GetAllACPPerOUCommand cmd = new GetAllACPPerOUCommand(organizationalUnit);
+                cmd.Execute();
+                List<AccountCoursePermit> acpList = cmd.GetResults();
+                if (e.Row.RowType == DataControlRowType.DataRow)
+                {
+                    if (e.Row.RowState == DataControlRowState.Edit)
+                    {
+                        DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
+                        if (acpEditDl != null)
+                        {
+                            ListItem item;
+                            foreach (AccountCoursePermit accountCoursePermit in acpList)
+                            {
+                                item = new ListItem(accountCoursePermit.name, accountCoursePermit.id.ToString());
+                                acpEditDl.Items.Insert(acpEditDl.Items.Count, item);
+                            }
+                        }
+                    }
+                }
+                else if (e.Row.RowType == DataControlRowType.Footer)
+                {
+                    DropDownList acpNewDl = (e.Row.FindControl("acpNewDl")) as DropDownList;
+                    if (acpNewDl != null)
+                    {
+                        ListItem item;
+                        foreach (AccountCoursePermit accountCoursePermit in acpList)
+                        {
+                            item = new ListItem(accountCoursePermit.name, accountCoursePermit.id.ToString());
+                            acpNewDl.Items.Insert(acpNewDl.Items.Count, item);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {

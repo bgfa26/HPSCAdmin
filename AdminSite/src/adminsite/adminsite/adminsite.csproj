@@ -281,7 +281,10 @@
     <Content Include="site\employees\forms.html" />
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
+    <Content Include="site\employees\img\icons\add.svg" />
     <Content Include="site\employees\img\icons\assign.svg" />
+    <Content Include="site\employees\img\icons\check.svg" />
+    <Content Include="site\employees\img\icons\close.svg" />
     <Content Include="site\employees\img\icons\find.svg" />
     <Content Include="site\employees\img\icons\license.txt" />
     <Content Include="site\employees\img\icons\list.svg" />
@@ -772,6 +775,7 @@
     <Compile Include="controller\statistics\GetTotalHoursPerDayPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerMonthCommand.cs" />
     <Compile Include="controller\statistics\GetTotalHoursPerOrganizationalUnitCommand.cs" />
+    <Compile Include="controller\timesheet\GetAllACPPerOUCommand.cs" />
     <Compile Include="controller\timesheet\GetAllWorkloadsByTimesheetCommand.cs" />
     <Compile Include="controller\statistics\GetAllYearsByMonthCommand.cs" />
     <Compile Include="controller\timesheet\GetTimesheetsByEmployeeCommand.cs" />

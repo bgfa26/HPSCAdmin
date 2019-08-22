@@ -17,6 +17,16 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css'/>
+    <style>
+        
+        th {
+          text-align: center;
+        }
+        #content_gridView td {
+          padding-top: 15px;
+        }
+
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server"> 
@@ -31,8 +41,8 @@
         </div>
     </div>
     <div class="row">
-        <div>
-            <asp:GridView ID="gridView" DataKeyNames="stor_id" runat="server" CssClass="table table-bordered"
+        <div style="width: 100%; height: 500px; overflow: scroll">
+            <asp:GridView ID="gridView" DataKeyNames="stor_id" runat="server" CssClass="table table-bordered" 
                     AutoGenerateColumns="false" ShowFooter="true" HeaderStyle-Font-Bold="true"
                     onrowcancelingedit="gridView_RowCancelingEdit"
                     onrowdeleting="gridView_RowDeleting"
@@ -41,101 +51,206 @@
                     onrowcommand="gridView_RowCommand"
                     OnRowDataBound="gridView_RowDataBound">
                 <Columns>
-                    <asp:TemplateField HeaderText="stor_id">
-                        <ItemTemplate>
-                            <asp:Label ID="txtstorid" runat="server" Text='<%#Eval("stor_id") %>'/>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:Label ID="lblstorid" runat="server" width="40px" Text='<%#Eval("stor_id") %>'/>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="instorid" width="40px" runat="server"/>
-                            <asp:RequiredFieldValidator ID="vstorid" runat="server" ControlToValidate="instorid" Text="?" ValidationGroup="validaiton"/>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="stor_name">
+                    <asp:TemplateField HeaderText="Cuenta/Curso/Permiso">
                          <ItemTemplate>
-                            <asp:Label ID="lblname" runat="server" Text='<%#Eval("stor_name") %>'/>
+                            <asp:Label ID="acpLbl" runat="server" Text='12'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtname" width="70px"  runat="server" Text='<%#Eval("stor_name") %>'/>
+                            <asp:DropDownList ID="acpEditDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput">
+                            </asp:DropDownList>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="inname"  width="120px" runat="server"/>
-                            <asp:RequiredFieldValidator ID="vname" runat="server" ControlToValidate="inname" Text="?" ValidationGroup="validaiton"/>
+                            <asp:DropDownList ID="acpNewDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput">
+                            </asp:DropDownList>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Día 16">
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 1">
+                        <ItemTemplate>
+                            <asp:Label ID="day1Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day1Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay1"  width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 2">
+                         <ItemTemplate>
+                            <asp:Label ID="day2Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day2Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay2" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 3">
+                         <ItemTemplate>
+                            <asp:Label ID="day3Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day3Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay3" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 4">
+                         <ItemTemplate>
+                            <asp:Label ID="day4Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day4Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay4" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 5">
+                         <ItemTemplate>
+                            <asp:Label ID="day5Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day5Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay5" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 6">
+                         <ItemTemplate>
+                            <asp:Label ID="day6Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day6Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay6" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 7">
+                         <ItemTemplate>
+                            <asp:Label ID="day7Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day7Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay7" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 8">
+                         <ItemTemplate>
+                            <asp:Label ID="day8Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day8Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay8" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 9">
+                         <ItemTemplate>
+                            <asp:Label ID="day9Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day9Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay9" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 10">
+                         <ItemTemplate>
+                            <asp:Label ID="day10Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day10Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay10" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 11">
+                         <ItemTemplate>
+                            <asp:Label ID="day11Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day11Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay11" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 12">
+                         <ItemTemplate>
+                            <asp:Label ID="day12Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day12Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay12" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 13">
+                         <ItemTemplate>
+                            <asp:Label ID="day13Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day13Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay13" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 14">
+                         <ItemTemplate>
+                            <asp:Label ID="day14Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day14Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay14" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 15">
+                         <ItemTemplate>
+                            <asp:Label ID="day15Lbl" runat="server" Text='12'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="day15Txt" width="45px" runat="server" Text='12'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay15" width="45px" runat="server"/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-width="45px" ItemStyle-HorizontalAlign="center" HeaderText="Día 16">
                          <ItemTemplate>
                             <asp:Label ID="day16Lbl" runat="server" Text='12'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="day16Txt" width="70px"  runat="server" Text='12'/>
+                            <asp:TextBox CssClass="form-control textinput" ID="day16Txt" width="45px" runat="server" Text='12'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="inDay16"  width="120px" runat="server"/>
-                            <asp:RequiredFieldValidator ID="vDay16" runat="server" ControlToValidate="inname" Text="?" ValidationGroup="validaiton"/>
+                            <asp:TextBox CssClass="form-control textinput" ID="inDay16" width="45px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="stor_address">
-                        <ItemTemplate>
-                            <asp:Label ID="lbladdress" runat="server" Text='<%#Eval("stor_address") %>'/>
-                        </ItemTemplate>
+                    <asp:TemplateField HeaderText="Opciones" ItemStyle-HorizontalAlign="center" FooterStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtaddress" width="70px"  runat="server" Text='<%#Eval("stor_address") %>'/>
-                        </EditItemTemplate>
-                       <FooterTemplate>
-                           <asp:TextBox ID="inaddress" width="110px"  runat="server"/>
-                           <asp:RequiredFieldValidator ID="vaddress" runat="server" ControlToValidate="inaddress" Text="?" ValidationGroup="validaiton"/>
-                       </FooterTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="city">
-                         <ItemTemplate>
-                           <asp:Label ID="lblcity" runat="server" Text='<%#Eval("city") %>'/>
-                       </ItemTemplate>
-                       <EditItemTemplate>
-                           <asp:TextBox ID="txtcity" width="50px"   runat="server" Text='<%#Eval("city") %>'/>
-                       </EditItemTemplate>
-                      <FooterTemplate>
-                          <asp:TextBox ID="incity" width="60px"  runat="server"/>
-                          <asp:RequiredFieldValidator ID="vcity" runat="server" ControlToValidate="incity" Text="?" ValidationGroup="validaiton"/>
-                      </FooterTemplate>
-                   </asp:TemplateField>
-                    <asp:TemplateField HeaderText="state">
-                      <ItemTemplate>
-                          <asp:Label ID="lblstate" runat="server" Text='<%#Eval("state") %>'/>
-                      </ItemTemplate>
-                      <EditItemTemplate>
-                          <asp:TextBox ID="txtstate" width="30px"  runat="server" Text='<%#Eval("state") %>'/>
-                      </EditItemTemplate>
-                      <FooterTemplate>
-                          <asp:TextBox ID="instate" width="40px"   runat="server"/>
-                          <asp:RequiredFieldValidator ID="vstate" runat="server" ControlToValidate="instate" Text="?" ValidationGroup="validaiton"/>
-                      </FooterTemplate>
-                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="zip">
-                        <ItemTemplate>
-                            <asp:Label ID="lblzip" runat="server" Text='<%#Eval("zip") %>'/>
-                        </ItemTemplate>
-                        <EditItemTemplate>
-                            <asp:TextBox ID="txtzip" width="30px"  runat="server" Text='<%#Eval("zip") %>'/>
-                        </EditItemTemplate>
-                        <FooterTemplate>
-                            <asp:TextBox ID="inzip" width="40px"   runat="server"/>
-                            <asp:RequiredFieldValidator ID="vzip" runat="server" ControlToValidate="inzip" Text="?" ValidationGroup="validaiton"/>
-                        </FooterTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Opciones">
-                        <EditItemTemplate>
-                            <asp:Button ID="ButtonUpdate" runat="server" CommandName="Update"  Text="Update"  />
-                            <asp:Button ID="ButtonCancel" runat="server" CommandName="Cancel"  Text="Cancel" />
+                            <asp:ImageButton ID="update" runat="server" Text="Aceptar" ImageUrl="~/site/employees/img/icons/check.svg" Height="26px" Width="26px" CommandName="Update" ToolTip="Aceptar" Style="margin-right:2px"/>
+                            <asp:ImageButton ID="cancel" runat="server" Text="Cancelar" ImageUrl="~/site/employees/img/icons/close.svg" Height="25px" Width="25px" CommandName="Cancel" ToolTip="Cancelar"  Style="margin-left:2px"/>
                         </EditItemTemplate>
                         <ItemTemplate>
-                            <asp:Button ID="ButtonEdit" runat="server" CommandName="Edit"  Text="Edit"  />
-                            <asp:Button ID="ButtonDelete" runat="server" CommandName="Delete"  Text="Delete"  />
+                            <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" CommandName="Edit" ToolTip="Modificar" />
+                            <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" CommandName="Delete" ToolTip="Eliminar" />
                         </ItemTemplate>
                         <FooterTemplate>
-                            <asp:Button ID="ButtonAdd" runat="server" CommandName="AddNew"  Text="Add New Row" ValidationGroup="validaiton" />
+                            <asp:ImageButton ID="add" runat="server" Text="Agregar" ImageUrl="~/site/employees/img/icons/add.svg" Height="23px" Width="23px" CommandName="AddNew" ToolTip="Agregar" Style="margin-top:5px"/>
                         </FooterTemplate>
                     </asp:TemplateField>
                 </Columns>

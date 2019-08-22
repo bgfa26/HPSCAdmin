@@ -133,4 +133,16 @@
     <value>@id</value>
     <comment>Identificador de la hoja de tiempo</comment>
   </data>
+  <data name="GetAllACPPerOUStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_ACP_PER_OU</value>
+    <comment>Procedimiento almacenado para consultar todas los ACP que puede acceder una OU</comment>
+  </data>
+  <data name="today" xml:space="preserve">
+    <value>@today</value>
+    <comment>Fecha del sistema</comment>
+  </data>
+  <data name="unit" xml:space="preserve">
+    <value>@unit</value>
+    <comment>Unidad Organizacional</comment>
+  </data>
 </root>

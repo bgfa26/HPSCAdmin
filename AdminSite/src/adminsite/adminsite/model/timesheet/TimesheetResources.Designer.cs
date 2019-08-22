@@ -70,6 +70,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_ACP_PER_OU.
+        /// </summary>
+        internal static string GetAllACPPerOUStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllACPPerOUStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_TIMESHEET_BY_EMPLOYEE.
         /// </summary>
         internal static string GetAllTimesheetsByEmployeeStoredProcedure {
@@ -93,6 +102,24 @@ namespace adminsite.model.timesheet {
         internal static string id {
             get {
                 return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @today.
+        /// </summary>
+        internal static string today {
+            get {
+                return ResourceManager.GetString("today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @unit.
+        /// </summary>
+        internal static string unit {
+            get {
+                return ResourceManager.GetString("unit", resourceCulture);
             }
         }
     }

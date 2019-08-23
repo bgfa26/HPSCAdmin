@@ -355,7 +355,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[DELETE_ACCOUNT_COURSE_PERMIT]
-  @id AS varchar(30)
+  @id AS varchar(30),
   @exitvalue AS int OUTPUT
 AS
 BEGIN

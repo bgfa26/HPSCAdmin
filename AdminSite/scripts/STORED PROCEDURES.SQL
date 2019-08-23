@@ -655,10 +655,10 @@ CREATE PROCEDURE [dbo].[UPDATE_WORKLOAD]
   @exitvalue AS int OUTPUT 
 AS
 BEGIN
-  IF ((SELECT COUNT(*) FROM WORKLOAD WHERE FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit AND FK_TIMESHEET = @fk_timesheet) = 1)
+  IF ((SELECT COUNT(*) FROM WORKLOAD WHERE ID = @id) = 1)
     BEGIN  
-      UPDATE [dbo].[WORKLOAD] SET DAY1 = @day1, DAY2 = @day2, DAY3 = @day3, DAY4 = @day4, DAY5 = @day5, DAY6 = @day6, DAY7 = @day7, DAY8 = @day8, DAY9 = @day9, DAY10 = @day10, DAY11 = @day11, DAY12 = @day12, DAY13 = @day13, DAY14 = @day14, DAY15 = @day15, DAY16 = @day16 
-      WHERE FK_TIMESHEET = @fk_timesheet AND FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit;
+      UPDATE [dbo].[WORKLOAD] SET DAY1 = @day1, DAY2 = @day2, DAY3 = @day3, DAY4 = @day4, DAY5 = @day5, DAY6 = @day6, DAY7 = @day7, DAY8 = @day8, DAY9 = @day9, DAY10 = @day10, DAY11 = @day11, DAY12 = @day12, DAY13 = @day13, DAY14 = @day14, DAY15 = @day15, DAY16 = @day16 , FK_ACCOUNTCOURSEPERMIT = @fk_accountcoursepermit
+      WHERE ID=@id;
       set @exitvalue = 200;
       RETURN @exitvalue;
     END;

@@ -214,6 +214,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DELETE_WORKLOAD.
+        /// </summary>
+        internal static string DeleteWorkloadStoredProcedure {
+            get {
+                return ResourceManager.GetString("DeleteWorkloadStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @employee.
         /// </summary>
         internal static string employee {
@@ -309,6 +318,15 @@ namespace adminsite.model.timesheet {
         internal static string unit {
             get {
                 return ResourceManager.GetString("unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE_WORKLOAD.
+        /// </summary>
+        internal static string UpdateWorkloadStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateWorkloadStoredProcedure", resourceCulture);
             }
         }
     }

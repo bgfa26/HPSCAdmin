@@ -61,6 +61,36 @@ namespace adminsite.model.timesheet
             }
 
         }
+
+        public int DeleteWorkload(Workload workloadToDelete)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, workloadToDelete.id.ToString(), false));
+                ExecuteStoredProcedure(TimesheetResources.DeleteWorkloadStoredProcedure, parameters);
+                int result = 200;
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Timesheet GetAllWorkloadsByTimesheet(Timesheet timesheet)
         {
             List<Workload> workloads = new List<Workload>();
@@ -186,7 +216,7 @@ namespace adminsite.model.timesheet
             }
 
         }
-
+        
         public int AddWorkloadToTimesheet(Workload workloadToInsert)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -213,6 +243,55 @@ namespace adminsite.model.timesheet
                 parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToInsert.accountCoursePermit.id, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.CreateWorkloadStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int UpdateWorkload(Workload workloadToUpdate)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, workloadToUpdate.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day1, SqlDbType.Int, workloadToUpdate.day1.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day2, SqlDbType.Int, workloadToUpdate.day2.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day3, SqlDbType.Int, workloadToUpdate.day3.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day4, SqlDbType.Int, workloadToUpdate.day4.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day5, SqlDbType.Int, workloadToUpdate.day5.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day6, SqlDbType.Int, workloadToUpdate.day6.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day7, SqlDbType.Int, workloadToUpdate.day7.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day8, SqlDbType.Int, workloadToUpdate.day8.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day9, SqlDbType.Int, workloadToUpdate.day9.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day10, SqlDbType.Int, workloadToUpdate.day10.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day11, SqlDbType.Int, workloadToUpdate.day11.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day12, SqlDbType.Int, workloadToUpdate.day12.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day13, SqlDbType.Int, workloadToUpdate.day13.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day14, SqlDbType.Int, workloadToUpdate.day14.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day15, SqlDbType.Int, workloadToUpdate.day15.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.day16, SqlDbType.Int, workloadToUpdate.day16.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.Int, workloadToUpdate.timesheet.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToUpdate.accountCoursePermit.id, false));
+                parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateWorkloadStoredProcedure, parameters);
                 int result = Int32.Parse(results[0].value);
                 return result;
             }

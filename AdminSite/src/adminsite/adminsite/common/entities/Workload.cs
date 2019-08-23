@@ -54,26 +54,31 @@ namespace adminsite.common.entities
             this.accountCoursePermit = accountCoursePermit;
         }
 
+        public Workload(int id)
+        {
+            this.id = id;
+        }
+
         public Workload(int day1, int day2, int day3, int day4, int day5, int day6, int day7, int day8, int day9,
                         int day10, int day11, int day12, int day13, int day14, int day15, int day16, Timesheet timesheet,
                         AccountCoursePermit accountCoursePermit)
         {
-            this.day1 = id;
-            this.day2 = id;
-            this.day3 = id;
-            this.day4 = id;
-            this.day5 = id;
-            this.day6 = id;
-            this.day7 = id;
-            this.day8 = id;
-            this.day9 = id;
-            this.day10 = id;
-            this.day11 = id;
-            this.day12 = id;
-            this.day13 = id;
-            this.day14 = id;
-            this.day15 = id;
-            this.day16 = id;
+            this.day1 = day1;
+            this.day2 = day2;
+            this.day3 = day3;
+            this.day4 = day4;
+            this.day5 = day5;
+            this.day6 = day6;
+            this.day7 = day7;
+            this.day8 = day8;
+            this.day9 = day9;
+            this.day10 = day10;
+            this.day11 = day11;
+            this.day12 = day12;
+            this.day13 = day13;
+            this.day14 = day14;
+            this.day15 = day15;
+            this.day16 = day16;
             this.timesheet = timesheet;
             this.accountCoursePermit = accountCoursePermit;
         }

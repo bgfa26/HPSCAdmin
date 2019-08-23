@@ -41,7 +41,7 @@
         </div>
     </div>
     <div class="row">
-        <div style="width: 100%; height: 500px; overflow: scroll">
+        <div style="width: 100%; height: 350px; overflow: scroll">
             <asp:GridView ID="gridView" DataKeyNames="id" runat="server" CssClass="table table-bordered" 
                     AutoGenerateColumns="false" ShowFooter="true" HeaderStyle-Font-Bold="true"
                     onrowcancelingedit="gridView_RowCancelingEdit"
@@ -64,180 +64,180 @@
                             </asp:DropDownList>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 1">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 1">
                         <ItemTemplate>
                             <asp:Label ID="day1Lbl" runat="server" Text='<%#Eval("day1") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day1Txt" width="60px" runat="server" Text='<%#Eval("day1") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day1Txt" width="80px" runat="server" Text='<%#Eval("day1") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay1" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay1" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 2">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 2">
                          <ItemTemplate>
                             <asp:Label ID="day2Lbl" runat="server" Text='<%#Eval("day2") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day2Txt" width="60px" runat="server" Text='<%#Eval("day2") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day2Txt" width="80px" runat="server" Text='<%#Eval("day2") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay2" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay2" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 3">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 3">
                          <ItemTemplate>
                             <asp:Label ID="day3Lbl" runat="server" Text='<%#Eval("day3") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day3Txt" width="60px" runat="server" Text='<%#Eval("day3") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day3Txt" width="80px" runat="server" Text='<%#Eval("day3") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay3" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay3" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 4">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 4">
                          <ItemTemplate>
                             <asp:Label ID="day4Lbl" runat="server" Text='<%#Eval("day4") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day4Txt" width="60px" runat="server" Text='<%#Eval("day4") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day4Txt" width="80px" runat="server" Text='<%#Eval("day4") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay4" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay4" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 5">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 5">
                          <ItemTemplate>
                             <asp:Label ID="day5Lbl" runat="server" Text='<%#Eval("day5") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day5Txt" width="60px" runat="server" Text='<%#Eval("day5") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day5Txt" width="80px" runat="server" Text='<%#Eval("day5") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay5" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay5" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 6">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 6">
                          <ItemTemplate>
                             <asp:Label ID="day6Lbl" runat="server" Text='<%#Eval("day6") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day6Txt" width="60px" runat="server" Text='<%#Eval("day6") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day6Txt" width="80px" runat="server" Text='<%#Eval("day6") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay6" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay6" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 7">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 7">
                          <ItemTemplate>
                             <asp:Label ID="day7Lbl" runat="server" Text='<%#Eval("day7") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day7Txt" width="60px" runat="server" Text='<%#Eval("day7") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day7Txt" width="80px" runat="server" Text='<%#Eval("day7") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay7" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay7" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 8">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 8">
                          <ItemTemplate>
                             <asp:Label ID="day8Lbl" runat="server" Text='<%#Eval("day8") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day8Txt" width="60px" runat="server" Text='<%#Eval("day8") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day8Txt" width="80px" runat="server" Text='<%#Eval("day8") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay8" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay8" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 9">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 9">
                          <ItemTemplate>
                             <asp:Label ID="day9Lbl" runat="server" Text='<%#Eval("day9") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day9Txt" width="60px" runat="server" Text='<%#Eval("day9") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day9Txt" width="80px" runat="server" Text='<%#Eval("day9") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay9" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay9" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 10">
+                    <asp:TemplateField ItemStyle-Width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 10">
                          <ItemTemplate>
                             <asp:Label ID="day10Lbl" runat="server" Text='<%#Eval("day10") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day10Txt" width="60px" runat="server" Text='<%#Eval("day10") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day10Txt" width="80px" runat="server" Text='<%#Eval("day10") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay10" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay10" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 11">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 11">
                          <ItemTemplate>
                             <asp:Label ID="day11Lbl" runat="server" Text='<%#Eval("day11") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day11Txt" width="60px" runat="server" Text='<%#Eval("day11") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day11Txt" width="80px" runat="server" Text='<%#Eval("day11") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay11" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay11" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 12">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 12">
                          <ItemTemplate>
                             <asp:Label ID="day12Lbl" runat="server" Text='<%#Eval("day12") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day12Txt" width="60px" runat="server" Text='<%#Eval("day12") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day12Txt" width="80px" runat="server" Text='<%#Eval("day12") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay12" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay12" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 13">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 13">
                          <ItemTemplate>
                             <asp:Label ID="day13Lbl" runat="server" Text='<%#Eval("day13") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day13Txt" width="60px" runat="server" Text='<%#Eval("day13") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day13Txt" width="80px" runat="server" Text='<%#Eval("day13") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay13" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay13" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 14">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 14">
                          <ItemTemplate>
                             <asp:Label ID="day14Lbl" runat="server" Text='<%#Eval("day14") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day14Txt" width="60px" runat="server" Text='<%#Eval("day14") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day14Txt" width="80px" runat="server" Text='<%#Eval("day14") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay14" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay14" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 15">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 15">
                          <ItemTemplate>
                             <asp:Label ID="day15Lbl" runat="server" Text='<%#Eval("day15") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day15Txt" width="60px" runat="server" Text='<%#Eval("day15") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day15Txt" width="80px" runat="server" Text='<%#Eval("day15") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay15" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay15" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-width="60px" ItemStyle-HorizontalAlign="center" HeaderText="Día 16">
+                    <asp:TemplateField ItemStyle-width="80px" ItemStyle-HorizontalAlign="center" HeaderText="Día 16">
                          <ItemTemplate>
                             <asp:Label ID="day16Lbl" runat="server" Text='<%#Eval("day16") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day16Txt" width="60px" runat="server" Text='<%#Eval("day16") %>'/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="day16Txt" width="80px" runat="server" Text='<%#Eval("day16") %>'/>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay16" width="60px" runat="server"/>
+                            <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay16" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Opciones" ItemStyle-HorizontalAlign="center" FooterStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
@@ -255,10 +255,47 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
+            <table class="table table-bordered table-hover" id="job-table" style="margin-top:-17px">
+                <thead style="background: #eee;">
+                    <tr>
+                        <th scope="col" class="text-center"><asp:Label ID="totalMsgLbl" runat="server" Text='Total' ReadOnly="True" BorderStyle="None" Style="width:150.925px"/></th>                        
+                        <th scope="col" class="text-center"><asp:Label ID="header1" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header2" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header3" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header4" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header5" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header6" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header7" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header8" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header9" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header10" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header11" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header12" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header13" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header14" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header15" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center"><asp:Label ID="header16" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                    </tr>
+                </thead>
+            </table>
         </div>
         <div >
             <br />    
             <asp:Label ID="lblmsg" runat="server"></asp:Label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-3" style="margin-top:20px">
+            </div>
+            <div class="col-md-3" style="margin-top:20px">
+                <asp:Button ID="sendBtn" runat="server" Text="Entregar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="sendBtn_Click"/>
+            </div>
+            <div class="col-md-3" style="margin-top:20px">
+                <asp:Button ID="Button1" runat="server" Text="Guardar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="saveBtn_Click"/>
+            </div>
+            <div class="col-md-3" style="margin-top:20px">
+            </div>
         </div>
     </div>
     

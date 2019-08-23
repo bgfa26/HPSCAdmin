@@ -22,6 +22,7 @@ namespace adminsite.site.employees.timesheet
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
                     Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+
                     GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                     cmd.Execute();
                     timesheet = cmd.GetResults();
@@ -71,52 +72,52 @@ namespace adminsite.site.employees.timesheet
                         switch (dayCounter)
                         {
                             case 1:
-                                header1.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header1.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 2:
-                                header2.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header2.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 3:
-                                header3.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header3.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 4:
-                                header4.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header4.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 5:
-                                header5.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header5.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 6:
-                                header6.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header6.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 7:
-                                header7.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header7.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 8:
-                                header8.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header8.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 9:
-                                header9.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header9.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 10:
-                                header10.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header10.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 11:
-                                header11.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header11.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 12:
-                                header12.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header12.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 13:
-                                header13.Text = movableDate.ToString("dd/MM/yyyy");;
+                                header13.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 14:
-                                _header14.Text = movableDate.ToString("dd/MM/yyyy");;
+                                _header14.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 15:
-                                _header15.Text = movableDate.ToString("dd/MM/yyyy");;
+                                _header15.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                             case 16:
-                                _header16.Text = movableDate.ToString("dd/MM/yyyy");;
+                                _header16.Text = movableDate.ToString("dd/MM/yyyy");
                                 break;
                         }
                         movableDate = movableDate.AddDays(1);
@@ -157,7 +158,11 @@ namespace adminsite.site.employees.timesheet
         [System.Web.Services.WebMethod]
         public static string CheckEndDate()
         {
-            Timesheet timesheet = new Timesheet(1, Convert.ToDateTime("2019-03-16"), Convert.ToDateTime("2019-03-30"), "ENTREGADA", null);
+            string timesheetString = (string)HttpContext.Current.Session["CONSULTED_TIMESHEET"];
+            Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+            GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
+            cmd.Execute();
+            timesheet = cmd.GetResults();
             if (timesheet.endDate.Day == 31)
             {
                 return "31";

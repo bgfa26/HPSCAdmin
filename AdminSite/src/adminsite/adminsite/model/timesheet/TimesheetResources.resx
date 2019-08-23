@@ -229,4 +229,12 @@
     <value>@fk_timesheet</value>
     <comment>ID de la hoja de tiempo</comment>
   </data>
+  <data name="DeleteWorkloadStoredProcedure" xml:space="preserve">
+    <value>DELETE_WORKLOAD</value>
+    <comment>Procedimiento almacenado para eliminar una carga de trabajo</comment>
+  </data>
+  <data name="UpdateWorkloadStoredProcedure" xml:space="preserve">
+    <value>UPDATE_WORKLOAD</value>
+    <comment>Procedimiento almacenado para actualizar una carga de trabajo</comment>
+  </data>
 </root>

@@ -27,7 +27,27 @@ namespace adminsite.site.employees.timesheet
                 }
                 catch (Exception ex)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud, 'error'')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
+                }
+            }
+        }
+
+        protected int parseDay(string day)
+        {
+            int result;
+            if (Int32.TryParse(day, out result))
+            {
+                return result;
+            }
+            else
+            {
+                if (day.Equals(""))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return -1;
                 }
             }
         }
@@ -166,35 +186,74 @@ namespace adminsite.site.employees.timesheet
         }
         protected void gridView_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //if (e.CommandName.Equals("AddNew"))
-            //{
-            //    TextBox instorid = (TextBox)gridView.FooterRow.FindControl("instorid");
-            //    TextBox inname = (TextBox)gridView.FooterRow.FindControl("inname");
-            //    TextBox inaddress = (TextBox)gridView.FooterRow.FindControl("inaddress");
-            //    TextBox incity = (TextBox)gridView.FooterRow.FindControl("incity");
-            //    TextBox instate = (TextBox)gridView.FooterRow.FindControl("instate");
-            //    TextBox inzip = (TextBox)gridView.FooterRow.FindControl("inzip");
-            //    con.Open();
-            //    SqlCommand cmd =
-            //        new SqlCommand(
-            //            "insert into stores(stor_id,stor_name,stor_address,city,state,zip) values('" + instorid.Text + "','" +
-            //            inname.Text + "','" + inaddress.Text + "','" + incity.Text + "','" + instate.Text + "','" + inzip.Text + "')", con);
-            //    int result = cmd.ExecuteNonQuery();
-            //    con.Close();
-            //    if (result == 1)
-            //    {
-            //        loadStores();
-            //        lblmsg.BackColor = Color.Green;
-            //        lblmsg.ForeColor = Color.White;
-            //        lblmsg.Text = instorid.Text + "      Added successfully......    ";
-            //    }
-            //    else
-            //    {
-            //        lblmsg.BackColor = Color.Red;
-            //        lblmsg.ForeColor = Color.White;
-            //        lblmsg.Text = instorid.Text + " Error while adding row.....";
-            //    }
-            //}
+            if (e.CommandName.Equals("AddNew"))
+            {
+                Workload workload = null;
+                try
+                {
+                    string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                    cmdTimesheet.Execute();
+                    timesheet = cmdTimesheet.GetResults();
+                    DropDownList acpNewDl = (DropDownList)gridView.FooterRow.FindControl("acpNewDl");
+                    int inDay1 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay1")).Text);
+                    int inDay2 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay2")).Text);
+                    int inDay3 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay3")).Text);
+                    int inDay4 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay4")).Text);
+                    int inDay5 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay5")).Text);
+                    int inDay6 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay6")).Text);
+                    int inDay7 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay7")).Text);
+                    int inDay8 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay8")).Text);
+                    int inDay9 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay9")).Text);
+                    int inDay10 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay10")).Text);
+                    int inDay11 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay11")).Text);
+                    int inDay12 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay12")).Text);
+                    int inDay13 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay13")).Text);
+                    int inDay14 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay14")).Text);
+                    int inDay15 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay15")).Text);
+                    int inDay16 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay16")).Text);
+                    if (!acpNewDl.Text.Equals("")) {
+                        if ((inDay1 >= 0) && (inDay2 >= 0) && (inDay3 >= 0) && (inDay4 >= 0) && (inDay5 >= 0) && (inDay6 >= 0) && (inDay7 >= 0) && (inDay8 >= 0) &&
+                            (inDay9 >= 0) && (inDay10 >= 0) && (inDay11 >= 0) && (inDay12 >= 0) && (inDay13 >= 0) && (inDay14 >= 0) && (inDay15 >= 0) && (inDay16 >= 0))
+                        {
+                            AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
+                            workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
+                                                    inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
+                            AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
+                            cmd.Execute();
+                            int result = cmd.GetResult();
+                            if (result != 200)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido cargar las horas en la hoja de trabajo', 'error')", true);
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
+                }
+                /*int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    loadStores();
+                }
+                else
+                {
+                    lblmsg.BackColor = Color.Red;
+                    lblmsg.ForeColor = Color.White;
+                    lblmsg.Text = instorid.Text + " Error while adding row.....";
+                }*/
+            }
         }
     }
 }

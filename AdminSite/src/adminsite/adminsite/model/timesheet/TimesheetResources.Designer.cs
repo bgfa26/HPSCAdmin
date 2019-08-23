@@ -61,11 +61,191 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE_WORKLOAD.
+        /// </summary>
+        internal static string CreateWorkloadStoredProcedure {
+            get {
+                return ResourceManager.GetString("CreateWorkloadStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day1.
+        /// </summary>
+        internal static string day1 {
+            get {
+                return ResourceManager.GetString("day1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day10.
+        /// </summary>
+        internal static string day10 {
+            get {
+                return ResourceManager.GetString("day10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day11.
+        /// </summary>
+        internal static string day11 {
+            get {
+                return ResourceManager.GetString("day11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day12.
+        /// </summary>
+        internal static string day12 {
+            get {
+                return ResourceManager.GetString("day12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day13.
+        /// </summary>
+        internal static string day13 {
+            get {
+                return ResourceManager.GetString("day13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day14.
+        /// </summary>
+        internal static string day14 {
+            get {
+                return ResourceManager.GetString("day14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day15.
+        /// </summary>
+        internal static string day15 {
+            get {
+                return ResourceManager.GetString("day15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day16.
+        /// </summary>
+        internal static string day16 {
+            get {
+                return ResourceManager.GetString("day16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day2.
+        /// </summary>
+        internal static string day2 {
+            get {
+                return ResourceManager.GetString("day2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day3.
+        /// </summary>
+        internal static string day3 {
+            get {
+                return ResourceManager.GetString("day3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day4.
+        /// </summary>
+        internal static string day4 {
+            get {
+                return ResourceManager.GetString("day4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day5.
+        /// </summary>
+        internal static string day5 {
+            get {
+                return ResourceManager.GetString("day5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day6.
+        /// </summary>
+        internal static string day6 {
+            get {
+                return ResourceManager.GetString("day6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day7.
+        /// </summary>
+        internal static string day7 {
+            get {
+                return ResourceManager.GetString("day7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day8.
+        /// </summary>
+        internal static string day8 {
+            get {
+                return ResourceManager.GetString("day8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @day9.
+        /// </summary>
+        internal static string day9 {
+            get {
+                return ResourceManager.GetString("day9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @employee.
         /// </summary>
         internal static string employee {
             get {
                 return ResourceManager.GetString("employee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @exitvalue.
+        /// </summary>
+        internal static string exitvalue {
+            get {
+                return ResourceManager.GetString("exitvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @fk_accountcoursepermit.
+        /// </summary>
+        internal static string fk_accountcoursepermit {
+            get {
+                return ResourceManager.GetString("fk_accountcoursepermit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @fk_timesheet.
+        /// </summary>
+        internal static string fk_timesheet {
+            get {
+                return ResourceManager.GetString("fk_timesheet", resourceCulture);
             }
         }
         
@@ -93,6 +273,15 @@ namespace adminsite.model.timesheet {
         internal static string GetAllWorkloadsByTimesheet {
             get {
                 return ResourceManager.GetString("GetAllWorkloadsByTimesheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_TIMESHEET_DATES.
+        /// </summary>
+        internal static string GetTimesheetDatesStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetTimesheetDatesStoredProcedure", resourceCulture);
             }
         }
         

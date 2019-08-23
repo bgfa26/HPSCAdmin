@@ -24,7 +24,7 @@ namespace adminsite.site.employees.hrm
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     if (!((loggedEmployee.organizationalUnit.Equals("Administración")) && (loggedEmployee.positionName.Equals("Gerente de Talento Humano"))) &&
                         !((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión"))) &&
-                        !((loggedEmployee.organizationalUnit.Equals("Director")) && (loggedEmployee.positionName.Equals("Directiva"))))
+                        !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
                     {
                         Response.Redirect("~/site/employees/dashboard.aspx", false);
                     }

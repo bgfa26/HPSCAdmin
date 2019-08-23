@@ -337,7 +337,7 @@ namespace adminsite.site.employees.timesheet
                             dayLbl.Text = "";
                         }
                     }
-                    if (e.Row.RowState == DataControlRowState.Edit)
+                    if ((e.Row.RowState == DataControlRowState.Edit) || (e.Row.RowState == (DataControlRowState.Edit | DataControlRowState.Alternate)))
                     {
                         DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
                         if (acpEditDl != null)
@@ -465,7 +465,7 @@ namespace adminsite.site.employees.timesheet
                     int inDay14 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay14")).Text);
                     int inDay15 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay15")).Text);
                     int inDay16 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay16")).Text);
-                    /*int totalDay1 = Int32.Parse(header1.Text) + inDay1;
+                    int totalDay1 = Int32.Parse(header1.Text) + inDay1;
                     int totalDay2 = Int32.Parse(header2.Text) + inDay2;
                     int totalDay3 = Int32.Parse(header3.Text) + inDay3;
                     int totalDay4 = Int32.Parse(header4.Text) + inDay4;
@@ -480,34 +480,45 @@ namespace adminsite.site.employees.timesheet
                     int totalDay13 = Int32.Parse(header13.Text) + inDay13;
                     int totalDay14 = Int32.Parse(header14.Text) + inDay14;
                     int totalDay15 = Int32.Parse(header15.Text) + inDay15;
-                    int totalDay16 = Int32.Parse(header16.Text) + inDay16;*/
-                    if (!acpNewDl.Text.Equals("")) {
-                        if ((inDay1 >= 0) && (inDay2 >= 0) && (inDay3 >= 0) && (inDay4 >= 0) && (inDay5 >= 0) && (inDay6 >= 0) && (inDay7 >= 0) && (inDay8 >= 0) &&
-                            (inDay9 >= 0) && (inDay10 >= 0) && (inDay11 >= 0) && (inDay12 >= 0) && (inDay13 >= 0) && (inDay14 >= 0) && (inDay15 >= 0) && (inDay16 >= 0))
+                    int totalDay16 = Int32.Parse(header16.Text) + inDay16;
+
+                    if ((totalDay1 <= 24) && (totalDay2 <= 24) && (totalDay3 <= 24) && (totalDay4 <= 24) && (totalDay5 <= 24) && (totalDay6 <= 24) && 
+                        (totalDay7 <= 24) && (totalDay8 <= 24) && (totalDay9 <= 24) && (totalDay10 <= 24) && (totalDay11 <= 24) && (totalDay12 <= 24) && 
+                        (totalDay13 <= 24) && (totalDay14 <= 24) && (totalDay15 <= 24) && (totalDay16 <= 24))
+                    {
+                        if (!acpNewDl.Text.Equals(""))
                         {
-                            AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
-                            workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
-                                                    inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
-                            AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
-                            cmd.Execute();
-                            int result = cmd.GetResult();
-                            if (result == 200)
+                            if ((inDay1 >= 0) && (inDay2 >= 0) && (inDay3 >= 0) && (inDay4 >= 0) && (inDay5 >= 0) && (inDay6 >= 0) && (inDay7 >= 0) && (inDay8 >= 0) &&
+                                (inDay9 >= 0) && (inDay10 >= 0) && (inDay11 >= 0) && (inDay12 >= 0) && (inDay13 >= 0) && (inDay14 >= 0) && (inDay15 >= 0) && (inDay16 >= 0))
                             {
-                                loadWorkloads();
+                                AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
+                                workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
+                                                        inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
+                                AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
+                                cmd.Execute();
+                                int result = cmd.GetResult();
+                                if (result == 200)
+                                {
+                                    loadWorkloads();
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido cargar las horas en la hoja de trabajo', 'error')", true);
+                                }
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido cargar las horas en la hoja de trabajo', 'error')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
                             }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se pueden exceder las 24 horas del día', 'error')", true);
                     }
                 }
                 catch (Exception ex)

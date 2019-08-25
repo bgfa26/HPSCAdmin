@@ -1,0 +1,57 @@
+<holidays>
+	<holiday>
+		<namedate>
+			Día de Año Nuevo;01/01
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Día de Reyes;01/06
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			19 de abril;04/19
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Día del trabajador;05/01
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Batalla de Carabobo;06/24
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			5 de julio;07/05
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Natalicio del Libertador;07/24
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Día de la Resistencia Indígena;10/12
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Nochebuena;12/24
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Navidad;12/25
+		</namedate>
+	</holiday>
+	<holiday>
+		<namedate>
+			Nochevieja;12/31
+		</namedate>
+	</holiday>
+</holidays>

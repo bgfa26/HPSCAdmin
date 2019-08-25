@@ -51,16 +51,16 @@
                     onrowcommand="gridView_RowCommand"
                     OnRowDataBound="gridView_RowDataBound">
                 <Columns>
-                    <asp:TemplateField HeaderText="Cuenta/Curso/Permiso">
+                    <asp:TemplateField ItemStyle-Width="175px" HeaderText="Cuenta/Curso/Permiso">
                         <ItemTemplate>
                             <asp:Label ID="acpLbl" runat="server" Text='<%#Eval("accountCoursePermit.name") %>'/>
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:DropDownList ID="acpEditDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput">
+                            <asp:DropDownList ID="acpEditDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput" Width="175px">
                             </asp:DropDownList>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:DropDownList ID="acpNewDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput">
+                            <asp:DropDownList ID="acpNewDl" AppendDataBoundItems="true" runat="server" CssClass="form-control textinput" Width="175px">
                             </asp:DropDownList>
                         </FooterTemplate>
                     </asp:TemplateField>
@@ -258,7 +258,7 @@
             <table class="table table-bordered table-hover" id="job-table" style="margin-top:-17px">
                 <thead style="background: #eee;">
                     <tr>
-                        <th scope="col" class="text-center"><asp:Label ID="totalMsgLbl" runat="server" Text='Total' ReadOnly="True" BorderStyle="None" Style="width:150.925px"/></th>                        
+                        <th scope="col" class="text-center"><asp:Label ID="totalMsgLbl" runat="server" Text='Total' ReadOnly="True" BorderStyle="None" Style="width:175px"/></th>                        
                         <th scope="col" class="text-center"><asp:Label ID="header1" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
                         <th scope="col" class="text-center"><asp:Label ID="header2" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
                         <th scope="col" class="text-center"><asp:Label ID="header3" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>

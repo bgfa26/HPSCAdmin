@@ -47,6 +47,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Nager.Date, Version=1.25.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nager.Date.1.25.5\lib\net461\Nager.Date.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -279,6 +282,7 @@
     <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="site\employees\forms.html" />
+    <Content Include="site\employees\holidays.xml" />
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
     <Content Include="site\employees\img\icons\add.svg" />
@@ -747,6 +751,7 @@
     <Compile Include="common\entities\AccountCoursePermit.cs" />
     <Compile Include="common\entities\CostCenter.cs" />
     <Compile Include="common\entities\Employee.cs" />
+    <Compile Include="common\entities\Holiday.cs" />
     <Compile Include="common\entities\OrganizationalUnit.cs" />
     <Compile Include="common\entities\Position.cs" />
     <Compile Include="common\entities\Statistic.cs" />

@@ -15,7 +15,6 @@ namespace adminsite.site.employees.hrm
         private List<Employee> employeeList = new List<Employee>();
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!Page.IsPostBack)
             {
                 try

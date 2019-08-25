@@ -1,5 +1,6 @@
 ﻿using adminsite.common.entities;
 using adminsite.controller.timesheet;
+using Nager.Date;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,37 +15,59 @@ namespace adminsite.site.employees.timesheet
 {
     public partial class activetimesheet : System.Web.UI.Page
     {
+
+        protected bool checkActiveSession()
+        {
+
+            Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+            if (loggedEmployee == null)
+            { 
+                Session.RemoveAll();
+                Response.Redirect("~/site/usermanagement/login.aspx", false);
+                return false;
+            }
+            return true;
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+            if (loggedEmployee != null)
             {
-                try
+                if (!IsPostBack)
                 {
-                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
-                    string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                    if (loggedEmployee != null)
+                    try
                     {
-                        if (timesheetString != null)
+                        string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                        if (loggedEmployee != null)
                         {
-                            OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
-                            loadWorkloads();
+                            if (timesheetString != null)
+                            {
+                                OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
+                                loadWorkloads();
+                            }
+                            else
+                            {
+                                Session.Remove("CONSULTED_TIMESHEET");
+                                Response.Redirect("~/site/employees/timesheet/timesheetlist.aspx", false);
+                            }
                         }
                         else
                         {
-                            Session.Remove("CONSULTED_TIMESHEET");
-                            Response.Redirect("~/site/employees/timesheet/timesheetlist.aspx", false);
+                            Session.RemoveAll();
+                            Response.Redirect("~/site/usermanagement/login.aspx", false);
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        Session.RemoveAll();
-                        Response.Redirect("~/site/usermanagement/login.aspx", false);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
                     }
                 }
-                catch (Exception ex)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
-                }
+            }
+            else
+            {
+                Session.RemoveAll();
+                Response.Redirect("~/site/usermanagement/login.aspx", false);
             }
         }
 
@@ -213,57 +236,87 @@ namespace adminsite.site.employees.timesheet
             try
             {
                 string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
-                GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
-                cmdTimesheet.Execute();
-                timesheet = cmdTimesheet.GetResults();
-                DropDownList acpEditDl = (DropDownList)gridView.Rows[e.RowIndex].FindControl("acpEditDl");
-                int day1Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day1Txt")).Text);
-                int day2Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day2Txt")).Text);
-                int day3Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day3Txt")).Text);
-                int day4Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day4Txt")).Text);
-                int day5Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day5Txt")).Text);
-                int day6Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day6Txt")).Text);
-                int day7Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day7Txt")).Text);
-                int day8Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day8Txt")).Text);
-                int day9Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day9Txt")).Text);
-                int day10Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day10Txt")).Text);
-                int day11Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day11Txt")).Text);
-                int day12Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day12Txt")).Text);
-                int day13Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day13Txt")).Text);
-                int day14Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day14Txt")).Text);
-                int day15Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day15Txt")).Text);
-                int day16Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day16Txt")).Text);
-                Workload oldWorkload = (Workload)Session["ROW_TO_EDIT"];
-                if (!acpEditDl.Text.Equals(""))
+                if (timesheetString != null)
                 {
-                    if ((day1Txt >= 0) && (day2Txt >= 0) && (day3Txt >= 0) && (day4Txt >= 0) && (day5Txt >= 0) && (day6Txt >= 0) && (day7Txt >= 0) && (day8Txt >= 0) &&
-                        (day9Txt >= 0) && (day10Txt >= 0) && (day11Txt >= 0) && (day12Txt >= 0) && (day13Txt >= 0) && (day14Txt >= 0) && (day15Txt >= 0) && (day16Txt >= 0))
+                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                    cmdTimesheet.Execute();
+                    timesheet = cmdTimesheet.GetResults();
+                    DropDownList acpEditDl = (DropDownList)gridView.Rows[e.RowIndex].FindControl("acpEditDl");
+                    int day1Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day1Txt")).Text);
+                    int day2Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day2Txt")).Text);
+                    int day3Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day3Txt")).Text);
+                    int day4Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day4Txt")).Text);
+                    int day5Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day5Txt")).Text);
+                    int day6Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day6Txt")).Text);
+                    int day7Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day7Txt")).Text);
+                    int day8Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day8Txt")).Text);
+                    int day9Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day9Txt")).Text);
+                    int day10Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day10Txt")).Text);
+                    int day11Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day11Txt")).Text);
+                    int day12Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day12Txt")).Text);
+                    int day13Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day13Txt")).Text);
+                    int day14Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day14Txt")).Text);
+                    int day15Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day15Txt")).Text);
+                    int day16Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day16Txt")).Text);
+                    int totalDay1 = Int32.Parse(header1.Text) + day1Txt;
+                    int totalDay2 = Int32.Parse(header2.Text) + day2Txt;
+                    int totalDay3 = Int32.Parse(header3.Text) + day3Txt;
+                    int totalDay4 = Int32.Parse(header4.Text) + day4Txt;
+                    int totalDay5 = Int32.Parse(header5.Text) + day5Txt;
+                    int totalDay6 = Int32.Parse(header6.Text) + day6Txt;
+                    int totalDay7 = Int32.Parse(header7.Text) + day7Txt;
+                    int totalDay8 = Int32.Parse(header8.Text) + day8Txt;
+                    int totalDay9 = Int32.Parse(header9.Text) + day9Txt;
+                    int totalDay10 = Int32.Parse(header10.Text) + day10Txt;
+                    int totalDay11 = Int32.Parse(header11.Text) + day11Txt;
+                    int totalDay12 = Int32.Parse(header12.Text) + day12Txt;
+                    int totalDay13 = Int32.Parse(header13.Text) + day13Txt;
+                    int totalDay14 = Int32.Parse(header14.Text) + day14Txt;
+                    int totalDay15 = Int32.Parse(header15.Text) + day15Txt;
+                    int totalDay16 = Int32.Parse(header16.Text) + day16Txt;
+                    Workload oldWorkload = (Workload)Session["ROW_TO_EDIT"];
+
+
+                    if ((totalDay1 <= 24) && (totalDay2 <= 24) && (totalDay3 <= 24) && (totalDay4 <= 24) && (totalDay5 <= 24) && (totalDay6 <= 24) &&
+                        (totalDay7 <= 24) && (totalDay8 <= 24) && (totalDay9 <= 24) && (totalDay10 <= 24) && (totalDay11 <= 24) && (totalDay12 <= 24) &&
+                        (totalDay13 <= 24) && (totalDay14 <= 24) && (totalDay15 <= 24) && (totalDay16 <= 24))
                     {
-                        AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpEditDl.SelectedValue, acpEditDl.SelectedItem.Text);
-                        workload = new Workload(Int32.Parse(idWorksheet),day1Txt, day2Txt, day3Txt, day4Txt, day5Txt, day6Txt, day7Txt, day8Txt, day9Txt,
-                                                day10Txt, day11Txt, day12Txt, day13Txt, day14Txt, day15Txt, day16Txt, timesheet, accountCoursePermit);
-                        UpdateWorkloadCommand cmd = new UpdateWorkloadCommand(workload);
-                        cmd.Execute();
-                        int result = cmd.GetResult();
-                        if (result == 200)
+                        if (!acpEditDl.Text.Equals(""))
                         {
-                            gridView.EditIndex = -1;
-                            loadWorkloads();
+                            if ((day1Txt >= 0) && (day2Txt >= 0) && (day3Txt >= 0) && (day4Txt >= 0) && (day5Txt >= 0) && (day6Txt >= 0) && (day7Txt >= 0) && (day8Txt >= 0) &&
+                                (day9Txt >= 0) && (day10Txt >= 0) && (day11Txt >= 0) && (day12Txt >= 0) && (day13Txt >= 0) && (day14Txt >= 0) && (day15Txt >= 0) && (day16Txt >= 0))
+                            {
+                                AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpEditDl.SelectedValue, acpEditDl.SelectedItem.Text);
+                                workload = new Workload(Int32.Parse(idWorksheet), day1Txt, day2Txt, day3Txt, day4Txt, day5Txt, day6Txt, day7Txt, day8Txt, day9Txt,
+                                                        day10Txt, day11Txt, day12Txt, day13Txt, day14Txt, day15Txt, day16Txt, timesheet, accountCoursePermit);
+                                UpdateWorkloadCommand cmd = new UpdateWorkloadCommand(workload);
+                                cmd.Execute();
+                                int result = cmd.GetResult();
+                                if (result == 200)
+                                {
+                                    gridView.EditIndex = -1;
+                                    loadWorkloads();
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido modificar las horas en la hoja de trabajo', 'error')", true);
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
+                            }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido modificar las horas en la hoja de trabajo', 'error')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
                         }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se pueden exceder las 24 horas del día', 'error')", true);
                     }
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
                 }
             }
             catch (Exception ex)
@@ -307,126 +360,129 @@ namespace adminsite.site.employees.timesheet
         {
             try
             {
-
-                Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
-                OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
-                GetAllACPPerOUCommand cmd = new GetAllACPPerOUCommand(organizationalUnit);
-                cmd.Execute();
-
-                string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
-                GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
-                cmdTimesheet.Execute();
-                timesheet = cmdTimesheet.GetResults();
-                int count = timesheet.workloads.Count;
-
-                List<AccountCoursePermit> acpList = cmd.GetResults();
-                if (e.Row.RowType == DataControlRowType.DataRow)
+                bool active = checkActiveSession();
+                if (active)
                 {
+                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                    OrganizationalUnit organizationalUnit = new OrganizationalUnit(loggedEmployee.idOrganizationalUnit, loggedEmployee.organizationalUnit);
+                    GetAllACPPerOUCommand cmd = new GetAllACPPerOUCommand(organizationalUnit);
+                    cmd.Execute();
 
-                    if (count == 0)
+                    string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                    cmdTimesheet.Execute();
+                    timesheet = cmdTimesheet.GetResults();
+                    int count = timesheet.workloads.Count;
+
+                    List<AccountCoursePermit> acpList = cmd.GetResults();
+                    if (e.Row.RowType == DataControlRowType.DataRow)
                     {
-                        Label acpLbl = (e.Row.FindControl("acpLbl")) as Label;
-                        ImageButton modify = (e.Row.FindControl("modify")) as ImageButton;
-                        ImageButton delete = (e.Row.FindControl("delete")) as ImageButton;
-                        modify.Visible = false;
-                        delete.Visible = false;
-                        for (int i = 1; i <= 16; i++)
+
+                        if (count == 0)
                         {
-                            Label dayLbl = (e.Row.FindControl("day" + i + "Lbl")) as Label;
-                            dayLbl.Text = "";
+                            Label acpLbl = (e.Row.FindControl("acpLbl")) as Label;
+                            ImageButton modify = (e.Row.FindControl("modify")) as ImageButton;
+                            ImageButton delete = (e.Row.FindControl("delete")) as ImageButton;
+                            modify.Visible = false;
+                            delete.Visible = false;
+                            for (int i = 1; i <= 16; i++)
+                            {
+                                Label dayLbl = (e.Row.FindControl("day" + i + "Lbl")) as Label;
+                                dayLbl.Text = "";
+                            }
+                        }
+                        if ((e.Row.RowState == DataControlRowState.Edit) || (e.Row.RowState == (DataControlRowState.Edit | DataControlRowState.Alternate)))
+                        {
+                            DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
+                            if (acpEditDl != null)
+                            {
+                                ListItem item;
+                                foreach (AccountCoursePermit accountCoursePermit in acpList)
+                                {
+                                    item = new ListItem(accountCoursePermit.name, accountCoursePermit.id.ToString());
+                                    acpEditDl.Items.Insert(acpEditDl.Items.Count, item);
+                                }
+                                Workload workload = (Workload)e.Row.DataItem;
+
+                                acpEditDl.Items.FindByValue(workload.accountCoursePermit.id).Selected = true;
+                                Session["ROW_TO_EDIT"] = workload;
+                            }
                         }
                     }
-                    if ((e.Row.RowState == DataControlRowState.Edit) || (e.Row.RowState == (DataControlRowState.Edit | DataControlRowState.Alternate)))
+                    else if (e.Row.RowType == DataControlRowType.Footer)
                     {
-                        DropDownList acpEditDl = (e.Row.FindControl("acpEditDl")) as DropDownList;
-                        if (acpEditDl != null)
+                        DropDownList acpNewDl = (e.Row.FindControl("acpNewDl")) as DropDownList;
+                        if (acpNewDl != null)
                         {
                             ListItem item;
                             foreach (AccountCoursePermit accountCoursePermit in acpList)
                             {
                                 item = new ListItem(accountCoursePermit.name, accountCoursePermit.id.ToString());
-                                acpEditDl.Items.Insert(acpEditDl.Items.Count, item);
+                                acpNewDl.Items.Insert(acpNewDl.Items.Count, item);
                             }
-                            Workload workload = (Workload)e.Row.DataItem;
-
-                            acpEditDl.Items.FindByValue(workload.accountCoursePermit.id).Selected = true;
-                            Session["ROW_TO_EDIT"] = workload;
                         }
                     }
-                }
-                else if (e.Row.RowType == DataControlRowType.Footer)
-                {
-                    DropDownList acpNewDl = (e.Row.FindControl("acpNewDl")) as DropDownList;
-                    if (acpNewDl != null)
+                    else if (e.Row.RowType == DataControlRowType.Header)
                     {
-                        ListItem item;
-                        foreach (AccountCoursePermit accountCoursePermit in acpList)
+                        DateTime movableDate = timesheet.initDate;
+                        int dayCounter = 1;
+                        while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
                         {
-                            item = new ListItem(accountCoursePermit.name, accountCoursePermit.id.ToString());
-                            acpNewDl.Items.Insert(acpNewDl.Items.Count, item);
+                            switch (dayCounter)
+                            {
+                                case 1:
+                                    e.Row.Cells[1].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 2:
+                                    e.Row.Cells[2].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 3:
+                                    e.Row.Cells[3].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 4:
+                                    e.Row.Cells[4].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 5:
+                                    e.Row.Cells[5].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 6:
+                                    e.Row.Cells[6].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 7:
+                                    e.Row.Cells[7].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 8:
+                                    e.Row.Cells[8].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 9:
+                                    e.Row.Cells[9].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 10:
+                                    e.Row.Cells[10].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 11:
+                                    e.Row.Cells[11].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 12:
+                                    e.Row.Cells[12].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 13:
+                                    e.Row.Cells[13].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 14:
+                                    e.Row.Cells[14].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 15:
+                                    e.Row.Cells[15].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                                case 16:
+                                    e.Row.Cells[16].Text = movableDate.ToString("dd/MM/yyyy");
+                                    break;
+                            }
+                            movableDate = movableDate.AddDays(1);
+                            dayCounter++;
                         }
-                    }
-                }
-                else if (e.Row.RowType == DataControlRowType.Header)
-                {
-                    DateTime movableDate = timesheet.initDate;
-                    int dayCounter = 1;
-                    while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
-                    {
-                        switch (dayCounter)
-                        {
-                            case 1:
-                                e.Row.Cells[1].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 2:
-                                e.Row.Cells[2].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 3:
-                                e.Row.Cells[3].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 4:
-                                e.Row.Cells[4].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 5:
-                                e.Row.Cells[5].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 6:
-                                e.Row.Cells[6].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 7:
-                                e.Row.Cells[7].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 8:
-                                e.Row.Cells[8].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 9:
-                                e.Row.Cells[9].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 10:
-                                e.Row.Cells[10].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 11:
-                                e.Row.Cells[11].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 12:
-                                e.Row.Cells[12].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 13:
-                                e.Row.Cells[13].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 14:
-                                e.Row.Cells[14].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 15:
-                                e.Row.Cells[15].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                            case 16:
-                                e.Row.Cells[16].Text = movableDate.ToString("dd/MM/yyyy");
-                                break;
-                        }
-                        movableDate = movableDate.AddDays(1);
-                        dayCounter++;
                     }
                 }
             }
@@ -444,81 +500,84 @@ namespace adminsite.site.employees.timesheet
                 try
                 {
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
-                    GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
-                    cmdTimesheet.Execute();
-                    timesheet = cmdTimesheet.GetResults();
-                    DropDownList acpNewDl = (DropDownList)gridView.FooterRow.FindControl("acpNewDl");
-                    int inDay1 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay1")).Text);
-                    int inDay2 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay2")).Text);
-                    int inDay3 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay3")).Text);
-                    int inDay4 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay4")).Text);
-                    int inDay5 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay5")).Text);
-                    int inDay6 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay6")).Text);
-                    int inDay7 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay7")).Text);
-                    int inDay8 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay8")).Text);
-                    int inDay9 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay9")).Text);
-                    int inDay10 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay10")).Text);
-                    int inDay11 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay11")).Text);
-                    int inDay12 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay12")).Text);
-                    int inDay13 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay13")).Text);
-                    int inDay14 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay14")).Text);
-                    int inDay15 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay15")).Text);
-                    int inDay16 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay16")).Text);
-                    int totalDay1 = Int32.Parse(header1.Text) + inDay1;
-                    int totalDay2 = Int32.Parse(header2.Text) + inDay2;
-                    int totalDay3 = Int32.Parse(header3.Text) + inDay3;
-                    int totalDay4 = Int32.Parse(header4.Text) + inDay4;
-                    int totalDay5 = Int32.Parse(header5.Text) + inDay5;
-                    int totalDay6 = Int32.Parse(header6.Text) + inDay6;
-                    int totalDay7 = Int32.Parse(header7.Text) + inDay7;
-                    int totalDay8 = Int32.Parse(header8.Text) + inDay8;
-                    int totalDay9 = Int32.Parse(header9.Text) + inDay9;
-                    int totalDay10 = Int32.Parse(header10.Text) + inDay10;
-                    int totalDay11 = Int32.Parse(header11.Text) + inDay11;
-                    int totalDay12 = Int32.Parse(header12.Text) + inDay12;
-                    int totalDay13 = Int32.Parse(header13.Text) + inDay13;
-                    int totalDay14 = Int32.Parse(header14.Text) + inDay14;
-                    int totalDay15 = Int32.Parse(header15.Text) + inDay15;
-                    int totalDay16 = Int32.Parse(header16.Text) + inDay16;
-
-                    if ((totalDay1 <= 24) && (totalDay2 <= 24) && (totalDay3 <= 24) && (totalDay4 <= 24) && (totalDay5 <= 24) && (totalDay6 <= 24) && 
-                        (totalDay7 <= 24) && (totalDay8 <= 24) && (totalDay9 <= 24) && (totalDay10 <= 24) && (totalDay11 <= 24) && (totalDay12 <= 24) && 
-                        (totalDay13 <= 24) && (totalDay14 <= 24) && (totalDay15 <= 24) && (totalDay16 <= 24))
+                    if (timesheetString != null)
                     {
-                        if (!acpNewDl.Text.Equals(""))
+                        Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                        GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                        cmdTimesheet.Execute();
+                        timesheet = cmdTimesheet.GetResults();
+                        DropDownList acpNewDl = (DropDownList)gridView.FooterRow.FindControl("acpNewDl");
+                        int inDay1 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay1")).Text);
+                        int inDay2 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay2")).Text);
+                        int inDay3 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay3")).Text);
+                        int inDay4 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay4")).Text);
+                        int inDay5 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay5")).Text);
+                        int inDay6 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay6")).Text);
+                        int inDay7 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay7")).Text);
+                        int inDay8 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay8")).Text);
+                        int inDay9 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay9")).Text);
+                        int inDay10 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay10")).Text);
+                        int inDay11 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay11")).Text);
+                        int inDay12 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay12")).Text);
+                        int inDay13 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay13")).Text);
+                        int inDay14 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay14")).Text);
+                        int inDay15 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay15")).Text);
+                        int inDay16 = parseDay(((TextBox)gridView.FooterRow.FindControl("inDay16")).Text);
+                        int totalDay1 = Int32.Parse(header1.Text) + inDay1;
+                        int totalDay2 = Int32.Parse(header2.Text) + inDay2;
+                        int totalDay3 = Int32.Parse(header3.Text) + inDay3;
+                        int totalDay4 = Int32.Parse(header4.Text) + inDay4;
+                        int totalDay5 = Int32.Parse(header5.Text) + inDay5;
+                        int totalDay6 = Int32.Parse(header6.Text) + inDay6;
+                        int totalDay7 = Int32.Parse(header7.Text) + inDay7;
+                        int totalDay8 = Int32.Parse(header8.Text) + inDay8;
+                        int totalDay9 = Int32.Parse(header9.Text) + inDay9;
+                        int totalDay10 = Int32.Parse(header10.Text) + inDay10;
+                        int totalDay11 = Int32.Parse(header11.Text) + inDay11;
+                        int totalDay12 = Int32.Parse(header12.Text) + inDay12;
+                        int totalDay13 = Int32.Parse(header13.Text) + inDay13;
+                        int totalDay14 = Int32.Parse(header14.Text) + inDay14;
+                        int totalDay15 = Int32.Parse(header15.Text) + inDay15;
+                        int totalDay16 = Int32.Parse(header16.Text) + inDay16;
+
+                        if ((totalDay1 <= 24) && (totalDay2 <= 24) && (totalDay3 <= 24) && (totalDay4 <= 24) && (totalDay5 <= 24) && (totalDay6 <= 24) &&
+                            (totalDay7 <= 24) && (totalDay8 <= 24) && (totalDay9 <= 24) && (totalDay10 <= 24) && (totalDay11 <= 24) && (totalDay12 <= 24) &&
+                            (totalDay13 <= 24) && (totalDay14 <= 24) && (totalDay15 <= 24) && (totalDay16 <= 24))
                         {
-                            if ((inDay1 >= 0) && (inDay2 >= 0) && (inDay3 >= 0) && (inDay4 >= 0) && (inDay5 >= 0) && (inDay6 >= 0) && (inDay7 >= 0) && (inDay8 >= 0) &&
-                                (inDay9 >= 0) && (inDay10 >= 0) && (inDay11 >= 0) && (inDay12 >= 0) && (inDay13 >= 0) && (inDay14 >= 0) && (inDay15 >= 0) && (inDay16 >= 0))
+                            if (!acpNewDl.Text.Equals(""))
                             {
-                                AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
-                                workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
-                                                        inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
-                                AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
-                                cmd.Execute();
-                                int result = cmd.GetResult();
-                                if (result == 200)
+                                if ((inDay1 >= 0) && (inDay2 >= 0) && (inDay3 >= 0) && (inDay4 >= 0) && (inDay5 >= 0) && (inDay6 >= 0) && (inDay7 >= 0) && (inDay8 >= 0) &&
+                                    (inDay9 >= 0) && (inDay10 >= 0) && (inDay11 >= 0) && (inDay12 >= 0) && (inDay13 >= 0) && (inDay14 >= 0) && (inDay15 >= 0) && (inDay16 >= 0))
                                 {
-                                    loadWorkloads();
+                                    AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
+                                    workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
+                                                            inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
+                                    AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
+                                    cmd.Execute();
+                                    int result = cmd.GetResult();
+                                    if (result == 200)
+                                    {
+                                        loadWorkloads();
+                                    }
+                                    else
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido cargar las horas en la hoja de trabajo', 'error')", true);
+                                    }
                                 }
                                 else
                                 {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido cargar las horas en la hoja de trabajo', 'error')", true);
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
                                 }
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen campos que poseen información inválida', 'error')", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
                             }
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Debe seleccionar una cuenta/curso/permiso para poder registrar las horas', 'error')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se pueden exceder las 24 horas del día', 'error')", true);
                         }
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se pueden exceder las 24 horas del día', 'error')", true);
                     }
                 }
                 catch (Exception ex)
@@ -529,15 +588,75 @@ namespace adminsite.site.employees.timesheet
             }
         }
 
-        protected void sendBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void saveBtn_Click(object sender, EventArgs e)
         {
             Session.Remove("CONSULTED_TIMESHEET");
             Response.Redirect("~/site/employees/timesheet/timesheetlist.aspx", false);
+        }
+
+        protected void sendBtn_Click(object sender, EventArgs e)
+        {
+            bool active = checkActiveSession();
+            if (active)
+            {
+                Dictionary<string, int> dictionary = new Dictionary<string, int>();
+                dictionary["totalDay1"] = Int32.Parse(header1.Text);
+                dictionary["totalDay2"] = Int32.Parse(header2.Text);
+                dictionary["totalDay3"] = Int32.Parse(header3.Text);
+                dictionary["totalDay4"] = Int32.Parse(header4.Text);
+                dictionary["totalDay5"] = Int32.Parse(header5.Text);
+                dictionary["totalDay6"] = Int32.Parse(header6.Text);
+                dictionary["totalDay7"] = Int32.Parse(header7.Text);
+                dictionary["totalDay8"] = Int32.Parse(header8.Text);
+                dictionary["totalDay9"] = Int32.Parse(header9.Text);
+                dictionary["totalDay10"] = Int32.Parse(header10.Text);
+                dictionary["totalDay11"] = Int32.Parse(header11.Text);
+                dictionary["totalDay12"] = Int32.Parse(header12.Text);
+                dictionary["totalDay13"] = Int32.Parse(header13.Text);
+                dictionary["totalDay14"] = Int32.Parse(header14.Text);
+                dictionary["totalDay15"] = Int32.Parse(header15.Text);
+                dictionary["totalDay16"] = Int32.Parse(header16.Text);
+                Holiday holidayManagement = new Holiday();
+                List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
+                string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                cmdTimesheet.Execute();
+                DateTime movableDate = timesheet.initDate;
+                int dayCounter = 1;
+                bool approvedTimesheet = true;
+                while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
+                {
+                    bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
+                    foreach (Holiday holiday in holidays)
+                    {
+                        int sameDate = DateTime.Compare(movableDate, holiday.date);
+                        if (sameDate == 0)
+                        {
+                            holidayWeekend = true;
+                        }
+                    }
+                    if (!holidayWeekend)
+                    {
+                        int totalDay = dictionary["totalDay" + dayCounter];
+                        approvedTimesheet = (totalDay >= 8);
+                        if (!approvedTimesheet)
+                        {
+                            break;
+                        }
+                    }
+                    movableDate = movableDate.AddDays(1);
+                    dayCounter++;
+                }
+                if (approvedTimesheet)
+                {
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen días con menos de ocho (8) horas registradas', 'error')", true);
+                }
+            }
         }
     }
 }

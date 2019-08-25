@@ -13,6 +13,19 @@ namespace adminsite.site.employees.hrm
 {
     public partial class employeedata : System.Web.UI.Page
     {
+
+        protected bool checkActiveSession()
+        {
+
+            Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+            if (loggedEmployee == null)
+            {
+                Session.RemoveAll();
+                Response.Redirect("~/site/usermanagement/login.aspx", false);
+                return false;
+            }
+            return true;
+        }
         private Employee consultedEmployee;
         private int supervisedUnit = -1;
         protected void Page_Load(object sender, EventArgs e)
@@ -110,40 +123,44 @@ namespace adminsite.site.employees.hrm
 
         protected void acceptBtn_Click(object sender, EventArgs e)
         {
-            int employeeId = (int) Session["CONSULTED_ID"];
-            int selectedPosition = Int32.Parse(positionDropList.SelectedValue);
-            int selectedUnit = Int32.Parse(ouDropList.SelectedValue);
-            int selectedUnitToSupervise = Int32.Parse(superviseDropList.SelectedValue);
-            supervisedUnit = (int)Session["CONSULTED_SUPERVISEDUNIT"];
-            Employee employeeToModify = new Employee(employeeId, selectedPosition, selectedUnit);
-            try
+            bool active = checkActiveSession();
+            if (active)
             {
-                UpdateEmployeeHRMCommand cmd = new UpdateEmployeeHRMCommand(employeeToModify);
-                cmd.Execute();
-                if (selectedUnitToSupervise != -1)
+                int employeeId = (int)Session["CONSULTED_ID"];
+                int selectedPosition = Int32.Parse(positionDropList.SelectedValue);
+                int selectedUnit = Int32.Parse(ouDropList.SelectedValue);
+                int selectedUnitToSupervise = Int32.Parse(superviseDropList.SelectedValue);
+                supervisedUnit = (int)Session["CONSULTED_SUPERVISEDUNIT"];
+                Employee employeeToModify = new Employee(employeeId, selectedPosition, selectedUnit);
+                try
                 {
-                    OrganizationalUnit organizationalUnit = new OrganizationalUnit(selectedUnitToSupervise, employeeId);
-                    UpdateOverseerCommand cmdOverseer = new UpdateOverseerCommand(organizationalUnit);
-                    cmdOverseer.Execute();
-                    if (supervisedUnit != -1)
+                    UpdateEmployeeHRMCommand cmd = new UpdateEmployeeHRMCommand(employeeToModify);
+                    cmd.Execute();
+                    if (selectedUnitToSupervise != -1)
+                    {
+                        OrganizationalUnit organizationalUnit = new OrganizationalUnit(selectedUnitToSupervise, employeeId);
+                        UpdateOverseerCommand cmdOverseer = new UpdateOverseerCommand(organizationalUnit);
+                        cmdOverseer.Execute();
+                        if (supervisedUnit != -1)
+                        {
+                            OrganizationalUnit organizationalUnitToRemove = new OrganizationalUnit(supervisedUnit);
+                            RemoveOverseerCommand cmdRemove = new RemoveOverseerCommand(organizationalUnitToRemove);
+                            cmdRemove.Execute();
+                        }
+                    }
+                    else
                     {
                         OrganizationalUnit organizationalUnitToRemove = new OrganizationalUnit(supervisedUnit);
                         RemoveOverseerCommand cmdRemove = new RemoveOverseerCommand(organizationalUnitToRemove);
                         cmdRemove.Execute();
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    OrganizationalUnit organizationalUnitToRemove = new OrganizationalUnit(supervisedUnit);
-                    RemoveOverseerCommand cmdRemove = new RemoveOverseerCommand(organizationalUnitToRemove);
-                    cmdRemove.Execute();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al procesar su solicitud', 'error')", true);
                 }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha modificado el empleado exitosamente', 'success', '/site/employees/hrm/employeedata.aspx')", true);
             }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al procesar su solicitud', 'error')", true);
-            }
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha modificado el empleado exitosamente', 'success', '/site/employees/hrm/employeedata.aspx')", true);
         }
 
         protected void backBtn_Click(object sender, EventArgs e)

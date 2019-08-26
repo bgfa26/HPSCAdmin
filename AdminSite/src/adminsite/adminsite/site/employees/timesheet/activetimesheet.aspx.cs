@@ -200,18 +200,25 @@ namespace adminsite.site.employees.timesheet
                         break;
                     case 30:
                         gridView.Columns[16].Visible = false;
+                        _header16.Visible = false;
                         break;
                     case 29:
                         gridView.Columns[16].Visible = false;
                         gridView.Columns[15].Visible = false;
+                        _header16.Visible = false;
+                        _header15.Visible = false;
                         break;
                     case 15:
                         gridView.Columns[16].Visible = false;
+                        _header16.Visible = false;
                         break;
                     case 28:
                         gridView.Columns[16].Visible = false;
                         gridView.Columns[15].Visible = false;
                         gridView.Columns[14].Visible = false;
+                        _header16.Visible = false;
+                        _header15.Visible = false;
+                        _header14.Visible = false;
                         break;
                 }
                 fillTotalPerDaysLbl(timesheet.workloads);
@@ -289,7 +296,7 @@ namespace adminsite.site.employees.timesheet
                             {
                                 AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpEditDl.SelectedValue, acpEditDl.SelectedItem.Text);
                                 workload = new Workload(Int32.Parse(idWorksheet), day1Txt, day2Txt, day3Txt, day4Txt, day5Txt, day6Txt, day7Txt, day8Txt, day9Txt,
-                                                        day10Txt, day11Txt, day12Txt, day13Txt, day14Txt, day15Txt, day16Txt, timesheet, accountCoursePermit);
+                                                        day10Txt, day11Txt, day12Txt, day13Txt, day14Txt, day15Txt, day16Txt, "EN ESPERA", timesheet, accountCoursePermit);
                                 UpdateWorkloadCommand cmd = new UpdateWorkloadCommand(workload);
                                 cmd.Execute();
                                 int result = cmd.GetResult();
@@ -551,7 +558,7 @@ namespace adminsite.site.employees.timesheet
                                 {
                                     AccountCoursePermit accountCoursePermit = new AccountCoursePermit(acpNewDl.SelectedValue, acpNewDl.SelectedItem.Text);
                                     workload = new Workload(inDay1, inDay2, inDay3, inDay4, inDay5, inDay6, inDay7, inDay8, inDay9,
-                                                            inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, timesheet, accountCoursePermit);
+                                                            inDay10, inDay11, inDay12, inDay13, inDay14, inDay15, inDay16, "EN ESPERA", timesheet, accountCoursePermit);
                                     AddWorkloadToTimesheetCommand cmd = new AddWorkloadToTimesheetCommand(workload);
                                     cmd.Execute();
                                     int result = cmd.GetResult();

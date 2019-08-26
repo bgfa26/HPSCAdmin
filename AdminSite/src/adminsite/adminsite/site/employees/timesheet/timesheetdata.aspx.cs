@@ -11,7 +11,7 @@ namespace adminsite.site.employees.timesheet
 {
     public partial class timesheetdata : System.Web.UI.Page
     {
-        public Workload total = new Workload(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, new Timesheet(), new AccountCoursePermit("final", "Total"));
+        public Workload total = new Workload(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "",new Timesheet(), new AccountCoursePermit("final", "Total"));
         protected void Page_Load(object sender, EventArgs e)
         {
 

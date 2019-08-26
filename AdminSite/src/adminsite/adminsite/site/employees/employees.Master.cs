@@ -46,7 +46,7 @@ namespace adminsite.site.employees
                             }
                             else if ((consultedEmployee.organizationalUnit.Equals("Contraloría")) && (consultedEmployee.positionName.Equals("Contralor de Gestión")))
                             {
-                                rrhhLi.Visible = false;
+                                rrhhLi.Visible = true;
                                 acpLi.Visible = true;
                                 stLi.Visible = true;
                             }
@@ -59,9 +59,10 @@ namespace adminsite.site.employees
                             GetAllAccountCoursePermitPerEmployeeCommand cmdACP = new GetAllAccountCoursePermitPerEmployeeCommand(consultedEmployee);
                             cmdACP.Execute();
                             List<AccountCoursePermit> accountCoursePermits = cmdACP.GetResults();
+                            myAcpLi.Visible = false;
                             if (accountCoursePermits.Count > 0)
                             {
-
+                                myAcpLi.Visible = true;
                             }
                         }
                         else

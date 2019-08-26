@@ -35,7 +35,8 @@
             <table class="table table-bordered table-hover" id="job-table">
                 <thead style="background: #eee;">
                     <tr>
-                        <th scope="col" class="text-center">Cuenta/Curso/Permiso</th>                        
+                        <th scope="col" class="text-center">Cuenta/Curso/Permiso</th> 
+                        <th scope="col" class="text-center" style="padding-left:25px;padding-right:25px">Estatus</th>                        
                         <th scope="col" class="text-center"><asp:Label ID="header1" runat="server" Text='Día 1' ReadOnly="True" BorderStyle="None" /></th>
                         <th scope="col" class="text-center"><asp:Label ID="header2" runat="server" Text='Día 2' ReadOnly="True" BorderStyle="None" /></th>
                         <th scope="col" class="text-center"><asp:Label ID="header3" runat="server" Text='Día 3' ReadOnly="True" BorderStyle="None" /></th>
@@ -60,6 +61,7 @@
                         <ItemTemplate>
                                 <tr id="<%# Eval("id") %>">
                                     <td><%# Eval("accountCoursePermit.name") %></td>
+                                    <td><%# Eval("status") %></td>
                                     <td><%# Eval("day1") %></td>
                                     <td><%# Eval("day2") %></td>
                                     <td><%# Eval("day3") %></td>
@@ -85,7 +87,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th scope="col" class="text-center">Total</th>
+                        <th scope="col" class="text-center" colspan="2">Total</th>
                         <th scope="col" class="text-center"><asp:Label ID="day1Lbl" runat="server" Text='' ReadOnly="True" BorderStyle="None" /></th>
                         <th scope="col" class="text-center"><asp:Label ID="day2Lbl" runat="server" Text='' ReadOnly="True" BorderStyle="None" /></th>
                         <th scope="col" class="text-center"><asp:Label ID="day3Lbl" runat="server" Text='' ReadOnly="True" BorderStyle="None" /></th>

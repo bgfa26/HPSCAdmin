@@ -272,9 +272,9 @@
                         <th scope="col" class="text-center"><asp:Label ID="header11" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
                         <th scope="col" class="text-center"><asp:Label ID="header12" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
                         <th scope="col" class="text-center"><asp:Label ID="header13" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
-                        <th scope="col" class="text-center"><asp:Label ID="header14" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
-                        <th scope="col" class="text-center"><asp:Label ID="header15" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
-                        <th scope="col" class="text-center"><asp:Label ID="header16" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center" id="_header14" runat="server"><asp:Label ID="header14" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center" id="_header15" runat="server"><asp:Label ID="header15" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
+                        <th scope="col" class="text-center" id="_header16" runat="server"><asp:Label ID="header16" runat="server" Text='' ReadOnly="True" BorderStyle="None" Style="width:80px"/></th>
                     </tr>
                 </thead>
             </table>

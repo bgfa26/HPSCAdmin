@@ -126,6 +126,7 @@ namespace adminsite.model.timesheet
                                                 Int32.Parse(row["DAY14"].ToString()),
                                                 Int32.Parse(row["DAY15"].ToString()),
                                                 Int32.Parse(row["DAY16"].ToString()),
+                                                row["STATUS"].ToString(),
                                                 timesheet,
                                                 accountCoursePermit);
                         workloads.Add(workload);

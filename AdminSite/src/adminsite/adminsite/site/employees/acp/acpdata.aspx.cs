@@ -180,15 +180,15 @@ namespace adminsite.site.employees.acp
                                 Employee employee = new Employee(adminInt);
                                 AccountCoursePermit acpToUpdate = new AccountCoursePermit(acpId, acpName, Int32.Parse(acpType), Convert.ToDateTime(init),
                                                                                           Convert.ToDateTime(end), employee);
-                                UpdateAccountCoursePermitCommand _cmd = new UpdateAccountCoursePermitCommand(acpToUpdate);
-                                _cmd.Execute();
-                                int result = _cmd.GetResult();
-                                if (result == 200)
+                                DeleteCostCenterCommand command = new DeleteCostCenterCommand(acpToUpdate);
+                                command.Execute();
+                                int response = command.GetResult();
+                                if (response == 200)
                                 {
-                                    DeleteCostCenterCommand command = new DeleteCostCenterCommand(acpToUpdate);
-                                    command.Execute();
-                                    int response = command.GetResult();
-                                    if (response == 200)
+                                    UpdateAccountCoursePermitCommand _cmd = new UpdateAccountCoursePermitCommand(acpToUpdate);
+                                    _cmd.Execute();
+                                    int result = _cmd.GetResult();
+                                    if (result == 200)
                                     {
                                         foreach (string unit in selectedUnits)
                                         {

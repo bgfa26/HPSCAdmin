@@ -166,6 +166,15 @@ namespace adminsite.site.employees.timesheet {
         protected global::System.Web.UI.WebControls.Label header13;
         
         /// <summary>
+        /// _header14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell _header14;
+        
+        /// <summary>
         /// header14 control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace adminsite.site.employees.timesheet {
         protected global::System.Web.UI.WebControls.Label header14;
         
         /// <summary>
+        /// _header15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell _header15;
+        
+        /// <summary>
         /// header15 control.
         /// </summary>
         /// <remarks>
@@ -182,6 +200,15 @@ namespace adminsite.site.employees.timesheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label header15;
+        
+        /// <summary>
+        /// _header16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell _header16;
         
         /// <summary>
         /// header16 control.

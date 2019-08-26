@@ -304,6 +304,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @status.
+        /// </summary>
+        internal static string status {
+            get {
+                return ResourceManager.GetString("status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @today.
         /// </summary>
         internal static string today {
@@ -318,6 +327,15 @@ namespace adminsite.model.timesheet {
         internal static string unit {
             get {
                 return ResourceManager.GetString("unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UPDATE_TIMESHEET_STATUS.
+        /// </summary>
+        internal static string UpdateTimesheetStatusStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateTimesheetStatusStoredProcedure", resourceCulture);
             }
         }
         

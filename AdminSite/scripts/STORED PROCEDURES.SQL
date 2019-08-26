@@ -821,3 +821,33 @@ BEGIN
   FROM TIMESHEET T
   WHERE T.ID = @id; 
 END
+
+/****** 
+    PROCEDIMIENTO PARA ACTUALIZAR EL ESTATUS LAS HOJAS DE TIEMPO
+    FECHA: 25/08/2019 04:44 PM
+******/
+USE [MTGROUPDATABASE]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[UPDATE_TIMESHEET_STATUS]
+  @id AS int,
+  @status AS varchar (50),
+  @exitvalue AS int OUTPUT 
+AS
+BEGIN
+  IF ((SELECT COUNT(*) FROM TIMESHEET WHERE ID = @id) = 1)
+    BEGIN  
+      UPDATE [dbo].[TIMESHEET] SET STATUS = @status
+      WHERE ID = @id;
+      set @exitvalue = 200;
+      RETURN @exitvalue;
+    END;
+  ELSE
+    BEGIN
+      set @exitvalue = 100;
+      RETURN @exitvalue;
+    END;
+END

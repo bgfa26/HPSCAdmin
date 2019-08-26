@@ -227,7 +227,7 @@
   </data>
   <data name="fk_timesheet" xml:space="preserve">
     <value>@fk_timesheet</value>
-    <comment>ID de la hoja de tiempo</comment>
+    <comment>ID</comment>
   </data>
   <data name="DeleteWorkloadStoredProcedure" xml:space="preserve">
     <value>DELETE_WORKLOAD</value>
@@ -236,5 +236,13 @@
   <data name="UpdateWorkloadStoredProcedure" xml:space="preserve">
     <value>UPDATE_WORKLOAD</value>
     <comment>Procedimiento almacenado para actualizar una carga de trabajo</comment>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>@status</value>
+    <comment>Estatus de la hoja de tiempo</comment>
+  </data>
+  <data name="UpdateTimesheetStatusStoredProcedure" xml:space="preserve">
+    <value>UPDATE_TIMESHEET_STATUS</value>
+    <comment>Procedimiento almacenado para actualizar el estatus de una hoja de tiempo</comment>
   </data>
 </root>

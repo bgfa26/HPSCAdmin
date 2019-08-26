@@ -171,6 +171,7 @@ namespace adminsite.model.timesheet
             }
 
         }
+
         public List<AccountCoursePermit> GetAllACPPerOU(OrganizationalUnit unit)
         {
             List<AccountCoursePermit> accountCoursePermits = new List<AccountCoursePermit>();
@@ -292,6 +293,38 @@ namespace adminsite.model.timesheet
                 parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToUpdate.accountCoursePermit.id, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateWorkloadStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public int UpdateTimesheetStatus(Timesheet timesheetToUpdate)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, timesheetToUpdate.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.status, SqlDbType.VarChar, timesheetToUpdate.status, false));
+                parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateTimesheetStatusStoredProcedure, parameters);
                 int result = Int32.Parse(results[0].value);
                 return result;
             }

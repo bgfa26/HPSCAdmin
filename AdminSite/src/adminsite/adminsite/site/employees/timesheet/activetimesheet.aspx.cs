@@ -243,6 +243,7 @@ namespace adminsite.site.employees.timesheet
                     cmdTimesheet.Execute();
                     timesheet = cmdTimesheet.GetResults();
                     DropDownList acpEditDl = (DropDownList)gridView.Rows[e.RowIndex].FindControl("acpEditDl");
+                    Workload oldWorkload = (Workload)Session["ROW_TO_EDIT"];
                     int day1Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day1Txt")).Text);
                     int day2Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day2Txt")).Text);
                     int day3Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day3Txt")).Text);
@@ -259,23 +260,22 @@ namespace adminsite.site.employees.timesheet
                     int day14Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day14Txt")).Text);
                     int day15Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day15Txt")).Text);
                     int day16Txt = parseDay(((TextBox)gridView.Rows[e.RowIndex].FindControl("day16Txt")).Text);
-                    int totalDay1 = Int32.Parse(header1.Text) + day1Txt;
-                    int totalDay2 = Int32.Parse(header2.Text) + day2Txt;
-                    int totalDay3 = Int32.Parse(header3.Text) + day3Txt;
-                    int totalDay4 = Int32.Parse(header4.Text) + day4Txt;
-                    int totalDay5 = Int32.Parse(header5.Text) + day5Txt;
-                    int totalDay6 = Int32.Parse(header6.Text) + day6Txt;
-                    int totalDay7 = Int32.Parse(header7.Text) + day7Txt;
-                    int totalDay8 = Int32.Parse(header8.Text) + day8Txt;
-                    int totalDay9 = Int32.Parse(header9.Text) + day9Txt;
-                    int totalDay10 = Int32.Parse(header10.Text) + day10Txt;
-                    int totalDay11 = Int32.Parse(header11.Text) + day11Txt;
-                    int totalDay12 = Int32.Parse(header12.Text) + day12Txt;
-                    int totalDay13 = Int32.Parse(header13.Text) + day13Txt;
-                    int totalDay14 = Int32.Parse(header14.Text) + day14Txt;
-                    int totalDay15 = Int32.Parse(header15.Text) + day15Txt;
-                    int totalDay16 = Int32.Parse(header16.Text) + day16Txt;
-                    Workload oldWorkload = (Workload)Session["ROW_TO_EDIT"];
+                    int totalDay1 = Int32.Parse(header1.Text) + day1Txt- oldWorkload.day1;
+                    int totalDay2 = Int32.Parse(header2.Text) + day2Txt- oldWorkload.day2;
+                    int totalDay3 = Int32.Parse(header3.Text) + day3Txt- oldWorkload.day3;
+                    int totalDay4 = Int32.Parse(header4.Text) + day4Txt- oldWorkload.day4;
+                    int totalDay5 = Int32.Parse(header5.Text) + day5Txt- oldWorkload.day5;
+                    int totalDay6 = Int32.Parse(header6.Text) + day6Txt- oldWorkload.day6;
+                    int totalDay7 = Int32.Parse(header7.Text) + day7Txt- oldWorkload.day7;
+                    int totalDay8 = Int32.Parse(header8.Text) + day8Txt- oldWorkload.day8;
+                    int totalDay9 = Int32.Parse(header9.Text) + day9Txt- oldWorkload.day9;
+                    int totalDay10 = Int32.Parse(header10.Text) + day10Txt- oldWorkload.day10;
+                    int totalDay11 = Int32.Parse(header11.Text) + day11Txt- oldWorkload.day11;
+                    int totalDay12 = Int32.Parse(header12.Text) + day12Txt- oldWorkload.day12;
+                    int totalDay13 = Int32.Parse(header13.Text) + day13Txt- oldWorkload.day13;
+                    int totalDay14 = Int32.Parse(header14.Text) + day14Txt- oldWorkload.day14;
+                    int totalDay15 = Int32.Parse(header15.Text) + day15Txt- oldWorkload.day15;
+                    int totalDay16 = Int32.Parse(header16.Text) + day16Txt- oldWorkload.day16;
 
 
                     if ((totalDay1 <= 24) && (totalDay2 <= 24) && (totalDay3 <= 24) && (totalDay4 <= 24) && (totalDay5 <= 24) && (totalDay6 <= 24) &&
@@ -596,66 +596,85 @@ namespace adminsite.site.employees.timesheet
 
         protected void sendBtn_Click(object sender, EventArgs e)
         {
-            bool active = checkActiveSession();
-            if (active)
+            try
             {
-                Dictionary<string, int> dictionary = new Dictionary<string, int>();
-                dictionary["totalDay1"] = Int32.Parse(header1.Text);
-                dictionary["totalDay2"] = Int32.Parse(header2.Text);
-                dictionary["totalDay3"] = Int32.Parse(header3.Text);
-                dictionary["totalDay4"] = Int32.Parse(header4.Text);
-                dictionary["totalDay5"] = Int32.Parse(header5.Text);
-                dictionary["totalDay6"] = Int32.Parse(header6.Text);
-                dictionary["totalDay7"] = Int32.Parse(header7.Text);
-                dictionary["totalDay8"] = Int32.Parse(header8.Text);
-                dictionary["totalDay9"] = Int32.Parse(header9.Text);
-                dictionary["totalDay10"] = Int32.Parse(header10.Text);
-                dictionary["totalDay11"] = Int32.Parse(header11.Text);
-                dictionary["totalDay12"] = Int32.Parse(header12.Text);
-                dictionary["totalDay13"] = Int32.Parse(header13.Text);
-                dictionary["totalDay14"] = Int32.Parse(header14.Text);
-                dictionary["totalDay15"] = Int32.Parse(header15.Text);
-                dictionary["totalDay16"] = Int32.Parse(header16.Text);
-                Holiday holidayManagement = new Holiday();
-                List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
-                string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
-                GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
-                cmdTimesheet.Execute();
-                DateTime movableDate = timesheet.initDate;
-                int dayCounter = 1;
-                bool approvedTimesheet = true;
-                while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
+                bool active = checkActiveSession();
+                if (active)
                 {
-                    bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
-                    foreach (Holiday holiday in holidays)
+                    Dictionary<string, int> dictionary = new Dictionary<string, int>();
+                    dictionary["totalDay1"] = Int32.Parse(header1.Text);
+                    dictionary["totalDay2"] = Int32.Parse(header2.Text);
+                    dictionary["totalDay3"] = Int32.Parse(header3.Text);
+                    dictionary["totalDay4"] = Int32.Parse(header4.Text);
+                    dictionary["totalDay5"] = Int32.Parse(header5.Text);
+                    dictionary["totalDay6"] = Int32.Parse(header6.Text);
+                    dictionary["totalDay7"] = Int32.Parse(header7.Text);
+                    dictionary["totalDay8"] = Int32.Parse(header8.Text);
+                    dictionary["totalDay9"] = Int32.Parse(header9.Text);
+                    dictionary["totalDay10"] = Int32.Parse(header10.Text);
+                    dictionary["totalDay11"] = Int32.Parse(header11.Text);
+                    dictionary["totalDay12"] = Int32.Parse(header12.Text);
+                    dictionary["totalDay13"] = Int32.Parse(header13.Text);
+                    dictionary["totalDay14"] = Int32.Parse(header14.Text);
+                    dictionary["totalDay15"] = Int32.Parse(header15.Text);
+                    dictionary["totalDay16"] = Int32.Parse(header16.Text);
+                    Holiday holidayManagement = new Holiday();
+                    List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
+                    string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
+                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
+                    cmdTimesheet.Execute();
+                    DateTime movableDate = timesheet.initDate;
+                    int dayCounter = 1;
+                    bool approvedTimesheet = true;
+                    while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
                     {
-                        int sameDate = DateTime.Compare(movableDate, holiday.date);
-                        if (sameDate == 0)
+                        bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
+                        foreach (Holiday holiday in holidays)
                         {
-                            holidayWeekend = true;
+                            int sameDate = DateTime.Compare(movableDate, holiday.date);
+                            if (sameDate == 0)
+                            {
+                                holidayWeekend = true;
+                            }
                         }
+                        if (!holidayWeekend)
+                        {
+                            int totalDay = dictionary["totalDay" + dayCounter];
+                            approvedTimesheet = (totalDay >= 8);
+                            if (!approvedTimesheet)
+                            {
+                                break;
+                            }
+                        }
+                        movableDate = movableDate.AddDays(1);
+                        dayCounter++;
                     }
-                    if (!holidayWeekend)
+                    if (approvedTimesheet)
                     {
-                        int totalDay = dictionary["totalDay" + dayCounter];
-                        approvedTimesheet = (totalDay >= 8);
-                        if (!approvedTimesheet)
+                        timesheet.status = "ENTREGADA";
+                        UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);
+                        cmd.Execute();
+                        int result = cmd.GetResult();
+                        if (result == 200)
                         {
-                            break;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlert('Se ha entregado la hoja de tiempo exitosamente', 'success', '/site/employees/timesheet/timesheetlist.aspx')", true);
                         }
-                    }
-                    movableDate = movableDate.AddDays(1);
-                    dayCounter++;
-                }
-                if (approvedTimesheet)
-                {
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('No se ha podido entregar la hoja de trabajo', 'error')", true);
+                        }
 
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen días con menos de ocho (8) horas registradas', 'error')", true);
+                    }
                 }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Existen días con menos de ocho (8) horas registradas', 'error')", true);
-                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Se ha generado un error procesando su solicitud', 'error')", true);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using adminsite.common.entities;
+using adminsite.controller.acp;
 using adminsite.controller.usermanagement;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,13 @@ namespace adminsite.site.employees
                                 rrhhLi.Visible = false;
                                 acpLi.Visible = false;
                                 stLi.Visible = false;
+                            }
+                            GetAllAccountCoursePermitPerEmployeeCommand cmdACP = new GetAllAccountCoursePermitPerEmployeeCommand(consultedEmployee);
+                            cmdACP.Execute();
+                            List<AccountCoursePermit> accountCoursePermits = cmdACP.GetResults();
+                            if (accountCoursePermits.Count > 0)
+                            {
+
                             }
                         }
                         else

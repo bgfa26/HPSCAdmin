@@ -88,7 +88,7 @@ namespace adminsite.site.employees.acp
 
                     foreach (OrganizationalUnit unit in units)
                     {
-                        if (!unit.name.Equals("Sin unidad"))
+                        if ((!unit.name.Equals("Sin unidad")) && (!unit.name.Equals("Directiva")))
                         {
                             organizationalUnitsCkl.Items.Add(new ListItem(unit.name, unit.id.ToString()));
                         }

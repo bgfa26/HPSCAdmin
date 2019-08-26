@@ -219,7 +219,7 @@ namespace adminsite.model.acp
                         int position = 0;
                         int positionAcp = 0;
                         foreach (AccountCoursePermit acp in accountsCoursesPermitsList)
-                        {
+                        { 
                             if (acp.id.Equals(accountCoursePermit.id))
                             {
                                 acp.associatedUnits.Add(costCenter);
@@ -392,6 +392,69 @@ namespace adminsite.model.acp
                 }
                 accountCoursePermit.associatedUnits = costCenters;
                 return accountCoursePermit;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        /// <summary>
+        /// Metodo para obtener todas las ACP que maneja un empleado
+        /// </summary>
+        /// <returns>Retorna una lista</returns>
+        public List<AccountCoursePermit> GetAllAccountsCoursesPermitsPerEmployee(Employee employee)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+            List<AccountCoursePermit> accountsCoursesPermitsList = new List<AccountCoursePermit>();
+            DataTable dataTable = new DataTable();
+
+            try
+            {
+                parameters.Add(new ParameterDB(ACPResources.fk_employee, SqlDbType.Int, employee.id.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(ACPResources.GetEveryACPPerEmployee, parameters);
+                AccountCoursePermit accountCoursePermit = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        string typeStringFormat = "No Facturable";
+                        int typeNumeric = Int32.Parse(row["TYPE"].ToString());
+                        if (typeNumeric == 1)
+                        {
+                            typeStringFormat = "Facturable";
+                        }
+                        accountCoursePermit = new AccountCoursePermit(row["ID"].ToString(),
+                                                                      row["NAME"].ToString(),
+                                                                      typeNumeric,
+                                                                      typeStringFormat,
+                                                                      Convert.ToDateTime(row["INITDATE"].ToString()),
+                                                                      Convert.ToDateTime(row["ENDDATE"].ToString()),
+                                                                      Int32.Parse(row["STATUS"].ToString()),
+                                                                      employee);
+                        accountsCoursesPermitsList.Add(accountCoursePermit);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return accountsCoursesPermitsList;
             }
             catch (SqlException ex)
             {

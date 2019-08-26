@@ -160,6 +160,15 @@ namespace adminsite.model.acp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_ACP_PER_EMPLOYEE.
+        /// </summary>
+        internal static string GetEveryACPPerEmployee {
+            get {
+                return ResourceManager.GetString("GetEveryACPPerEmployee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_ORGANIZATIONAL_UNITS.
         /// </summary>
         internal static string GetOrganizationalUnitsCommand {

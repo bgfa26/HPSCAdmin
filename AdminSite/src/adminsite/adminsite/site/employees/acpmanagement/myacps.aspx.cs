@@ -41,6 +41,10 @@ namespace adminsite.site.employees.acpmanagement
                         repCostCenter.DataSource = activeAcp;
                         repCostCenter.DataBind();
                     }
+                    else
+                    {
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -57,6 +61,18 @@ namespace adminsite.site.employees.acpmanagement
                 endDate = "No tiene fecha de culminación";
             }
             return endDate;
+        }
+
+        protected void repCostCenter_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            ImageButton action = (ImageButton)e.CommandSource;
+            string actionString = action.ID;
+            if (action.ID.Equals("viewWorkloads"))
+            {
+                string id = ((Label)repCostCenter.Items[e.Item.ItemIndex].FindControl("id")).Text;
+                Session["CONSULTED_ACPMANAGEMENT"] = id;
+                Response.Redirect("~/site/employees/acpmanagement/workloadsperacp.aspx");
+            }
         }
     }
 }

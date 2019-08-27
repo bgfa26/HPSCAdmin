@@ -347,5 +347,37 @@ namespace adminsite.model.timesheet
             }
 
         }
+
+        public int UpdateWorkloadStatus(Workload workloadToUpdate)
+        {
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, workloadToUpdate.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.status, SqlDbType.VarChar, workloadToUpdate.status, false));
+                parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
+                List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateWorkloadStatusStoredProcedure, parameters);
+                int result = Int32.Parse(results[0].value);
+                return result;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

@@ -75,6 +75,7 @@
     <Content Include="site\common\img\interatec.png" />
     <Content Include="site\common\img\mt2005.png" />
     <Content Include="site\employees\acpmanagement\myacps.aspx" />
+    <Content Include="site\employees\acpmanagement\workloadsperacp.aspx" />
     <Content Include="site\employees\acp\acpdata.aspx" />
     <Content Include="site\employees\acp\newacp.aspx" />
     <Content Include="site\employees\acp\costcenterlist.aspx" />
@@ -761,6 +762,7 @@
     <Compile Include="common\MD5Calculator.cs" />
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
+    <Compile Include="controller\acpmanagement\GetAllWorkloadsByACPCommand.cs" />
     <Compile Include="controller\acp\CreateNewACPCommand.cs" />
     <Compile Include="controller\acp\CreateNewCostCenterCommand.cs" />
     <Compile Include="controller\acp\DeleteACPCommand.cs" />
@@ -795,6 +797,12 @@
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
     <Compile Include="controller\usermanagement\UpdatePasswordCommand.cs" />
     <Compile Include="controller\usermanagement\SendEmailCommand.cs" />
+    <Compile Include="model\acpmanagement\ACPManagementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ACPManagementResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\acpmanagement\DAOAccountCoursePermitManagement.cs" />
     <Compile Include="model\acp\ACPResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -839,6 +847,13 @@
     </Compile>
     <Compile Include="site\employees\acpmanagement\myacps.aspx.designer.cs">
       <DependentUpon>myacps.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\acpmanagement\workloadsperacp.aspx.cs">
+      <DependentUpon>workloadsperacp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\acpmanagement\workloadsperacp.aspx.designer.cs">
+      <DependentUpon>workloadsperacp.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\acp\acpdata.aspx.cs">
       <DependentUpon>acpdata.aspx</DependentUpon>
@@ -1103,6 +1118,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="model\acpmanagement\ACPManagementResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ACPManagementResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="model\acp\ACPResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ACPResources.Designer.cs</LastGenOutput>

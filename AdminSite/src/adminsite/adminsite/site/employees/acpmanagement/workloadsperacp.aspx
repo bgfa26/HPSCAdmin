@@ -49,34 +49,34 @@
                         <table id="table" class="table table-bordered table-striped table-hover dt-responsive">
                             <thead>
                                 <tr>
-                                    <th>Cédula de identidad</th>
-                                    <th>Nombre y apelido</th>
+                                    <th>CI</th>
+                                    <th>Empleado</th>
                                     <th>Estatus</th>
-                                    <th>Día 1</th>
-                                    <th>Día 2</th>
-                                    <th>Día 3</th>
-                                    <th>Día 4</th>
-                                    <th>Día 5</th>
-                                    <th>Día 6</th>
-                                    <th>Día 7</th>
-                                    <th>Día 8</th>
-                                    <th>Día 9</th>
-                                    <th>Día 10</th>
-                                    <th>Día 11</th>
-                                    <th>Día 12</th>
-                                    <th>Día 13</th>
-                                    <th>Día 14</th>
-                                    <th>Día 15</th>
-                                    <th>Día 16</th>
+                                    <th id="header1" runat="server">Día 1</th>
+                                    <th id="header2" runat="server">Día 2</th>
+                                    <th id="header3" runat="server">Día 3</th>
+                                    <th id="header4" runat="server">Día 4</th>
+                                    <th id="header5" runat="server">Día 5</th>
+                                    <th id="header6" runat="server">Día 6</th>
+                                    <th id="header7" runat="server">Día 7</th>
+                                    <th id="header8" runat="server">Día 8</th>
+                                    <th id="header9" runat="server">Día 9</th>
+                                    <th id="header10" runat="server">Día 10</th>
+                                    <th id="header11" runat="server">Día 11</th>
+                                    <th id="header12" runat="server">Día 12</th>
+                                    <th id="header13" runat="server">Día 13</th>
+                                    <th id="header14" runat="server">Día 14</th>
+                                    <th id="header15" runat="server">Día 15</th>
+                                    <th id="header16" runat="server">Día 16</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
 
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repCostCenter" runat="server">
+                                <asp:Repeater ID="repCostCenter" runat="server" OnItemCommand="repCostCenter_ItemCommand" >
                                     <ItemTemplate>
                                             <tr id="<%# Eval("id") %>">
-                                                <td><%# Eval("timesheet.employee.id") %></td>
+                                                <td><%# Eval("timesheet.employee.id") %> <asp:Label ID="idWorkload" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" Visible="false"/></td>
                                                 <td><%# Eval("timesheet.employee.firstName") %> <%# Eval("timesheet.employee.lastName") %></td>
                                                 <td><%# Eval("status") %></td>
                                                 <td><%# Eval("day1") %></td>
@@ -92,9 +92,9 @@
                                                 <td><%# Eval("day11") %></td>
                                                 <td><%# Eval("day12") %></td>
                                                 <td><%# Eval("day13") %></td>
-                                                <td><%# Eval("day14") %></td>
-                                                <td><%# Eval("day15") %></td>
-                                                <td><%# Eval("day16") %></td>
+                                                <td id="day14" runat="server"><%# Eval("day14") %></td>
+                                                <td id="day15" runat="server"><%# Eval("day15") %></td>
+                                                <td id="day16" runat="server"><%# Eval("day16") %></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="update" runat="server" Text="Aceptar" ImageUrl="~/site/employees/img/icons/check.svg" Height="26px" Width="26px" ToolTip="Aceptar" Style="margin-right:2px"/>
                                                     <asp:ImageButton ID="cancel" runat="server" Text="Cancelar" ImageUrl="~/site/employees/img/icons/close.svg" Height="25px" Width="25px" ToolTip="Cancelar"  Style="margin-left:2px"/>
@@ -105,25 +105,25 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>Cédula de identidad</th>
-                                    <th>Nombre y apelido</th>
+                                    <th>CI</th>
+                                    <th>Empleado</th>
                                     <th>Estatus</th>
-                                    <th>Día 1</th>
-                                    <th>Día 2</th>
-                                    <th>Día 3</th>
-                                    <th>Día 4</th>
-                                    <th>Día 5</th>
-                                    <th>Día 6</th>
-                                    <th>Día 7</th>
-                                    <th>Día 8</th>
-                                    <th>Día 9</th>
-                                    <th>Día 10</th>
-                                    <th>Día 11</th>
-                                    <th>Día 12</th>
-                                    <th>Día 13</th>
-                                    <th>Día 14</th>
-                                    <th>Día 15</th>
-                                    <th>Día 16</th>
+                                    <th id="footer1" runat="server">Día 1</th>
+                                    <th id="footer2" runat="server">Día 2</th>
+                                    <th id="footer3" runat="server">Día 3</th>
+                                    <th id="footer4" runat="server">Día 4</th>
+                                    <th id="footer5" runat="server">Día 5</th>
+                                    <th id="footer6" runat="server">Día 6</th>
+                                    <th id="footer7" runat="server">Día 7</th>
+                                    <th id="footer8" runat="server">Día 8</th>
+                                    <th id="footer9" runat="server">Día 9</th>
+                                    <th id="footer10" runat="server">Día 10</th>
+                                    <th id="footer11" runat="server">Día 11</th>
+                                    <th id="footer12" runat="server">Día 12</th>
+                                    <th id="footer13" runat="server">Día 13</th>
+                                    <th id="footer14" runat="server">Día 14</th>
+                                    <th id="footer15" runat="server">Día 15</th>
+                                    <th id="footer16" runat="server">Día 16</th>
                                     <th>Opciones</th>
                                 </tr>
                             </tfoot>

@@ -792,6 +792,7 @@
     <Compile Include="controller\timesheet\GetTimesheetsByEmployeeCommand.cs" />
     <Compile Include="controller\timesheet\UpdateTimesheetStatusCommand.cs" />
     <Compile Include="controller\timesheet\UpdateWorkloadCommand.cs" />
+    <Compile Include="controller\timesheet\UpdateWorkloadStatusCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />

@@ -46,19 +46,18 @@
                             </thead>
 
                             <tbody id="tableRows">
-                                <asp:Repeater ID="repCostCenter" runat="server">
+                                <asp:Repeater ID="repCostCenter" runat="server" OnItemCommand="repCostCenter_ItemCommand">
                                     <ItemTemplate>
-                                            <tr id="<%# Eval("id") %>">
-                                                <td><asp:Label ID="costCenterId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
-                                                <td><%# Eval("name") %></td>
-                                                <td><%# Eval("typeStringFormat") %></td>
-                                                <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
-                                                <td><%# GetEndDate(Eval("endDate")) %></td>
-                                                <td style="text-align:center">
-                                                    <asp:ImageButton ID="modify" runat="server" Text="Modificar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Modificar" />
-                                                    <asp:ImageButton ID="delete" runat="server" Text="Eliminar" ImageUrl="~/site/employees/img/icons/trash.svg" Height="26px" Width="26px" ToolTip="Eliminar" />
-                                                </td>
-                                            </tr>              
+                                        <tr id="<%# Eval("id") %>">
+                                            <td><asp:Label ID="id" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
+                                            <td><%# Eval("name") %></td>
+                                            <td><%# Eval("typeStringFormat") %></td>
+                                            <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
+                                            <td><%# GetEndDate(Eval("endDate")) %></td>
+                                            <td style="text-align:center">
+                                                <asp:ImageButton ID="viewWorkloads" runat="server" Text="Visualizar" ImageUrl="~/site/employees/img/icons/assign.svg" Height="25px" Width="25px" ToolTip="Visualizar" />
+                                            </td>
+                                        </tr>              
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </tbody>

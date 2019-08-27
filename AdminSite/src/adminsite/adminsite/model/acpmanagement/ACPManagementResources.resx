@@ -117,136 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="employee" xml:space="preserve">
-    <value>@employee</value>
-    <comment>Empleado de la empresa</comment>
+  <data name="enddate" xml:space="preserve">
+    <value>@enddate</value>
+    <comment>Fecha de finalización</comment>
   </data>
-  <data name="GetAllTimesheetsByEmployeeStoredProcedure" xml:space="preserve">
-    <value>GET_ALL_TIMESHEET_BY_EMPLOYEE</value>
-    <comment>Procedimiento almacenado para consultar todas las hojas de tiempo de un empleado</comment>
-  </data>
-  <data name="GetAllWorkloadsByTimesheet" xml:space="preserve">
-    <value>GET_ALL_WORKLOADS</value>
-    <comment>Procedimiento almacenado para obtener las cargas de trabajo de una hoja de tiempo</comment>
+  <data name="GetWorkloadPerACPStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_WORKLOADS_BY_ACP</value>
+    <comment>Procedimiento almacenado para consultar todos los workloads asociados a una ACP</comment>
   </data>
   <data name="id" xml:space="preserve">
     <value>@id</value>
-    <comment>Identificador de la hoja de tiempo</comment>
-  </data>
-  <data name="GetAllACPPerOUStoredProcedure" xml:space="preserve">
-    <value>GET_ALL_ACP_PER_OU</value>
-    <comment>Procedimiento almacenado para consultar todas los ACP que puede acceder una OU</comment>
-  </data>
-  <data name="today" xml:space="preserve">
-    <value>@today</value>
-    <comment>Fecha del sistema</comment>
-  </data>
-  <data name="unit" xml:space="preserve">
-    <value>@unit</value>
-    <comment>Unidad Organizacional</comment>
-  </data>
-  <data name="GetTimesheetDatesStoredProcedure" xml:space="preserve">
-    <value>GET_TIMESHEET_DATES</value>
-    <comment>Procedimiento almacenado para consultar la fecha de inicio y fin de una hoja de tiempo</comment>
-  </data>
-  <data name="CreateWorkloadStoredProcedure" xml:space="preserve">
-    <value>CREATE_WORKLOAD</value>
-    <comment>Procedimiento almacenado para insertar una carga de trabajo</comment>
-  </data>
-  <data name="day1" xml:space="preserve">
-    <value>@day1</value>
-    <comment>Día 1</comment>
-  </data>
-  <data name="day10" xml:space="preserve">
-    <value>@day10</value>
-    <comment>Día 10</comment>
-  </data>
-  <data name="day11" xml:space="preserve">
-    <value>@day11</value>
-    <comment>Día 11</comment>
-  </data>
-  <data name="day12" xml:space="preserve">
-    <value>@day12</value>
-    <comment>Día 12</comment>
-  </data>
-  <data name="day13" xml:space="preserve">
-    <value>@day13</value>
-    <comment>Día 13</comment>
-  </data>
-  <data name="day14" xml:space="preserve">
-    <value>@day14</value>
-    <comment>Día 14</comment>
-  </data>
-  <data name="day15" xml:space="preserve">
-    <value>@day15</value>
-    <comment>Día 15</comment>
-  </data>
-  <data name="day16" xml:space="preserve">
-    <value>@day16</value>
-    <comment>Día 16</comment>
-  </data>
-  <data name="day2" xml:space="preserve">
-    <value>@day2</value>
-    <comment>Día 2</comment>
-  </data>
-  <data name="day3" xml:space="preserve">
-    <value>@day3</value>
-    <comment>Día 3</comment>
-  </data>
-  <data name="day4" xml:space="preserve">
-    <value>@day4</value>
-    <comment>Día 4</comment>
-  </data>
-  <data name="day5" xml:space="preserve">
-    <value>@day5</value>
-    <comment>Día 5</comment>
-  </data>
-  <data name="day6" xml:space="preserve">
-    <value>@day6</value>
-    <comment>Día 6</comment>
-  </data>
-  <data name="day7" xml:space="preserve">
-    <value>@day7</value>
-    <comment>Día 7</comment>
-  </data>
-  <data name="day8" xml:space="preserve">
-    <value>@day8</value>
-    <comment>Día 8</comment>
-  </data>
-  <data name="day9" xml:space="preserve">
-    <value>@day9</value>
-    <comment>Día 9</comment>
-  </data>
-  <data name="exitvalue" xml:space="preserve">
-    <value>@exitvalue</value>
-    <comment>Valor de salida</comment>
-  </data>
-  <data name="fk_accountcoursepermit" xml:space="preserve">
-    <value>@fk_accountcoursepermit</value>
-    <comment>ID de la ACP</comment>
-  </data>
-  <data name="fk_timesheet" xml:space="preserve">
-    <value>@fk_timesheet</value>
     <comment>ID</comment>
   </data>
-  <data name="DeleteWorkloadStoredProcedure" xml:space="preserve">
-    <value>DELETE_WORKLOAD</value>
-    <comment>Procedimiento almacenado para eliminar una carga de trabajo</comment>
-  </data>
-  <data name="UpdateWorkloadStoredProcedure" xml:space="preserve">
-    <value>UPDATE_WORKLOAD</value>
-    <comment>Procedimiento almacenado para actualizar una carga de trabajo</comment>
-  </data>
-  <data name="status" xml:space="preserve">
-    <value>@status</value>
-    <comment>Estatus de la hoja de tiempo</comment>
-  </data>
-  <data name="UpdateTimesheetStatusStoredProcedure" xml:space="preserve">
-    <value>UPDATE_TIMESHEET_STATUS</value>
-    <comment>Procedimiento almacenado para actualizar el estatus de una hoja de tiempo</comment>
-  </data>
-  <data name="UpdateWorkloadStatusStoredProcedure" xml:space="preserve">
-    <value>UPDATE_STATUS_WORKLOAD</value>
-    <comment>Procedimiento almacenado para actualizar el estatus de una carga de trabajo</comment>
+  <data name="initdate" xml:space="preserve">
+    <value>@initdate</value>
+    <comment>Fecha de inicio</comment>
   </data>
 </root>

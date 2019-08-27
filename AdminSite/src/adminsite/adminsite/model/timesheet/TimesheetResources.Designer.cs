@@ -340,6 +340,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UPDATE_STATUS_WORKLOAD.
+        /// </summary>
+        internal static string UpdateWorkloadStatusStoredProcedure {
+            get {
+                return ResourceManager.GetString("UpdateWorkloadStatusStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UPDATE_WORKLOAD.
         /// </summary>
         internal static string UpdateWorkloadStoredProcedure {

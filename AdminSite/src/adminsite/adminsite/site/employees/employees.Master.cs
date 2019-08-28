@@ -1,5 +1,6 @@
 ﻿using adminsite.common.entities;
 using adminsite.controller.acp;
+using adminsite.controller.unitmanagement;
 using adminsite.controller.usermanagement;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,19 @@ namespace adminsite.site.employees
                             if (accountCoursePermits.Count > 0)
                             {
                                 myAcpLi.Visible = true;
+                            }
+                            OrganizationalUnit organizationalUnit = new OrganizationalUnit();
+                            organizationalUnit.overseer = consultedEmployee.id;
+                            GetOverseerUnitCommand _cmd = new GetOverseerUnitCommand(organizationalUnit);
+                            _cmd.Execute();
+                            organizationalUnit = _cmd.GetResult();
+                            if (organizationalUnit.id != -1)
+                            {
+                                myUnitLi.Visible = true;
+                            }
+                            else
+                            {
+                                myUnitLi.Visible = false;
                             }
                         }
                         else

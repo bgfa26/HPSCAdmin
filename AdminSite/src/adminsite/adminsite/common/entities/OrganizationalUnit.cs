@@ -27,6 +27,9 @@ namespace adminsite.common.entities
             this.name = name;
         }
 
+        public OrganizationalUnit()
+        {}
+
         public OrganizationalUnit(int id, int overseer)
         {
             this.id = id;

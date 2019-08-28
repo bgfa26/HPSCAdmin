@@ -161,6 +161,9 @@
                         <li id="myAcpLi" runat="server">
                             <a href="/site/employees/acpmanagement/myacps.aspx"><i class="fa fa-fw fa-folder-open"></i> Mis cuentas</a>
                         </li>
+                        <li id="myUnitLi" runat="server">
+                            <a href="/site/employees/overseer/unittimesheets.aspx"><i class="fa fa-fw fa-folder-open"></i> Mis supervisados</a>
+                        </li>
                         <li id="stLi" runat="server">
                             <a href="/site/employees/performance/statistics.aspx"><i class="fa fa-fw fa-bar-chart-o"></i> Estadísticas</a>
                         </li>

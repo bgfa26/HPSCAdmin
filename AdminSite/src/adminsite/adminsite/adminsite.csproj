@@ -311,6 +311,8 @@
     <Content Include="site\employees\js\plugins\morris\morris.js" />
     <Content Include="site\employees\js\plugins\morris\morris.min.js" />
     <Content Include="site\employees\js\plugins\morris\raphael.min.js" />
+    <Content Include="site\employees\overseer\employeetimesheet.aspx" />
+    <Content Include="site\employees\overseer\unittimesheets.aspx" />
     <Content Include="site\employees\performance\amcharts3\lib\amcharts.js" />
     <Content Include="site\employees\performance\amcharts3\lib\funnel.js" />
     <Content Include="site\employees\performance\amcharts3\lib\gantt.js" />
@@ -793,6 +795,8 @@
     <Compile Include="controller\timesheet\UpdateTimesheetStatusCommand.cs" />
     <Compile Include="controller\timesheet\UpdateWorkloadCommand.cs" />
     <Compile Include="controller\timesheet\UpdateWorkloadStatusCommand.cs" />
+    <Compile Include="controller\unitmanagement\GetOverseerUnitCommand.cs" />
+    <Compile Include="controller\unitmanagement\GetTimesheetsByUnitCommand.cs" />
     <Compile Include="controller\usermanagement\CreateNewEmployeeCommand.cs" />
     <Compile Include="controller\usermanagement\EmailIDVerificationCommand.cs" />
     <Compile Include="controller\usermanagement\GetEmployeeInformationCommand.cs" />
@@ -834,6 +838,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TimesheetResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="model\unitmanagement\DAOUnitManagement.cs" />
+    <Compile Include="model\unitmanagement\UnitManagementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnitManagementResources.resx</DependentUpon>
     </Compile>
     <Compile Include="model\usermanagement\DAOUserManagement.cs" />
     <Compile Include="model\usermanagement\UserManagementResources.Designer.cs">
@@ -904,6 +914,20 @@
     </Compile>
     <Compile Include="site\employees\hrm\employeelist.aspx.designer.cs">
       <DependentUpon>employeelist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\overseer\employeetimesheet.aspx.cs">
+      <DependentUpon>employeetimesheet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\overseer\employeetimesheet.aspx.designer.cs">
+      <DependentUpon>employeetimesheet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\overseer\unittimesheets.aspx.cs">
+      <DependentUpon>unittimesheets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\overseer\unittimesheets.aspx.designer.cs">
+      <DependentUpon>unittimesheets.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\performance\statistics.aspx.cs">
       <DependentUpon>statistics.aspx</DependentUpon>
@@ -1142,6 +1166,10 @@
     <EmbeddedResource Include="model\timesheet\TimesheetResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TimesheetResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="model\unitmanagement\UnitManagementResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UnitManagementResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="model\usermanagement\UserManagementResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

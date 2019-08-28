@@ -103,6 +103,15 @@ namespace adminsite.site.employees {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl myAcpLi;
         
         /// <summary>
+        /// myUnitLi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myUnitLi;
+        
+        /// <summary>
         /// stLi control.
         /// </summary>
         /// <remarks>

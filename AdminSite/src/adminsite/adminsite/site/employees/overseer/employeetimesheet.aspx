@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="timesheetdata.aspx.cs" Inherits="adminsite.site.employees.timesheet.timesheetdata" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/site/employees/employees.Master" CodeBehind="employeetimesheet.aspx.cs" Inherits="adminsite.site.employees.overseer.employeetimesheet" %>
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../css/plugins/datatables/dataTables.bootstrap.css">
@@ -112,11 +112,16 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-3" style="margin-top:20px">
-                </div>
-                <div class="col-md-6" style="margin-top:20px">
-                    <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="cancelBtn_Click"/>
+                    <asp:Button ID="approveBtn" runat="server" Text="Aprobar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="approveBtn_Click"/>
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
+                    <asp:Button ID="denyBtn" runat="server" Text="Denegar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="denyBtn_Click"/>
+                </div>
+                <div class="col-md-3" style="margin-top:20px">
+                    <asp:Button ID="waitBtn" runat="server" Text="En espera" CssClass="btn btn-lg btn-warning" Width="100%" OnClick="waitBtn_Click"/>
+                </div>
+                <div class="col-md-3" style="margin-top:20px">
+                    <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="cancelBtn_Click"/>
                 </div>
             </div>
         </div>
@@ -185,4 +190,3 @@
         }
     </script>
 </asp:Content>
-

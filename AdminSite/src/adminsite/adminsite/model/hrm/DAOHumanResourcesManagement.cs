@@ -337,5 +337,57 @@ namespace adminsite.model.hrm
             }
 
         }
+
+
+        public List<Timesheet> GetTimesheetsByEmployee(int year)
+        {
+            List<Timesheet> timesheetsList = new List<Timesheet>();
+            DataTable dataTable = new DataTable();
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.year, SqlDbType.VarChar, year.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllTimesheetsHrmStoredProcedure, parameters);
+                Timesheet timesheet = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
+                        timesheet = new Timesheet(Int32.Parse(row["TID"].ToString()),
+                                                  Convert.ToDateTime(row["TINITDATE"].ToString()),
+                                                  Convert.ToDateTime(row["TENDDATE"].ToString()),
+                                                  row["STATUS"].ToString(),
+                                                  employee);
+                        timesheetsList.Add(timesheet);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return timesheetsList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
     }
 }

@@ -97,6 +97,15 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_TIMESHEETS_HRM.
+        /// </summary>
+        internal static string GetAllTimesheetsHrmStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllTimesheetsHrmStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_EMPLOYEES.
         /// </summary>
         internal static string GetEmployeesStoredProcedure {
@@ -156,6 +165,15 @@ namespace adminsite.model.hrm {
         internal static string UpdatePositionOrganizationalUnitStoredProcedure {
             get {
                 return ResourceManager.GetString("UpdatePositionOrganizationalUnitStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @year.
+        /// </summary>
+        internal static string year {
+            get {
+                return ResourceManager.GetString("year", resourceCulture);
             }
         }
     }

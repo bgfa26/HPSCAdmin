@@ -140,7 +140,7 @@
                                     <a href="/site/employees/hrm/employeelist.aspx">Listado de empleados</a>
                                 </li>
                                 <li>
-                                    <a href="#">Dropdown Item</a>
+                                    <a href="/site/employees/hrm/timesheetslist.aspx">Hoja de tiempo de empleados</a>
                                 </li>
                             </ul>
                         </li>

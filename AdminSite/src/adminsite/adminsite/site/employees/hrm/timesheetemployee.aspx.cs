@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace adminsite.site.employees.overseer
+namespace adminsite.site.employees.hrm
 {
-    public partial class employeetimesheet : System.Web.UI.Page
+    public partial class timesheetemployee : System.Web.UI.Page
     {
         public Workload total = new Workload(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", new Timesheet(), new AccountCoursePermit("final", "Total"));
         protected void Page_Load(object sender, EventArgs e)
@@ -21,7 +21,7 @@ namespace adminsite.site.employees.overseer
                     Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                     if (loggedEmployee != null)
                     {
-                        string timesheetString = (string)Session["CONSULTED_TIMESHEET_OVERSEER"];
+                        string timesheetString = (string)Session["CONSULTED_TIMESHEET_HRM"];
                         if (timesheetString != null)
                         {
                             Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
@@ -134,7 +134,7 @@ namespace adminsite.site.employees.overseer
                         }
                         else
                         {
-                            Session.Remove("CONSULTED_TIMESHEET_OVERSEER");
+                            Session.Remove("CONSULTED_TIMESHEET_HRM");
                             Response.Redirect("~/site/employees/overseer/unittimesheets.aspx", false);
                         }
                     }
@@ -150,7 +150,7 @@ namespace adminsite.site.employees.overseer
                 }
             }
         }
-        
+
         public int TotalHoursPerACP(Object day1_, Object day2_, Object day3_, Object day4_, Object day5_, Object day6_, Object day7_, Object day8_, Object day9_, Object day10_, Object day11_, Object day12_, Object day13_, Object day14_, Object day15_, Object day16_)
         {
             int day1 = (Int32)day1_;
@@ -178,7 +178,7 @@ namespace adminsite.site.employees.overseer
         {
             try
             {
-                string timesheetString = (string)HttpContext.Current.Session["CONSULTED_TIMESHEET_OVERSEER"];
+                string timesheetString = (string)HttpContext.Current.Session["CONSULTED_TIMESHEET_HRM"];
                 Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
                 GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                 cmd.Execute();
@@ -212,18 +212,18 @@ namespace adminsite.site.employees.overseer
 
         protected void cancelBtn_Click(object sender, EventArgs e)
         {
-            Session.Remove("CONSULTED_TIMESHEET_OVERSEER");
-            Response.Redirect("~/site/employees/overseer/unittimesheets.aspx", false);
+            Session.Remove("CONSULTED_TIMESHEET_HRM");
+            Response.Redirect("~/site/employees/hrm/timesheetslist.aspx", false);
         }
 
         protected void approveBtn_Click(object sender, EventArgs e)
         {
-            actionToExecute("APROBADA POR SUPERVISOR");
+            actionToExecute("APROBADA POR TALENTO HUMANO");
         }
 
         protected void denyBtn_Click(object sender, EventArgs e)
         {
-            actionToExecute("REPROBADA POR SUPERVISOR");
+            actionToExecute("REPROBADA POR TALENTO HUMANO");
         }
 
         protected bool checkActiveSession()
@@ -246,7 +246,7 @@ namespace adminsite.site.employees.overseer
                 bool active = checkActiveSession();
                 if (active)
                 {
-                    string timesheetString = (string)Session["CONSULTED_TIMESHEET_OVERSEER"];
+                    string timesheetString = (string)Session["CONSULTED_TIMESHEET_HRM"];
                     Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
                     timesheet.status = status;
                     UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);

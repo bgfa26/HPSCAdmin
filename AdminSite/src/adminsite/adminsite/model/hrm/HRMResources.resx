@@ -161,4 +161,12 @@
     <value>REMOVE_SUPERVISOR_OF_ORGANIZATIONAL_UNIT</value>
     <comment>Procedimiento almacenado para remover el supervisor de una unidad organizacional</comment>
   </data>
+  <data name="GetAllTimesheetsHrmStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_TIMESHEETS_HRM</value>
+    <comment>Procedimiento almacenado para obtener todos las hojas de tiempo aprobadas</comment>
+  </data>
+  <data name="year" xml:space="preserve">
+    <value>@year</value>
+    <comment>Año de la búsqueda</comment>
+  </data>
 </root>

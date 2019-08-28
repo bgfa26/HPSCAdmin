@@ -240,6 +240,17 @@
                             <asp:TextBox autocomplete="off" TextMode="Number" min="0" max="24" step="1" onkeypress="return this.value.length<=-1" CssClass="form-control textinput" ID="inDay16" width="80px" runat="server"/>
                         </FooterTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField ItemStyle-Width="125px" HeaderText="Estatus">
+                        <ItemTemplate>
+                            <asp:Label ID="statusLbl" runat="server" Text='<%#Eval("status") %>'/>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:Label ID="statusEditLbl" runat="server" Text='<%#Eval("status") %>'/>
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:Label ID="statusNewLbl" runat="server" Text=''/>
+                        </FooterTemplate>
+                    </asp:TemplateField>
                     <asp:TemplateField HeaderText="Opciones" ItemStyle-HorizontalAlign="center" FooterStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
                         <EditItemTemplate>
                             <asp:ImageButton ID="update" runat="server" Text="Aceptar" ImageUrl="~/site/employees/img/icons/check.svg" Height="26px" Width="26px" CommandName="Update" ToolTip="Aceptar" Style="margin-right:2px"/>

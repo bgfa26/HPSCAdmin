@@ -64,7 +64,7 @@
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
                                                 <td><asp:Label ID="status" runat="server" Text='<%# Eval("status") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td style="text-align:center">
-                                                    <asp:ImageButton ID="viewEdit" runat="server" Text="Visualizar/Modificar" ImageUrl="~/site/employees/img/icons/list.svg" Height="26px" Width="26px" ToolTip="Visualizar/Modificar" />
+                                                    <asp:ImageButton ID="viewEdit" runat="server" Text="Visualizar" ImageUrl="~/site/employees/img/icons/list.svg" Height="26px" Width="26px" ToolTip="Visualizar" />
                                                 </td>
                                             </tr>              
                                     </ItemTemplate>

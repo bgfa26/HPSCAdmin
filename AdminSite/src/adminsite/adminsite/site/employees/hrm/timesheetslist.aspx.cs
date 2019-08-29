@@ -79,6 +79,7 @@ namespace adminsite.site.employees.hrm
                 Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
                 if (loggedEmployee != null)
                 {
+                    string emailExtension = loggedEmployee.email.Split('@')[1];
                     if (!((loggedEmployee.organizationalUnit.Equals("Administración")) && (loggedEmployee.positionName.Equals("Gerente de Talento Humano"))) &&
                         !((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión"))) &&
                         !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
@@ -91,7 +92,43 @@ namespace adminsite.site.employees.hrm
                         GetTimesheetsByEmployeeCommand cmd = new GetTimesheetsByEmployeeCommand(selectedYear);
                         cmd.Execute();
                         List<Timesheet> timesheetsList = cmd.GetResults();
-                        repTimesheet.DataSource = timesheetsList;
+                        List<Timesheet> realTimesheetsList = new List<Timesheet>();
+
+                        if ((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director")))
+                        {
+                            realTimesheetsList = timesheetsList;
+                        }
+                        else if (((loggedEmployee.organizationalUnit.Equals("Administración")) && (loggedEmployee.positionName.Equals("Gerente de Talento Humano"))) || ((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión"))))
+                        {
+                            foreach (Timesheet timesheet in timesheetsList)
+                            {
+                                if ((!timesheet.employee.email.Equals(loggedEmployee.email)))
+                                {
+                                    if (emailExtension.Equals("mt2005.net"))
+                                    {
+                                        if (timesheet.employee.email.Contains(emailExtension))
+                                        {
+                                            realTimesheetsList.Add(timesheet);
+                                        }
+                                    }
+                                    else if (emailExtension.Equals("interatec.com"))
+                                    {
+                                        if (timesheet.employee.email.Contains(emailExtension))
+                                        {
+                                            realTimesheetsList.Add(timesheet);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if ((!timesheet.employee.email.Contains("mt2005.net")) && (!timesheet.employee.email.Contains("interatec.com")))
+                                        {
+                                            realTimesheetsList.Add(timesheet);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        repTimesheet.DataSource = realTimesheetsList;
                         repTimesheet.DataBind();
                     }
                     else

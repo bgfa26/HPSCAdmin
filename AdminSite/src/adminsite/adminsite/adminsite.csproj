@@ -284,7 +284,7 @@
     <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="site\employees\forms.html" />
-    <Content Include="site\employees\holidays.xml" />
+    <Content Include="site\employees\holiday.xml" />
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
     <Content Include="site\employees\hrm\timesheetemployee.aspx" />
@@ -699,6 +699,7 @@
     <Content Include="site\employees\performance\statistics.aspx" />
     <Content Include="site\employees\tables.html" />
     <Content Include="site\employees\timesheet\activetimesheet.aspx" />
+    <Content Include="site\employees\timesheet\holiday.xml" />
     <Content Include="site\employees\timesheet\timesheetdata.aspx" />
     <Content Include="site\employees\timesheet\timesheetlist.aspx" />
     <Content Include="site\usermanagement\css\fade.css" />

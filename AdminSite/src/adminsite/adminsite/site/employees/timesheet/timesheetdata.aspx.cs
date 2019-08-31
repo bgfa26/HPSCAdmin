@@ -1,10 +1,12 @@
 ﻿using adminsite.common.entities;
 using adminsite.controller.timesheet;
+using Nager.Date;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 
 namespace adminsite.site.employees.timesheet
@@ -70,6 +72,8 @@ namespace adminsite.site.employees.timesheet
                             totalLbl.Text = total.TotalHoursPerACP().ToString();
                             DateTime movableDate = timesheet.initDate;
                             int dayCounter = 1;
+                            Holiday holidayManagement = new Holiday();
+                            List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
                             while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
                             {
                                 switch (dayCounter)
@@ -122,6 +126,27 @@ namespace adminsite.site.employees.timesheet
                                     case 16:
                                         _header16.Text = movableDate.ToString("dd/MM/yyyy");
                                         break;
+                                }
+                                bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
+                                foreach (Holiday holiday in holidays)
+                                {
+                                    int sameDate = DateTime.Compare(movableDate, holiday.date);
+                                    if (sameDate == 0)
+                                    {
+                                        holidayWeekend = true;
+                                    }
+                                }
+                                if (holidayWeekend)
+                                {
+                                    int row = 0;
+                                    foreach (RepeaterItem item in repWorkloads.Items)
+                                    {
+                                        int realDay = dayCounter;
+                                        string freeDay = "day" + realDay;
+                                        HtmlTableCell day = ((HtmlTableCell)repWorkloads.Items[row].FindControl(freeDay));
+                                        day.BgColor = "#D3D3D3";
+                                        row++;
+                                    }
                                 }
                                 movableDate = movableDate.AddDays(1);
                                 dayCounter++;

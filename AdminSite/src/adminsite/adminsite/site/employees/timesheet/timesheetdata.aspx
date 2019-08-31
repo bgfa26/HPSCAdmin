@@ -62,22 +62,22 @@
                                 <tr id="<%# Eval("id") %>">
                                     <td><%# Eval("accountCoursePermit.name") %></td>
                                     <td><%# Eval("status") %></td>
-                                    <td><%# Eval("day1") %></td>
-                                    <td><%# Eval("day2") %></td>
-                                    <td><%# Eval("day3") %></td>
-                                    <td><%# Eval("day4") %></td>
-                                    <td><%# Eval("day5") %></td>
-                                    <td><%# Eval("day6") %></td>
-                                    <td><%# Eval("day7") %></td>
-                                    <td><%# Eval("day8") %></td>
-                                    <td><%# Eval("day9") %></td>
-                                    <td><%# Eval("day10") %></td>
-                                    <td><%# Eval("day11") %></td>
-                                    <td><%# Eval("day12") %></td>
-                                    <td><%# Eval("day13") %></td>
-                                    <td><%# Eval("day14") %></td>
-                                    <td><%# Eval("day15") %></td>
-                                    <td><%# Eval("day16") %></td>
+                                    <td id="day1" runat="server"><%# Eval("day1") %></td>
+                                    <td id="day2" runat="server"><%# Eval("day2") %></td>
+                                    <td id="day3" runat="server"><%# Eval("day3") %></td>
+                                    <td id="day4" runat="server"><%# Eval("day4") %></td>
+                                    <td id="day5" runat="server"><%# Eval("day5") %></td>
+                                    <td id="day6" runat="server"><%# Eval("day6") %></td>
+                                    <td id="day7" runat="server"><%# Eval("day7") %></td>
+                                    <td id="day8" runat="server"><%# Eval("day8") %></td>
+                                    <td id="day9" runat="server"><%# Eval("day9") %></td>
+                                    <td id="day10" runat="server"><%# Eval("day10") %></td>
+                                    <td id="day11" runat="server"><%# Eval("day11") %></td>
+                                    <td id="day12" runat="server"><%# Eval("day12") %></td>
+                                    <td id="day13" runat="server"><%# Eval("day13") %></td>
+                                    <td id="day14" runat="server"><%# Eval("day14") %></td>
+                                    <td id="day15" runat="server"><%# Eval("day15") %></td>
+                                    <td id="day16" runat="server"><%# Eval("day16") %></td>
                                     <td><%# TotalHoursPerACP(Eval("day1"), Eval("day2"), Eval("day3"), Eval("day4"), Eval("day5"), Eval("day6"), 
                                                              Eval("day7"), Eval("day8"), Eval("day9"), Eval("day10"), Eval("day11"), Eval("day12"), 
                                                              Eval("day13"), Eval("day14"), Eval("day15"), Eval("day16")) %></td>

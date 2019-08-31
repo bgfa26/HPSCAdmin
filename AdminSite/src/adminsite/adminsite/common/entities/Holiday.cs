@@ -24,7 +24,7 @@ namespace adminsite.common.entities
         {
             int year = DateTime.Now.Year;
             List<Holiday> holidays = new List<Holiday>();
-            string path = HttpContext.Current.Server.MapPath(@"holiday.xml");
+            string path = HttpContext.Current.Server.MapPath(@"~/site/employees/holiday.xml");
             XmlTextReader reader = new XmlTextReader(path);
             while (reader.Read())
             {

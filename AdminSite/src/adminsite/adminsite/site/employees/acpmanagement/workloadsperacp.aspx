@@ -105,9 +105,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                    <th>CI</th>
-                                    <th>Empleado</th>
-                                    <th>Estatus</th>
+                                    <th colspan="3">Total</th>
                                     <th id="footer1" runat="server">Día 1</th>
                                     <th id="footer2" runat="server">Día 2</th>
                                     <th id="footer3" runat="server">Día 3</th>
@@ -140,7 +138,7 @@
             <div class="col-md-3" style="margin-top:20px">
             </div>
             <div class="col-md-6" style="margin-top:20px">
-                <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="cancelBtn_Click"/>
+                <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="cancelBtn_Click"/>
             </div>
             <div class="col-md-3" style="margin-top:20px">
             </div>

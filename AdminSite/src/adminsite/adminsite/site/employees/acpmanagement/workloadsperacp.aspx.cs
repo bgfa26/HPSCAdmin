@@ -68,6 +68,42 @@ namespace adminsite.site.employees.acpmanagement
                             footer16.Visible = true;
                             footer15.Visible = true;
                             footer14.Visible = true;
+                            List<Int32> totalsPerDay = new List<int>();
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            totalsPerDay.Add(0);
+                            foreach (Workload workload in workloads)
+                            {
+                                totalsPerDay[0] += workload.day1;
+                                totalsPerDay[1] += workload.day2;
+                                totalsPerDay[2] += workload.day3;
+                                totalsPerDay[3] += workload.day4;
+                                totalsPerDay[4] += workload.day5;
+                                totalsPerDay[5] += workload.day6;
+                                totalsPerDay[6] += workload.day7;
+                                totalsPerDay[7] += workload.day8;
+                                totalsPerDay[8] += workload.day9;
+                                totalsPerDay[9] += workload.day10;
+                                totalsPerDay[10] += workload.day11;
+                                totalsPerDay[11] += workload.day12;
+                                totalsPerDay[12] += workload.day13;
+                                totalsPerDay[13] += workload.day14;
+                                totalsPerDay[14] += workload.day15;
+                                totalsPerDay[15] += workload.day16;
+                            }
                             Holiday holidayManagement = new Holiday();
                             List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
                             while (DateTime.Compare(movableDate, endDate) != 1)
@@ -76,67 +112,67 @@ namespace adminsite.site.employees.acpmanagement
                                 {
                                     case 1:
                                         header1.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer1.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer1.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 2:
                                         header2.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer2.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer2.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 3:
                                         header3.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer3.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer3.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 4:
                                         header4.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer4.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer4.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 5:
                                         header5.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer5.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer5.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 6:
                                         header6.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer6.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer6.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 7:
                                         header7.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer7.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer7.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 8:
                                         header8.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer8.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer8.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 9:
                                         header9.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer9.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer9.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 10:
                                         header10.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer10.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer10.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 11:
                                         header11.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer11.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer11.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 12:
                                         header12.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer12.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer12.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 13:
                                         header13.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer13.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer13.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 14:
                                         header14.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer14.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer14.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 15:
                                         header15.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer15.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer15.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                     case 16:
                                         header16.InnerText = movableDate.ToString("dd/MM/yyyy");
-                                        footer16.InnerText = movableDate.ToString("dd/MM/yyyy");
+                                        footer16.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                 }
                                 bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);

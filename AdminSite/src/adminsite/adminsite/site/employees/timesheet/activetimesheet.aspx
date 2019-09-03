@@ -303,7 +303,7 @@
                 <asp:Button ID="sendBtn" runat="server" Text="Entregar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="sendBtn_Click"/>
             </div>
             <div class="col-md-3" style="margin-top:20px">
-                <asp:Button ID="Button1" runat="server" Text="Guardar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="saveBtn_Click"/>
+                <asp:Button ID="saveBtn" runat="server" Text="Guardar borrador" CssClass="btn btn-lg btn-info" Width="100%" OnClick="saveBtn_Click"/>
             </div>
             <div class="col-md-3" style="margin-top:20px">
             </div>

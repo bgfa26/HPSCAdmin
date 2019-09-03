@@ -181,6 +181,8 @@ namespace adminsite.site.employees.timesheet
                 timesheet = cmd.GetResults();
                 timesheetLbl.Text = timesheet.id.ToString();
                 int count = timesheet.workloads.Count;
+                Holiday holidayManagement = new Holiday();
+                List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
                 if (timesheet.workloads.Count > 0)
                 {
                     gridView.DataSource = timesheet.workloads;
@@ -220,6 +222,31 @@ namespace adminsite.site.employees.timesheet
                         _header15.Visible = false;
                         _header14.Visible = false;
                         break;
+                }
+                int dayCounter = 1;
+                bool approvedTimesheet = true;
+                DateTime movableDate = timesheet.initDate;
+                while (DateTime.Compare(movableDate, timesheet.endDate) != 1)
+                {
+                    bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
+                    foreach (Holiday holiday in holidays)
+                    {
+                        int sameDate = DateTime.Compare(movableDate, holiday.date);
+                        if (sameDate == 0)
+                        {
+                            holidayWeekend = true;
+                        }
+                    }
+                    if (holidayWeekend)
+                    {
+                        int j = dayCounter;
+                        for (int i = 0; i < count; i++)
+                        {
+                            gridView.Rows[i].Cells[j].BackColor = ColorTranslator.FromHtml("#D3D3D3");
+                        }
+                    }
+                    movableDate = movableDate.AddDays(1);
+                    dayCounter++;
                 }
                 fillTotalPerDaysLbl(timesheet.workloads);
             }

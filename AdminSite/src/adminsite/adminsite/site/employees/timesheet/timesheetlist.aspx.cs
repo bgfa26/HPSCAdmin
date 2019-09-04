@@ -23,6 +23,27 @@ namespace adminsite.site.employees.timesheet
                     List<Timesheet> timesheetsList = cmd.GetResults();
                     repTimesheet.DataSource = timesheetsList;
                     repTimesheet.DataBind();
+                    int counter = 0;
+                    foreach (RepeaterItem item in repTimesheet.Items)
+                    {
+                        Image statusIcon = ((Image)repTimesheet.Items[counter].FindControl("statusIcon"));
+                        Label statusLbl = ((Label)repTimesheet.Items[counter].FindControl("status"));
+                        if (statusLbl.Text.Equals("FINALIZADA"))
+                        {
+                            statusIcon.ImageUrl = "~/site/employees/img/icons/check.svg";
+                            statusIcon.AlternateText = "Finalizada";
+                            statusIcon.ToolTip = "Finalizada";
+                        }
+                        else if (statusLbl.Text.Contains("REPROBADA"))
+                        {
+                            statusIcon.ImageUrl = "~/site/employees/img/icons/close.svg";
+                            statusIcon.AlternateText = "Reprobada";
+                            statusIcon.ToolTip = "Reprobada";
+                            statusIcon.Height = 22;
+                            statusIcon.Width = 22;
+                        }
+                        counter++;
+                    }
                 }
                 catch (Exception ex)
                 {

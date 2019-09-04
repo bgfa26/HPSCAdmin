@@ -35,6 +35,7 @@
                         <table id="table" class="table table-bordered table-striped table-hover dt-responsive">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Identificador</th>
                                     <th>Fecha de inicio</th>
                                     <th>Fecha de cierre</th>
@@ -47,6 +48,9 @@
                                 <asp:Repeater ID="repTimesheet" runat="server"  OnItemCommand="repTimesheet_ItemCommand">
                                     <ItemTemplate>
                                             <tr id="<%# Eval("id") %>">
+                                                <td style="text-align:center">
+                                                    <asp:Image ID="statusIcon" runat="server" Text="En espera" ImageUrl="~/site/employees/img/icons/history.svg" Height="26px" Width="26px" ToolTip="En espera"/>
+                                                </td>
                                                 <td><asp:Label ID="timesheetId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("initDate")) %></td>
                                                 <td><%# string.Format("{0:dd/MM/yyyy}", Eval("endDate")) %></td>
@@ -60,6 +64,7 @@
                             </tbody>
                             <tfoot>
                                 <tr>
+                                    <th></th>
                                     <th>Identificador</th>
                                     <th>Fecha de inicio</th>
                                     <th>Fecha de cierre</th>

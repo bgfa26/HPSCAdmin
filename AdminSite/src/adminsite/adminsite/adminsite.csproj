@@ -294,6 +294,7 @@
     <Content Include="site\employees\img\icons\check.svg" />
     <Content Include="site\employees\img\icons\close.svg" />
     <Content Include="site\employees\img\icons\find.svg" />
+    <Content Include="site\employees\img\icons\history.svg" />
     <Content Include="site\employees\img\icons\license.txt" />
     <Content Include="site\employees\img\icons\list.svg" />
     <Content Include="site\employees\img\icons\trash.svg" />

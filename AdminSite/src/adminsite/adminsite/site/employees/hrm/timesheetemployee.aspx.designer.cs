@@ -370,6 +370,6 @@ namespace adminsite.site.employees.hrm {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancelBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlButton cancelBtn;
     }
 }

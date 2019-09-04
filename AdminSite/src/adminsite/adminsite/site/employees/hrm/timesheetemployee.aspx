@@ -122,7 +122,9 @@
                     <asp:Button ID="waitBtn" runat="server" Text="En espera" CssClass="btn btn-lg btn-warning" Width="100%" OnClick="waitBtn_Click"/>
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
-                    <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="cancelBtn_Click"/>
+                    <button runat="server" id="cancelBtn" class="btn btn-lg btn-info" title="Search" onserverclick="cancelBtn_Click" style="width:100%">
+                        <i class="fa fa-reply"></i> Regresar
+                    </button>
                 </div>
             </div>
         </div>

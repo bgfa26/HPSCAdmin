@@ -121,7 +121,7 @@
                     <asp:Button ID="waitBtn" runat="server" Text="En espera" CssClass="btn btn-lg btn-warning" Width="100%" OnClick="waitBtn_Click"/>
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
-                    <asp:Button ID="cancelBtn" runat="server" Text="Regresar" CssClass="btn btn-lg btn-info" Width="100%" OnClick="cancelBtn_Click"/>
+                    <asp:Button ID="cancelBtn" runat="server" Text="Submit&nbsp;<i aria-hidden=true class=icon-ok icon-white></i>" CssClass="btn btn-lg btn-info" Width="100%" OnClick="cancelBtn_Click"/>
                 </div>
             </div>
         </div>

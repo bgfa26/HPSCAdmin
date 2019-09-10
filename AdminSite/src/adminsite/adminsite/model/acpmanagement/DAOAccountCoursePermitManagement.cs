@@ -10,8 +10,19 @@ using System.Web;
 
 namespace adminsite.model.acpmanagement
 {
+    /// <summary>
+    /// Clase encargada al acceso de datos para el manejo de las cuentas/cursos/permisos
+    /// </summary>
     public class DAOAccountCoursePermitManagement : DAO
     {
+
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de la carga de trabajo por cuenta/curso/permiso
+        /// </summary>
+        /// <returns>Retorna una lista de cargas de trabajo</returns>
+        /// <param name="id">Id de la cuenta/curso/permiso</param>
+        /// <param name="initDate">Fecha de inicio</param>
+        /// <param name="endDate">Fecha de fin</param>
         public List<Workload> GetAllWorkloadsByACP(string id, DateTime initDate, DateTime endDate)
         {
             List<Workload> workloads = new List<Workload>();

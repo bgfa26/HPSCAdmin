@@ -15,6 +15,11 @@ namespace adminsite.model.statistics
     /// </summary>
     public class DAOStatistics : DAO
     {
+        /// <summary>
+        /// Metodo que calcula el total de horas de una fila
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="row">Fila de la cual se quiere calcular el total de horas</param>
         private int TotalHoursPerRow(DataRow row)
         {
             int day1 = Int32.Parse(row["DAY1"].ToString());
@@ -36,6 +41,11 @@ namespace adminsite.model.statistics
             return day1 + day2 + day3 + day4 + day5 + day6 + day7 + day8 + day9 + day10 + day11 + day12 + day13 + day14 + day15 + day16;
         }
 
+        /// <summary>
+        /// Metodo que calcula el total de horas por mes
+        /// </summary>
+        /// <returns>Retorna una lista de estadísticas</returns>
+        /// <param name="year">Año</param>
         public List<Statistic> GetTotalHoursPerMonth(int year)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -154,6 +164,12 @@ namespace adminsite.model.statistics
             return statistics;
         }
 
+        /// <summary>
+        /// Metodo que calcula el total de horas por Unidad Organizacional
+        /// </summary>
+        /// <returns>Retorna una lista de estadísticas</returns>
+        /// <param name="month">Mes</param>
+        /// /// <param name="year">Año</param>
         public List<Statistic> GetTotalHoursPerOrganizationalUnit(int month, int year)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -214,6 +230,12 @@ namespace adminsite.model.statistics
             return statistics;
         }
 
+        /// <summary>
+        /// Metodo que calcula el total de horas por Cuenta/curso/permiso
+        /// </summary>
+        /// <returns>Retorna una lista de estadísticas</returns>
+        /// <param name="month">Mes</param>
+        /// /// <param name="year">Año</param>
         public List<Statistic> GetTotalHoursPerACP(int month, int year)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -274,6 +296,12 @@ namespace adminsite.model.statistics
             return statistics;
         }
 
+        /// <summary>
+        /// Metodo que calcula el total de horas por día de la semana
+        /// </summary>
+        /// <returns>Retorna una lista de estadísticas</returns>
+        /// <param name="month">Mes</param>
+        /// /// <param name="year">Año</param>
         public List<Statistic> GetTotalHoursPerDayPerMonth(int month, int year)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -374,6 +402,11 @@ namespace adminsite.model.statistics
             return statistics;
         }
 
+        /// <summary>
+        /// Metodo que retorna la lista de años de los cuales se tiene información dado un mes
+        /// </summary>
+        /// <returns>Retorna una lista de estadísticas</returns>
+        /// <param name="month">Mes</param>
         public List<string> GetAllYearsByMonth(int month)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -413,6 +446,9 @@ namespace adminsite.model.statistics
             }
         }
 
+        /// <summary>
+        /// Metodo que retorna todos los años de los cuales se tiene información
+        /// </summary>
         public List<string> GetAllYears()
         {
             List<string> years = new List<string>();

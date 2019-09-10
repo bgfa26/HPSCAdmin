@@ -47,6 +47,22 @@ namespace adminsite.site.employees.performance
             return results;
         }
 
+        private static string createResultDaysOfWeek(List<Statistic> statistics, List<Int32> days)
+        {
+            string results = "";
+            int count = 0;
+            foreach (Statistic statistic in statistics)
+            {
+                results += statistic.title + "," + days[count] + "," + statistic.value + ";";
+                count++;
+            }
+            if (!results.Equals(""))
+            {
+                results = results.Remove(results.Length - 1);
+            }
+            return results;
+        }
+
         private static string createResultString(List<string> results)
         {
             string _results = "";
@@ -109,7 +125,24 @@ namespace adminsite.site.employees.performance
                 GetTotalHoursPerDayPerMonthCommand cmd = new GetTotalHoursPerDayPerMonthCommand(month, year);
                 cmd.Execute();
                 List<Statistic> statistics = cmd.GetResults();
-                string results = createResult(statistics);
+                DateTime initDate = new DateTime(year, month, 1);
+                DateTime endDate = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+                int mondays = CountDays(DayOfWeek.Monday, initDate, endDate);
+                int tuesdays = CountDays(DayOfWeek.Tuesday, initDate, endDate);
+                int wednesdays = CountDays(DayOfWeek.Wednesday, initDate, endDate);
+                int thursdays = CountDays(DayOfWeek.Thursday, initDate, endDate);
+                int fridays = CountDays(DayOfWeek.Friday, initDate, endDate);
+                int saturdays = CountDays(DayOfWeek.Saturday, initDate, endDate);
+                int sundays = CountDays(DayOfWeek.Sunday, initDate, endDate);
+                List<Int32> days = new List<int>();
+                days.Add(mondays);
+                days.Add(tuesdays);
+                days.Add(wednesdays);
+                days.Add(thursdays);
+                days.Add(fridays);
+                days.Add(saturdays);
+                days.Add(sundays);
+                string results = createResultDaysOfWeek(statistics, days);
                 return results;
             }
             catch (Exception ex)
@@ -177,6 +210,20 @@ namespace adminsite.site.employees.performance
             {
                 return "error";
             }
+        }
+
+        static int CountDays(DayOfWeek day, DateTime start, DateTime end)
+        {
+            TimeSpan ts = end - start;                       // Total duration
+            int count = (int)Math.Floor(ts.TotalDays / 7);   // Number of whole weeks
+            int remainder = (int)(ts.TotalDays % 7);         // Number of remaining days
+            int sinceLastDay = (int)(end.DayOfWeek - day);   // Number of days since last [day]
+            if (sinceLastDay < 0) sinceLastDay += 7;         // Adjust for negative days since last [day]
+
+            // If the days in excess of an even week are greater than or equal to the number days since the last [day], then count this one, too.
+            if (remainder >= sinceLastDay) count++;
+
+            return count;
         }
     }
 }

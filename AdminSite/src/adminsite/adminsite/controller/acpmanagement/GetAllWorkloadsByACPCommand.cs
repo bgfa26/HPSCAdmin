@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acpmanagement
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener las cargas de trabajo por cuenta/curso/permiso
+    /// </summary>
     public class GetAllWorkloadsByACPCommand : Command
     {
         List<Workload> results;

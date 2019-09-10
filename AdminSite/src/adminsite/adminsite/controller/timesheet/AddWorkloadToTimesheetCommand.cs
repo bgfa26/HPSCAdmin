@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para agregar una carga de trabajo a una hoja de tiempo
+    /// </summary>
     public class AddWorkloadToTimesheetCommand : Command
     {
         Workload workloadToInsert;

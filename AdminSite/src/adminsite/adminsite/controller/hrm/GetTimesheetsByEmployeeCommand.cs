@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.hrm
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener las hojas de trabajo de cada empleado
+    /// </summary>
     public class GetTimesheetsByEmployeeCommand : Command
     {
         int year;

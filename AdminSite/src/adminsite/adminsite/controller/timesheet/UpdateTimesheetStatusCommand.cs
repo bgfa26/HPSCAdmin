@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para modificar el estatus de una hoja de tiempo
+    /// </summary>
     public class UpdateTimesheetStatusCommand : Command
     {
         Timesheet timesheetToUpdate;

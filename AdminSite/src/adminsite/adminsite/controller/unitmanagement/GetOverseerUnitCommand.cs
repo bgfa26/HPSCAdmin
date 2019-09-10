@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.unitmanagement
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener el supervisor de una unidad organizacioanl
+    /// </summary>
     public class GetOverseerUnitCommand : Command
     {
         OrganizationalUnit ouToConsult;

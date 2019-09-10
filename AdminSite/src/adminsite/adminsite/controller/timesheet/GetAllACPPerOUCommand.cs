@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener todas las cuentas/cursos/permisos de una unidad organizacional
+    /// </summary>
     public class GetAllACPPerOUCommand : Command
     {
         List<AccountCoursePermit> results;

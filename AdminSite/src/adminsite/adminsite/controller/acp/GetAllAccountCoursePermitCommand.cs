@@ -30,7 +30,7 @@ namespace adminsite.controller.acp
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna un entero</returns>
+        /// <returns>Retorna una lista</returns>
         public List<AccountCoursePermit> GetResults()
         {
             return results;

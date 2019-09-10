@@ -10,8 +10,16 @@ using System.Web;
 
 namespace adminsite.model.timesheet
 {
+    /// <summary>
+    /// Clase encargada al acceso de datos para el manejo de hojas de trabajo
+    /// </summary>
     public class DAOTimesheet : DAO
     {
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de una hoja de tiempo dado un empleado
+        /// </summary>
+        /// <returns>Retorna una lista de Hojas de Tiempo</returns>
+        /// <param name="employee">Empleado del cual se obtiene la hoja de tiempo</param>
         public List<Timesheet> GetTimesheetsByEmployee(Employee employee)
         {
             List<Timesheet> timesheetsList = new List<Timesheet>();
@@ -62,6 +70,11 @@ namespace adminsite.model.timesheet
 
         }
 
+        /// <summary>
+        /// Metodo que elimina de la base de datos la informacion de una carga de trabajo
+        /// </summary>
+        /// <returns>Retorna una entero</returns>
+        /// <param name="workloadToDelete">Carga de trabajo a eliminar</param>
         public int DeleteWorkload(Workload workloadToDelete)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -90,7 +103,11 @@ namespace adminsite.model.timesheet
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de una carga de trabajo dada una hoja de tiempo
+        /// </summary>
+        /// <returns>Retorna una hoja de tiempo</returns>
+        /// <param name="timesheet">Hoja de tiempo en donde se encuentran las cargas de trabajo</param>
         public Timesheet GetAllWorkloadsByTimesheet(Timesheet timesheet)
         {
             List<Workload> workloads = new List<Workload>();
@@ -173,6 +190,11 @@ namespace adminsite.model.timesheet
 
         }
 
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de una cuenta, curso o permiso por unidad organizacional
+        /// </summary>
+        /// <returns>Retorna una lista de cuentas,cursos y permisos</returns>
+        /// <param name="unit">Unidad Organizacional que maneja las cuentas/cursos/permisos</param>
         public List<AccountCoursePermit> GetAllACPPerOU(OrganizationalUnit unit)
         {
             List<AccountCoursePermit> accountCoursePermits = new List<AccountCoursePermit>();
@@ -218,7 +240,11 @@ namespace adminsite.model.timesheet
             }
 
         }
-        
+        /// <summary>
+        /// Metodo que agrega a la base de datos la información de una hoja de tiempo perteneciente a una carga de trabajo
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="workloadToInsert">Carga de trabajo a la cual se le va a insertar información</param>
         public int AddWorkloadToTimesheet(Workload workloadToInsert)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -266,7 +292,11 @@ namespace adminsite.model.timesheet
             }
 
         }
-
+        /// <summary>
+        /// Metodo que modifica de la base de datos la información de una carga de trabajo
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="workloadToUpdate">Carga de trabajo a la cual se le va a modificar información</param>
         public int UpdateWorkload(Workload workloadToUpdate)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -315,7 +345,11 @@ namespace adminsite.model.timesheet
             }
 
         }
-
+        /// <summary>
+        /// Metodo que modifica de la base de datos la información de una hoja de tiempo
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="timesheetToUpdate">Hoja de tiempo a la cual se le va a modificar información</param>
         public int UpdateTimesheetStatus(Timesheet timesheetToUpdate)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();
@@ -347,7 +381,11 @@ namespace adminsite.model.timesheet
             }
 
         }
-
+        /// <summary>
+        /// Método que modifica de la base de datos el estatus de una carga de trabajo
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
+        /// <param name="workloadToUpdate">Carga de trabajo a la cual se le va a modificar el estatus</param>
         public int UpdateWorkloadStatus(Workload workloadToUpdate)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

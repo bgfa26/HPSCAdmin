@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener las hojas de tiempo de un empleado
+    /// </summary>
     public class GetTimesheetsByEmployeeCommand : Command
     {
         Employee employee;
@@ -33,7 +36,7 @@ namespace adminsite.controller.timesheet
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna una lista de hojas de trabajo</returns>
+        /// <returns>Retorna una lista de hojas de tiempo</returns>
         public List<Timesheet> GetResults()
         {
             return results;

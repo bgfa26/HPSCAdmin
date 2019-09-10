@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener las cargas de trabajo de una hoja de tiempo
+    /// </summary>
     public class GetAllWorkloadsByTimesheetCommand : Command
     {
         Timesheet timesheet;

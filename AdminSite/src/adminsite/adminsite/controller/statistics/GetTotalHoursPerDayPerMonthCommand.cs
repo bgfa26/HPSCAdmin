@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.statistics
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar la grafica de las horas utilizadas en cada día de la semana
+    /// </summary>
     public class GetTotalHoursPerDayPerMonthCommand : Command
     {
         List<Statistic> results;

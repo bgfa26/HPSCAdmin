@@ -10,8 +10,16 @@ using System.Web;
 
 namespace adminsite.model.unitmanagement
 {
+    /// <summary>
+    /// Clase encargada al acceso de datos para el manejo de unidades organizacionales
+    /// </summary>
     public class DAOUnitManagement : DAO
     {
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion de una hoja de tiempo dada una unidad organizacional
+        /// </summary>
+        /// <returns>Retorna una lista de Hojas de Tiempo</returns>
+        /// <param name="employee">Empleado que supervisa la unidad</param>
         public List<Timesheet> GetTimesheetsByUnit(Employee employee)
         {
             List<Timesheet> timesheetsList = new List<Timesheet>();
@@ -63,6 +71,11 @@ namespace adminsite.model.unitmanagement
 
         }
 
+        /// <summary>
+        /// Metodo que obtiene de la base de datos la informacion del supervisor de una unidad organizacional
+        /// </summary>
+        /// <returns>Retorna una unidad organizacional</returns>
+        /// <param name="ouConsult">Empleado que supervisa la unidad</param>
         public OrganizationalUnit GetOverseerUnit(OrganizationalUnit ouConsult)
         {
             List<ParameterDB> parameters = new List<ParameterDB>();

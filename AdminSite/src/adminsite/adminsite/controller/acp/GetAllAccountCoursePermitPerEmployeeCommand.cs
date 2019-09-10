@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.acp
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener todas las cuentas/cursos/permisos de un empleado
+    /// </summary>
     public class GetAllAccountCoursePermitPerEmployeeCommand : Command
     {
         List<AccountCoursePermit> results;
@@ -33,7 +36,7 @@ namespace adminsite.controller.acp
         /// <summary>
         /// Metodo que retorna el resultado obtenido en la BD
         /// </summary>
-        /// <returns>Retorna un entero</returns>
+        /// <returns>Retorna una lista</returns>
         public List<AccountCoursePermit> GetResults()
         {
             return results;

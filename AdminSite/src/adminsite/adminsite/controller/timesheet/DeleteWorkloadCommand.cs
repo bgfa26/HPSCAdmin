@@ -7,6 +7,9 @@ using System.Web;
 
 namespace adminsite.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para eliminar una carga de trabajo
+    /// </summary>
     public class DeleteWorkloadCommand : Command
     {
         Workload workloadToDelete;

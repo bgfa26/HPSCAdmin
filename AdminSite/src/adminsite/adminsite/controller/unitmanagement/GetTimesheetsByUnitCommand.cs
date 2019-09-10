@@ -7,6 +7,10 @@ using System.Web;
 
 namespace adminsite.controller.unitmanagement
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para obtener las hojas de tiempo por unidad organizacional
+    /// </summary> 
+
     public class GetTimesheetsByUnitCommand : Command
     {
         Employee employee;

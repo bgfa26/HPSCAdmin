@@ -338,7 +338,11 @@ namespace adminsite.model.hrm
 
         }
 
-
+        /// <summary>
+        /// Metodo para obtener las hojas de tiempo por empledo
+        /// </summary>
+        /// <returns>Retorna una lista de Hojas de Tiempo</returns>
+        /// <param name="year">Año en el cual se buscarán las hojas de tiempo</param>
         public List<Timesheet> GetTimesheetsByEmployee(int year)
         {
             List<Timesheet> timesheetsList = new List<Timesheet>();

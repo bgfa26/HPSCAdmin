@@ -324,7 +324,7 @@
 
     </script>
         
-    <!-- Pie chart code -->
+    <!-- Bar week chart code -->
     <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalHoursPerDayOfWeek() {
@@ -341,7 +341,7 @@
                 var chart = AmCharts.makeChart("bardaysdiv", {
                     "type": "serial",
                     "theme": "none",
-                    "dataProvider": getDataBar(response),
+                    "dataProvider": getDataBarDay(response),
                     "valueAxes": [{
                         "gridColor": "#FFFFFF",
                         "gridAlpha": 0.2,
@@ -378,14 +378,14 @@
                 errorSweetAlert("Se ha producido un error al generar la gráfica", "error");
             }
         }
-        function getDataBar(data) {
+        function getDataBarDay(data) {
             var chartData = [];
             var dataSplitted = data.split(";");
             for (var i = 0; i < dataSplitted.length; i++) {
                 var statistic = dataSplitted[i].split(",");
                 chartData.push({
-                    ou: statistic[0],
-                    total: statistic[1]
+                    ou: statistic[0] + " - " + statistic[1],
+                    total: statistic[2]
                 });
             }
             return chartData;
@@ -582,7 +582,7 @@
     </script>
     
     <!-- Years code -->
-    <script type="text/javascript">
+        <script type="text/javascript">
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
         function getTotalYearsByMonth(month, graph) {
             PageMethods.GetYearsByMonth(month.value, graph, fillYears);
@@ -604,6 +604,9 @@
                     else {
                         dropdown = document.getElementById("yearBarChartDl");
                     }
+                    
+                    $(dropdown).html("");
+
                     var years = dataSplitted[1].split(";");
                     for (var i = 0; i < years.length; i++) {
                         var year = years[i];
@@ -635,7 +638,7 @@
 
     </script>
 
-     <script type="text/javascript">
+    <script type="text/javascript">
          $(document).ready(function () {
              getAllYears();
          });

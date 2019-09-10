@@ -42,7 +42,7 @@ namespace adminsite.controller.usermanagement
             try
             {
                 hexCode = GenerateCode(6);
-                EmailService emailService = new EmailService();
+                EmailManagement emailService = new EmailManagement();
                 emailService.SendVerificationCode(employee, hexCode);
 
             }

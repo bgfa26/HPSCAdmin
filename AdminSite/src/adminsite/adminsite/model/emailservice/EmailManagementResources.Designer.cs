@@ -22,14 +22,14 @@ namespace adminsite.model.emailservice {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class EmailResources {
+    internal class EmailManagementResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal EmailResources() {
+        internal EmailManagementResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace adminsite.model.emailservice {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("adminsite.model.emailservice.EmailResources", typeof(EmailResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("adminsite.model.emailservice.EmailManagementResources", typeof(EmailManagementResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace adminsite.model.emailservice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to testerforhpscservcorp@outlook.com.
+        ///   Looks up a localized string similar to controldetiempo@mt2005.com.
         /// </summary>
         internal static string Email {
             get {
@@ -70,7 +70,7 @@ namespace adminsite.model.emailservice {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tester1234.
+        ///   Looks up a localized string similar to Mt2005$...
         /// </summary>
         internal static string Password {
             get {

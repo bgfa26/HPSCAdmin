@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Email" xml:space="preserve">
-    <value>testerforhpscservcorp@outlook.com</value>
+    <value>controldetiempo@mt2005.com</value>
     <comment>Correo electrónico de la empresa</comment>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Tester1234</value>
+    <value>Mt2005$..</value>
     <comment>Contraseña del correo de la empresa</comment>
   </data>
   <data name="VerificationBody" xml:space="preserve">

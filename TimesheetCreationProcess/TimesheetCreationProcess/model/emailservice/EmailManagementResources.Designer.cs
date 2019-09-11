@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimesheetProcess.model.timesheet {
+namespace TimesheetProcess.model.emailservice {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace TimesheetProcess.model.timesheet {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class TimesheetResources {
+    internal class EmailManagementResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TimesheetResources() {
+        internal EmailManagementResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace TimesheetProcess.model.timesheet {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TimesheetProcess.model.timesheet.TimesheetResources", typeof(TimesheetResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TimesheetProcess.model.emailservice.EmailManagementResources", typeof(EmailManagementResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,65 +61,47 @@ namespace TimesheetProcess.model.timesheet {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CREATE_TIMESHEET.
+        ///   Looks up a localized string similar to controldetiempo@mt2005.com.
         /// </summary>
-        internal static string CreateTimesheetStoredProcedure {
+        internal static string Email {
             get {
-                return ResourceManager.GetString("CreateTimesheetStoredProcedure", resourceCulture);
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @enddate.
+        ///   Looks up a localized string similar to Ya pasaron tres días desde la finalización del período para entregar las hojas de tiempo, por favor envíela lo antes posible..
         /// </summary>
-        internal static string enddate {
+        internal static string LateTimesheetBody {
             get {
-                return ResourceManager.GetString("enddate", resourceCulture);
+                return ResourceManager.GetString("LateTimesheetBody", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @exitvalue.
+        ///   Looks up a localized string similar to Mt2005$...
         /// </summary>
-        internal static string exitvalue {
+        internal static string Password {
             get {
-                return ResourceManager.GetString("exitvalue", resourceCulture);
+                return ResourceManager.GetString("Password", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @fk_employee.
+        ///   Looks up a localized string similar to Recordatorio sobre Hojas de Tiempo.
         /// </summary>
-        internal static string fk_employee {
+        internal static string TimesheetHeader {
             get {
-                return ResourceManager.GetString("fk_employee", resourceCulture);
+                return ResourceManager.GetString("TimesheetHeader", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @id.
+        ///   Looks up a localized string similar to Recuerde que en tres días se debe entregar la hoja de tiempo activa..
         /// </summary>
-        internal static string id {
+        internal static string TimesheetReminderBody {
             get {
-                return ResourceManager.GetString("id", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to @initdate.
-        /// </summary>
-        internal static string initdate {
-            get {
-                return ResourceManager.GetString("initdate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to @status.
-        /// </summary>
-        internal static string status {
-            get {
-                return ResourceManager.GetString("status", resourceCulture);
+                return ResourceManager.GetString("TimesheetReminderBody", resourceCulture);
             }
         }
     }

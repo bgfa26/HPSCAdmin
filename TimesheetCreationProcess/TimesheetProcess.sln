@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetCreationProcess", "TimesheetCreationProcess\TimesheetCreationProcess.csproj", "{C48DCB9C-F466-4A4A-8FF8-CE0BD1A2474B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimesheetProcess", "TimesheetCreationProcess\TimesheetProcess.csproj", "{C48DCB9C-F466-4A4A-8FF8-CE0BD1A2474B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimesheetCreationProcess.common.entities;
+using TimesheetProcess.model.employee;
 
 namespace TimesheetCreationProcess.model.employee
 {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TimesheetCreationProcess.model.employee {
+namespace TimesheetProcess.model.employee {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TimesheetCreationProcess.model.employee {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TimesheetCreationProcess.model.employee.HRMResources", typeof(HRMResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TimesheetProcess.model.employee.HRMResources", typeof(HRMResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

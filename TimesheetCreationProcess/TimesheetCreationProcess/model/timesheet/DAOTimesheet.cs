@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimesheetCreationProcess.common;
 using TimesheetCreationProcess.common.entities;
+using TimesheetProcess.model.timesheet;
 
 namespace TimesheetCreationProcess.model.timesheet
 {

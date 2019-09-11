@@ -35,6 +35,24 @@ namespace TimesheetCreationProcess
                 DateTime endDate = new DateTime(initDate.Year, initDate.Month, DateTime.DaysInMonth(initDate.Year, initDate.Month));
                 createTimesheets(initDate, endDate);
             }
+            DateTime end = new DateTime(initDate.Year, initDate.Month, DateTime.DaysInMonth(initDate.Year, initDate.Month));
+            int middleDay = end.Day - 3;
+            if (initDate.Day == 3)
+            {
+
+            }
+            else if (initDate.Day == middleDay)
+            {
+
+            }
+            else if (initDate.Day == 12)
+            {
+
+            }
+            else if (initDate.Day == 18)
+            {
+
+            }
         }
     }
 }

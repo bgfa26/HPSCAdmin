@@ -68,7 +68,7 @@ namespace adminsite.site.employees.timesheet
         protected void repTimesheet_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             string timesheetStatus = ((Label)repTimesheet.Items[e.Item.ItemIndex].FindControl("status")).Text;
-            if ((timesheetStatus.Equals("ENTREGADA")) || (timesheetStatus.Contains("APROBADA")))
+            if ((timesheetStatus.Equals("ENTREGADA")) || (timesheetStatus.Contains("FINALIZADA")))
             {
                 string id = ((Label)repTimesheet.Items[e.Item.ItemIndex].FindControl("timesheetId")).Text;
                 Session["CONSULTED_TIMESHEET"] = id;

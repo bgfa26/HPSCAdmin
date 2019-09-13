@@ -26,7 +26,7 @@ namespace adminsite.site.employees.overseer
                         string timesheetString = (string)Session["CONSULTED_TIMESHEET_OVERSEER"];
                         if (timesheetString != null)
                         {
-                            Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                            Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                             GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                             cmd.Execute();
                             timesheet = cmd.GetResults();
@@ -272,7 +272,7 @@ namespace adminsite.site.employees.overseer
                 if (active)
                 {
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET_OVERSEER"];
-                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                     timesheet.status = status;
                     UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);
                     cmd.Execute();

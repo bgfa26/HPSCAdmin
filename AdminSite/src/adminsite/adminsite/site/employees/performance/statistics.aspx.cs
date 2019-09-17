@@ -146,8 +146,15 @@ namespace adminsite.site.employees.performance
                 GetAllYearsByMonthCommand cmd = new GetAllYearsByMonthCommand(month);
                 cmd.Execute();
                 List<string> years = cmd.GetResults();
-                string results = graph + "/" + createResultString(years);
-                return results;
+                if (years.Count > 0)
+                {
+                    string results = graph + "/" + createResultString(years);
+                    return results;
+                }
+                else
+                {
+                    return graph + "/empty";
+                }
             }
             catch (Exception ex)
             {

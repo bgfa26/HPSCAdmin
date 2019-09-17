@@ -27,7 +27,7 @@ namespace adminsite.model.timesheet
                 {
                     try
                     {
-                        timesheet = new Timesheet(Int32.Parse(row["ID"].ToString()),
+                        timesheet = new Timesheet(Int64.Parse(row["ID"].ToString()),
                                                   Convert.ToDateTime(row["INITDATE"].ToString()),
                                                   Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                   row["STATUS"].ToString(),
@@ -99,7 +99,7 @@ namespace adminsite.model.timesheet
 
             try
             {
-                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.VarChar, timesheet.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.BigInt, timesheet.id.ToString(), false));
                 dataTable = ExecuteConsultStoredProcedure(TimesheetResources.GetAllWorkloadsByTimesheet, parameters);
                 Workload workload = null;
                 foreach (DataRow row in dataTable.Rows)
@@ -241,7 +241,7 @@ namespace adminsite.model.timesheet
                 parameters.Add(new ParameterDB(TimesheetResources.day14, SqlDbType.Int, workloadToInsert.day14.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.day15, SqlDbType.Int, workloadToInsert.day15.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.day16, SqlDbType.Int, workloadToInsert.day16.ToString(), false));
-                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.Int, workloadToInsert.timesheet.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.BigInt, workloadToInsert.timesheet.id.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToInsert.accountCoursePermit.id, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.CreateWorkloadStoredProcedure, parameters);
@@ -290,7 +290,7 @@ namespace adminsite.model.timesheet
                 parameters.Add(new ParameterDB(TimesheetResources.day14, SqlDbType.Int, workloadToUpdate.day14.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.day15, SqlDbType.Int, workloadToUpdate.day15.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.day16, SqlDbType.Int, workloadToUpdate.day16.ToString(), false));
-                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.Int, workloadToUpdate.timesheet.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.fk_timesheet, SqlDbType.BigInt, workloadToUpdate.timesheet.id.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.fk_accountcoursepermit, SqlDbType.VarChar, workloadToUpdate.accountCoursePermit.id, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateWorkloadStoredProcedure, parameters);
@@ -322,7 +322,7 @@ namespace adminsite.model.timesheet
 
             try
             {
-                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, timesheetToUpdate.id.ToString(), false));
+                parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.BigInt, timesheetToUpdate.id.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.status, SqlDbType.VarChar, timesheetToUpdate.status, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateTimesheetStatusStoredProcedure, parameters);

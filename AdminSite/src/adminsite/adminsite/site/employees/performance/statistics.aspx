@@ -590,23 +590,42 @@
         function fillYears(response, userContext, methodName) {
             if (response != "error") {
                 var dataSplitted = response.split("/");
-                var dropdown = "";
-                if (dataSplitted[0] === "1") {
-                    dropdown = document.getElementById("yearHBarChartDl");
-                }
-                else if (dataSplitted[0] === "2") {
-                    dropdown = document.getElementById("yearPieChartDl");
-                }
-                else if (dataSplitted[0] === "3") {
-                    dropdown = document.getElementById("yearLineChartDl");
+                if (dataSplitted[1] != "empty") {
+                    var dropdown = "";
+                    if (dataSplitted[0] === "1") {
+                        dropdown = document.getElementById("yearHBarChartDl");
+                    }
+                    else if (dataSplitted[0] === "2") {
+                        dropdown = document.getElementById("yearPieChartDl");
+                    }
+                    else if (dataSplitted[0] === "3") {
+                        dropdown = document.getElementById("yearLineChartDl");
+                    }
+                    else {
+                        dropdown = document.getElementById("yearBarChartDl");
+                    }
+                    var years = dataSplitted[1].split(";");
+                    for (var i = 0; i < years.length; i++) {
+                        var year = years[i];
+                        dropdown[dropdown.length] = new Option(year, year);
+                    }
                 }
                 else {
-                    dropdown = document.getElementById("yearBarChartDl");
-                }
-                var years = dataSplitted[1].split(";");
-                for (var i = 0; i < years.length; i++) {
-                    var year = years[i];
-                    dropdown[dropdown.length] = new Option(year, year);
+                    
+                    var dropdown = "";
+                    if (dataSplitted[0] === "1") {
+                        dropdown = document.getElementById("yearHBarChartDl");
+                    }
+                    else if (dataSplitted[0] === "2") {
+                        dropdown = document.getElementById("yearPieChartDl");
+                    }
+                    else if (dataSplitted[0] === "3") {
+                        dropdown = document.getElementById("yearLineChartDl");
+                    }
+                    else {
+                        dropdown = document.getElementById("yearBarChartDl");
+                    }
+                    $(dropdown).html("");
                 }
             }
             else {

@@ -13,21 +13,21 @@ namespace TimesheetCreationProcess.model.timesheet
     class DAOTimesheet : DAO
     {
 
-        public int AddTimesheetsPerEmployee(List<Employee> employees)
+        public int AddTimesheetsPerEmployee(DateTime initDate, DateTime endDate, List<Employee> employees)
         {
-            List<ParameterDB> parameters = new List<ParameterDB>();
-            DateTime initDate = new DateTime();
-            DateTime endDate = new DateTime();
             try
             {
                 foreach (Employee employee in employees)
                 {
+                    List<ParameterDB> parameters = new List<ParameterDB>();
                     string idTimesheet = employee.id.ToString() + endDate.Day.ToString() + endDate.Month.ToString() + endDate.Year.ToString();
-                    parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.Int, idTimesheet.ToString(), false));
+                    long id = Int64.Parse(idTimesheet);
+                    parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.BigInt, id.ToString(), false));
                     parameters.Add(new ParameterDB(TimesheetResources.initdate, SqlDbType.Date, initDate.ToString("yyyy-MM-dd"), false));
-                    parameters.Add(new ParameterDB(TimesheetResources.enddate, SqlDbType.Int, endDate.ToString("yyyy-MM-dd"), false));
+                    parameters.Add(new ParameterDB(TimesheetResources.enddate, SqlDbType.Date, endDate.ToString("yyyy-MM-dd"), false));
                     parameters.Add(new ParameterDB(TimesheetResources.status, SqlDbType.VarChar, "ABIERTA", false));
                     parameters.Add(new ParameterDB(TimesheetResources.fk_employee, SqlDbType.Int, employee.id.ToString(), false));
+                    parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                     ExecuteStoredProcedure(TimesheetResources.CreateTimesheetStoredProcedure, parameters);
                 }
                 int result = 200;

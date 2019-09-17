@@ -356,7 +356,7 @@ namespace adminsite.model.hrm
                     {
                         Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
                         employee.email = row["EEMAIL"].ToString();
-                        timesheet = new Timesheet(Int32.Parse(row["TID"].ToString()),
+                        timesheet = new Timesheet(Int64.Parse(row["TID"].ToString()),
                                                   Convert.ToDateTime(row["TINITDATE"].ToString()),
                                                   Convert.ToDateTime(row["TENDDATE"].ToString()),
                                                   row["STATUS"].ToString(),

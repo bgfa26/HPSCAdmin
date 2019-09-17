@@ -30,7 +30,7 @@ namespace adminsite.model.acpmanagement
                     try
                     {
                         AccountCoursePermit accountCoursePermit = new AccountCoursePermit(id);
-                        Timesheet timesheet = new Timesheet(Int32.Parse(row["TID"].ToString()));
+                        Timesheet timesheet = new Timesheet(Int64.Parse(row["TID"].ToString()));
                         Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
                         timesheet.initDate = Convert.ToDateTime(initDate);
                         timesheet.endDate = Convert.ToDateTime(endDate);

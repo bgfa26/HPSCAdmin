@@ -175,7 +175,7 @@ namespace adminsite.site.employees.timesheet
             string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
             if (timesheetString != null)
             {
-                Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                 GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                 cmd.Execute();
                 timesheet = cmd.GetResults();
@@ -272,7 +272,7 @@ namespace adminsite.site.employees.timesheet
                 string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
                 if (timesheetString != null)
                 {
-                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                     GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
                     cmdTimesheet.Execute();
                     timesheet = cmdTimesheet.GetResults();
@@ -403,7 +403,7 @@ namespace adminsite.site.employees.timesheet
                     cmd.Execute();
 
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                     GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
                     cmdTimesheet.Execute();
                     timesheet = cmdTimesheet.GetResults();
@@ -536,7 +536,7 @@ namespace adminsite.site.employees.timesheet
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
                     if (timesheetString != null)
                     {
-                        Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                        Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                         GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
                         cmdTimesheet.Execute();
                         timesheet = cmdTimesheet.GetResults();
@@ -655,7 +655,7 @@ namespace adminsite.site.employees.timesheet
                     Holiday holidayManagement = new Holiday();
                     List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
                     string timesheetString = (string)Session["CONSULTED_TIMESHEET"];
-                    Timesheet timesheet = new Timesheet(Int32.Parse(timesheetString));
+                    Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
                     GetAllWorkloadsByTimesheetCommand cmdTimesheet = new GetAllWorkloadsByTimesheetCommand(timesheet);
                     cmdTimesheet.Execute();
                     DateTime movableDate = timesheet.initDate;

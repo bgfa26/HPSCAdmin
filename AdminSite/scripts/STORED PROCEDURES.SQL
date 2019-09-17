@@ -538,7 +538,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[GET_TIMESHEET_BY_ID]
-  @id AS int
+  @id AS bigint
 AS
 BEGIN
   SELECT T.ID AS ID, T.INITDATE AS INITDATE, T.ENDDATE AS ENDDATE, T.STATUS AS STATUS
@@ -558,7 +558,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[CREATE_TIMESHEET]
-  @id AS int,
+  @id AS bigint,
   @initdate AS date,
   @enddate AS date,
   @status AS varchar (50),
@@ -598,7 +598,7 @@ CREATE PROCEDURE [dbo].[CREATE_WORKLOAD]
   @day14 AS int,
   @day15 AS int,
   @day16 AS int,
-  @fk_timesheet AS int,
+  @fk_timesheet AS bigint,
   @fk_accountcoursepermit AS varchar (30),
   @exitvalue AS int OUTPUT
 AS
@@ -644,7 +644,7 @@ CREATE PROCEDURE [dbo].[UPDATE_WORKLOAD]
   @day14 AS int,
   @day15 AS int,
   @day16 AS int,
-  @fk_timesheet AS int,
+  @fk_timesheet AS bigint,
   @fk_accountcoursepermit AS varchar (30),
   @exitvalue AS int OUTPUT 
 AS
@@ -674,7 +674,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[GET_ALL_WORKLOADS]
-  @id AS int
+  @id AS bigint
 AS
 BEGIN
 	SELECT W.ID AS ID, W.DAY1 AS DAY1, W.DAY2 AS DAY2, W.DAY3 AS DAY3, W.DAY4 AS DAY4, W.DAY5 AS DAY5, W.DAY6 AS DAY6, W.DAY7 AS DAY7, W.DAY8 AS DAY8, W.DAY9 AS DAY9, W.DAY10 AS DAY10, W.DAY11 AS DAY11, W.DAY12 AS DAY12, W.DAY13 AS DAY13, W.DAY14 AS DAY14, W.DAY15 AS DAY15, W.DAY16 AS DAY16, W.STATUS AS STATUS, ACP.ID AS IDACP, ACP.NAME AS NAME, T.INITDATE AS INITDATE, T.ENDDATE AS ENDDATE
@@ -808,8 +808,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[GET_TIMESHEET_DATES]
-
-  @id AS int
+  @id AS bigint
 AS
 BEGIN
   SELECT T.INITDATE AS INITDATE, T.ENDDATE AS ENDDATE
@@ -828,7 +827,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE PROCEDURE [dbo].[UPDATE_TIMESHEET_STATUS]
-  @id AS int,
+  @id AS bigint,
   @status AS varchar (50),
   @exitvalue AS int OUTPUT 
 AS

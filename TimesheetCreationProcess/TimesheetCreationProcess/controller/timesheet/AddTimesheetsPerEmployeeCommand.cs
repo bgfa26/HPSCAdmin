@@ -11,7 +11,15 @@ namespace TimesheetCreationProcess.controller.timesheet
 {
     class AddTimesheetsPerEmployeeCommand : Command
     {
+        DateTime initDate;
+        DateTime endDate;
         int result;
+
+        public AddTimesheetsPerEmployeeCommand(DateTime initDate, DateTime endDate)
+        {
+            this.endDate = endDate;
+            this.initDate = initDate;
+        }
 
         public override void Execute()
         {
@@ -20,7 +28,7 @@ namespace TimesheetCreationProcess.controller.timesheet
                 DAOEmployee daoEmployee = new DAOEmployee();
                 List<Employee> employees = daoEmployee.GetEmployees();
                 DAOTimesheet dao = new DAOTimesheet();
-                result = dao.AddTimesheetsPerEmployee(employees);
+                result = dao.AddTimesheetsPerEmployee(initDate, endDate,employees);
             }
             catch (Exception ex)
             {

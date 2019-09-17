@@ -7,7 +7,7 @@ namespace adminsite.common.entities
 {
     public class Timesheet
     {
-        public int id { get; set; }
+        public long id { get; set; }
         public DateTime initDate { get; set; }
         public DateTime endDate { get; set; }
         public string status { get; set; }
@@ -16,7 +16,7 @@ namespace adminsite.common.entities
 
         public Timesheet() { }
 
-        public Timesheet(int id, DateTime initDate, DateTime endDate, string status, Employee employee)
+        public Timesheet(long id, DateTime initDate, DateTime endDate, string status, Employee employee)
         {
             this.id = id;
             this.initDate = initDate;
@@ -26,7 +26,7 @@ namespace adminsite.common.entities
             this.workloads = new List<Workload>();
         }
 
-        public Timesheet(int id)
+        public Timesheet(long id)
         {
             this.id = id;
         }

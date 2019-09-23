@@ -137,4 +137,8 @@
     <value>Recuerde que en tres días se debe entregar la hoja de tiempo activa.</value>
     <comment>Cuerpo de los correos de código de hoja de tiempo</comment>
   </data>
+  <data name="TimesheetTodayBody" xml:space="preserve">
+    <value>Recuerde que hoy se debe entregar la hoja de tiempo activa.</value>
+    <comment>Cuerpo de los correos de código de hoja de tiempo</comment>
+  </data>
 </root>

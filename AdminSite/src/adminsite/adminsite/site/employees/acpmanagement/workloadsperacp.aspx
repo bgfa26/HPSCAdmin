@@ -68,6 +68,7 @@
                                     <th id="header14" runat="server">Día 14</th>
                                     <th id="header15" runat="server">Día 15</th>
                                     <th id="header16" runat="server">Día 16</th>
+                                    <th id="headerTotal" runat="server">Total</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
@@ -95,6 +96,9 @@
                                                 <td id="day14" runat="server"><%# Eval("day14") %></td>
                                                 <td id="day15" runat="server"><%# Eval("day15") %></td>
                                                 <td id="day16" runat="server"><%# Eval("day16") %></td>
+                                                <td id="total" runat="server"><%# TotalHoursPerEmployee(Eval("day1"), Eval("day2"), Eval("day3"), Eval("day4"), Eval("day5"), Eval("day6"), 
+                                                             Eval("day7"), Eval("day8"), Eval("day9"), Eval("day10"), Eval("day11"), Eval("day12"), 
+                                                             Eval("day13"), Eval("day14"), Eval("day15"), Eval("day16")) %></td>
                                                 <td style="text-align:center">
                                                     <asp:ImageButton ID="update" runat="server" Text="Aceptar" ImageUrl="~/site/employees/img/icons/check.svg" Height="26px" Width="26px" ToolTip="Aceptar" Style="margin-right:2px"/>
                                                     <asp:ImageButton ID="cancel" runat="server" Text="Cancelar" ImageUrl="~/site/employees/img/icons/close.svg" Height="25px" Width="25px" ToolTip="Cancelar"  Style="margin-left:2px"/>
@@ -122,7 +126,8 @@
                                     <th id="footer14" runat="server">Día 14</th>
                                     <th id="footer15" runat="server">Día 15</th>
                                     <th id="footer16" runat="server">Día 16</th>
-                                    <th>Opciones</th>
+                                    <th id="footerTotal" runat="server">Total</th>
+                                    <th id="footerOpciones" runat="server">Opciones</th>
                                 </tr>
                             </tfoot>
                         </table>

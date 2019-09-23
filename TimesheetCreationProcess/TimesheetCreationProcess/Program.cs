@@ -67,6 +67,16 @@ namespace TimesheetCreationProcess
                 SendEmailCommand cmd = new SendEmailCommand(0, dateTime);
                 cmd.Execute();
             }
+            else if (initDate.Day == 15)
+            {
+                SendEmailCommand cmd = new SendEmailCommand(2);
+                cmd.Execute();
+            }
+            else if (initDate.Day == end.Day)
+            {
+                SendEmailCommand cmd = new SendEmailCommand(2);
+                cmd.Execute();
+            }
         }
     }
 }

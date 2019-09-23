@@ -31,9 +31,13 @@ namespace TimesheetProcess.model.emailservice
                     {
                         msg.Body = EmailManagementResources.TimesheetReminderBody;
                     }
-                    else
+                    else if (type == 0)
                     {
                         msg.Body = EmailManagementResources.LateTimesheetBody;
+                    }
+                    else
+                    {
+                        msg.Body = EmailManagementResources.TimesheetTodayBody;
                     }
                     msg.IsBodyHtml = true;
 
@@ -50,9 +54,7 @@ namespace TimesheetProcess.model.emailservice
                 }
             }
             catch (Exception ex)
-            {
-                throw ex;
-            }
+            {}
         }
     }
 }

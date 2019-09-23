@@ -104,5 +104,14 @@ namespace TimesheetProcess.model.emailservice {
                 return ResourceManager.GetString("TimesheetReminderBody", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recuerde que hoy se debe entregar la hoja de tiempo activa..
+        /// </summary>
+        internal static string TimesheetTodayBody {
+            get {
+                return ResourceManager.GetString("TimesheetTodayBody", resourceCulture);
+            }
+        }
     }
 }

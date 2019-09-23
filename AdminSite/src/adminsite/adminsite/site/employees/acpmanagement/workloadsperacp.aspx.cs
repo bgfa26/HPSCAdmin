@@ -39,7 +39,7 @@ namespace adminsite.site.employees.acpmanagement
             }
         }
 
-        protected void bindData()
+        protected void BindData()
         {
             try
             {
@@ -54,7 +54,7 @@ namespace adminsite.site.employees.acpmanagement
                     {
                         DateTime initDate = Convert.ToDateTime(init);
                         DateTime endDate = Convert.ToDateTime(end);
-                        if (validateDateRange(initDate, endDate)) {
+                        if (ValidateDateRange(initDate, endDate)) {
                             GetAllWorkloadsByACPCommand cmd = new GetAllWorkloadsByACPCommand(acp, initDate, endDate);
                             cmd.Execute();
                             workloads = cmd.GetResults();
@@ -175,6 +175,11 @@ namespace adminsite.site.employees.acpmanagement
                                         footer16.InnerText = totalsPerDay[dayCounter - 1].ToString();
                                         break;
                                 }
+                                int total = totalsPerDay[0] + totalsPerDay[1] + totalsPerDay[2] + totalsPerDay[3] + totalsPerDay[4] + 
+                                            totalsPerDay[5] + totalsPerDay[6] + totalsPerDay[7] + totalsPerDay[8] + totalsPerDay[9] + 
+                                            totalsPerDay[10] + totalsPerDay[11] + totalsPerDay[12] + totalsPerDay[13] + totalsPerDay[14] + 
+                                            totalsPerDay[15];
+                                footerTotal.InnerText = total.ToString();
                                 bool holidayWeekend = DateSystem.IsWeekend(movableDate, CountryCode.VE);
                                 foreach (Holiday holiday in holidays)
                                 {
@@ -265,7 +270,7 @@ namespace adminsite.site.employees.acpmanagement
 
         protected void acceptBtn_Click(object sender, EventArgs e)
         {
-            bindData();
+            BindData();
         }
 
         protected void cancelBtn_Click(object sender, EventArgs e)
@@ -300,7 +305,7 @@ namespace adminsite.site.employees.acpmanagement
                     if (result == 200)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "sweetAlertNoRedirect('Se ha modificado el estatus exitosamente', 'success')", true);
-                        bindData();
+                        BindData();
                     }
                     else
                     {
@@ -314,7 +319,7 @@ namespace adminsite.site.employees.acpmanagement
             }
         }
 
-        protected bool validateDateRange(DateTime initDate, DateTime endDate)
+        protected bool ValidateDateRange(DateTime initDate, DateTime endDate)
         {
             if ((initDate.Day == 1) && (endDate.Day == 15))
             {
@@ -411,5 +416,28 @@ namespace adminsite.site.employees.acpmanagement
                 }
             }
         }
+
+        protected int TotalHoursPerEmployee(Object day1_, Object day2_, Object day3_, Object day4_, Object day5_, Object day6_, Object day7_, Object day8_, Object day9_, Object day10_, Object day11_, Object day12_, Object day13_, Object day14_, Object day15_, Object day16_)
+        {
+            int day1 = (Int32)day1_;
+            int day2 = (Int32)day2_;
+            int day3 = (Int32)day3_;
+            int day4 = (Int32)day4_;
+            int day5 = (Int32)day5_;
+            int day6 = (Int32)day6_;
+            int day7 = (Int32)day7_;
+            int day8 = (Int32)day8_;
+            int day9 = (Int32)day9_;
+            int day10 = (Int32)day10_;
+            int day11 = (Int32)day11_;
+            int day12 = (Int32)day12_;
+            int day13 = (Int32)day13_;
+            int day14 = (Int32)day14_;
+            int day15 = (Int32)day15_;
+            int day16 = (Int32)day16_;
+            return (day1 + day2 + day3 + day4 + day5 + day6 + day7 + day8 +
+                    day9 + day10 + day11 + day12 + day13 + day14 + day15 + day16);
+        }
+
     }
 }

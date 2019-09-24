@@ -6,9 +6,9 @@ function sweetAlert(msg, type, relocation) {
         className: 'heightswal',
         icon: type
     })
-        .then(() => {
-            window.location.href = relocation;
-        });
+    .then(() => {
+        window.location.href = relocation;
+    });
 }
 
 function sweetAlertNoRedirect(msg, type) {

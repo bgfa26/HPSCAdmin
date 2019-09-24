@@ -17,6 +17,7 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css'/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server"> 
@@ -116,7 +117,7 @@
                     <asp:Button ID="approveBtn" runat="server" Text="Aprobar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="approveBtn_Click"/>
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
-                    <asp:Button ID="denyBtn" runat="server" Text="Denegar" CssClass="btn btn-lg btn-danger" Width="100%" OnClick="denyBtn_Click"/>
+                    <input type="button" value="Denegar" id="denyBtn" onclick="Swal_Confirm_Msg1()" class="btn btn-lg btn-danger" style="width:100%;">
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
                     <asp:Button ID="waitBtn" runat="server" Text="En espera" CssClass="btn btn-lg btn-warning" Width="100%" OnClick="waitBtn_Click"/>
@@ -189,6 +190,45 @@
                 $('td:nth-child(18)').hide();
                 $('td:nth-child(17)').hide();
                 $('td:nth-child(16)').hide();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function Swal_Confirm_Msg1() {
+            swal({
+              title: "Comentario sobre la hoja de tiempo",
+              text: "Escriba el motivo para rechazar la hoja de tiempo",
+              type: "input",
+              showCancelButton: true,
+              closeOnConfirm: false,
+              closeOnCancel: false,
+              cancelButtonText: "Cancelar",
+              confirmButtonText: "Aceptar",
+              inputPlaceholder: "Comentario"
+            }, function (value) {
+                if ((value === false)) {
+                    swal.close();
+                }
+                else {
+                    if (value === false) return false;
+                    if (value === "") {
+                        swal.showInputError("Debe escribir un comentario");
+                        return false
+                    }
+                    else {
+                        swal.close();
+                    }
+                }
+            });
+        }
+        
+        function deniedAndComment(isConfirm) {
+            console.log(isConfirm);
+            if (isConfirm) {
+                //Do your stuff if clicked yes.            
+            } else {
+                //Do your stuff if clicked No.
             }
         }
     </script>

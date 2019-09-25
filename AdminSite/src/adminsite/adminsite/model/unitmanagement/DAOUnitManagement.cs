@@ -40,7 +40,8 @@ namespace adminsite.model.unitmanagement
                                                   Convert.ToDateTime(row["TINITDATE"].ToString()),
                                                   Convert.ToDateTime(row["TENDDATE"].ToString()),
                                                   row["STATUS"].ToString(),
-                                                  supervisedEmployee);
+                                                  supervisedEmployee,
+                                                  row["TCOMMENT"].ToString());
                         timesheetsList.Add(timesheet);
                     }
                     catch (Exception ex)

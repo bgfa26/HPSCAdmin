@@ -16,8 +16,6 @@
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css'/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert-dev.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server"> 
@@ -117,7 +115,7 @@
                     <asp:Button ID="approveBtn" runat="server" Text="Aprobar" CssClass="btn btn-lg btn-success" Width="100%" OnClick="approveBtn_Click"/>
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
-                    <input type="button" value="Denegar" id="denyBtn" onclick="Swal_Confirm_Msg1()" class="btn btn-lg btn-danger" style="width:100%;">
+                    <input type="button" value="Denegar" id="denyBtn" onclick="rejectTimesheet()" class="btn btn-lg btn-danger" style="width:100%;">
                 </div>
                 <div class="col-md-3" style="margin-top:20px">
                     <asp:Button ID="waitBtn" runat="server" Text="En espera" CssClass="btn btn-lg btn-warning" Width="100%" OnClick="waitBtn_Click"/>
@@ -195,40 +193,81 @@
     </script>
 
     <script type="text/javascript">
-        function Swal_Confirm_Msg1() {
+
+        function errorSweetAlertPost(msg, type) {
+            swal({
+                title: msg,
+                timer: 2000,
+                buttons: false,
+                className: 'heightswal',
+                icon: type
+            })
+            .then(() => {
+                rejectTimesheet();
+            });
+        }
+        function rejectTimesheet() {
             swal({
               title: "Comentario sobre la hoja de tiempo",
               text: "Escriba el motivo para rechazar la hoja de tiempo",
-              type: "input",
-              showCancelButton: true,
+              content: "input",
+              buttons: {
+                cancel: {
+                    text: 'Cancelar',
+                    visible: true
+                },
+                confirm: {
+                    text: 'Aceptar',
+                    closeModal: false
+                }
+              },
               closeOnConfirm: false,
               closeOnCancel: false,
               cancelButtonText: "Cancelar",
-              confirmButtonText: "Aceptar",
-              inputPlaceholder: "Comentario"
-            }, function (value) {
+              confirmButtonText: "Aceptar"
+            })
+            .then((value) => {
                 if ((value === false)) {
                     swal.close();
                 }
                 else {
                     if (value === false) return false;
-                    if (value === "") {
-                        swal.showInputError("Debe escribir un comentario");
-                        return false
-                    }
                     else {
                         swal.close();
+                        if ((value === "") && (value != "True")) {
+                            errorSweetAlertPost("No se pueden dejar vacío el mensaje", "error");
+                            console.log("no hay valor");
+                            return false
+                        }
+                        else {
+                            swal.close();
+                            deniedAndComment(value);
+                        }
                     }
                 }
             });
         }
+
+        function sleep(milliseconds) {
+            var start = new Date().getTime();
+            for (var i = 0; i < 1e7; i++) {
+                if ((new Date().getTime() - start) > milliseconds) {
+                    break;
+                }
+            }
+        }
+
+        function deniedAndComment(value) {
+            PageMethods.DenyTimesheet(value, success);
+        }
         
-        function deniedAndComment(isConfirm) {
-            console.log(isConfirm);
-            if (isConfirm) {
-                //Do your stuff if clicked yes.            
-            } else {
-                //Do your stuff if clicked No.
+        function success(response, userContext, methodName) {
+            if (response === "ok") {
+                sweetAlertNoRedirect('Se ha actualizado la hoja de tiempo exitosamente', 'success');
+            } else if (response === "reject") {
+                errorSweetAlert('No se ha podido actualizar la hoja de trabajo', 'error');
+            } else if (response === "error") {
+                errorSweetAlert('Se ha generado un error procesando su solicitud', 'error');
             }
         }
     </script>

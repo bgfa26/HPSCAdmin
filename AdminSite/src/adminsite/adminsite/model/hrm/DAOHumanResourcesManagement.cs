@@ -364,7 +364,8 @@ namespace adminsite.model.hrm
                                                   Convert.ToDateTime(row["TINITDATE"].ToString()),
                                                   Convert.ToDateTime(row["TENDDATE"].ToString()),
                                                   row["STATUS"].ToString(),
-                                                  employee);
+                                                  employee,
+                                                  row["COMMENT"].ToString());
                         timesheetsList.Add(timesheet);
                     }
                     catch (Exception ex)

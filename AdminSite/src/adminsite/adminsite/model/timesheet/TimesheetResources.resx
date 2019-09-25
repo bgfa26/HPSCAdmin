@@ -249,4 +249,8 @@
     <value>UPDATE_STATUS_WORKLOAD</value>
     <comment>Procedimiento almacenado para actualizar el estatus de una carga de trabajo</comment>
   </data>
+  <data name="comment" xml:space="preserve">
+    <value>@comment</value>
+    <comment>Comentario sobre la hoja de tiempo</comment>
+  </data>
 </root>

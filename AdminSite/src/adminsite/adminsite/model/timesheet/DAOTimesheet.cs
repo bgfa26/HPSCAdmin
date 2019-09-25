@@ -39,7 +39,8 @@ namespace adminsite.model.timesheet
                                                   Convert.ToDateTime(row["INITDATE"].ToString()),
                                                   Convert.ToDateTime(row["ENDDATE"].ToString()),
                                                   row["STATUS"].ToString(),
-                                                  employee);
+                                                  employee,
+                                                  row["COMMENT"].ToString());
                         timesheetsList.Add(timesheet);
                     }
                     catch (Exception ex)
@@ -103,6 +104,7 @@ namespace adminsite.model.timesheet
                 throw ex;
             }
         }
+
         /// <summary>
         /// Metodo que obtiene de la base de datos la informacion de una carga de trabajo dada una hoja de tiempo
         /// </summary>
@@ -240,6 +242,7 @@ namespace adminsite.model.timesheet
             }
 
         }
+
         /// <summary>
         /// Metodo que agrega a la base de datos la información de una hoja de tiempo perteneciente a una carga de trabajo
         /// </summary>
@@ -292,6 +295,7 @@ namespace adminsite.model.timesheet
             }
 
         }
+
         /// <summary>
         /// Metodo que modifica de la base de datos la información de una carga de trabajo
         /// </summary>
@@ -345,6 +349,7 @@ namespace adminsite.model.timesheet
             }
 
         }
+
         /// <summary>
         /// Metodo que modifica de la base de datos la información de una hoja de tiempo
         /// </summary>
@@ -358,6 +363,7 @@ namespace adminsite.model.timesheet
             {
                 parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.BigInt, timesheetToUpdate.id.ToString(), false));
                 parameters.Add(new ParameterDB(TimesheetResources.status, SqlDbType.VarChar, timesheetToUpdate.status, false));
+                parameters.Add(new ParameterDB(TimesheetResources.comment, SqlDbType.VarChar, timesheetToUpdate.comment, false));
                 parameters.Add(new ParameterDB(TimesheetResources.exitvalue, SqlDbType.Int, true));
                 List<ResultDB> results = ExecuteStoredProcedure(TimesheetResources.UpdateTimesheetStatusStoredProcedure, parameters);
                 int result = Int32.Parse(results[0].value);
@@ -381,6 +387,7 @@ namespace adminsite.model.timesheet
             }
 
         }
+
         /// <summary>
         /// Método que modifica de la base de datos el estatus de una carga de trabajo
         /// </summary>

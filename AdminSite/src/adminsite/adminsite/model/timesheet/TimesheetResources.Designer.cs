@@ -61,6 +61,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @comment.
+        /// </summary>
+        internal static string comment {
+            get {
+                return ResourceManager.GetString("comment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE_WORKLOAD.
         /// </summary>
         internal static string CreateWorkloadStoredProcedure {

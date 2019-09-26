@@ -253,4 +253,8 @@
     <value>@comment</value>
     <comment>Comentario sobre la hoja de tiempo</comment>
   </data>
+  <data name="GetTimesheetByIDStoredProcedure" xml:space="preserve">
+    <value>GET_TIMESHEET_BY_ID</value>
+    <comment>Procedimiento almacenado para consultar una hoja de tiempo dado su ID</comment>
+  </data>
 </root>

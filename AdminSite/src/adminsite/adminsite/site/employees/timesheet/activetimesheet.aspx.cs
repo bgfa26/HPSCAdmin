@@ -180,6 +180,7 @@ namespace adminsite.site.employees.timesheet
                 cmd.Execute();
                 timesheet = cmd.GetResults();
                 timesheetLbl.Text = timesheet.id.ToString();
+                commentLbl.Text = "Comentario: " + timesheet.comment;
                 int count = timesheet.workloads.Count;
                 Holiday holidayManagement = new Holiday();
                 List<Holiday> holidays = holidayManagement.getHolidaysNameVenezuela();
@@ -687,6 +688,7 @@ namespace adminsite.site.employees.timesheet
                     if (approvedTimesheet)
                     {
                         timesheet.status = "ENTREGADA";
+                        timesheet.comment = "No hay comentarios al respecto";
                         UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);
                         cmd.Execute();
                         int result = cmd.GetResult();

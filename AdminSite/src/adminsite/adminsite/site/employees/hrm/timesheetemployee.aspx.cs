@@ -31,6 +31,7 @@ namespace adminsite.site.employees.hrm
                             cmd.Execute();
                             timesheet = cmd.GetResults();
                             timesheetLbl.Text = timesheet.id.ToString();
+                            commentLbl.Text = "Comentario: " + timesheet.comment;
                             bool allApproved = true;
                             foreach (Workload workload in timesheet.workloads)
                             {

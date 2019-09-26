@@ -109,6 +109,8 @@
                 </tfoot>
             </table>
         </div>
+        <br />
+        <asp:Label ID="commentLbl" runat="server" Font-Size="Medium"></asp:Label>
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-3" style="margin-top:20px">

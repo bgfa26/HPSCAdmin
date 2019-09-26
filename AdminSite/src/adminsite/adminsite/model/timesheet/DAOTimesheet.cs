@@ -158,13 +158,14 @@ namespace adminsite.model.timesheet
 
                 }
                 timesheet.workloads = workloads;
-                dataTable = ExecuteConsultStoredProcedure(TimesheetResources.GetTimesheetDatesStoredProcedure, parameters);
+                dataTable = ExecuteConsultStoredProcedure(TimesheetResources.GetTimesheetByIDStoredProcedure, parameters);
                 foreach (DataRow row in dataTable.Rows)
                 {
                     try
                     {
                         timesheet.initDate = Convert.ToDateTime(row["INITDATE"].ToString());
                         timesheet.endDate = Convert.ToDateTime(row["ENDDATE"].ToString());
+                        timesheet.comment = row["COMMENT"].ToString();
                     }
                     catch (Exception ex)
                     {

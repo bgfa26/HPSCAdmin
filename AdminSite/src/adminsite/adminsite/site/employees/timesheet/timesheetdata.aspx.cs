@@ -32,6 +32,7 @@ namespace adminsite.site.employees.timesheet
                             cmd.Execute();
                             timesheet = cmd.GetResults();
                             timesheetLbl.Text = timesheet.id.ToString();
+                            commentLbl.Text = "Comentario: " + timesheet.comment;
                             foreach (Workload workload in timesheet.workloads)
                             {
                                 total.day1 += workload.day1;

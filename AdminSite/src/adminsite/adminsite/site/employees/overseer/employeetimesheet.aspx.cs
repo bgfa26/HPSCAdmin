@@ -31,6 +31,7 @@ namespace adminsite.site.employees.overseer
                             cmd.Execute();
                             timesheet = cmd.GetResults();
                             timesheetLbl.Text = timesheet.id.ToString();
+                            commentLbl.Text = "Comentario: " + timesheet.comment;
                             bool allApproved = true;
                             foreach (Workload workload in timesheet.workloads)
                             {
@@ -243,12 +244,13 @@ namespace adminsite.site.employees.overseer
 
         protected void approveBtn_Click(object sender, EventArgs e)
         {
-            actionToExecute("APROBADA POR SUPERVISOR");
+            actionToExecute("APROBADA POR SUPERVISOR", "No hay comentarios al respecto");
         }
 
-        protected void denyBtn_Click(object sender, EventArgs e)
+        [System.Web.Services.WebMethod]
+        public static string DenyTimesheet(string comment)
         {
-            actionToExecute("REPROBADA POR SUPERVISOR");
+            return actionToExecuteStatic("REPROBADA POR SUPERVISOR", comment);
         }
 
         protected bool checkActiveSession()
@@ -264,15 +266,29 @@ namespace adminsite.site.employees.overseer
             return true;
         }
 
-        public void actionToExecute(string status)
+        protected static bool checkActiveSessionStatic()
+        {
+
+            Employee loggedEmployee = (Employee)HttpContext.Current.Session["MY_INFORMATION"];
+            if (loggedEmployee == null)
+            {
+                HttpContext.Current.Session.RemoveAll();
+                HttpContext.Current.Response.Redirect("~/site/usermanagement/login.aspx", false);
+                return false;
+            }
+            return true;
+        }
+
+        public void actionToExecute(string status, string comment)
         {
             try
             {
                 bool active = checkActiveSession();
                 if (active)
                 {
-                    string timesheetString = (string)Session["CONSULTED_TIMESHEET_OVERSEER"];
+                    string timesheetString = (string)HttpContext.Current.Session["CONSULTED_TIMESHEET_OVERSEER"];
                     Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
+                    timesheet.comment = comment;
                     timesheet.status = status;
                     UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);
                     cmd.Execute();
@@ -293,9 +309,44 @@ namespace adminsite.site.employees.overseer
             }
         }
 
+        public static string actionToExecuteStatic(string status, string comment)
+        {
+            try
+            {
+                bool active = checkActiveSessionStatic();
+                if (active)
+                {
+                    if (comment == null)
+                    {
+                        return "null";
+                    }
+                    string timesheetString = (string)HttpContext.Current.Session["CONSULTED_TIMESHEET_OVERSEER"];
+                    Timesheet timesheet = new Timesheet(Int64.Parse(timesheetString));
+                    timesheet.comment = comment;
+                    timesheet.status = status;
+                    UpdateTimesheetStatusCommand cmd = new UpdateTimesheetStatusCommand(timesheet);
+                    cmd.Execute();
+                    int result = cmd.GetResult();
+                    if (result == 200)
+                    {
+                        return "ok";
+                    }
+                    else
+                    {
+                        return "reject";
+                    }
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                return "error";
+            }
+        }
+
         protected void waitBtn_Click(object sender, EventArgs e)
         {
-            actionToExecute("ENTREGADA");
+            actionToExecute("ENTREGADA", "");
         }
     }
 }

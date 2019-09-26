@@ -566,7 +566,7 @@ CREATE PROCEDURE [dbo].[CREATE_TIMESHEET]
   @exitvalue AS int OUTPUT
 AS
 BEGIN
-  INSERT INTO TIMESHEET VALUES(@id, @initdate, @enddate, @status, '', @fk_employee);
+  INSERT INTO TIMESHEET VALUES(@id, @initdate, @enddate, @status, 'No hay comentarios al respecto', @fk_employee);
   set @exitvalue = 200;
   RETURN @exitvalue;
 END

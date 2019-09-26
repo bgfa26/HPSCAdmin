@@ -291,8 +291,8 @@
             </table>
         </div>
         <div >
-            <br />    
-            <asp:Label ID="lblmsg" runat="server"></asp:Label>
+        <br />
+        <asp:Label ID="commentLbl" runat="server" Font-Size="Medium"></asp:Label>
         </div>
     </div>
     <div class="row">

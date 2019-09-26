@@ -295,6 +295,15 @@ namespace adminsite.model.timesheet {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_TIMESHEET_BY_ID.
+        /// </summary>
+        internal static string GetTimesheetByIDStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetTimesheetByIDStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_TIMESHEET_DATES.
         /// </summary>
         internal static string GetTimesheetDatesStoredProcedure {

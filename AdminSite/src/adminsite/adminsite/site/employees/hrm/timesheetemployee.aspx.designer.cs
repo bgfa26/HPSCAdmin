@@ -337,6 +337,15 @@ namespace adminsite.site.employees.hrm {
         protected global::System.Web.UI.WebControls.Label totalLbl;
         
         /// <summary>
+        /// commentLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label commentLbl;
+        
+        /// <summary>
         /// approveBtn control.
         /// </summary>
         /// <remarks>

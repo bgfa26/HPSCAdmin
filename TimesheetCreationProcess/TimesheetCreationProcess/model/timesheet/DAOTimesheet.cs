@@ -11,9 +11,15 @@ using TimesheetProcess.model.timesheet;
 
 namespace TimesheetCreationProcess.model.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta DAO usada para manejar las hojas de tiempo de cada empleado
+    /// </summary>
     class DAOTimesheet : DAO
     {
-
+        /// <summary>
+        /// Metodo que agrega a la base de datos las hojas de tiempo
+        /// </summary>
+        /// <returns>Retorna un entero</returns>
         public int AddTimesheetsPerEmployee(DateTime initDate, DateTime endDate, List<Employee> employees)
         {
             try

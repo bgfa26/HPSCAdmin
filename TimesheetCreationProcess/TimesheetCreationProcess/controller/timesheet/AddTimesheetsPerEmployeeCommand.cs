@@ -9,6 +9,9 @@ using TimesheetCreationProcess.model.timesheet;
 
 namespace TimesheetCreationProcess.controller.timesheet
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta Command usada para realizar el proceso de agregar una hoja de tiempo por empleado
+    /// </summary>
     class AddTimesheetsPerEmployeeCommand : Command
     {
         DateTime initDate;

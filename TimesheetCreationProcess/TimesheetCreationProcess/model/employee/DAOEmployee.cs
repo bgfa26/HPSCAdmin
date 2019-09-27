@@ -11,6 +11,9 @@ using TimesheetProcess.model.employee;
 
 namespace TimesheetCreationProcess.model.employee
 {
+    /// <summary>
+    /// Clase que hereda de la clase abstracta DAO para manejar la información de los empleados
+    /// </summary>
     class DAOEmployee : DAO
     {
         /// <summary>

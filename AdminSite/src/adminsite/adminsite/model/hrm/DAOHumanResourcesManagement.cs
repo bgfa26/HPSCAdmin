@@ -73,8 +73,6 @@ namespace adminsite.model.hrm
 
         }
 
-
-
         /// <summary>
         /// Metodo que cambia el estatus de activo a eliminado en la base de datos
         /// </summary>
@@ -109,8 +107,7 @@ namespace adminsite.model.hrm
             }
 
         }
-
-
+        
         /// <summary>
         /// Metodo que lista todas las unidades organizacionales
         /// </summary>
@@ -170,9 +167,7 @@ namespace adminsite.model.hrm
             }
 
         }
-
-
-
+        
         /// <summary>
         /// Metodo que lista todos los cargos de la organizacion
         /// </summary>
@@ -223,8 +218,6 @@ namespace adminsite.model.hrm
 
         }
 
-
-
         /// <summary>
         /// Metodo para modificar el cargo de un empleado
         /// </summary>
@@ -263,7 +256,6 @@ namespace adminsite.model.hrm
 
         }
 
-
         /// <summary>
         /// Metodo para modificar el supervisor de una unidad organizacional
         /// </summary>
@@ -300,8 +292,7 @@ namespace adminsite.model.hrm
             }
 
         }
-
-
+        
         /// <summary>
         /// Metodo para eliminar el supervisor de una unidad organizacional
         /// </summary>
@@ -394,6 +385,80 @@ namespace adminsite.model.hrm
                 throw ex;
             }
 
+        }
+
+        public List<Report> GetManagerPendingACPHours(DateTime initDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Report> GetOverseerPendingTimesheets(DateTime initDate, DateTime endDate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Report> GetTimesheetsReport(DateTime initDate, DateTime endDate, int reportType)
+        {
+            List<Report> reports = new List<Report>();
+            DataTable dataTable = new DataTable();
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.initdate, SqlDbType.Date, initDate.ToString("yyyy-MM-dd"), false));
+                parameters.Add(new ParameterDB(HRMResources.enddate, SqlDbType.Date, endDate.ToString("yyyy-MM-dd"), false));
+                if (reportType == 0)
+                {
+                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetEmployeesWithOpenTimesheetsStoredProcedure, parameters);
+                }
+                else if (reportType == 1)
+                {
+                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetOverseersWithPendingApprovalsStoredProcedure1, parameters);
+                }
+                else
+                {
+                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetEmployeesWithOpenTimesheetsStoredProcedure, parameters);
+                }
+                if ((reportType == 0) || (reportType == 1))
+                {
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        try
+                        {
+                            Report report = new Report(Int32.Parse(row["EID"].ToString()),
+                                                       row["EFIRSTNAME"].ToString(),
+                                                       row["ELASTNAME"].ToString(),
+                                                       row["OUNAME"].ToString());
+                            reports.Add(report);
+                        }
+                        catch (Exception ex)
+                        {
+                            return null;
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+                return reports;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

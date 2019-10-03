@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TimesheetCreationProcess.common.entities;
 using TimesheetCreationProcess.controller;
+using TimesheetCreationProcess.model.employee;
 using TimesheetProcess.model.emailservice;
 
 namespace TimesheetProcess.controller.emailservice
@@ -14,22 +15,40 @@ namespace TimesheetProcess.controller.emailservice
     /// </summary>
     class SendEmailCommand : Command
     {
-        Employee employee;
         private int type;
         private static Random random = new Random();
+        private DateTime endDate;
 
-        public SendEmailCommand(Employee employee, int type)
+        public SendEmailCommand(int type)
         {
-            this.employee = employee;
             this.type = type;
+        }
+
+        public SendEmailCommand(int type, DateTime endDate)
+        {
+            this.type = type;
+            this.endDate = endDate;
         }
 
         public override void Execute()
         {
             try
             {
-                EmailManagement emailService = new EmailManagement();
-                emailService.SendReminder(employee, type);
+                DAOEmployee daoEmployee = new DAOEmployee();
+                List<Employee> employees = new List<Employee>();
+                if (type == 0)
+                {
+                    employees = daoEmployee.GetEmployeesOpenTimesheet(endDate);
+                }
+                else
+                {
+                    employees = daoEmployee.GetEmployees();
+                }
+                if (employees.Count > 0)
+                {
+                    EmailManagement emailService = new EmailManagement();
+                    emailService.SendReminder(employees, type);
+                }
             }
             catch (Exception ex)
             {

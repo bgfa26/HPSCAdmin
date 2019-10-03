@@ -63,8 +63,15 @@
     <Compile Include="common\ParameterDB.cs" />
     <Compile Include="common\ResultDB.cs" />
     <Compile Include="controller\Command.cs" />
+    <Compile Include="controller\emailservice\SendEmailCommand.cs" />
     <Compile Include="controller\timesheet\AddTimesheetsPerEmployeeCommand.cs" />
     <Compile Include="model\DAO.cs" />
+    <Compile Include="model\emailservice\EmailManagement.cs" />
+    <Compile Include="model\emailservice\EmailManagementResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailManagementResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="model\employee\DAOEmployee.cs" />
     <Compile Include="model\employee\HRMResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -84,6 +91,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="model\emailservice\EmailManagementResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailManagementResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="model\employee\HRMResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>HRMResources.Designer.cs</LastGenOutput>

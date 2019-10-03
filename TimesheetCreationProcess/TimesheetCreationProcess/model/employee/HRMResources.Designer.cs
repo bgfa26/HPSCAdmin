@@ -70,6 +70,15 @@ namespace TimesheetProcess.model.employee {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @enddate.
+        /// </summary>
+        internal static string enddate {
+            get {
+                return ResourceManager.GetString("enddate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @exitvalue.
         /// </summary>
         internal static string exitvalue {
@@ -111,6 +120,15 @@ namespace TimesheetProcess.model.employee {
         internal static string GetEmployeesStoredProcedure {
             get {
                 return ResourceManager.GetString("GetEmployeesStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_OPENTIMESHEET_EMAILS.
+        /// </summary>
+        internal static string GetOpenTimesheetEmployees {
+            get {
+                return ResourceManager.GetString("GetOpenTimesheetEmployees", resourceCulture);
             }
         }
         

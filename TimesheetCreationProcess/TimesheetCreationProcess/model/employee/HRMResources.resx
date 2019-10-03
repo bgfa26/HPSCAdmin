@@ -169,4 +169,12 @@
     <value>@year</value>
     <comment>Año de la búsqueda</comment>
   </data>
+  <data name="enddate" xml:space="preserve">
+    <value>@enddate</value>
+    <comment>Fecha de finalización</comment>
+  </data>
+  <data name="GetOpenTimesheetEmployees" xml:space="preserve">
+    <value>GET_OPENTIMESHEET_EMAILS</value>
+    <comment>Procedimiento almacenado para consultar los empleados que no han entregado una hoja de tiempo</comment>
+  </data>
 </root>

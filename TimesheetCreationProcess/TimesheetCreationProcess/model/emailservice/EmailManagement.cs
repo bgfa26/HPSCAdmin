@@ -17,34 +17,37 @@ namespace TimesheetProcess.model.emailservice
         /// Metodo que envia el codigo de verificacion por correo
         /// </summary>
         /// <param name="employee">Empleado que va a recibir el correo</param>
-        public void SendReminder(Employee employee, int type)
+        public void SendReminder(List<Employee> employees, int type)
         {
             try
             {
-                MailMessage msg = new MailMessage();
-                msg.To.Add(new MailAddress(employee.email, employee.email));
-                msg.From = new MailAddress(EmailManagementResources.Email, EmailManagementResources.Email);
-                msg.Subject = EmailManagementResources.TimesheetHeader;
-                if (type == 0)
+                foreach (Employee employee in employees)
                 {
-                    msg.Body = EmailManagementResources.TimesheetReminderBody;
-                }
-                else
-                {
-                    msg.Body = EmailManagementResources.LateTimesheetBody;
-                }
-                msg.IsBodyHtml = true;
+                    MailMessage msg = new MailMessage();
+                    msg.To.Add(new MailAddress(employee.email, employee.email));
+                    msg.From = new MailAddress(EmailManagementResources.Email, EmailManagementResources.Email);
+                    msg.Subject = EmailManagementResources.TimesheetHeader;
+                    if (type == 1)
+                    {
+                        msg.Body = EmailManagementResources.TimesheetReminderBody;
+                    }
+                    else
+                    {
+                        msg.Body = EmailManagementResources.LateTimesheetBody;
+                    }
+                    msg.IsBodyHtml = true;
 
-                SmtpClient client = new SmtpClient();
-                client.UseDefaultCredentials = false;
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.Credentials = new System.Net.NetworkCredential(EmailManagementResources.Email, EmailManagementResources.Password);
-                client.EnableSsl = true;
-                client.Port = 587; // Usar puerto 25 o 587
-                client.Host = "smtp.office365.com";
-                client.DeliveryMethod = SmtpDeliveryMethod.Network;
-                client.EnableSsl = true;
-                client.Send(msg);
+                    SmtpClient client = new SmtpClient();
+                    client.UseDefaultCredentials = false;
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.Credentials = new System.Net.NetworkCredential(EmailManagementResources.Email, EmailManagementResources.Password);
+                    client.EnableSsl = true;
+                    client.Port = 587; // Usar puerto 25 o 587
+                    client.Host = "smtp.office365.com";
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.EnableSsl = true;
+                    client.Send(msg);
+                }
             }
             catch (Exception ex)
             {

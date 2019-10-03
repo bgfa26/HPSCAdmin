@@ -27,17 +27,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server">
     <span class="login100-form-logo">
-	  <div id="logohpsc" hidden="hidden" style="text-align:center">
-        <img src="../common/img/hpsc.png" class="img-responsive img-centered" width="70" alt="" id="hpsc">
-	  </div>
-	  <div id="logomt2005" hidden="hidden" style="text-align:center">
-        <img src="../common/img/mt2005.png" class="img-responsive img-centered" width="70" alt="" id="mt2005">
-	  </div>
-	  <div id="logointeratec" hidden="hidden" style="text-align:center">
-        <img src="../common/img/interatec.png" class="img-responsive img-centered" width="70" alt="" id="interatec">
-	  </div>
 	  <div id="logoguest" style="text-align:center">
-        <i class="fas fa-user" id="guest"></i>
+        <img src="../common/img/mt2005.png" class="img-responsive img-centered" width="70" alt="" id="mt2005">
 	  </div>
         
     </span>
@@ -47,7 +38,7 @@
     </span>
 
     <div class="wrap-input100 validate-input" data-validate="Ingrese su correo">
-        <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico" onkeypress="funcion()" onblur="funcion()" maxlength="50">
+        <input class="input100" id="email" type="text" name="email" placeholder="Correo electrónico" maxlength="50">
         <span class="focus-input100" data-placeholder="&#xf207;"></span>
     </div>
 
@@ -78,54 +69,4 @@
             ¿Olvidó su contraseña?
         </a>
     </div>
-
-    <script>
-        function funcion() {
-            var email = document.getElementById("email").value;
-            var emailFilter = /^[a-zA-Z0-9\-_]+(\.[a-zA-Z0-9\-_]+)*@[a-z0-9]+(\-[a-z0-9]+)*(\.[a-z0-9]+(\-[a-z0-9]+)*)*\.[a-z]{1,4}$/;
-            if (emailFilter.test(email)) {
-                if (email.includes("hp-sc")) {
-                    document.getElementById('logohpsc').removeAttribute("hidden");
-                    document.getElementById('logohpsc').className = "fade-in";
-                    document.getElementById('logomt2005').setAttribute("hidden", "hidden");
-                    document.getElementById('logomt2005').className = "";
-                    document.getElementById('logointeratec').setAttribute("hidden", "hidden");
-                    document.getElementById('logointeratec').className = "";
-                    document.getElementById('logoguest').setAttribute("hidden", "hidden");
-                    document.getElementById('logoguest').className = "";
-                    document.getElementById("hpsc").width = "80";
-                } else if (email.includes("mt2005")) {
-                    document.getElementById('logomt2005').removeAttribute("hidden");
-                    document.getElementById('logomt2005').className = "fade-in";
-                    document.getElementById('logohpsc').setAttribute("hidden", "hidden");
-                    document.getElementById('logohpsc').className = "";
-                    document.getElementById('logointeratec').setAttribute("hidden", "hidden");
-                    document.getElementById('logointeratec').className = "";
-                    document.getElementById('logoguest').setAttribute("hidden", "hidden");
-                    document.getElementById('logoguest').className = "";
-                    document.getElementById("mt2005").width = "75";
-                } else if (email.includes("interatec")) {
-                    document.getElementById('logointeratec').removeAttribute("hidden");
-                    document.getElementById('logointeratec').className = "fade-in";
-                    document.getElementById('logohpsc').setAttribute("hidden", "hidden");
-                    document.getElementById('logohpsc').className = "";
-                    document.getElementById('logomt2005').setAttribute("hidden", "hidden");
-                    document.getElementById('logomt2005').className = "";
-                    document.getElementById('logoguest').setAttribute("hidden", "hidden");
-                    document.getElementById('logoguest').className = "";
-                    document.getElementById("interatec").width = "100";
-                } else {
-                    document.getElementById('logohpsc').removeAttribute("hidden");
-                    document.getElementById('logohpsc').className = "fade-in";
-                    document.getElementById('logomt2005').setAttribute("hidden", "hidden");
-                    document.getElementById('logomt2005').className = "";
-                    document.getElementById('logointeratec').setAttribute("hidden", "hidden");
-                    document.getElementById('logointeratec').className = "";
-                    document.getElementById('logoguest').setAttribute("hidden", "hidden");
-                    document.getElementById('logoguest').className = "";
-                    document.getElementById("hpsc").width = "80";
-                }
-            }
-        }
-</script>
 </asp:Content>

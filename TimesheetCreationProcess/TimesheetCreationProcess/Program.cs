@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TimesheetCreationProcess.controller.timesheet;
+using TimesheetProcess.controller.emailservice;
 
 namespace TimesheetCreationProcess
 {
@@ -39,19 +40,32 @@ namespace TimesheetCreationProcess
             int middleDay = end.Day - 3;
             if (initDate.Day == 3)
             {
-
+                int year = initDate.Year;
+                int month = initDate.Month - 1;
+                if (month == 0)
+                {
+                    month = 12;
+                    year--;
+                }
+                DateTime dateTime = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+                SendEmailCommand cmd = new SendEmailCommand(0, dateTime);
+                cmd.Execute();
             }
             else if (initDate.Day == middleDay)
             {
-
+                SendEmailCommand cmd = new SendEmailCommand(1);
+                cmd.Execute();
             }
             else if (initDate.Day == 12)
             {
-
+                SendEmailCommand cmd = new SendEmailCommand(1);
+                cmd.Execute();
             }
             else if (initDate.Day == 18)
             {
-
+                DateTime dateTime = new DateTime(initDate.Year, initDate.Month, 15);
+                SendEmailCommand cmd = new SendEmailCommand(0, dateTime);
+                cmd.Execute();
             }
         }
     }

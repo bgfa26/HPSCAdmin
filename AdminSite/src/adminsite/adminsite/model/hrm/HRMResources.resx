@@ -169,4 +169,20 @@
     <value>@year</value>
     <comment>Año de la búsqueda</comment>
   </data>
+  <data name="enddate" xml:space="preserve">
+    <value>@enddate</value>
+    <comment>Fecha de finalización</comment>
+  </data>
+  <data name="GetEmployeesWithOpenTimesheetsStoredProcedure" xml:space="preserve">
+    <value>GET_EMPLOYEES_WITH_OPEN_TIMESHEETS</value>
+    <comment>Procedimiento almacenado para consultar los empleados que faltan por entregar su hoja de tiempo</comment>
+  </data>
+  <data name="GetOverseersWithPendingApprovalsStoredProcedure1" xml:space="preserve">
+    <value>GET_OVERSEERS_WITH_PENDING_APPROVALS</value>
+    <comment>Procedimiento almacenado para consultar los supervisores que faltan por aprobar o reprobar hojas de tiempo</comment>
+  </data>
+  <data name="initdate" xml:space="preserve">
+    <value>@initdate</value>
+    <comment>Fecha de inicio</comment>
+  </data>
 </root>

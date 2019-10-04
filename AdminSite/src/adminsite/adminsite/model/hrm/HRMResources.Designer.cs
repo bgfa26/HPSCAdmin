@@ -70,6 +70,15 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to @enddate.
+        /// </summary>
+        internal static string enddate {
+            get {
+                return ResourceManager.GetString("enddate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @exitvalue.
         /// </summary>
         internal static string exitvalue {
@@ -115,6 +124,24 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_EMPLOYEES_WITH_OPEN_TIMESHEETS.
+        /// </summary>
+        internal static string GetEmployeesWithOpenTimesheetsStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetEmployeesWithOpenTimesheetsStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GET_OVERSEERS_WITH_PENDING_APPROVALS.
+        /// </summary>
+        internal static string GetOverseersWithPendingApprovalsStoredProcedure1 {
+            get {
+                return ResourceManager.GetString("GetOverseersWithPendingApprovalsStoredProcedure1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @id.
         /// </summary>
         internal static string id {
@@ -138,6 +165,15 @@ namespace adminsite.model.hrm {
         internal static string idposition {
             get {
                 return ResourceManager.GetString("idposition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @initdate.
+        /// </summary>
+        internal static string initdate {
+            get {
+                return ResourceManager.GetString("initdate", resourceCulture);
             }
         }
         

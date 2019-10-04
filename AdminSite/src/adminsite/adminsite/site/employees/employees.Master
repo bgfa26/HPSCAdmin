@@ -142,6 +142,9 @@
                                 <li>
                                     <a href="/site/employees/hrm/timesheetslist.aspx">Hoja de tiempo de empleados</a>
                                 </li>
+                                <li>
+                                    <a href="/site/employees/hrm/hrmreports.aspx">Reportes</a>
+                                </li>
                             </ul>
                         </li>
                         <li id="acpLi" runat="server">

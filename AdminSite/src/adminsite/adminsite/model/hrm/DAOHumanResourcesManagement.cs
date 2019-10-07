@@ -425,9 +425,9 @@ namespace adminsite.model.hrm
                     {
                         try
                         {
-                            Report report = new Report(Int32.Parse(row["EID"].ToString()),
-                                                       row["EFIRSTNAME"].ToString(),
-                                                       row["ELASTNAME"].ToString(),
+                            Report report = new Report(Int32.Parse(row["EOID"].ToString()),
+                                                       row["EOFIRSTNAME"].ToString(),
+                                                       row["EOLASTNAME"].ToString(),
                                                        row["OUNAME"].ToString());
                             reports.Add(report);
                         }
@@ -446,7 +446,7 @@ namespace adminsite.model.hrm
                             Report consultedReport = new Report(Int32.Parse(row["EID"].ToString()),
                                                        row["EFIRSTNAME"].ToString(),
                                                        row["ELASTNAME"].ToString(),
-                                                       row["ACP.MAIN"].ToString());
+                                                       row["ACPNAME"].ToString());
                             bool contain = reports.Contains(consultedReport);
                             if (contain)
                             {
@@ -454,8 +454,11 @@ namespace adminsite.model.hrm
                                 {
                                     if (report.id == consultedReport.id)
                                     {
-                                        report.unitAccount += ", " + consultedReport.unitAccount;
-                                        break;
+                                        if (!report.unitAccount.Contains(consultedReport.unitAccount))
+                                        {
+                                            report.unitAccount += ", " + consultedReport.unitAccount;
+                                            break;
+                                        }
                                     }
                                 }
                             }

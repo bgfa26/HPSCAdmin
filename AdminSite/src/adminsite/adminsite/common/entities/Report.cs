@@ -5,7 +5,7 @@ using System.Web;
 
 namespace adminsite.common.entities
 {
-    public class Report : IEquatable<Statistic>
+    public class Report : IEquatable<Report>
     {
         public int id { get; set; }
         public string workerId { get; set; }

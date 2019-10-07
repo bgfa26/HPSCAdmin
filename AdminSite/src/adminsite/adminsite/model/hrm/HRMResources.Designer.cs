@@ -133,11 +133,20 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_MANAGERS_WITH_PENDING_APPROVALS.
+        /// </summary>
+        internal static string GetManagersWithPendingApprovalsStoredProcedure1 {
+            get {
+                return ResourceManager.GetString("GetManagersWithPendingApprovalsStoredProcedure1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_OVERSEERS_WITH_PENDING_APPROVALS.
         /// </summary>
-        internal static string GetOverseersWithPendingApprovalsStoredProcedure1 {
+        internal static string GetOverseersWithPendingApprovalsStoredProcedure {
             get {
-                return ResourceManager.GetString("GetOverseersWithPendingApprovalsStoredProcedure1", resourceCulture);
+                return ResourceManager.GetString("GetOverseersWithPendingApprovalsStoredProcedure", resourceCulture);
             }
         }
         

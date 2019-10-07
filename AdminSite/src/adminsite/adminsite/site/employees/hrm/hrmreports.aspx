@@ -69,7 +69,7 @@
                                             <tr id="<%# Eval("id") %>">
                                                 <td><asp:Label ID="employeeId" runat="server" Text='<%# Eval("id") %>' ReadOnly="True" BorderStyle="None" /></td>
                                                 <td><%# Eval("firstName") %> <%# Eval("lastName") %></td>
-                                                <td><%# Eval("organizationalUnit") %></td>
+                                                <td><%# Eval("unitAccount") %></td>
                                             </tr>              
                                     </ItemTemplate>
                                 </asp:Repeater>

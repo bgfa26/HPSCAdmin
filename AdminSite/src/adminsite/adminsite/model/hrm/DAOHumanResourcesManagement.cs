@@ -413,11 +413,11 @@ namespace adminsite.model.hrm
                 }
                 else if (reportType == 1)
                 {
-                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetOverseersWithPendingApprovalsStoredProcedure1, parameters);
+                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetOverseersWithPendingApprovalsStoredProcedure, parameters);
                 }
                 else
                 {
-                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetEmployeesWithOpenTimesheetsStoredProcedure, parameters);
+                    dataTable = ExecuteConsultStoredProcedure(HRMResources.GetManagersWithPendingApprovalsStoredProcedure1, parameters);
                 }
                 if ((reportType == 0) || (reportType == 1))
                 {
@@ -439,7 +439,36 @@ namespace adminsite.model.hrm
                 }
                 else
                 {
-
+                    foreach (DataRow row in dataTable.Rows)
+                    {
+                        try
+                        {
+                            Report consultedReport = new Report(Int32.Parse(row["EID"].ToString()),
+                                                       row["EFIRSTNAME"].ToString(),
+                                                       row["ELASTNAME"].ToString(),
+                                                       row["ACP.MAIN"].ToString());
+                            bool contain = reports.Contains(consultedReport);
+                            if (contain)
+                            {
+                                foreach (Report report in reports)
+                                {
+                                    if (report.id == consultedReport.id)
+                                    {
+                                        report.unitAccount += ", " + consultedReport.unitAccount;
+                                        break;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                reports.Add(consultedReport);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            return null;
+                        }
+                    }
                 }
                 return reports;
             }

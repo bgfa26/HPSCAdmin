@@ -166,6 +166,7 @@ namespace adminsite.model.timesheet
                         timesheet.initDate = Convert.ToDateTime(row["INITDATE"].ToString());
                         timesheet.endDate = Convert.ToDateTime(row["ENDDATE"].ToString());
                         timesheet.comment = row["COMMENT"].ToString();
+                        timesheet.status = row["STATUS"].ToString();
                     }
                     catch (Exception ex)
                     {

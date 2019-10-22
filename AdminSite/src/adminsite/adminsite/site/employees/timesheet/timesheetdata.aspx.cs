@@ -31,7 +31,7 @@ namespace adminsite.site.employees.timesheet
                             GetAllWorkloadsByTimesheetCommand cmd = new GetAllWorkloadsByTimesheetCommand(timesheet);
                             cmd.Execute();
                             timesheet = cmd.GetResults();
-                            timesheetLbl.Text = timesheet.id.ToString();
+                            timesheetLbl.Text = timesheet.id.ToString() + " - Estatus: " + timesheet.status;
                             commentLbl.Text = "Comentario: " + timesheet.comment;
                             foreach (Workload workload in timesheet.workloads)
                             {

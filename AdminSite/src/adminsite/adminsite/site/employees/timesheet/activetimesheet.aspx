@@ -35,7 +35,7 @@
     <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
+            <h1 class="page-header" style="font-size:30px">
                 Hoja de tiempo N°<asp:Label ID="timesheetLbl" runat="server" Text='' ReadOnly="True" BorderStyle="None" />
             </h1>
         </div>

@@ -425,9 +425,9 @@ namespace adminsite.model.hrm
                     {
                         try
                         {
-                            Report report = new Report(Int32.Parse(row["EOID"].ToString()),
-                                                       row["EOFIRSTNAME"].ToString(),
-                                                       row["EOLASTNAME"].ToString(),
+                            Report report = new Report(Int32.Parse(row["EID"].ToString()),
+                                                       row["EFIRSTNAME"].ToString(),
+                                                       row["ELASTNAME"].ToString(),
                                                        row["OUNAME"].ToString());
                             reports.Add(report);
                         }

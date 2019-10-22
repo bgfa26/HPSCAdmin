@@ -53,12 +53,16 @@ namespace TimesheetCreationProcess
             }
             else if (initDate.Day == middleDay)
             {
-                SendEmailCommand cmd = new SendEmailCommand(1);
+                DateTime dateInit = new DateTime(initDate.Year, initDate.Month, 16);
+                DateTime dateEnd = new DateTime(initDate.Year, initDate.Month, end.Day);
+                SendEmailCommand cmd = new SendEmailCommand(1, dateInit, dateEnd);
                 cmd.Execute();
             }
             else if (initDate.Day == 12)
             {
-                SendEmailCommand cmd = new SendEmailCommand(1);
+                DateTime dateInit = new DateTime(initDate.Year, initDate.Month, 1);
+                DateTime dateEnd = new DateTime(initDate.Year, initDate.Month, 15);
+                SendEmailCommand cmd = new SendEmailCommand(1, dateInit, dateEnd);
                 cmd.Execute();
             }
             else if (initDate.Day == 18)
@@ -69,12 +73,16 @@ namespace TimesheetCreationProcess
             }
             else if (initDate.Day == 15)
             {
-                SendEmailCommand cmd = new SendEmailCommand(2);
+                DateTime dateInit = new DateTime(initDate.Year, initDate.Month, 1);
+                DateTime dateEnd = new DateTime(initDate.Year, initDate.Month, 15);
+                SendEmailCommand cmd = new SendEmailCommand(2, dateInit, dateEnd);
                 cmd.Execute();
             }
             else if (initDate.Day == end.Day)
             {
-                SendEmailCommand cmd = new SendEmailCommand(2);
+                DateTime dateInit = new DateTime(initDate.Year, initDate.Month, 16);
+                DateTime dateEnd = new DateTime(initDate.Year, initDate.Month, end.Day);
+                SendEmailCommand cmd = new SendEmailCommand(2, dateInit, dateEnd);
                 cmd.Execute();
             }
         }

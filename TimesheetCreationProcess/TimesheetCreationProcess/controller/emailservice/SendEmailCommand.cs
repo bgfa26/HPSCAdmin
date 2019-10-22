@@ -18,6 +18,7 @@ namespace TimesheetProcess.controller.emailservice
         private int type;
         private static Random random = new Random();
         private DateTime endDate;
+        private DateTime initDate;
 
         public SendEmailCommand(int type)
         {
@@ -27,6 +28,13 @@ namespace TimesheetProcess.controller.emailservice
         public SendEmailCommand(int type, DateTime endDate)
         {
             this.type = type;
+            this.endDate = endDate;
+        }
+
+        public SendEmailCommand(int type, DateTime initDate, DateTime endDate)
+        {
+            this.type = type;
+            this.initDate = initDate;
             this.endDate = endDate;
         }
 
@@ -47,7 +55,7 @@ namespace TimesheetProcess.controller.emailservice
                 if (employees.Count > 0)
                 {
                     EmailManagement emailService = new EmailManagement();
-                    emailService.SendReminder(employees, type);
+                    emailService.SendReminder(employees, type, initDate, endDate);
                 }
             }
             catch (Exception ex)

@@ -15,6 +15,9 @@
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css'/>
+
+    <link href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="content" runat="server"> 
@@ -99,7 +102,63 @@
     <script src="../js/sweet.js"></script>
 
     <!-- DataTables -->
-    <script src="../css/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="../css/plugins/datatables/dataTables.bootstrap.min.js"></script>
-    <script>table = $('#table').DataTable();</script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.0/js/buttons.html5.min.js"></script>
+    <script>
+        table = $('#table').DataTable({
+            language: {
+                "sProcessing":     "Procesando...",
+                "sLengthMenu":     "Mostrar _MENU_ entradas",
+                "sZeroRecords":    "No se encontraron coincidencias",
+                "sEmptyTable":     "No se encontraron datos en la tabla",
+                "sInfo":           "Mostrando desde _START_ hasta _END_ de _TOTAL_ entradas",
+                "sInfoEmpty":      "Mostrando desde 0 hasta 0 de 0 entradas",
+                "sInfoFiltered":   "(Filtrado de un total de _MAX_ entradas)",
+                "sInfoPostFix":    "",
+                "sSearch":         "Buscar:",
+                "sUrl":            "",
+                "sInfoThousands":  ",",
+                "sLoadingRecords": "Cargando...",
+                "oPaginate": {
+                    "sFirst":    "Primero",
+                    "sLast":     "Último",
+                    "sNext":     "Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "oAria": {
+                    "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar data",
+                    "excel": "Guardar excel",
+                    "csv": "Guardar CSV",
+                    "pdf": "Guardar PDF",
+                    "pageLength": "Mostrar %d filas",
+                    "colvis": "Visibilidad"
+                }
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'pageLength',
+                'copyHtml5',
+                {
+                    extend: 'excelHtml5',
+                    messageTop: function () { return 'Reporte: ' + $('#content_reportsDropList option:selected').text(); }
+                },
+                {
+                    extend: 'pdfHtml5',
+                    messageTop: function () { return 'Reporte: ' + $('#content_reportsDropList option:selected').text(); }
+                },
+                'csvHtml5'
+            ]
+        } );
+
+    </script>
 </asp:Content>

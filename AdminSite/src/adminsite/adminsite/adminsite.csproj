@@ -1164,6 +1164,7 @@
     <Content Include="site\employees\performance\amcharts3\lib\plugins\responsive\package.json" />
     <Content Include="site\employees\performance\amcharts3\lib\plugins\responsive\readme.md" />
     <Content Include="site\employees\performance\amcharts3\lib\plugins\responsive\responsive.min.js.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

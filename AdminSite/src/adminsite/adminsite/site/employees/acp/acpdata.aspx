@@ -5,7 +5,7 @@
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="../css/plugins/datatables/dataTables.bootstrap.css">
 
-    <title>AdminSite</title>
+    <title>Centros de costo</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">

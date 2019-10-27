@@ -3,7 +3,7 @@
 
 <asp:Content ID="ContentIndex" ContentPlaceHolderID="head" runat="server">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Inicio</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

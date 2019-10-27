@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>adminsite</RootNamespace>
     <AssemblyName>adminsite</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort />
@@ -23,6 +23,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,28 +48,27 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Nager.Date, Version=1.25.5.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nager.Date.1.25.5\lib\net461\Nager.Date.dll</HintPath>
+    <Reference Include="Nager.Date, Version=1.25.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nager.Date.1.25.6\lib\net45\Nager.Date.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="site\common\img\hpsc.png" />
@@ -79,10 +79,6 @@
     <Content Include="site\employees\acp\acpdata.aspx" />
     <Content Include="site\employees\acp\newacp.aspx" />
     <Content Include="site\employees\acp\costcenterlist.aspx" />
-    <Content Include="site\employees\blank-page.html" />
-    <Content Include="site\employees\bootstrap-elements.html" />
-    <Content Include="site\employees\bootstrap-grid.html" />
-    <Content Include="site\employees\charts.html" />
     <Content Include="site\employees\css\bootstrap-rtl.css" />
     <Content Include="site\employees\css\bootstrap-rtl.min.css" />
     <Content Include="site\employees\css\bootstrap.css" />
@@ -283,7 +279,6 @@
     <Content Include="site\employees\font-awesome\css\font-awesome.min.css" />
     <Content Include="site\employees\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="site\employees\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="site\employees\forms.html" />
     <Content Include="site\employees\holiday.xml" />
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
@@ -299,8 +294,6 @@
     <Content Include="site\employees\img\icons\license.txt" />
     <Content Include="site\employees\img\icons\list.svg" />
     <Content Include="site\employees\img\icons\trash.svg" />
-    <Content Include="site\employees\index-rtl.html" />
-    <Content Include="site\employees\index.html" />
     <Content Include="site\employees\js\sweet.js" />
     <Content Include="site\employees\js\bootstrap.js" />
     <Content Include="site\employees\js\bootstrap.min.js" />
@@ -699,7 +692,6 @@
     <Content Include="site\employees\performance\amcharts3\samples\_usingThemes.html" />
     <Content Include="site\employees\performance\amcharts3\thirdPartySoftwareList.txt" />
     <Content Include="site\employees\performance\statistics.aspx" />
-    <Content Include="site\employees\tables.html" />
     <Content Include="site\employees\timesheet\activetimesheet.aspx" />
     <Content Include="site\employees\timesheet\holiday.xml" />
     <Content Include="site\employees\timesheet\timesheetdata.aspx" />

@@ -50,7 +50,7 @@
                             <a href="/site/employees/dashboard.aspx"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
                         </li>
                         <li id="rrhhLi" runat="server">
-                            <a href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> RRHH <i class="fa fa-fw fa-caret-down"></i></a>
+                            <a href="javascript:;" data-toggle="collapse" data-target="#rrhhUl"><i class="fa fa-fw fa-users"></i> Talento Humano <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="rrhhUl" class="collapse" runat="server">
                                 <li>
                                     <a href="/site/employees/hrm/employeelist.aspx">Listado de empleados</a>

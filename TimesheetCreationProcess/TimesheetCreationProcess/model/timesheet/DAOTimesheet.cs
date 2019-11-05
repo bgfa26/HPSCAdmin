@@ -28,6 +28,10 @@ namespace TimesheetCreationProcess.model.timesheet
                 {
                     List<ParameterDB> parameters = new List<ParameterDB>();
                     string idTimesheet = employee.id.ToString() + endDate.Day.ToString() + endDate.Month.ToString() + endDate.Year.ToString();
+                    if (endDate.Month < 10)
+                    {
+                        idTimesheet = employee.id.ToString() + endDate.Day.ToString() + "0" + endDate.Month.ToString() + endDate.Year.ToString();
+                    }
                     long id = Int64.Parse(idTimesheet);
                     parameters.Add(new ParameterDB(TimesheetResources.id, SqlDbType.BigInt, id.ToString(), false));
                     parameters.Add(new ParameterDB(TimesheetResources.initdate, SqlDbType.Date, initDate.ToString("yyyy-MM-dd"), false));

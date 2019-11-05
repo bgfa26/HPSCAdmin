@@ -37,7 +37,7 @@
                         <div class="col-md-12">
                             <div class="col-md-6" style="margin-top:10px">
                                 <label style="text-align:right">Identificador: </label> <span class="tool" data-tip="Debe estar compuesto por tres letras, un guión y seguido de tres letras y tres números. Ejemplo: ABC-DEF123" tabindex="1"><i class="fa fa-info-circle" title=""></i></span>
-				                <input type="text" class="form-control textinput" id="id" placeholder="XXX-XXXXXX" runat="server" autocomplete="off" maxlength="8">
+				                <input type="text" class="form-control textinput" id="id" placeholder="XXX-XXXXXX" runat="server" autocomplete="off" maxlength="10">
                                 <label style="text-align:right;margin-top:10px">Nombre: </label>
 				                <input type="text" class="form-control textinput" id="name" runat="server" autocomplete="off" maxlength="50">
                                                                 

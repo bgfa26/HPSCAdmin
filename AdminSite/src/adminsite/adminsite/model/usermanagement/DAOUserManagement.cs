@@ -60,18 +60,22 @@ namespace adminsite.model.usermanagement
             }
             catch (SqlException ex)
             {
+                Log.WriteError(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
                 throw ex;
             }
             catch (NullReferenceException ex)
             {
+                Log.WriteError(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
                 throw ex;
             }
             catch (ArgumentNullException ex)
             {
+                Log.WriteError(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
                 throw ex;
             }
             catch (Exception ex)
             {
+                Log.WriteError(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Name, ex);
                 throw ex;
             }
 

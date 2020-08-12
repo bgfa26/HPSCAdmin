@@ -387,6 +387,64 @@ namespace adminsite.model.hrm
 
         }
 
+        /// <summary>
+        /// Metodo para obtener las hojas de tiempo por empledo
+        /// </summary>
+        /// <returns>Retorna una lista de Hojas de Tiempo</returns>
+        /// <param name="year">Año en el cual se buscarán las hojas de tiempo</param>
+        public List<Timesheet> GetDeliveredTimesheets(int year)
+        {
+            List<Timesheet> timesheetsList = new List<Timesheet>();
+            DataTable dataTable = new DataTable();
+            List<ParameterDB> parameters = new List<ParameterDB>();
+
+            try
+            {
+                parameters.Add(new ParameterDB(HRMResources.year, SqlDbType.VarChar, year.ToString(), false));
+                dataTable = ExecuteConsultStoredProcedure(HRMResources.GetAllDeliveredTimesheetsHrmStoredProcedure, parameters);
+                Timesheet timesheet = null;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    try
+                    {
+                        Employee employee = new Employee(Int32.Parse(row["EID"].ToString()), row["EFIRSTNAME"].ToString(), row["ELASTNAME"].ToString());
+                        employee.email = row["EEMAIL"].ToString();
+                        timesheet = new Timesheet(Int64.Parse(row["TID"].ToString()),
+                                                  Convert.ToDateTime(row["TINITDATE"].ToString()),
+                                                  Convert.ToDateTime(row["TENDDATE"].ToString()),
+                                                  row["STATUS"].ToString(),
+                                                  employee,
+                                                  row["COMMENT"].ToString());
+                        timesheetsList.Add(timesheet);
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+
+
+                }
+                return timesheetsList;
+            }
+            catch (SqlException ex)
+            {
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentNullException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
         public List<Report> GetManagerPendingACPHours(DateTime initDate, DateTime endDate)
         {
             throw new NotImplementedException();

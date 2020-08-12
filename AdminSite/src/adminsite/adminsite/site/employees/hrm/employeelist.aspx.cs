@@ -39,29 +39,9 @@ namespace adminsite.site.employees.hrm
                     {
                         foreach (Employee employee in employeeList)
                         {
-                            if ((employee.status == 1) && (!employee.email.Equals(loggedEmployee.email)))
+                            if ((employee.status == 1))
                             {
-                                if (emailExtension.Equals("mt2005.net"))
-                                {
-                                    if (employee.email.Contains(emailExtension))
-                                    {
-                                        activeEmployees.Add(employee);
-                                    }
-                                }
-                                else if (emailExtension.Equals("interatec.com"))
-                                {
-                                    if (employee.email.Contains(emailExtension))
-                                    {
-                                        activeEmployees.Add(employee);
-                                    }
-                                }
-                                else
-                                {
-                                    if ((!employee.email.Contains("mt2005.net")) && (!employee.email.Contains("interatec.com")))
-                                    {
-                                        activeEmployees.Add(employee);
-                                    }
-                                }
+                                activeEmployees.Add(employee);
                             }
                         }
                     }

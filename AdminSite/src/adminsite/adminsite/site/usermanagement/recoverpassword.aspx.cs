@@ -20,7 +20,7 @@ namespace adminsite.site.usermanagement
 
         private bool validateEmail(string email)
         {
-            string pattern = @"^[a-z][a-z|0-9|]*([_][a-z|0-9]+)*([.][a-z|0-9]+([_][a-z|0-9]+)*)?@[a-z][a-z|0-9|]*\.([a-z][a-z|0-9]*(\.[a-z][a-z|0-9]*)?)$";
+            string pattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             Match match = Regex.Match(email.Trim(), pattern, RegexOptions.IgnoreCase);
 
             if (match.Success)

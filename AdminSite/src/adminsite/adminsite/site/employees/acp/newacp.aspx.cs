@@ -117,7 +117,7 @@ namespace adminsite.site.employees.acp
             {
                 acpId = acpId.ToUpper();
                 bool validACP = validIdACP(acpId);
-                if (validACP)
+                if (acpId.Length > 10)
                 {
                     if (end.Equals(""))
                     {

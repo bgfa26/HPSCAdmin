@@ -1,7 +1,6 @@
 ﻿using adminsite.common.entities;
 using adminsite.controller.hrm;
 using adminsite.controller.statistics;
-using adminsite.controller.unitmanagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,46 +10,45 @@ using System.Web.UI.WebControls;
 
 namespace adminsite.site.employees.hrm
 {
-    public partial class timesheetslist : System.Web.UI.Page
+    public partial class employeestimesheets : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            try
             {
-                try
+                Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
+                if (loggedEmployee != null)
                 {
-                    Employee loggedEmployee = (Employee)Session["MY_INFORMATION"];
-                    if (loggedEmployee != null)
+                    if (!((loggedEmployee.organizationalUnit.Equals("Administración")) && (loggedEmployee.positionName.Equals("Gerente de Talento Humano"))) &&
+                        !((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión"))) &&
+                        !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
                     {
-                        if (!((loggedEmployee.organizationalUnit.Equals("Administración")) && (loggedEmployee.positionName.Equals("Gerente de Talento Humano"))) &&
-                            !((loggedEmployee.organizationalUnit.Equals("Contraloría")) && (loggedEmployee.positionName.Equals("Contralor de Gestión"))) &&
-                            !((loggedEmployee.organizationalUnit.Equals("Directiva")) && (loggedEmployee.positionName.Equals("Director"))))
-                        {
-                            Response.Redirect("~/site/employees/dashboard.aspx", false);
-                        }
-                        GetAllYearsCommand cmd = new GetAllYearsCommand();
-                        cmd.Execute();
-                        List<string> years = cmd.GetResults();
-                        ListItem item;
-                        foreach (string year in years)
-                        {
-                            item = new ListItem(year, year);
-                            yearsDropList.Items.Insert(yearsDropList.Items.Count, item);
-                        }
+                        Response.Redirect("~/site/employees/dashboard.aspx", false);
                     }
-                    else
+                    GetAllYearsCommand cmd = new GetAllYearsCommand();
+                    cmd.Execute();
+                    List<string> years = cmd.GetResults();
+                    ListItem item;
+                    foreach (string year in years)
                     {
-                        Session.Remove("EMPLOYEE_EMAIL");
-                        Session.RemoveAll();
-                        Response.Redirect("~/site/usermanagement/login.aspx", false);
+                        item = new ListItem(year, year);
+                        yearsDropList.Items.Insert(yearsDropList.Items.Count, item);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
+                    Session.Remove("EMPLOYEE_EMAIL");
+                    Session.RemoveAll();
+                    Response.Redirect("~/site/usermanagement/login.aspx", false);
                 }
             }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "randomText", "errorSweetAlert('Ha ocurrido un error al cargar la información', 'error')", true);
+            }
         }
+
+
 
         public string GetStringAction(Object statusObj)
         {
@@ -72,6 +70,7 @@ namespace adminsite.site.employees.hrm
             Response.Redirect("~/site/employees/hrm/timesheetemployee.aspx");
         }
 
+
         protected void acceptBtn_Click(object sender, EventArgs e)
         {
             try
@@ -89,7 +88,7 @@ namespace adminsite.site.employees.hrm
                     if (!yearsDropList.SelectedValue.Equals(""))
                     {
                         int selectedYear = Int32.Parse(yearsDropList.SelectedValue);
-                        GetTimesheetsByEmployeeCommand cmd = new GetTimesheetsByEmployeeCommand(selectedYear);
+                        GetDeliveredTimesheetsCommand cmd = new GetDeliveredTimesheetsCommand(selectedYear);
                         cmd.Execute();
                         List<Timesheet> timesheetsList = cmd.GetResults();
                         List<Timesheet> realTimesheetsList = new List<Timesheet>();

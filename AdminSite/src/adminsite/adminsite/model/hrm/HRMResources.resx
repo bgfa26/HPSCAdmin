@@ -189,4 +189,8 @@
     <value>GET_MANAGERS_WITH_PENDING_APPROVALS</value>
     <comment>Procedimiento almacenado para consultar los gerentes de cuentas que faltan por aprobar o reprobar horas</comment>
   </data>
+  <data name="GetAllDeliveredTimesheetsHrmStoredProcedure" xml:space="preserve">
+    <value>GET_ALL_DELIVERED_TIMESHEETS_HRM</value>
+    <comment>Procedimiento almacenado para obtener todos las hojas de tiempo entregadas</comment>
+  </data>
 </root>

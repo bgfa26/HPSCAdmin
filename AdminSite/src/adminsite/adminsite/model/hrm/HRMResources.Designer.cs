@@ -88,6 +88,15 @@ namespace adminsite.model.hrm {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GET_ALL_DELIVERED_TIMESHEETS_HRM.
+        /// </summary>
+        internal static string GetAllDeliveredTimesheetsHrmStoredProcedure {
+            get {
+                return ResourceManager.GetString("GetAllDeliveredTimesheetsHrmStoredProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GET_ALL_ORGANIZATIONAL_UNITS.
         /// </summary>
         internal static string GetAllOrganizationalUnitsStoredProcedure {

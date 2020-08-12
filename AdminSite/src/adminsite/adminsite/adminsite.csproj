@@ -286,6 +286,7 @@
     <Content Include="site\employees\holiday.xml" />
     <Content Include="site\employees\hrm\employeedata.aspx" />
     <Content Include="site\employees\hrm\employeelist.aspx" />
+    <Content Include="site\employees\hrm\employeestimesheets.aspx" />
     <Content Include="site\employees\hrm\hrmreports.aspx" />
     <Content Include="site\employees\hrm\timesheetemployee.aspx" />
     <Content Include="site\employees\hrm\timesheetslist.aspx" />
@@ -780,6 +781,7 @@
     <Compile Include="controller\hrm\DeleteEmployeeCommand.cs" />
     <Compile Include="controller\hrm\GetAllOrganizationalUnitsCommand.cs" />
     <Compile Include="controller\hrm\GetAllPositionsCommand.cs" />
+    <Compile Include="controller\hrm\GetDeliveredTimesheetsCommand.cs" />
     <Compile Include="controller\hrm\GetEmployeesCommand.cs" />
     <Compile Include="controller\hrm\GetHRMReportCommand.cs" />
     <Compile Include="controller\hrm\GetTimesheetsByEmployeeCommand.cs" />
@@ -926,6 +928,13 @@
     </Compile>
     <Compile Include="site\employees\hrm\employeelist.aspx.designer.cs">
       <DependentUpon>employeelist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeestimesheets.aspx.cs">
+      <DependentUpon>employeestimesheets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="site\employees\hrm\employeestimesheets.aspx.designer.cs">
+      <DependentUpon>employeestimesheets.aspx</DependentUpon>
     </Compile>
     <Compile Include="site\employees\hrm\hrmreports.aspx.cs">
       <DependentUpon>hrmreports.aspx</DependentUpon>
